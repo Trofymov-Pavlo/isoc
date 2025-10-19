@@ -1,6 +1,6 @@
 <!-- pages/index.vue -->
 <template>
-  <div style="padding:2rem">
+  <div>
     <h1>Page index</h1>
   </div>
 </template>
