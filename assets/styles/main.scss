@@ -1,4 +1,9 @@
-// assets/styles/main.scss
-@use 'vuetify/settings' with (
-  $rounded: ('lg': 14px)
-);
+/* assets/styles/main.scss */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fafafa;
+}
+
+.v-container {
+  padding: 20px;
+}
