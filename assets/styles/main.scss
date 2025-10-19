@@ -1,0 +1,4 @@
+// assets/styles/main.scss
+@use 'vuetify/settings' with (
+  $rounded: ('lg': 14px)
+);

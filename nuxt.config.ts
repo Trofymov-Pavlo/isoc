@@ -1,5 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
+import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  nitro: { compatibilityDate: '2025-10-19' }
 })
