@@ -1,9 +1,74 @@
 /* assets/styles/main.scss */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #fafafa;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+:root {
+  --bg: #f4f4f4;
+  --paper: #fff;
+  --muted: #6b6b6b;
+  --rule: #e6e6e6;
 }
 
-.v-container {
-  padding: 20px;
+body {
+  font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg);
+  color: #111;
+  line-height:1.5;
+  margin:0;
 }
+
+.v-container { padding: 20px }
+
+/* Layout */
+.site { background:var(--bg); min-height:100vh }
+.masthead { background:var(--paper); border-bottom:1px solid var(--rule) }
+.container { display:grid; grid-template-columns: 1fr 360px; gap:28px; max-width:1060px; margin:0 auto; padding:20px }
+.content { background:transparent }
+.aside { background:transparent }
+
+/* Typography */
+h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; color:#111 }
+h1 { font-size:36px; line-height:1.05; margin:0 }
+h2 { font-size:28px; margin:0 }
+h3 { font-size:18px; margin:0 }
+
+/* Header */
+.site-header { padding:18px 0 }
+.site-title { font-size:34px; letter-spacing:0.5px }
+.site-sub { color:var(--muted); font-size:12px }
+.top-nav { display:flex; gap:14px; font-size:13px; text-transform:uppercase; color:var(--muted) }
+.top-nav a { color:var(--muted); text-decoration:none }
+
+/* Lead article */
+.lead-article { background:var(--paper); padding:18px; border-bottom:1px solid var(--rule) }
+.lead-image { width:100%; height:auto; display:block; margin-bottom:12px }
+.lead-title { font-size:38px; margin:0 0 8px 0 }
+.lead-meta { color:var(--muted); font-size:13px; margin-bottom:8px }
+
+/* Article card list */
+.article-card { display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--rule); align-items:flex-start }
+.card-image { width:160px; height:100px; object-fit:cover; border-radius:2px }
+.card-title { font-size:18px; margin:0 }
+.card-excerpt { color:#444; margin-top:6px }
+.card-meta { color:var(--muted); font-size:12px; text-transform:uppercase }
+
+/* Sidebar */
+.sidebar-box { background:var(--paper); padding:14px; border:1px solid var(--rule) }
+
+/* Footer */
+.site-footer { border-top:1px solid var(--rule) }
+
+/* Masthead logo centering and main nav rule */
+.header-inner { display:flex; align-items:center; justify-content:space-between }
+.site-logo { font-family: 'Merriweather', Georgia, serif; font-size:56px; letter-spacing:1px }
+.header-right .subscribe { background:#ffd400 }
+.main-nav { border-top:4px solid #0b6b88; border-bottom:4px solid #0b6b88; background:white }
+.nav-inner { display:flex; gap:18px; padding:12px 20px; font-weight:600 }
+.nav-inner a { color:#0b3b46; text-decoration:none }
+
+/* Ticker (global fallback) */
+.ticker { background:#0b6b88; color:white; padding:10px 0 }
+.ticker-inner { display:flex; gap:28px; max-width:1060px; margin:0 auto; padding:0 20px }
+.tick-item { flex:0 0 auto }
+
+
+
