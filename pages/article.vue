@@ -34,7 +34,7 @@ const article = {
   date: "27 novembre 2025 à 14h45",
   location: "Paris",
   image: "https://cdn.pixabay.com/photo/2020/02/12/05/16/dog-cartoon-4841703_1280.jpg",
-  content: "<p>test</p>"
+  content: "<p>test1</p>"
 }
 </script>
 
