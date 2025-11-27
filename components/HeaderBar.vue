@@ -2,11 +2,11 @@
   <header class="site-header masthead">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="lang">FRANÇAIS | <span class="lang-link">ENGLISH</span></div>
+        <div class="lang">FRANÇAIS | <span class="lang-link">RUSSE</span></div>
       </div>
 
       <div class="header-center">
-        <div class="site-logo">Le Monde</div>
+        <div class="site-logo">Axium</div>
       </div>
 
       <div class="header-right">
