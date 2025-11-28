@@ -26,6 +26,6 @@ logs
 # Python virtual environments
 venv/
 backend/venv/
-__pycache__/*
+__pycache__/
 *.pyc
-.rss*
+.rss_multi_fr_state.json
