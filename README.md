@@ -23,4 +23,15 @@ Build the application for production:
 npm run build
 
 ```
+------------------------------------------------------------------------------------
+# Scraping Backend Setup : To run the RSS scraping backend, you must activate the Python virtual environment and start the module manually.
+# 1. Activate the virtual environment
+source backend/venv/Scripts/activate
 
+# 2. Start the scraping module
+python -m backend.api
+
+# Keep this terminal open and running.  
+# The scraper must stay active for the website to display updated data.
+# For the website to work correctly, you must have two terminals running at the same time
+------------------------------------------------------------------------------------
