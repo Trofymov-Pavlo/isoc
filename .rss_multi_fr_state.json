@@ -1,0 +1,16 @@
+{
+  "https://www.lemonde.fr/rss/en_continu.xml": {},
+  "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
+  "https://www.francetvinfo.fr/titres.rss": {
+    "etag": "\"20d2d4571b06d447b6e8f670976a6fd8-gzip\""
+  },
+  "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
+    "etag": "W/\"106bc-GyCSlL0ylRdefzmqvy2+hInIK/Y\"",
+    "last_modified": "Fri, 28 Nov 2025 12:55:50 GMT"
+  },
+  "https://www.leparisien.fr/une/rss.xml": {
+    "etag": "W/\"5af2-i/DVXKN5mhEwd2k6l+/bDXm+MzU\"",
+    "last_modified": "Fri, 28 Nov 2025 12:57:27 GMT"
+  },
+  "https://www.ouest-france.fr/rss-en-continu.xml": {}
+}
