@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import MainHeader from '@/components/header/mainHeader.vue';
 import SubHeader from '@/components/header/sub_header.vue';
-import TopNews from '~/components/enDirect.vue';
+import TopNews from '~/components/enDirect/enDirectHeader.vue';
 
 </script>
 
