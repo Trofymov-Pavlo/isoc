@@ -13,7 +13,7 @@ CORS(app)
 # -----------------------------
 # Cache + planification (10 min)
 # -----------------------------
-CACHE_TTL = 600  # 10 minutes en secondes
+CACHE_TTL = 660  # 10 minutes en secondes
 CACHE = {}       # key -> {"ts": float, "data": [...]}
 LOCK = Lock()
 scheduler = BackgroundScheduler(daemon=True)
@@ -71,7 +71,7 @@ def start_scheduler_once():
     except Exception as e:
         print("⚠️ initial warmup error:", e)
 
-    scheduler.add_job(_refresh_all, "interval", minutes=10, id="rss_refresh_10min", replace_existing=True)
+    scheduler.add_job(_refresh_all, "interval", minutes=15 id="rss_refresh_10min", replace_existing=True)
     scheduler.start()
     print("⏱ APScheduler started (10 min interval)")
 
@@ -88,7 +88,7 @@ def articles():
     q = request.args.get("q", "ukraine")
     # si le front envoie 36 par défaut, pas grave : on sert la clé 36 si elle existe,
     # sinon on fait un premier scrape *unique* pour remplir le cache (cold start).
-    hours = int(request.args.get("hours", 48))
+    hours = int(request.args.get("hours", 36))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
     key = _cache_key(q, hours, include_meta)
