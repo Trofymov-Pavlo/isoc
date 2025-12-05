@@ -1,13 +1,11 @@
 <template>
-  <header lang="fr"/>
-  <sub_header lang="fr"/>
-  <ContenuPrincipal lang="fr" />
+  <MainHeader />
+  
 </template>
 
+<script setup lang="ts">
+import MainHeader from '@/components/header/mainHeader.vue';
 
-<script lang="ts">
-
-import Pere from '~/components/Pere.vue';
 </script>
 
 <style lang="scss" scoped>
