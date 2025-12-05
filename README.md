@@ -1,37 +1,48 @@
-## Setup
+# Project Setup Guide
+------------------------------------------------------------------------------------
 
-Make sure to install dependencies:
+## Scraping Backend Setup
 
-```bash
-# npm
+To run the RSS scraping scraping, you must create and activate the Python virtual environment, install scraping dependencies, and start the scraper manually.
+
+### 1. Create the virtual environment (only once)
+python -m venv scraping/venv
+
+### 2. Activate the virtual environment
+# Windows (bash)
+source scraping/venv/Scripts/activate
+
+# macOS / Linux
+source scraping/venv/bin/activate
+
+### 3. Install scraping dependencies
+pip install flask
+pip install flask_cors
+pip install requests
+pip install feedparser
+
+### 4. Start the scraping module
+python -m scraping.api
+
+# IMPORTANT
+# Keep this terminal open.
+# The scraper must remain active for the website to display updated data.
+# For the website to work correctly, you must keep two terminals running:
+# 1. Terminal 1 -> scraping scraper (python -m scraping.api)
+# 2. Terminal 2 -> frontend dev server (npm run dev)
+
+------------------------------------------------------------------------------------
+
+## Frontend Setup
+
+### Install dependencies
 npm install
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+### Development Server
+# Starts the dev server on http://localhost:3000
 npm run dev
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
+### Production Build
 npm run build
 
-```
-------------------------------------------------------------------------------------
-# Scraping Backend Setup : To run the RSS scraping backend, you must activate the Python virtual environment and start the module manually.
-# 1. Activate the virtual environment
-source backend/venv/Scripts/activate
-
-# 2. Start the scraping module
-python -m backend.api
-
-# Keep this terminal open and running.  
-# The scraper must stay active for the website to display updated data.
-# For the website to work correctly, you must have two terminals running at the same time
 ------------------------------------------------------------------------------------

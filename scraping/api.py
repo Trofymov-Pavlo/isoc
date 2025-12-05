@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from backend.scraping import get_articles
+from scraping.scraping import get_articles
 
 
 app = Flask(__name__)

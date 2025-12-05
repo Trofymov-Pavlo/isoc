@@ -5,9 +5,6 @@
             <a class= "fr" href="/">
                 <p class="langue">FRANCAIS</p>
             </a>
-            <a class= "choixlangue" href="/">
-                <p class="langue">RUSSE</p>
-            </a>
         </div>
         <p class="date">{{ date }}</p>
         <p class="top-text">Édition du jour</p>
@@ -22,7 +19,7 @@
             <v-icon icon="mdi-email"></v-icon>
         </a>
     </div>
-  </div>
+  </div> 
 </template>
 
 <script setup lang="ts">
