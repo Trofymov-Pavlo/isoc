@@ -27,7 +27,7 @@ FR_FEEDS = {
     "Le Figaro (actualités)": "https://www.lefigaro.fr/rss/figaro_actualites.xml",
     "Franceinfo (fil)": "https://www.francetvinfo.fr/titres.rss",
     "Libération (à la une)": "https://www.liberation.fr/arc/outboundfeeds/rss-all/",
-    "Les Echos (monde)": "https://www.lesechos.fr/rss/monde.xml",
+    "Les Echos (monde)": "https://services.lesechos.fr/rss/les-echos-monde.xml?_gl=1*2md6lc*_gcl_au*MjEwNTU4MzY1OC4xNzY0OTY5NTk5",
     "Le Parisien (à la une)": "https://www.leparisien.fr/une/rss.xml",
     # Presse régionale / autres
     "Ouest-France (à la une)": "https://www.ouest-france.fr/rss-en-continu.xml",
@@ -41,8 +41,9 @@ FR_FEEDS = {
     "RFI (Europe)": "https://www.rfi.fr/fr/europe/rss",
     "RFI (Monde)": "https://www.rfi.fr/fr/flux-de-rfi/rss",  # global
 
-    "La Croix (Monde)": "https://www.la-croix.com/feed/rss/monde.xml",
-    "La Croix (France)": "https://www.la-croix.com/feed/rss/france.xml",
+    "La Croix (Monde)": "https://www.la-croix.com/feeds/rss/Monde/Europe.xml",
+    "La Croix (Politi)": "https://www.la-croix.com/feeds/rss/politique.xml",
+    "La Croix (International)": "https://www.la-croix.com/feeds/rss/international.xml",
 
     "Sud Ouest (international)": "https://www.sudouest.fr/rss.xml",
     "20 Minutes (monde)": "https://www.20minutes.fr/feeds/rss-monde.xml",
@@ -60,7 +61,6 @@ FR_FEEDS = {
     # --- Presse régionale France (pertinent Ukraine / Europe selon dépêches AFP) ---
     "La Dépêche (monde)": "https://www.ladepeche.fr/rss.xml",
     "Le Télégramme (monde)": "https://www.letelegramme.fr/monde/rss.xml",
-    "La Voix du Nord (monde)": "https://www.lavoixdunord.fr/rss",
     "Nice Matin (monde)": "https://www.nicematin.com/monde/rss.xml",
     "La Provence (monde)": "https://www.laprovence.com/rss/monde",
 

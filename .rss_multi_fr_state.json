@@ -1,12 +1,12 @@
 {
   "https://www.letelegramme.fr/monde/rss.xml": {},
   "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
-    "etag": "W/\"10507-BUE2ZvTiMYNx5kw0eGT7DQuQVTg\"",
-    "last_modified": "Fri, 05 Dec 2025 20:52:17 GMT"
+    "etag": "W/\"10636-o6tEDp1mN5LjAY3n+0JoBrRgFzQ\"",
+    "last_modified": "Fri, 05 Dec 2025 21:26:01 GMT"
   },
   "https://www.leparisien.fr/une/rss.xml": {
-    "etag": "W/\"55fd6-vKWmqj3a9Bs4RwbLYmxEcnBolh0\"",
-    "last_modified": "Fri, 05 Dec 2025 20:51:51 GMT"
+    "etag": "W/\"55fd6-raxX350L+yMiD7K7D0Ganus1T/I\"",
+    "last_modified": "Fri, 05 Dec 2025 21:27:27 GMT"
   },
   "https://www.ouest-france.fr/rss-en-continu.xml": {},
   "https://www.france24.com/fr/france/rss": {},
@@ -28,6 +28,18 @@
   "https://www.lemonde.fr/rss/en_continu.xml": {},
   "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
   "https://www.francetvinfo.fr/titres.rss": {
-    "etag": "\"eeafebb013874e86378beab37d1fc674-gzip\""
+    "etag": "\"d244d6e421471e599bd2837c9a27da15-gzip\""
+  },
+  "https://www.la-croix.com/feeds/rss/Monde/Europe.xml": {
+    "etag": "\"33d04f3e5f6b446be93c5ed61f36351d\"",
+    "last_modified": "Fri, 05 Dec 2025 20:52:34 GMT"
+  },
+  "https://www.la-croix.com/feeds/rss/politique.xml": {
+    "etag": "\"07d24c329c5bdcba7b641f254c54030c\"",
+    "last_modified": "Fri, 05 Dec 2025 17:17:26 GMT"
+  },
+  "https://www.la-croix.com/feeds/rss/international.xml": {
+    "etag": "\"70df084878deff0d207e739a434fc553\"",
+    "last_modified": "Fri, 05 Dec 2025 21:00:14 GMT"
   }
 }

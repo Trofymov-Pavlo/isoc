@@ -82,7 +82,20 @@ onMounted(() => {
   gap: 18px;
 }
 .card { background: #fff; border: 1px solid #eee; border-radius: 10px; overflow: hidden; display: grid; }
-.media img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.media img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .body { padding: 12px; display: grid; gap: 6px; }
 .source { margin: 0; color: #a00; font-size: 12px; font-weight: 700; text-transform: uppercase; }
 .title { margin: 0; font-size: 18px; font-weight: 800; line-height: 1.25; }
