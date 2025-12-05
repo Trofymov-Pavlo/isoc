@@ -3,7 +3,7 @@
     <header class="page__header">
       <h1>En Direct</h1>
       <div class="controls">
-        <input v-model="localQuery" class="input" placeholder="Filtrer par mot-clé (client)" />
+        <input v-model="localQuery" class="input" placeholder="Filtrer par mot-clé" />
         <button class="btn" :disabled="loading" @click="reload">↻</button>
       </div>
     </header>
