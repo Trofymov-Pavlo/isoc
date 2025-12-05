@@ -6,25 +6,28 @@
                     <p class="language-text">FRENCH</p>
                 </a>
             </div>
-            <p class="date-text">{{ date }}</p>
-            <p class="edition-text">Édition du jour</p>
         </div>
 
-        <div class="logo-title" @click="goIndex">
-            <img :src="logo" />
-            <p class="slogan">Le meilleur de l’actu</p>
-        </div>
-
-        <div class="icons">
-            <a href="https://mail.google.com" target="_blank">
-                <v-icon icon="mdi-email"></v-icon>
-            </a>
-        </div>
-    </div> 
+        <p class="date">{{ date }}</p>
+        <p class="top-text">Édition du jour</p>
+    </div>
+    <div class="logoTitre" @click="goIndex">
+      <img :src="logo" />
+      <p class="slogant">Le meilleur de l’actu</p>
+          
+    </div>
+    <div class="icons">
+        <a href="/Contact" target="_blank" class="icon-wrapper">
+            <v-icon icon="mdi-email"></v-icon>
+            <p class="icon-text">Nous contacter</p>
+        </a>
+    </div>
 </template>
 
 <script setup lang="ts">
-import logo from '@/assets/logoIsoc.png'
+import logoImg from '@/assets/logoIsoc.png'
+
+const logo = logoImg
 
 const date = new Date().toLocaleDateString('fr-FR', {
   weekday: 'long',
@@ -39,7 +42,22 @@ function goIndex() {
 
 <style scoped>
 
-.language-select {
+
+.icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.icon-text{
+    font-family: 'arial', sans-serif;
+    font-size: 10px;
+    margin: 4px;
+    color: inherit
+}
+
+.choixlangue {
     display: flex;
     gap: 5px;
     color: #615d5d;
