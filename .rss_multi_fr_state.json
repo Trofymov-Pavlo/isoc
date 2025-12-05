@@ -3,14 +3,14 @@
   "https://www.lemonde.fr/rss/en_continu.xml": {},
   "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
   "https://www.francetvinfo.fr/titres.rss": {
-    "etag": "\"728525a9f4734b30126930c8552b9ebe-gzip\""
+    "etag": "\"053d0ec62c8226fc360c529ee0bcb7a3-gzip\""
   },
   "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
-    "etag": "W/\"104ae-sr96TOhvIXv82M6mQEg+Sxpfm4M\"",
-    "last_modified": "Fri, 05 Dec 2025 19:30:49 GMT"
+    "etag": "W/\"104ae-Z952SHCvGH7+bRn3dDIdgFp6aEE\"",
+    "last_modified": "Fri, 05 Dec 2025 19:37:15 GMT"
   },
   "https://www.leparisien.fr/une/rss.xml": {
-    "etag": "W/\"55fd6-9dCpt/6X+Yd0kfH6AvDBtPaONNM\"",
-    "last_modified": "Fri, 05 Dec 2025 19:32:07 GMT"
+    "etag": "W/\"55fd6-ILEzHuCm8QmNKDKizieIHrGLI5o\"",
+    "last_modified": "Fri, 05 Dec 2025 19:36:12 GMT"
   }
 }
