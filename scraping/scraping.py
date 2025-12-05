@@ -31,6 +31,41 @@ FR_FEEDS = {
     "Le Parisien (à la une)": "https://www.leparisien.fr/une/rss.xml",
     # Presse régionale / autres
     "Ouest-France (à la une)": "https://www.ouest-france.fr/rss-en-continu.xml",
+    
+    # UK
+    "The Guardian – Ukraine": "https://www.theguardian.com/world/ukraine/rss",
+    "The Guardian – World": "https://www.theguardian.com/world/rss",
+    "The Independent – Europe": "https://www.independent.co.uk/news/world/europe/rss",
+    "BBC – Europe": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+
+    # USA
+    "NPR – World": "https://feeds.npr.org/1004/rss.xml",
+    "The Atlantic – All": "https://www.theatlantic.com/feed/all/",
+    "VOA – Europe": "https://www.voanews.com/api/zq$omekviq",
+    "VOA – Ukraine": "https://www.voanews.com/api/zt$omekviq",
+
+    # Germany + Europe
+    "DW – Europe": "https://rss.dw.com/rdf/rss-en-eu",
+    "Der Spiegel – International": "https://www.spiegel.de/international/index.rss",
+    "El Pais – International": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada",
+    "La Stampa – International": "https://www.lastampa.it/rss.xml",
+
+    # Ukraine
+    "Kyiv Independent": "https://kyivindependent.com/feed/",
+    "Kyiv Post": "https://www.kyivpost.com/feed",
+    "Euromaidan Press": "https://euromaidanpress.com/feed/",
+    "RBC Ukraine": "https://www.rbc.ua/static/rss/newsline_eng.rss",
+
+    # Russia (opposition)
+    "Meduza – EN": "https://meduza.io/rss/en/all",
+    "Novaya Gazeta Europe": "https://novayagazeta.eu/en/rss",
+    "The Moscow Times – News": "https://www.themoscowtimes.com/rss/news",
+
+    # Eastern Europe
+    "Nexta": "https://nexta.tv/rss/",
+    "ERR – Estonia News": "https://news.err.ee/rss",
+    "LRT – Lithuania": "https://www.lrt.lt/en/rss",
+
 }
 
 STATE_FILE = ".rss_multi_fr_state.json"  # ETag / Last-Modified PAR URL
