@@ -1,16 +1,16 @@
 {
   "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
-    "etag": "W/\"10490-RcHHvSDSl/1t0ldvn+hLef7pXD8\"",
-    "last_modified": "Fri, 05 Dec 2025 19:07:05 GMT"
+    "etag": "W/\"104ae-nDKOGnDtSZ3s5RD3IxQf7HP3UV4\"",
+    "last_modified": "Fri, 05 Dec 2025 19:12:42 GMT"
   },
   "https://www.leparisien.fr/une/rss.xml": {
-    "etag": "W/\"55fd6-zHxpOcXCtM59rORKSU8u3ACw8rY\"",
-    "last_modified": "Fri, 05 Dec 2025 19:09:05 GMT"
+    "etag": "W/\"55fd6-6L0oiiCTaWpkTuGOtqjMRjZ179s\"",
+    "last_modified": "Fri, 05 Dec 2025 19:14:56 GMT"
   },
   "https://www.ouest-france.fr/rss-en-continu.xml": {},
   "https://www.lemonde.fr/rss/en_continu.xml": {},
   "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
   "https://www.francetvinfo.fr/titres.rss": {
-    "etag": "\"4f6fd564caacf390158f2ed221365ae4-gzip\""
+    "etag": "\"0c688d84db4fef692cba7d73f80dceca-gzip\""
   }
 }
