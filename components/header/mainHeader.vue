@@ -1,5 +1,6 @@
 <template>
-  <div class="emplacement">
+    <SubHeader />
+    <div class="emplacement">
     <div class="left">
         <div class="choixlangue">
             <a class= "fr" href="/">
@@ -20,7 +21,6 @@
         </a>
     </div>
   </div>
-    <SubHeader />
 </template>
 
 <script setup lang="ts">
