@@ -1,17 +1,13 @@
 <template>
   <MainHeader />
   <SubHeader />
-  <TopNews />
+  <TopNewsList />
 </template>
 
 <script setup lang="ts">
 import MainHeader from '@/components/header/mainHeader.vue';
 import SubHeader from '@/components/header/sub_header.vue';
-import TopNews from '~/components/header/topNews.vue';
-
+import TopNewsList from '~/components/topNewsList.vue';
 </script>
 
-<style lang="scss" scoped>
-
-
-</style>
+<style scoped></style>
