@@ -1,8 +1,11 @@
 ## Setup
 ------------------------------------------------------------------------------------
 # Scraping Backend Setup : To run the RSS scraping backend, you must activate the Python virtual environment and start the module manually.
-# 1. Activate the virtual environment
+# 1. Create the virtual environment
 
+python -m venv backend/venv
+
+# 2. Activate the virtual environment
 # win :
 source backend/venv/Scripts/activate 
 # mac/linux : 
