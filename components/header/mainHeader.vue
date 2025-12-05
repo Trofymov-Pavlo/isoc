@@ -19,7 +19,7 @@
             <v-icon icon="mdi-email"></v-icon>
         </a>
     </div>
-  </div>
+  </div> 
 </template>
 
 <script setup lang="ts">
