@@ -9,8 +9,8 @@ To run the RSS scraping scraping, you must create and activate the Python virtua
 python -m venv scraping/venv
 
 ### 2. Activate the virtual environment
-# Windows
-source scraping\venv\Scripts\activate
+# Windows (bash)
+source scraping/venv/Scripts/activate
 
 # macOS / Linux
 source scraping/venv/bin/activate
