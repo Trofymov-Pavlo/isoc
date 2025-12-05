@@ -1,5 +1,4 @@
 <template>
-    <SubHeader />
     <div class="emplacement">
     <div class="left">
         <div class="choixlangue">
@@ -26,7 +25,6 @@
 <script setup lang="ts">
 
 import logo from '@/assets/logoIsoc.png'
-import SubHeader from '@/components/header/sub_header.vue'
 
 const date = new Date().toLocaleDateString('fr-FR', {
   weekday: 'long',
