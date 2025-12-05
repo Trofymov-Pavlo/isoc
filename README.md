@@ -20,6 +20,8 @@ pip install flask
 pip install flask_cors
 pip install requests
 pip install feedparser
+pip install APScheduler
+
 
 ### 4. Start the scraping module
 python -m scraping.api

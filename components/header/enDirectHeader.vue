@@ -26,7 +26,7 @@ import { useArticles } from "@/composables/useArticles";
 const { all, load } = useArticles({
   apiBase: "http://127.0.0.1:5000",
   query: "ukraine",
-  hours: 24,
+  hours: 36,
   meta: 1,
 });
 

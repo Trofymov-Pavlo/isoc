@@ -31,40 +31,38 @@ FR_FEEDS = {
     "Le Parisien (à la une)": "https://www.leparisien.fr/une/rss.xml",
     # Presse régionale / autres
     "Ouest-France (à la une)": "https://www.ouest-france.fr/rss-en-continu.xml",
-    
-    # UK
-    "The Guardian – Ukraine": "https://www.theguardian.com/world/ukraine/rss",
-    "The Guardian – World": "https://www.theguardian.com/world/rss",
-    "The Independent – Europe": "https://www.independent.co.uk/news/world/europe/rss",
-    "BBC – Europe": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
 
-    # USA
-    "NPR – World": "https://feeds.npr.org/1004/rss.xml",
-    "The Atlantic – All": "https://www.theatlantic.com/feed/all/",
-    "VOA – Europe": "https://www.voanews.com/api/zq$omekviq",
-    "VOA – Ukraine": "https://www.voanews.com/api/zt$omekviq",
+        # --- France (nationaux) ---
+    "France 24 (France)": "https://www.france24.com/fr/france/rss",
+    "France 24 (Europe)": "https://www.france24.com/fr/europe/rss",
+    "France 24 (Monde)": "https://www.france24.com/fr/monde/rss",
 
-    # Germany + Europe
-    "DW – Europe": "https://rss.dw.com/rdf/rss-en-eu",
-    "Der Spiegel – International": "https://www.spiegel.de/international/index.rss",
-    "El Pais – International": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada",
-    "La Stampa – International": "https://www.lastampa.it/rss.xml",
+    "RFI (France)": "https://www.rfi.fr/fr/france/rss",
+    "RFI (Europe)": "https://www.rfi.fr/fr/europe/rss",
+    "RFI (Monde)": "https://www.rfi.fr/fr/flux-de-rfi/rss",  # global
 
-    # Ukraine
-    "Kyiv Independent": "https://kyivindependent.com/feed/",
-    "Kyiv Post": "https://www.kyivpost.com/feed",
-    "Euromaidan Press": "https://euromaidanpress.com/feed/",
-    "RBC Ukraine": "https://www.rbc.ua/static/rss/newsline_eng.rss",
+    "La Croix (Monde)": "https://www.la-croix.com/feed/rss/monde.xml",
+    "La Croix (France)": "https://www.la-croix.com/feed/rss/france.xml",
 
-    # Russia (opposition)
-    "Meduza – EN": "https://meduza.io/rss/en/all",
-    "Novaya Gazeta Europe": "https://novayagazeta.eu/en/rss",
-    "The Moscow Times – News": "https://www.themoscowtimes.com/rss/news",
+    "Sud Ouest (international)": "https://www.sudouest.fr/rss.xml",
+    "20 Minutes (monde)": "https://www.20minutes.fr/feeds/rss-monde.xml",
+    "20 Minutes (politique)": "https://www.20minutes.fr/feeds/rss-politique.xml",
 
-    # Eastern Europe
-    "Nexta": "https://nexta.tv/rss/",
-    "ERR – Estonia News": "https://news.err.ee/rss",
-    "LRT – Lithuania": "https://www.lrt.lt/en/rss",
+    "BFM TV (monde)": "https://rmc.bfmtv.com/rss/info/monde/",
+    "BFM TV (france)": "https://rmc.bfmtv.com/rss/info/france/",
+
+    "RTL (faits divers)": "https://www.rtl.fr/rss/actus.xml",
+    "RTL (international)": "https://www.rtl.fr/rss/actus/international.xml",
+
+    "L’Opinion (monde)": "https://www.lopinion.fr/rss.xml",
+    "Challenges (monde)": "https://www.challenges.fr/rss.xml",
+
+    # --- Presse régionale France (pertinent Ukraine / Europe selon dépêches AFP) ---
+    "La Dépêche (monde)": "https://www.ladepeche.fr/rss.xml",
+    "Le Télégramme (monde)": "https://www.letelegramme.fr/monde/rss.xml",
+    "La Voix du Nord (monde)": "https://www.lavoixdunord.fr/rss",
+    "Nice Matin (monde)": "https://www.nicematin.com/monde/rss.xml",
+    "La Provence (monde)": "https://www.laprovence.com/rss/monde",
 
 }
 
@@ -119,27 +117,65 @@ def save_state(state: Dict[str, Dict[str, str]]):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 def fetch_rss_once(url: str, timeout: int = 20) -> Optional[bytes]:
+    """
+    Télécharge un flux RSS avec ETag/Last-Modified + retries.
+    - Retourne None si 304 (Not Modified)
+    - Lève une exception finale si tous les essais échouent (fetch_all s'en charge)
+    """
     sess = new_session()
     state = load_state()
-    headers = {}
     url_state = state.get(url, {})
+
+    headers = {}
     if url_state.get("etag"):
         headers["If-None-Match"] = url_state["etag"]
     if url_state.get("last_modified"):
         headers["If-Modified-Since"] = url_state["last_modified"]
-    r = sess.get(url, headers=headers, timeout=timeout)
-    if r.status_code == 304:
-        return None
-    r.raise_for_status()
-    etag = r.headers.get("ETag")
-    last_modified = r.headers.get("Last-Modified")
-    state[url] = state.get(url, {})
-    if etag:
-        state[url]["etag"] = etag
-    if last_modified:
-        state[url]["last_modified"] = last_modified
-    save_state(state)
-    return r.content
+
+    attempts = 3
+    backoff = 1.5
+
+    last_err: Exception | None = None
+    for i in range(attempts):
+        try:
+            r = sess.get(url, headers=headers, timeout=timeout)
+            # 304: cache OK
+            if r.status_code == 304:
+                return None
+
+            # 429 / 5xx : on retente (dans la limite des attempts)
+            if r.status_code in (429, 500, 502, 503, 504):
+                last_err = requests.HTTPError(f"{r.status_code} {r.reason} on {url}")
+                # backoff léger
+                time.sleep(backoff * (i + 1))
+                continue
+
+            r.raise_for_status()
+
+            # MAJ ETag / Last-Modified
+            etag = r.headers.get("ETag")
+            last_modified = r.headers.get("Last-Modified")
+            state[url] = state.get(url, {})
+            if etag:
+                state[url]["etag"] = etag
+            if last_modified:
+                state[url]["last_modified"] = last_modified
+            save_state(state)
+
+            return r.content
+
+        except (requests.Timeout, requests.ConnectionError) as e:
+            last_err = e
+            time.sleep(backoff * (i + 1))
+            continue
+        except requests.RequestException as e:
+            # autres erreurs HTTP (4xx, etc.) -> on ne réessaie pas sauf 429/5xx gérées plus haut
+            last_err = e
+            break
+
+    # Si on est ici, tout a échoué : laisser fetch_all() gérer l'avertissement
+    raise last_err if last_err else RuntimeError(f"Unknown error while fetching {url}")
+
 
 # ----------------- Normalisation / matching -----------------
 def to_iso(dt_struct) -> str:
@@ -464,7 +500,7 @@ def main():
 
 # --- API helper (à appeler depuis Flask) ---
 def collect_articles(
-    since_hours: int = 24,
+    since_hours: int = 36,
     include_meta: bool = True,
     q: str | None = None,
     source: str | None = None,
@@ -521,7 +557,7 @@ if __name__ == "__main__":
 
 
 # --- Helper pour l'API Flask ---
-def get_articles(query: str = "ukraine", since_hours: int = 24, include_meta: bool = True):
+def get_articles(query: str = "ukraine", since_hours: int = 36,include_meta: bool = True):
     """Retourne une liste d'articles filtrés, prête pour JSON."""
     from datetime import timezone, datetime
     entries, _hay = fetch_all(FR_FEEDS, timeout=20)

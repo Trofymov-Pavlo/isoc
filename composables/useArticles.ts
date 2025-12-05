@@ -65,7 +65,7 @@ export function useArticles(opts?: {
 }) {
   const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
   const query = ref(opts?.query ?? "ukraine");
-  const hours = ref(opts?.hours ?? 24);
+  const hours = ref(opts?.hours ?? 36);
   const meta = ref(opts?.meta ?? 1);
 
   const loading = ref(false);
