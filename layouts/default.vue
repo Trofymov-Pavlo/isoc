@@ -19,7 +19,8 @@ import SubHeader from "@/components/header/subHeader.vue"
 .site-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 0px;
+  width: 100%;
+  padding: 0 calc(2vw);
 }
 
 html, body {
