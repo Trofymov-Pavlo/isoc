@@ -1,15 +1,16 @@
 {
-  "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
-  "https://www.francetvinfo.fr/titres.rss": {
-    "etag": "\"794842b53b2b36baacdb203eb955fef8-gzip\""
-  },
   "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
-    "etag": "W/\"104bf-V6a+e5aLmluBRxriVErT7P+25rU\"",
-    "last_modified": "Fri, 05 Dec 2025 18:43:42 GMT"
+    "etag": "W/\"10481-hA1pvM9mqmaFdtH/JZ6t10Ne1Ok\"",
+    "last_modified": "Fri, 05 Dec 2025 19:05:10 GMT"
   },
   "https://www.leparisien.fr/une/rss.xml": {
-    "etag": "W/\"55fd6-R23o7ARL0TNtT30WdPXK50BxxuU\"",
-    "last_modified": "Fri, 05 Dec 2025 18:44:42 GMT"
+    "etag": "W/\"55fd6-FO4/RIUXrvX5QGCoq7f1ZIgLvKI\"",
+    "last_modified": "Fri, 05 Dec 2025 19:03:20 GMT"
   },
-  "https://www.ouest-france.fr/rss-en-continu.xml": {}
+  "https://www.ouest-france.fr/rss-en-continu.xml": {},
+  "https://www.lemonde.fr/rss/en_continu.xml": {},
+  "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
+  "https://www.francetvinfo.fr/titres.rss": {
+    "etag": "\"8cdf91d988ea5ce49bc48ab1b9b9d7b7-gzip\""
+  }
 }

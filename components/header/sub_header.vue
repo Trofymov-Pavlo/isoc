@@ -2,7 +2,7 @@
   <div class="sub_header">
     <div class="links">
       <router-link to="/" class="lnk">Accueil</router-link>
-      <router-link to="/topStories" class="lnk">Top Stories</router-link>
+      <router-link to="/enDirect" class="lnk">En Direct</router-link>
     </div>
 
     <div class="titles">

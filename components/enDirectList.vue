@@ -1,7 +1,7 @@
 <template>
   <main class="page">
     <header class="page__header">
-      <h1>Top Stories</h1>
+      <h1>En Direct</h1>
       <div class="controls">
         <input v-model="localQuery" class="input" placeholder="Filtrer par mot-clé (client)" />
         <button class="btn" :disabled="loading" @click="reload">↻</button>
@@ -94,3 +94,4 @@ onMounted(() => {
 @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } .media img { height: 220px; } }
 </style>
+
