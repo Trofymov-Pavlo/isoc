@@ -2,15 +2,15 @@
   "https://www.lemonde.fr/rss/en_continu.xml": {},
   "https://www.lefigaro.fr/rss/figaro_actualites.xml": {},
   "https://www.francetvinfo.fr/titres.rss": {
-    "etag": "\"20d2d4571b06d447b6e8f670976a6fd8-gzip\""
+    "etag": "\"80ca454c51382f01d2f758fcbc7b32f2-gzip\""
   },
   "https://www.liberation.fr/arc/outboundfeeds/rss-all/": {
-    "etag": "W/\"106bc-GyCSlL0ylRdefzmqvy2+hInIK/Y\"",
-    "last_modified": "Fri, 28 Nov 2025 12:55:50 GMT"
+    "etag": "W/\"116df-6mfjTeQmX2ZfSg3Zghiwt/kDXmg\"",
+    "last_modified": "Wed, 03 Dec 2025 13:36:20 GMT"
   },
   "https://www.leparisien.fr/une/rss.xml": {
-    "etag": "W/\"5af2-i/DVXKN5mhEwd2k6l+/bDXm+MzU\"",
-    "last_modified": "Fri, 28 Nov 2025 12:57:27 GMT"
+    "etag": "W/\"5af2-KX51LvlYNn4lHKr01w2qh342r0A\"",
+    "last_modified": "Wed, 03 Dec 2025 13:42:29 GMT"
   },
   "https://www.ouest-france.fr/rss-en-continu.xml": {}
 }

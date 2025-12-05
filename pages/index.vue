@@ -1,5 +1,6 @@
 <template>
   <hautpage lang="fr"/>
+  <sub_header lang="fr"/>
   <ContenuPrincipal lang="fr" />
 </template>
 
