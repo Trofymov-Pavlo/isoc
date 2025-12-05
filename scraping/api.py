@@ -71,7 +71,7 @@ def start_scheduler_once():
     except Exception as e:
         print("⚠️ initial warmup error:", e)
 
-    scheduler.add_job(_refresh_all, "interval", minutes=15 id="rss_refresh_10min", replace_existing=True)
+    scheduler.add_job(_refresh_all, "interval", minutes=15, id="rss_refresh_10min", replace_existing=True)
     scheduler.start()
     print("⏱ APScheduler started (10 min interval)")
 
