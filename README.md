@@ -17,6 +17,9 @@ source backend/venv/bin/activate
 
 ### 3. Install backend dependencies
 pip install flask
+pip install flask_cors
+pip install requests
+pip install feedparser
 
 ### 4. Start the scraping module
 python -m backend.api
