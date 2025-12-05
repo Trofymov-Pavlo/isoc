@@ -20,11 +20,13 @@
         </a>
     </div>
   </div>
+    <SubHeader />
 </template>
 
 <script setup lang="ts">
 
 import logo from '@/assets/logoIsoc.png'
+import SubHeader from '@/components/header/sub_header.vue'
 
 const date = new Date().toLocaleDateString('fr-FR', {
   weekday: 'long',
@@ -37,6 +39,8 @@ function goIndex() {
 }
 
 </script>
+
+<!-- SubHeader is rendered above inside the main template -->
 
 <style scoped>
 
