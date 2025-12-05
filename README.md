@@ -3,32 +3,32 @@
 
 ## Scraping Backend Setup
 
-To run the RSS scraping backend, you must create and activate the Python virtual environment, install backend dependencies, and start the scraper manually.
+To run the RSS scraping scraping, you must create and activate the Python virtual environment, install scraping dependencies, and start the scraper manually.
 
 ### 1. Create the virtual environment (only once)
-python -m venv backend/venv
+python -m venv scraping/venv
 
 ### 2. Activate the virtual environment
 # Windows
-backend\venv\Scripts\activate
+source scraping\venv\Scripts\activate
 
 # macOS / Linux
-source backend/venv/bin/activate
+source scraping/venv/bin/activate
 
-### 3. Install backend dependencies
+### 3. Install scraping dependencies
 pip install flask
 pip install flask_cors
 pip install requests
 pip install feedparser
 
 ### 4. Start the scraping module
-python -m backend.api
+python -m scraping.api
 
 # IMPORTANT
 # Keep this terminal open.
 # The scraper must remain active for the website to display updated data.
 # For the website to work correctly, you must keep two terminals running:
-# 1. Terminal 1 -> backend scraper (python -m backend.api)
+# 1. Terminal 1 -> scraping scraper (python -m scraping.api)
 # 2. Terminal 2 -> frontend dev server (npm run dev)
 
 ------------------------------------------------------------------------------------
