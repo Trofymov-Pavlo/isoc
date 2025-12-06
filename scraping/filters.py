@@ -9,11 +9,14 @@ UA_RE = compile_regex(UA_ANCHORS)
 RU_RE = compile_regex(RU_ANCHORS)
 NATO_RE = compile_regex(NATO_TERMS)
 
+# scraping/filters.py
 def passes_filter(hay: str) -> bool:
-    # garder si on voit au moins 1 terme Ukraine (comme avant)
-    if match_any(hay, UA_RE, RU_RE, NATO_RE):
-        return True
-    return False
+    return (
+        match_any(hay, UA_RE)
+        or match_any(hay, RU_RE)
+        or match_any(hay, NATO_RE)
+    )
+
 
 def strict_filter(entries: List[Dict], haystacks: List[str]) -> List[Dict]:
     out = []
