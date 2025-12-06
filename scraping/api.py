@@ -48,7 +48,7 @@ def _refresh_all():
     Liste des combinaisons à rafraîchir. Ajoute ici celles dont tu as besoin.
     """
     combos = [
-        ("ukraine",36,True),  # ta page principale
+        ("ukraine",48,True),  # ta page principale
         # ("ukraine", 48, False),
         # ("ukraine", 36, True),
     ]
@@ -87,10 +87,11 @@ def home():
 
 @app.get("/articles")
 def articles():
+    # ⇩⇩⇩ lance le warm-up (scraping immédiat) + scheduler si pas déjà fait
+    start_scheduler_once()
+
     # paramètres côté client
     q = request.args.get("q", "ukraine")
-    # si le front envoie 36 par défaut, pas grave : on sert la clé 36 si elle existe,
-    # sinon on fait un premier scrape *unique* pour remplir le cache (cold start).
     hours = int(request.args.get("hours", 36))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
@@ -99,15 +100,13 @@ def articles():
     if cached is not None:
         return jsonify({"articles": cached})
 
-    # Cold start / combinaison non prévue : faire UN seul scraping pour remplir,
-    # puis ce résultat vivra 10 min jusqu’au prochain passage du scheduler.
     try:
-        data = get_articles(FR_FEEDS,query=q, since_hours=hours, include_meta=include_meta)
+        data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
         _set_cache(key, data)
         return jsonify({"articles": data})
     except Exception as e:
-        # En cas d’erreur, renvoyer un payload cohérent (et ne pas crasher)
         return jsonify({"articles": [], "_meta": {"error": str(e)}}), 500
+
 
 # (Optionnel) endpoint manuel d’admin pour forcer un refresh immédiat
 @app.post("/admin/refresh")
