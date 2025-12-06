@@ -10,6 +10,8 @@ from .http_state import fetch_rss_once
 from .textops import to_iso, norm_text
 from .media_extract import extract_author, extract_media_block
 from .filters import strict_filter
+from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+
 
 
 # ----------------- Fetch + parse pour un flux -----------------
@@ -205,21 +207,69 @@ def get_articles(
     since_hours: int = 48,
     include_meta: bool = True,
 ) -> list[dict]:
+    # 1) Récupération + tri + fenêtre temporelle
     entries, _hay = fetch_all(feeds, timeout=20)
     entries = deduplicate(sort_by_published_desc(entries))
     if since_hours and since_hours > 0:
         entries = within_hours(entries, since_hours)
 
-    hay_min = [norm_text(e.get("title","")) for e in entries]
+    # 2) Filtre “strict” (Ukraine/Russie/OTAN) sur titre (et normalisation)
+    hay_min = [norm_text(e.get("title", "")) for e in entries]
     filtered = strict_filter(entries, hay_min)
 
+    # 3) Filtre mots-clés additionnels (keywords.py) + query libre (OR logique)
+    from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+    KEYWORDS = UA_ANCHORS + RU_ANCHORS + NATO_TERMS
     qn = norm_text(query) if query else ""
-    if qn:
-        filtered = [e for e in filtered if qn in norm_text(e.get("title","")) or qn in norm_text(e.get("source",""))]
 
+    def _matches_any_kw(txt: str) -> bool:
+        nt = norm_text(txt)
+        return any(k in nt for k in KEYWORDS) or (qn and (qn in nt))
+
+    filtered = [
+        e for e in filtered
+        if _matches_any_kw(e.get("title", "")) 
+        or _matches_any_kw(e.get("summary", "")) 
+        or _matches_any_kw(e.get("source", ""))
+    ]
+
+    # 4) Gestion des meta optionnelles
     if not include_meta:
         for e in filtered:
-            e.pop("media", None)
             e.pop("author", None)
+            e.pop("summary", None)
             e.pop("categories", None)
+            # On NE touche pas à 'media' ici : il sert à construire l'image
+
+    # 5) Image / thumbnail unifié pour le front (Vue attend 'image')
+    for e in filtered:
+        img = None
+
+        # a) via bloc media normalisé (préféré)
+        media = e.get("media")
+        if isinstance(media, dict):
+            img = media.get("url") or media.get("thumbnail") or media.get("image")
+
+        # b) fallback: champs feedparser éventuels (si media_extract n'a rien trouvé)
+        if not img and "media_thumbnail" in e:
+            try:
+                mt = e["media_thumbnail"]
+                if isinstance(mt, list) and mt:
+                    img = mt[0].get("url")
+            except Exception:
+                pass
+        if not img and "media_content" in e:
+            try:
+                mc = e["media_content"]
+                if isinstance(mc, list) and mc:
+                    img = mc[0].get("url")
+            except Exception:
+                pass
+        if not img and isinstance(e.get("image"), dict):
+            img = e["image"].get("href") or e["image"].get("url")
+
+        if img:
+            e["image"] = img      # utilisé par le template Vue
+            e.setdefault("thumb", img)  # alias pratique
+
     return filtered
