@@ -11,7 +11,7 @@ NATO_RE = compile_regex(NATO_TERMS)
 
 def passes_filter(hay: str) -> bool:
     # garder si on voit au moins 1 terme Ukraine (comme avant)
-    if match_any(hay, UA_RE):
+    if match_any(hay, UA_RE, RU_RE, NATO_RE):
         return True
     return False
 
