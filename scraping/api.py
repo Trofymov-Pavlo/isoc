@@ -5,8 +5,11 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from threading import Lock
 import time
 
-from scraping.scraping import get_articles
+from scraping.core import get_articles
+from scraping.feeds import FR_FEEDS
 
+# -----------------------------
+# Initialisation Flask
 app = Flask(__name__)
 CORS(app)
 
@@ -37,7 +40,7 @@ def _set_cache(key: str, data):
 
 def _refresh_combo(q: str, hours: int, include_meta: bool):
     # Scrape et alimente le cache pour 1 combinaison
-    data = get_articles(query=q, since_hours=hours, include_meta=include_meta)
+    data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
     _set_cache(_cache_key(q, hours, include_meta), data)
 
 def _refresh_all():
@@ -99,7 +102,7 @@ def articles():
     # Cold start / combinaison non prévue : faire UN seul scraping pour remplir,
     # puis ce résultat vivra 10 min jusqu’au prochain passage du scheduler.
     try:
-        data = get_articles(query=q, since_hours=hours, include_meta=include_meta)
+        data = get_articles(FR_FEEDS,query=q, since_hours=hours, include_meta=include_meta)
         _set_cache(key, data)
         return jsonify({"articles": data})
     except Exception as e:
