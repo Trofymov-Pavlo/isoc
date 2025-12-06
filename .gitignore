@@ -29,3 +29,4 @@ backend/venv/
 __pycache__/
 *.pyc
 .rss_multi_fr_state.json
+.rss_multi_fr_state.json
