@@ -14,9 +14,9 @@ app = Flask(__name__)
 CORS(app)
 
 # -----------------------------
-# Cache + planification (10 min)
+# Cache + planification (15 min)
 # -----------------------------
-CACHE_TTL = 660  # 10 minutes en secondes
+CACHE_TTL = 900  # 15 minutes en secondes
 CACHE = {}       # key -> {"ts": float, "data": [...]}
 LOCK = Lock()
 scheduler = BackgroundScheduler(daemon=True)
@@ -49,8 +49,6 @@ def _refresh_all():
     """
     combos = [
         ("ukraine",48,True),  # ta page principale
-        # ("ukraine", 48, False),
-        # ("ukraine", 36, True),
     ]
     print("🔄 Refresh scraping (scheduled)…")
     for q, h, m in combos:
@@ -74,9 +72,9 @@ def start_scheduler_once():
     except Exception as e:
         print("⚠️ initial warmup error:", e)
 
-    scheduler.add_job(_refresh_all, "interval", minutes=15, id="rss_refresh_10min", replace_existing=True)
+    scheduler.add_job(_refresh_all, "interval", minutes=15, id="rss_refresh_15min", replace_existing=True)
     scheduler.start()
-    print("⏱ APScheduler started (10 min interval)")
+    print("⏱ APScheduler started (15 min interval)")
 
 # --------------
 # Routes Flask
@@ -92,7 +90,7 @@ def articles():
 
     # paramètres côté client
     q = request.args.get("q", "ukraine")
-    hours = int(request.args.get("hours", 36))
+    hours = int(request.args.get("hours", 48))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
     key = _cache_key(q, hours, include_meta)
