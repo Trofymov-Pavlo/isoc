@@ -167,7 +167,7 @@ onUnmounted(() => {
 <style scoped>
 .live-feed {
   min-height: 100vh;
-  background: #fafbff;
+  background: #ffffff;
   padding-bottom: 60px;
 }
 
