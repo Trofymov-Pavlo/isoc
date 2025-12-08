@@ -119,8 +119,21 @@ function truncate(text: string, max: number): string {
 }
 
 function formatTime(dateString: string): string {
+  if (!dateString) return "";
+  
   try {
+    // Si la date est déjà formatée (contient "déc" ou autre mois), la retourner telle quelle
+    if (/jan|fév|mar|avr|mai|jui|aoû|sep|oct|nov|déc/i.test(dateString)) {
+      return dateString;
+    }
+
     const date = new Date(dateString);
+    
+    // Vérifier si la date est valide
+    if (isNaN(date.getTime())) {
+      return dateString; // Retourner la date originale si invalide
+    }
+
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
