@@ -53,7 +53,7 @@ function goIndex() {
 
 .main-bar {
     display: grid;
-    grid-template-columns: 1.2fr auto 1fr;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 8px 16px;
     gap: 12px;
