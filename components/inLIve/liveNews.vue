@@ -14,17 +14,17 @@
     <p v-else-if="loading" class="state">Chargement…</p>
 
     <section v-else class="grid">
-      <article v-for="(it, i) in filtered" :key="(it.link || it.title) + i" class="card">
-        <a v-if="it.image" :href="it.link" target="_blank" rel="noopener" class="media">
-          <img :src="it.image" :alt="it.title" loading="lazy" />
+      <article v-for="(article, i) in filtered" :key="(article.link || article.title) + i" class="card">
+        <a v-if="article.image" :href="article.link" target="_blank" rel="noopener" class="media">
+          <img :src="article.image" :alt="article.title" loading="lazy" />
         </a>
         <div class="body">
-          <p v-if="it.source" class="source">{{ it.source }}</p>
+          <p v-if="article.source" class="source">{{ article.source }}</p>
           <h2 class="title">
-            <a :href="it.link" target="_blank" rel="noopener">{{ it.title }}</a>
+            <a :href="article.link" target="_blank" rel="noopener">{{ article.title }}</a>
           </h2>
-          <p v-if="it.summary" class="summary">{{ it.summary }}</p>
-          <time v-if="it.published" class="time">{{ it.published }}</time>
+          <p v-if="article.summary" class="summary">{{ article.summary }}</p>
+          <time v-if="article.published" class="time">{{ article.published }}</time>
         </div>
       </article>
     </section>
@@ -45,12 +45,12 @@ const { all, loading, error, load } = useArticles({
 const localQuery = ref("");
 
 const filtered = computed(() => {
-  const q = localQuery.value.trim().toLowerCase();
-  if (!q) return all.value;
+  const query = localQuery.value.trim().toLowerCase();
+  if (!query) return all.value;
   return all.value.filter(a =>
-    a.title.toLowerCase().includes(q) ||
-    (a.summary ?? "").toLowerCase().includes(q) ||
-    (a.source ?? "").toLowerCase().includes(q)
+    a.title.toLowerCase().includes(query) ||
+    (a.summary ?? "").toLowerCase().includes(query) ||
+    (a.source ?? "").toLowerCase().includes(query)
   );
 });
 

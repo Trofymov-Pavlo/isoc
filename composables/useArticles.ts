@@ -1,15 +1,7 @@
-// /src/composables/useArticles.ts (ou /composables/useArticles.ts avec Nuxt)
+// /src/composables/useArticles.ts 
 import { ref } from "vue";
+import type { CleanArticle, Raw } from "~/types/CleanArticle";
 
-type Raw = Record<string, any>;
-export type CleanArticle = {
-  title: string;
-  link: string;
-  image?: string | null;
-  source?: string;
-  published?: string;
-  summary?: string;
-};
 
 function getImageUrl(a: Raw): string | null {
   const cands: any[] = [

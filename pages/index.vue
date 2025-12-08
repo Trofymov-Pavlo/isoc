@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 
-import TopNews from '~/components/header/enDirectHeader.vue';
+import TopNews from '~/components/inLIve/inLiveNewsHeader.vue';
 
 </script>
 

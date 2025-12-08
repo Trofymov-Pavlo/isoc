@@ -1,29 +1,29 @@
 <template>
-    <div class="emplacement">
-    <div class="left">
-        <div class="choixlangue">
-            <a class= "fr" href="/">
-                <p class="langue">FRANCAIS</p>
+    <div class="header-container">
+        <div class="left-block">
+            <div class="language-select">
+                <a class="fr" href="/">
+                    <p class="language-text">FRENCH</p>
+                </a>
+            </div>
+            <p class="date-text">{{ date }}</p>
+            <p class="edition-text">Édition du jour</p>
+        </div>
+
+        <div class="logo-title" @click="goIndex">
+            <img :src="logo" />
+            <p class="slogan">Le meilleur de l’actu</p>
+        </div>
+
+        <div class="icons">
+            <a href="https://mail.google.com" target="_blank">
+                <v-icon icon="mdi-email"></v-icon>
             </a>
         </div>
-        <p class="date">{{ date }}</p>
-        <p class="top-text">Édition du jour</p>
-    </div>
-    <div class="logoTitre" @click="goIndex">
-      <img :src="logo" />
-      <p class="slogant">Le meilleur de l’actu</p>
-          
-    </div>
-    <div class="icons">
-        <a href="https://mail.google.com" target="_blank">
-            <v-icon icon="mdi-email"></v-icon>
-        </a>
-    </div>
-  </div> 
+    </div> 
 </template>
 
 <script setup lang="ts">
-
 import logo from '@/assets/logoIsoc.png'
 
 const date = new Date().toLocaleDateString('fr-FR', {
@@ -35,23 +35,20 @@ const date = new Date().toLocaleDateString('fr-FR', {
 function goIndex() {
   window.location.href = '/'
 }
-
 </script>
-
-<!-- SubHeader is rendered above inside the main template -->
 
 <style scoped>
 
-.choixlangue {
+.language-select {
     display: flex;
     gap: 5px;
     color: #615d5d;
 }
-.choixlangue a{
+
+.language-select a {
     display: inline-flex;
     text-decoration: none;
     color: inherit;
-
 }
 
 .fr {
@@ -59,20 +56,21 @@ function goIndex() {
     color: inherit;
 }
 
-.emplacement {
+.header-container {
     background: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logoTitre {
+.logo-title {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     border-radius: 8px;
 }
-.logoTitre a {
+
+.logo-title a {
     text-decoration: none;
     color: inherit;
 }
@@ -82,7 +80,7 @@ img {
     height: 120px;
 }
 
-.slogant {
+.slogan {
   font-family: 'arial', sans-serif;
   font-size: 12px;
   letter-spacing: .1px;
@@ -98,6 +96,7 @@ img {
     gap: 10px;
     transform: translateX(-50px);
 }
+
 .icons :deep(.v-icon:hover) {
   color: #7b5ce0;
   transform: scale(1.1);
@@ -108,15 +107,15 @@ img {
   color: inherit;          
 }
 
-
-.left {
+.left-block {
     display: flex;
     flex-direction: column;
     gap: 1px;
     column-fill: auto;
     line-height: .9;
 }
-.langue {
+
+.language-text {
     font-family: 'arial', serif;
     font-size: 6px;
     color: #615d5d;
@@ -124,7 +123,8 @@ img {
     gap: 0px;
     transform: translateX(20px);
 }
-.date {
+
+.date-text {
     font-family: 'Playfair', serif;
     font-size: 14px;
     color: black;
@@ -132,12 +132,11 @@ img {
     transform: translateX(20px);
 }
 
-.top-text {
+.edition-text {
     font-size: 8px;
     color: #615d5d;
     opacity: 0.8;
     transform: translateX(20px);
 }
-
 
 </style>

@@ -2,17 +2,17 @@
   <section class="topnews">
     <div class="row">
       <article
-        v-for="(it, i) in top4"
-        :key="(it.link || it.title) + i"
+        v-for="(article, i) in top4"
+        :key="(article.link || article.title) + i"
         class="item"
       >
-        <a v-if="it.image" :href="it.link" target="_blank" rel="noopener" class="thumb">
-          <img :src="it.image" :alt="it.title" loading="lazy" />
+        <a v-if="article.image" :href="article.link" target="_blank" rel="noopener" class="thumb">
+          <img :src="article.image" :alt="article.title" loading="lazy" />
         </a>
 
         <div class="meta">
-          <p v-if="it.source" class="source">{{ it.source }}</p>
-          <a :href="it.link" target="_blank" rel="noopener" class="title">{{ it.title }}</a>
+          <p v-if="article.source" class="source">{{ article.source }}</p>
+          <a :href="article.link" target="_blank" rel="noopener" class="title">{{ article.title }}</a>
         </div>
       </article>
     </div>

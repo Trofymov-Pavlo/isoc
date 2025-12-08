@@ -1,11 +1,11 @@
 <template>
   
-  <EnDirectPage />
+  <liveNews />
 </template>
 
 <script setup lang="ts">
 
-import EnDirectPage from '~/components/enDirect/enDirectPage.vue';
+import liveNews from '~/components/inLIve/liveNews.vue';
 </script>
 
 <style scoped></style>
