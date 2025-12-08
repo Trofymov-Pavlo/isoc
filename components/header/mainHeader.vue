@@ -9,28 +9,26 @@
             </div>
             <div class="meta-right">
                 <span class="pulse-dot"></span>
-                <span class="tagline">Observatoire indépendant — Conflit Ukraine / Russie</span>
+                <span class="tagline">Média indépendant — Conflit Ukraine / Russie</span>
             </div>
         </div>
 
         <div class="main-bar">
-            <div class="main-left">
-                <span class="pill">Temps réel</span>
-                <span class="pill alt">Sources vérifiées</span>
-            </div>
+            <div class="main-left"></div>
 
             <div class="logo-block" @click="goIndex">
                 <img :src="logo" alt="ISOC Media" class="logo" />
-                <p class="slogan">Le meilleur de l’actu, sans filtre</p>
+                <p class="slogan">Couverture continue, regard indépendant</p>
             </div>
 
             <div class="main-right">
                 <NuxtLink to="/Contact" class="icon-link" title="Contact">
                     <v-icon icon="mdi-email-outline"></v-icon>
                 </NuxtLink>
-                <a href="/" class="icon-link" title="Accueil">
-                    <v-icon icon="mdi-home-outline"></v-icon>
+                <a href="/rss.xml" class="icon-link" title="Flux RSS">
+                    <v-icon icon="mdi-rss"></v-icon>
                 </a>
+                <button class="support-btn" type="button" title="Soutenir le média">Soutenir</button>
             </div>
         </div>
     </div>
@@ -56,18 +54,18 @@ function goIndex() {
 .header {
     background: #ffffff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 0;
 }
 
 .meta-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px 0 20px;
-    font-size: 12px;
+    padding: 8px 16px 0 16px;
+    font-size: 11px;
     color: #3b3650;
 }
 
@@ -132,31 +130,14 @@ function goIndex() {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 6px 20px 14px 20px;
-    gap: 16px;
+    padding: 6px 16px 10px 16px;
+    gap: 12px;
 }
 
 .main-left {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.pill {
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    background: rgba(47, 5, 56, 0.05);
-    color: #2f0538;
-    border: 1px solid rgba(47, 5, 56, 0.12);
-}
-
-.pill.alt {
-    background: rgba(123, 92, 224, 0.08);
-    color: #4b2faa;
-    border-color: rgba(123, 92, 224, 0.18);
+    gap: 0;
+    min-height: 1px;
 }
 
 .logo-block {
@@ -168,7 +149,7 @@ function goIndex() {
 }
 
 .logo {
-    width: 200px;
+    width: 170px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
@@ -176,7 +157,7 @@ function goIndex() {
 
 .slogan {
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.25px;
     color: #4b2faa;
     text-align: center;
@@ -186,7 +167,7 @@ function goIndex() {
 .main-right {
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
@@ -194,9 +175,9 @@ function goIndex() {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
     background: rgba(47, 5, 56, 0.05);
     color: #2f0538;
     text-decoration: none;
@@ -205,7 +186,7 @@ function goIndex() {
 }
 
 .icon-link :deep(.v-icon) {
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .icon-link:hover {
@@ -216,6 +197,28 @@ function goIndex() {
 }
 
 .icon-link:active {
+    transform: translateY(0);
+}
+
+.support-btn {
+    border: 1px solid #2f0538;
+    background: linear-gradient(120deg, #2f0538, #4b2faa);
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(47, 5, 56, 0.18);
+}
+
+.support-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(47, 5, 56, 0.24);
+}
+
+.support-btn:active {
     transform: translateY(0);
 }
 
@@ -235,7 +238,7 @@ function goIndex() {
 
     .logo-block { grid-area: logo; }
     .main-left { grid-area: left; }
-    .main-right { grid-area: right; justify-content: flex-end; }
+    .main-right { grid-area: right; justify-content: flex-end; flex-wrap: wrap; gap: 6px; }
 }
 
 @media (max-width: 640px) {
@@ -247,7 +250,8 @@ function goIndex() {
 
     .pill { font-size: 11px; padding: 5px 9px; }
 
-    .icon-link { width: 34px; height: 34px; }
+    .icon-link { width: 32px; height: 32px; }
+    .support-btn { padding: 6px 9px; font-size: 12px; }
 }
 
 @media (max-width: 480px) {
@@ -256,5 +260,6 @@ function goIndex() {
     .main-bar { gap: 10px; }
     .main-left { gap: 6px; }
     .pill { font-size: 10px; }
+    .support-btn { width: 100%; text-align: center; padding: 6px 8px; }
 }
 </style>
