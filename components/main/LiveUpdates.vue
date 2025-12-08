@@ -1,7 +1,7 @@
 <template>
   <section class="live-updates">
     <div class="section-container">
-      <h2 class="section-title">Mise à jour en direct</h2>
+      <h2 class="section-title">En Direct</h2>
       <ul class="live-list">
         <li class="live-item" v-for="article in liveUpdates" :key="article.link">
           <span class="live-dot"></span>
