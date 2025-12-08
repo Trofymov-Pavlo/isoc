@@ -1,12 +1,12 @@
 <template>
   <main>
-    <Main />
+    <HomePage />
   </main>
 </template>
 
 <script setup lang="ts">
 
-import Main from '~/components/main/main.vue';
+import HomePage from '~/components/main/HomePage.vue';
 
 </script>
 
