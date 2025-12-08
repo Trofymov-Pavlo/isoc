@@ -1,6 +1,4 @@
 <template> 
-<MainHeader />
-<Sub_header/>
 <div class="Shape">
     <h1 class="titre">Contacter nous</h1>
     <form class="form-contact" action="https://formsubmit.co/nathan.barrachin@gmail.com"
@@ -29,7 +27,7 @@
 
 <script setup lang="ts">
 import MainHeader from '@/components/header/mainHeader.vue';
-import Sub_header from '~/components/header/sub_header.vue';
+import SubHeader from '@/components/header/subHeader.vue';
 
 </script>
 

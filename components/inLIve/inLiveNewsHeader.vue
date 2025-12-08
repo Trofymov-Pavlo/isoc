@@ -111,21 +111,24 @@ onMounted(() => {
   .row {
     grid-template-columns: 1fr;
   }
-.item {
-  display: grid;
-  grid-template-columns: 55px 1fr;
-  gap: 8px;
-  min-height: 40px;
-  align-items: center;     
-}
+
+  .item {
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 8px;
+    min-height: 40px;
+    align-items: center;     
+  }
 
   .thumb img {
     width: 50px;
     height: 50px;
   }
+
   .title {
     font-size: 12px;
   }
+
   .source {
     font-size: 9.5px;
   }
