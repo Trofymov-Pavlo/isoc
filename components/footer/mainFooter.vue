@@ -41,12 +41,13 @@ const yearRange = `2024-${new Date().getFullYear()}`
 
 <style scoped>
 .footer {
-  background: radial-gradient(circle at 20% 20%, rgba(255, 223, 95, 0.12), transparent 35%),
-              radial-gradient(circle at 80% 10%, rgba(112, 76, 182, 0.18), transparent 40%),
-              #0c0b14;
+  background: radial-gradient(circle at 18% 18%, rgba(255, 223, 95, 0.18), transparent 36%),
+              radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.08), transparent 42%),
+              #2f0538;
   color: #f6f6f9;
   padding: 28px 20px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.28);
 }
 
 .shell {
@@ -98,21 +99,23 @@ const yearRange = `2024-${new Date().getFullYear()}`
 }
 
 .link {
-  color: #f6f6f9;
+  color: #fdf7ff;
   text-decoration: none;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.2s ease;
-  font-weight: 600;
+  transition: all 0.18s ease;
+  font-weight: 700;
   font-size: 13px;
+  letter-spacing: 0.1px;
 }
 
 .link:hover {
   background: rgba(255, 223, 95, 0.16);
   color: #ffdf5f;
-  border-color: rgba(255, 223, 95, 0.4);
+  border-color: rgba(255, 223, 95, 0.42);
+  box-shadow: 0 4px 14px rgba(255, 223, 95, 0.22);
 }
 
 .contact {
@@ -150,10 +153,11 @@ const yearRange = `2024-${new Date().getFullYear()}`
 .chip {
   padding: 6px 10px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 12px;
-  color: #f6f6f9;
+  color: #fdf7ff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
 }
 
 @media (max-width: 720px) {
