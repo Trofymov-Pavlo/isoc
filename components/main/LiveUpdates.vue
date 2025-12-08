@@ -11,7 +11,7 @@
           </div>
         </li>
       </ul>
-      <a href="/inLivePage" class="view-all-link">Voir tous les mises à jour →</a>
+      <a href="/inLivePage" class="view-all-link">Voir toutes les mises à jour →</a>
     </div>
   </section>
 </template>
