@@ -17,7 +17,10 @@
               placeholder="Rechercher..." 
               @keyup.enter="reload"
             />
-            <span v-if="!localQuery" class="search-icon">🔍</span>
+            <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
             <button v-else @click="localQuery = ''" class="clear-btn">×</button>
           </div>
           <button class="refresh-btn" :disabled="loading" @click="reload" title="Actualiser">
@@ -254,9 +257,11 @@ onUnmounted(() => {
 .search-icon {
   position: absolute;
   right: 12px;
-  font-size: 16px;
+  width: 18px;
+  height: 18px;
   opacity: 0.5;
   pointer-events: none;
+  color: #666;
 }
 
 .clear-btn {
