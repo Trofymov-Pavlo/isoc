@@ -67,8 +67,8 @@ const yearRange = `2024-${new Date().getFullYear()}`
 .footer {
   background: linear-gradient(135deg, #1a1428 0%, #2f0538 50%, #1f1430 100%);
   color: #e8e4f0;
-  border-top: 2px solid rgba(123, 92, 224, 0.4);
-  padding: 60px 20px 32px;
+  border-top: 1px solid rgba(123, 92, 224, 0.35);
+  padding: 48px 20px 24px;
 }
 
 .container {
@@ -79,25 +79,25 @@ const yearRange = `2024-${new Date().getFullYear()}`
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 40px;
+  gap: 40px;
+  margin-bottom: 32px;
 }
 
-.col { display: grid; gap: 18px; }
+.col { display: grid; gap: 14px; }
 
 .brand-col { grid-column: 1; }
 
 .brand {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .logo-mark {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   background: linear-gradient(135deg, rgba(123, 92, 224, 0.3), rgba(123, 92, 224, 0.1));
   border: 1px solid rgba(123, 92, 224, 0.5);
   display: flex;
@@ -116,9 +116,9 @@ const yearRange = `2024-${new Date().getFullYear()}`
 
 .brand-name {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: #fff;
 }
 
@@ -139,12 +139,12 @@ const yearRange = `2024-${new Date().getFullYear()}`
 
 .col-title {
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #7b5ce0;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
+  letter-spacing: 0.8px;
+  margin-bottom: 3px;
 }
 
 .link-list {
@@ -152,11 +152,11 @@ const yearRange = `2024-${new Date().getFullYear()}`
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .link-list a {
-  font-size: 13px;
+  font-size: 12px;
   color: #d0cae0;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -185,7 +185,7 @@ const yearRange = `2024-${new Date().getFullYear()}`
 .separator {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(123, 92, 224, 0.4), transparent);
-  margin: 40px 0;
+  margin: 32px 0;
 }
 
 .bottom {
@@ -193,20 +193,20 @@ const yearRange = `2024-${new Date().getFullYear()}`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
+  gap: 16px;
+  padding: 16px 0;
 }
 
 .credit {
   margin: 0;
-  font-size: 12px;
+  font-size: 11px;
   color: #9b92b0;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .status {
   margin: 0;
-  font-size: 12px;
+  font-size: 11px;
   color: #7b5ce0;
   font-weight: 600;
 }
@@ -220,7 +220,7 @@ const yearRange = `2024-${new Date().getFullYear()}`
 }
 
 @media (max-width: 640px) {
-  .grid { grid-template-columns: 1fr; gap: 24px; }
+  .grid { grid-template-columns: 1fr; gap: 20px; }
   .bottom { flex-direction: column; align-items: flex-start; }
 }
 </style>
