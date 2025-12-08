@@ -9,7 +9,9 @@
     <slot />
   </div>
 
-  <MainFooter />
+  <div class="footer-container">
+    <MainFooter />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +23,13 @@ import MainFooter from "@/components/footer/mainFooter.vue"
 <style>
 .site-container {
   max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 calc(2vw);
+}
+
+.footer-container {
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
   padding: 0 calc(2vw);
