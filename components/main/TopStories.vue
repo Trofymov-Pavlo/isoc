@@ -2,7 +2,7 @@
   <section class="top-stories">
     <div class="section-container">
       <h2 class="section-title">À la une</h2>
-      <div class="stories-grid">
+      <div v-if="aLaUne.length" class="stories-grid">
         <article class="story-card" v-for="article in aLaUne" :key="article.link">
           <div class="story-image" v-if="article.image">
             <img :src="article.image" :alt="article.title" loading="lazy" />
@@ -10,14 +10,15 @@
           <div class="story-content">
             <span class="story-category">Actualité</span>
             <h3 class="story-title">{{ article.title }}</h3>
-            <p class="story-excerpt">{{ article.summary }}</p>
+            <p class="story-excerpt">{{ article.summary || 'Résumé non disponible pour le moment.' }}</p>
             <div class="story-meta">
-              <span class="story-time">{{ article.published }}</span>
+              <span class="story-time">{{ article.published || 'Date inconnue' }}</span>
               <a :href="article.link" target="_blank" class="story-read">Lire l'article</a>
             </div>
           </div>
         </article>
       </div>
+      <p v-else class="stories-empty">Aucun article disponible pour le moment.</p>
     </div>
   </section>
 </template>
@@ -31,23 +32,26 @@ onMounted(() => { load(); });
 
 const now = Date.now();
 const deuxHeuresMs = 2 * 60 * 60 * 1000;
-const aLaUne = computed(() =>
-  (() => {
-    const withSummary = all.value.filter(a => a.summary && a.publishedTime);
+const aLaUne = computed(() => {
+  const withSummary = all.value.filter(a => a.summary);
 
-    // Priorité: articles avec au moins 2h d'ancienneté
-    const aged = withSummary
-      .filter(a => a.publishedTime && (now - a.publishedTime > deuxHeuresMs))
-      .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+  // 1) Priorité : >=2h et publishedTime présent
+  const aged = withSummary
+    .filter(a => a.publishedTime && now - a.publishedTime > deuxHeuresMs)
+    .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+  if (aged.length >= 2) return aged.slice(0, 2);
 
-    if (aged.length >= 2) return aged.slice(0, 2);
+  // 2) Fallback : avec résumé, triés par publishedTime quand présent
+  const summarySorted = withSummary
+    .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
+    .slice(0, 2);
+  if (summarySorted.length) return summarySorted;
 
-    // Fallback: si pas assez d'articles >=2h, on prend les plus récents disponibles
-    return withSummary
-      .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
-      .slice(0, 2);
-  })()
-);
+  // 3) Ultime fallback : tout article, tri par publishedTime quand dispo
+  return all.value
+    .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
+    .slice(0, 2);
+});
 </script>
 
 <style scoped>
