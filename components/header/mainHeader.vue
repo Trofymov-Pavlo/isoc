@@ -8,11 +8,10 @@
 
             <div class="logo-block" @click="goIndex">
                 <img :src="logo" alt="ISOC Media" class="logo" />
-                <p class="logo-date">{{ date }}</p>
             </div>
 
             <div class="main-right">
-                <a class="language" href="/">FR</a>
+                <a class="icon-link language-link" href="/">FR</a>
                 <NuxtLink to="/Contact" class="icon-link" title="Contact">
                     <v-icon icon="mdi-email-outline"></v-icon>
                 </NuxtLink>
@@ -29,12 +28,6 @@
 import logoIsoc from '@/assets/logoIsoc.png'
 
 const logo = logoIsoc
-
-const date = new Date().toLocaleDateString('fr-FR', {
-  weekday: 'long',
-  month: 'long',
-  day: 'numeric'
-});
 
 function goIndex() {
   window.location.href = '/'
@@ -69,17 +62,6 @@ function goIndex() {
     min-height: 1px;
 }
 
-.language {
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    color: #2f0538;
-    text-decoration: none;
-    padding: 3px 7px;
-    border: 1px solid rgba(47, 5, 56, 0.15);
-    border-radius: 6px;
-    background: rgba(47, 5, 56, 0.04);
-}
-
 .meta-sep {
     color: rgba(47, 5, 56, 0.35);
 }
@@ -108,7 +90,7 @@ function goIndex() {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 0;
     cursor: pointer;
 }
 
@@ -119,15 +101,6 @@ function goIndex() {
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
-.logo-date {
-    margin: 0;
-    font-size: 11px;
-    letter-spacing: 0.2px;
-    color: #3b3650;
-    text-align: center;
-    font-weight: 600;
-    text-transform: capitalize;
-}
 
 .main-right {
     display: flex;
@@ -148,6 +121,12 @@ function goIndex() {
     text-decoration: none;
     transition: all 0.2s ease;
     border: 1px solid rgba(47, 5, 56, 0.08);
+}
+
+.language-link {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    font-size: 12px;
 }
 
 .icon-link :deep(.v-icon) {
