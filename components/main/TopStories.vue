@@ -42,13 +42,7 @@ const aLaUne = computed(() => {
   if (aged.length >= 2) return aged.slice(0, 2);
 
   // 2) Fallback : avec résumé, triés par publishedTime quand présent
-  const summarySorted = withSummary
-    .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
-    .slice(0, 2);
-  if (summarySorted.length) return summarySorted;
-
-  // 3) Ultime fallback : tout article, tri par publishedTime quand dispo
-  return all.value
+  return withSummary
     .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
     .slice(0, 2);
 });
