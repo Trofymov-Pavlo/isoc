@@ -5,9 +5,9 @@
         <div class="title-section">
           <h1 class="feed-title">
             <span class="live-indicator">●</span>
-            En Direct
+            Live en cours
           </h1>
-          <p class="article-count">{{ filtered.length }} article{{ filtered.length !== 1 ? 's' : '' }}</p>
+          <p class="article-count">Mis à jour aujourd'hui à {{ updateTime }}</p>
         </div>
         <div class="search-controls">
           <div class="search-wrapper">
@@ -139,6 +139,11 @@ const { all, loading, error, load } = useArticles({
 
 const localQuery = ref("");
 let refreshInterval: number | null = null;
+
+const updateTime = computed(() => {
+  const now = new Date();
+  return now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+});
 
 const filtered = computed(() => {
   const query = localQuery.value.trim().toLowerCase();
