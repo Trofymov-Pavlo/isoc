@@ -9,7 +9,7 @@
               <span class="accent"></span>
             </div>
             <div>
-              <h3 class="brand-name">ISOC News</h3>
+              <h3 class="brand-name">Axiome</h3>
               <p class="brand-tagline">Veille & Analyse</p>
             </div>
           </div>
@@ -52,7 +52,7 @@
 
       <!-- Bottom Bar -->
       <div class="bottom">
-        <p class="credit">© {{ yearRange }} · ISOC News · Analyse indépendante</p>
+        <p class="credit">© {{ yearRange }} · Axiome · Analyse indépendante</p>
         <p class="status">Tous les contenus sont vérifiés et sourcés</p>
       </div>
     </div>
