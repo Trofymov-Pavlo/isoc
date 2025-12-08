@@ -2,21 +2,17 @@
     <div class="header">
         <div class="main-bar">
             <div class="main-left">
-                <a class="language" href="/">FR</a>
-                <span class="meta-sep">•</span>
-                <span class="date">{{ date }}</span>
-                <span class="edition">Édition du jour</span>
-                <span class="meta-sep">•</span>
-                <span class="tagline">Média indépendant — Conflit Ukraine / Russie</span>
                 <span class="pulse-dot"></span>
+                <span class="tagline">Média indépendant — Conflit Ukraine / Russie</span>
             </div>
 
             <div class="logo-block" @click="goIndex">
                 <img :src="logo" alt="ISOC Media" class="logo" />
-                <p class="slogan">Couverture continue, regard indépendant</p>
+                <p class="logo-date">{{ date }}</p>
             </div>
 
             <div class="main-right">
+                <a class="language" href="/">FR</a>
                 <NuxtLink to="/Contact" class="icon-link" title="Contact">
                     <v-icon icon="mdi-email-outline"></v-icon>
                 </NuxtLink>
@@ -88,15 +84,6 @@ function goIndex() {
     color: rgba(47, 5, 56, 0.35);
 }
 
-.date {
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.edition {
-    color: #7a758f;
-}
-
 .tagline {
     letter-spacing: 0.15px;
     color: #2f0538;
@@ -132,13 +119,14 @@ function goIndex() {
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
-.slogan {
+.logo-date {
     margin: 0;
-    font-size: 10.5px;
-    letter-spacing: 0.25px;
-    color: #4b2faa;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    color: #3b3650;
     text-align: center;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .main-right {
@@ -220,7 +208,6 @@ function goIndex() {
     .main-bar { padding: 6px 12px 10px 12px; }
 
     .logo { width: 150px; }
-    .slogan { font-size: 10.5px; }
 
     .icon-link { width: 30px; height: 30px; }
     .support-btn { padding: 6px 8px; font-size: 12px; }
