@@ -7,7 +7,7 @@
           <span class="live-dot"></span>
           <div class="live-content">
             <h3 class="live-title">{{ article.title }}</h3>
-            <span class="live-time">{{ getRelativeTime(article.published) }}</span>
+            <span class="live-time">{{ getRelativeTime(article.publishedTime) }}</span>
           </div>
         </li>
       </ul>
@@ -17,27 +17,43 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useArticles } from '~/composables/useArticles';
 
 const { all, load } = useArticles({ query: 'inLive', hours: 48 });
-onMounted(() => { load(); });
+const now = ref(Date.now());
+let interval: ReturnType<typeof setInterval> | null = null;
 
-function getRelativeTime(published?: string): string {
-  if (!published) return 'À l\'instant';
-  const date = new Date(published);
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffMins = Math.floor(diffMs / 60000);
+onMounted(() => { 
+  load();
+  // Rafraîchir le timestamp toutes les 30 secondes
+  interval = setInterval(() => {
+    now.value = Date.now();
+  }, 30000);
+});
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval);
+});
+
+function getRelativeTime(publishedTime?: number): string {
+  if (!publishedTime) return 'À l\'instant';
   
-  if (diffMins < 1) return 'À l\'instant';
-  if (diffMins < 60) return `il y a ${diffMins} min`;
-  
-  const diffHours = Math.floor(diffMins / 60);
-  if (diffHours < 24) return `il y a ${diffHours}h`;
-  
-  const diffDays = Math.floor(diffHours / 24);
-  return `il y a ${diffDays}j`;
+  try {
+    const diffMs = now.value - publishedTime;
+    const diffMins = Math.floor(diffMs / 60000);
+    
+    if (diffMins < 1) return 'À l\'instant';
+    if (diffMins < 60) return `il y a ${diffMins} min`;
+    
+    const diffHours = Math.floor(diffMins / 60);
+    if (diffHours < 24) return `il y a ${diffHours}h`;
+    
+    const diffDays = Math.floor(diffHours / 24);
+    return `il y a ${diffDays}j`;
+  } catch {
+    return 'À l\'instant';
+  }
 }
 
 const liveUpdates = computed(() =>
