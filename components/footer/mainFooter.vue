@@ -1,35 +1,53 @@
 <template>
   <footer class="footer">
-    <div class="shell">
-      <div class="top">
-        <div class="brand">
-          <span class="dot"></span>
-          <div>
-            <p class="name">ISOC News</p>
-            <p class="tagline">Veille & analyse du conflit ukrainien</p>
+    <div class="container">
+      <!-- Main footer content -->
+      <div class="grid">
+        <!-- Column 1: About -->
+        <div class="col">
+          <h4 class="heading">À propos</h4>
+          <p class="text">ISOC News est une plateforme de veille et d'analyse du conflit ukrainien, fondée sur des sources fiables et vérifiées.</p>
+          <div class="social-links">
+            <a href="#" class="soc-link" title="RSS Feed">RSS</a>
+            <a href="#" class="soc-link" title="Archive">Archive</a>
           </div>
         </div>
 
-        <nav class="nav">
-          <NuxtLink to="/" class="link">Accueil</NuxtLink>
-          <NuxtLink to="/enDirect" class="link">En Direct</NuxtLink>
-          <NuxtLink to="/inLivePage" class="link">Live</NuxtLink>
-        </nav>
+        <!-- Column 2: Navigation -->
+        <div class="col">
+          <h4 class="heading">Navigation</h4>
+          <ul class="link-list">
+            <li><NuxtLink to="/">Accueil</NuxtLink></li>
+            <li><NuxtLink to="/enDirect">En Direct</NuxtLink></li>
+            <li><NuxtLink to="/inLivePage">Couverture Live</NuxtLink></li>
+          </ul>
+        </div>
 
-        <div class="contact">
-          <p class="label">Contact</p>
-          <p class="line">Université ISOC531</p>
-          <p class="line">Janvier 2025</p>
+        <!-- Column 3: Legal & Info -->
+        <div class="col">
+          <h4 class="heading">Information</h4>
+          <ul class="link-list">
+            <li><a href="#">Mentions Légales</a></li>
+            <li><a href="#">Conditions d'Utilisation</a></li>
+            <li><a href="#">Politique de Confidentialité</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="col">
+          <h4 class="heading">Contact</h4>
+          <p class="text small">Université ISOC531<br/>Janvier 2025</p>
+          <p class="text small">Pour toute question :<br/><a href="mailto:contact@isoc.news" class="email-link">contact@isoc.news</a></p>
         </div>
       </div>
 
-      <div class="bottom">
-        <p class="meta">© {{ yearRange }} · Sources citées et vérifiées</p>
-        <div class="chips">
-          <span class="chip">RSS</span>
-          <span class="chip">Fact-check</span>
-          <span class="chip">Analyse</span>
-        </div>
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- Footer bar -->
+      <div class="footer-bar">
+        <p class="copyright">© {{ yearRange }} ISOC News. Tous droits réservés.</p>
+        <p class="credit">Sources citées et vérifiées | Analyse indépendante</p>
       </div>
     </div>
   </footer>
@@ -41,128 +59,127 @@ const yearRange = `2024-${new Date().getFullYear()}`
 
 <style scoped>
 .footer {
-  background: radial-gradient(circle at 18% 18%, rgba(123, 92, 224, 0.2), transparent 36%),
-              radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.08), transparent 42%),
-              #2f0538;
-  color: #f6f6f9;
-  padding: 28px 20px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.28);
+  background: #2f0538;
+  color: #f0f0f3;
+  border-top: 1px solid rgba(123, 92, 224, 0.3);
+  padding: 40px 20px 20px;
 }
 
-.shell {
+.container {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.grid {
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-bottom: 24px;
 }
 
-.top {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  align-items: center;
-}
+.col { display: grid; gap: 12px; }
 
-.brand {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #7b5ce0, #9d84ff);
-  box-shadow: 0 0 0 6px rgba(123, 92, 224, 0.16);
-}
-
-.name {
+.heading {
   margin: 0;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  font-size: 16px;
-}
-
-.tagline {
-  margin: 2px 0 0;
-  color: #cdd0df;
-  font-size: 13px;
-}
-
-.nav {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.link {
-  color: #fdf7ff;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.18s ease;
+  font-size: 14px;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1px;
+  color: #7b5ce0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
-.link {
-  color: #fdf7ff;
+.text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #d0d0d8;
+}
+
+.text.small { font-size: 12px; }
+
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.link-list a {
+  font-size: 13px;
+  color: #d0d0d8;
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.18s ease;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1px;
+  transition: color 0.2s ease;
 }
 
-.link:hover {
-  background: rgba(123, 92, 224, 0.18);
-  color: #dcd0ff;
-  border-color: rgba(123, 92, 224, 0.46);
-  box-shadow: 0 4px 14px rgba(123, 92, 224, 0.24);
+.link-list a:hover {
+  color: #7b5ce0;
 }
+
+.email-link {
+  color: #7b5ce0;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+.social-links {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+}
+
+.soc-link {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid rgba(123, 92, 224, 0.4);
+  border-radius: 6px;
+  color: #d0d0d8;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.soc-link:hover {
+  background: rgba(123, 92, 224, 0.16);
+  color: #7b5ce0;
+  border-color: rgba(123, 92, 224, 0.6);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(123, 92, 224, 0.2);
+  margin: 24px 0;
+}
+
+.footer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 12px;
+  padding: 12px 0;
+  text-align: center;
 }
 
-.meta {
+.copyright {
   margin: 0;
-  color: #cdd0df;
-  font-size: 13px;
-}
-
-.chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  padding: 6px 10px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 12px;
-  color: #fdf7ff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  color: #b0b0b8;
+  flex: 1;
 }
 
-@media (max-width: 720px) {
-  .contact { justify-self: start; text-align: left; }
-  .bottom { gap: 12px; flex-direction: column; align-items: flex-start; }
+.credit {
+  margin: 0;
+  font-size: 12px;
+  color: #b0b0b8;
+}
+
+@media (max-width: 768px) {
+  .grid { gap: 24px; }
+  .footer-bar { flex-direction: column; gap: 10px; }
+  .copyright, .credit { text-align: center; }
 }
 </style>
