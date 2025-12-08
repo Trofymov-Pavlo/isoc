@@ -1,20 +1,15 @@
 <template>
     <div class="header">
-        <div class="meta-bar">
-            <div class="meta-left">
+        <div class="main-bar">
+            <div class="main-left">
                 <a class="language" href="/">FR</a>
                 <span class="meta-sep">•</span>
                 <span class="date">{{ date }}</span>
                 <span class="edition">Édition du jour</span>
-            </div>
-            <div class="meta-right">
-                <span class="pulse-dot"></span>
+                <span class="meta-sep">•</span>
                 <span class="tagline">Média indépendant — Conflit Ukraine / Russie</span>
+                <span class="pulse-dot"></span>
             </div>
-        </div>
-
-        <div class="main-bar">
-            <div class="main-left"></div>
 
             <div class="logo-block" @click="goIndex">
                 <img :src="logo" alt="ISOC Media" class="logo" />
@@ -51,29 +46,31 @@ function goIndex() {
 </script>
 
 <style scoped>
+
 .header {
     background: #ffffff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
-.meta-bar {
-    display: flex;
-    justify-content: space-between;
+.main-bar {
+    display: grid;
+    grid-template-columns: 1.2fr auto 1fr;
     align-items: center;
-    padding: 8px 16px 0 16px;
+    padding: 8px 16px;
+    gap: 12px;
     font-size: 11px;
     color: #3b3650;
 }
 
-.meta-left {
+.main-left {
     display: flex;
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
+    min-height: 1px;
 }
 
 .language {
@@ -81,7 +78,7 @@ function goIndex() {
     letter-spacing: 0.4px;
     color: #2f0538;
     text-decoration: none;
-    padding: 4px 8px;
+    padding: 3px 7px;
     border: 1px solid rgba(47, 5, 56, 0.15);
     border-radius: 6px;
     background: rgba(47, 5, 56, 0.04);
@@ -100,10 +97,8 @@ function goIndex() {
     color: #7a758f;
 }
 
-.meta-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.tagline {
+    letter-spacing: 0.15px;
     color: #2f0538;
     font-weight: 600;
 }
@@ -117,27 +112,9 @@ function goIndex() {
     animation: pulse 2s infinite;
 }
 
-.tagline {
-    letter-spacing: 0.15px;
-}
-
 @keyframes pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 6px rgba(255, 107, 107, 0.18); }
     50% { opacity: 0.65; box-shadow: 0 0 0 10px rgba(255, 107, 107, 0.08); }
-}
-
-.main-bar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding: 6px 16px 10px 16px;
-    gap: 12px;
-}
-
-.main-left {
-    display: flex;
-    gap: 0;
-    min-height: 1px;
 }
 
 .logo-block {
@@ -149,7 +126,7 @@ function goIndex() {
 }
 
 .logo {
-    width: 170px;
+    width: 160px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
@@ -157,7 +134,7 @@ function goIndex() {
 
 .slogan {
     margin: 0;
-    font-size: 11px;
+    font-size: 10.5px;
     letter-spacing: 0.25px;
     color: #4b2faa;
     text-align: center;
@@ -175,9 +152,9 @@ function goIndex() {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     background: rgba(47, 5, 56, 0.05);
     color: #2f0538;
     text-decoration: none;
@@ -186,7 +163,7 @@ function goIndex() {
 }
 
 .icon-link :deep(.v-icon) {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .icon-link:hover {
@@ -204,8 +181,8 @@ function goIndex() {
     border: 1px solid #2f0538;
     background: linear-gradient(120deg, #2f0538, #4b2faa);
     color: #fff;
-    padding: 7px 10px;
-    border-radius: 9px;
+    padding: 6px 9px;
+    border-radius: 8px;
     font-weight: 700;
     letter-spacing: 0.2px;
     cursor: pointer;
@@ -223,43 +200,36 @@ function goIndex() {
 }
 
 @media (max-width: 960px) {
-    .meta-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-    }
-
     .main-bar {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
         grid-template-areas:
-            "logo logo"
-            "left right";
+            "logo"
+            "info";
+        row-gap: 6px;
+        text-align: center;
+        justify-items: center;
     }
 
     .logo-block { grid-area: logo; }
-    .main-left { grid-area: left; }
-    .main-right { grid-area: right; justify-content: flex-end; flex-wrap: wrap; gap: 6px; }
+    .main-left { grid-area: info; justify-content: center; }
+    .main-right { grid-area: info; justify-content: center; flex-wrap: wrap; gap: 6px; }
 }
 
 @media (max-width: 640px) {
-    .meta-bar { padding: 10px 14px 0 14px; }
-    .main-bar { padding: 6px 14px 12px 14px; }
+    .main-bar { padding: 6px 12px 10px 12px; }
 
-    .logo { width: 160px; }
-    .slogan { font-size: 11px; }
+    .logo { width: 150px; }
+    .slogan { font-size: 10.5px; }
 
-    .pill { font-size: 11px; padding: 5px 9px; }
-
-    .icon-link { width: 32px; height: 32px; }
-    .support-btn { padding: 6px 9px; font-size: 12px; }
+    .icon-link { width: 30px; height: 30px; }
+    .support-btn { padding: 6px 8px; font-size: 12px; }
 }
 
 @media (max-width: 480px) {
-    .meta-right { font-size: 11px; }
+    .main-bar { gap: 8px; }
+    .main-left { gap: 6px; font-size: 10px; }
     .tagline { display: none; }
-    .main-bar { gap: 10px; }
-    .main-left { gap: 6px; }
-    .pill { font-size: 10px; }
     .support-btn { width: 100%; text-align: center; padding: 6px 8px; }
 }
 </style>
