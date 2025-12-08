@@ -32,18 +32,21 @@ onMounted(() => { load(); });
 const now = Date.now();
 const deuxHeuresMs = 2 * 60 * 60 * 1000;
 const aLaUne = computed(() =>
-  all.value
-    .filter(a => a.summary && a.publishedTime)
-    .filter(a => {
-      if (!a.publishedTime) return false;
-      return now - a.publishedTime > deuxHeuresMs;
-    })
-    .sort((a, b) => {
-      const dateA = a.publishedTime || 0;
-      const dateB = b.publishedTime || 0;
-      return dateB - dateA;
-    })
-    .slice(0, 2)
+  (() => {
+    const withSummary = all.value.filter(a => a.summary && a.publishedTime);
+
+    // Priorité: articles avec au moins 2h d'ancienneté
+    const aged = withSummary
+      .filter(a => a.publishedTime && (now - a.publishedTime > deuxHeuresMs))
+      .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+
+    if (aged.length >= 2) return aged.slice(0, 2);
+
+    // Fallback: si pas assez d'articles >=2h, on prend les plus récents disponibles
+    return withSummary
+      .sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0))
+      .slice(0, 2);
+  })()
 );
 </script>
 
