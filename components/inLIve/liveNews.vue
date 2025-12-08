@@ -5,9 +5,9 @@
         <div class="title-section">
           <h1 class="feed-title">
             <span class="live-indicator">●</span>
-            En Direct
+            Live en cours
           </h1>
-          <p class="article-count">{{ filtered.length }} article{{ filtered.length !== 1 ? 's' : '' }}</p>
+          <p class="article-count">Mis à jour aujourd'hui à {{ updateTime }}</p>
         </div>
         <div class="search-controls">
           <div class="search-wrapper">
@@ -46,44 +46,82 @@
       <button class="reset-btn" @click="localQuery = ''; reload()">Réinitialiser</button>
     </div>
 
-    <section v-else class="articles-grid">
-      <article 
-        v-for="(article, i) in filtered" 
-        :key="(article.link || article.title) + i" 
-        class="article-card"
-      >
+    <section v-else class="articles-container">
+      <!-- Featured Article -->
+      <article v-if="filtered[0]" class="featured-article">
         <a 
-          v-if="article.image" 
-          :href="article.link" 
+          v-if="filtered[0].image" 
+          :href="filtered[0].link" 
           target="_blank" 
           rel="noopener" 
-          class="article-image"
+          class="featured-image"
         >
-          <img :src="article.image" :alt="article.title" loading="lazy" />
-          <div class="image-overlay"></div>
+          <img :src="filtered[0].image" :alt="filtered[0].title" loading="lazy" />
+          <div class="featured-overlay"></div>
         </a>
-        <div v-else class="article-image placeholder">
+        <div v-else class="featured-image placeholder">
           <span class="placeholder-icon">📰</span>
         </div>
 
-        <div class="article-content">
-          <p v-if="article.source" class="article-source">{{ article.source }}</p>
-          <h2 class="article-title">
-            <a :href="article.link" target="_blank" rel="noopener">{{ article.title }}</a>
+        <div class="featured-content">
+          <p v-if="filtered[0].source" class="featured-source">{{ filtered[0].source }}</p>
+          <h2 class="featured-title">
+            <a :href="filtered[0].link" target="_blank" rel="noopener">{{ filtered[0].title }}</a>
           </h2>
-          <p v-if="article.summary" class="article-summary">
-            {{ truncate(article.summary, 120) }}
+          <p v-if="filtered[0].summary" class="featured-summary">
+            {{ filtered[0].summary }}
           </p>
-          <div class="article-footer">
-            <time v-if="article.published" class="article-time">
-              {{ formatTime(article.published) }}
+          <div class="featured-footer">
+            <time v-if="filtered[0].published" class="featured-time">
+              {{ formatTime(filtered[0].published) }}
             </time>
-            <a :href="article.link" target="_blank" rel="noopener" class="read-link">
-              Lire →
+            <a :href="filtered[0].link" target="_blank" rel="noopener" class="read-link">
+              Lire l'article complet →
             </a>
           </div>
         </div>
       </article>
+
+      <!-- Grid of remaining articles -->
+      <div v-if="filtered.length > 1" class="articles-grid">
+        <article 
+          v-for="(article, i) in filtered.slice(1)" 
+          :key="(article.link || article.title) + (i + 1)" 
+          class="article-card"
+        >
+          <a 
+            v-if="article.image" 
+            :href="article.link" 
+            target="_blank" 
+            rel="noopener" 
+            class="article-image"
+          >
+            <img :src="article.image" :alt="article.title" loading="lazy" />
+            <div class="image-overlay"></div>
+          </a>
+          <div v-else class="article-image placeholder">
+            <span class="placeholder-icon">📰</span>
+          </div>
+
+          <div class="article-content">
+            <p v-if="article.source" class="article-source">{{ article.source }}</p>
+            <h2 class="article-title">
+              <a :href="article.link" target="_blank" rel="noopener">{{ article.title }}</a>
+            </h2>
+            <p v-if="article.summary" class="article-summary">
+              {{ truncate(article.summary, 120) }}
+            </p>
+            <div class="article-footer">
+              <time v-if="article.published" class="article-time">
+                {{ formatTime(article.published) }}
+              </time>
+              <a :href="article.link" target="_blank" rel="noopener" class="read-link">
+                Lire →
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 </template>
@@ -101,6 +139,11 @@ const { all, loading, error, load } = useArticles({
 
 const localQuery = ref("");
 let refreshInterval: number | null = null;
+
+const updateTime = computed(() => {
+  const now = new Date();
+  return now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+});
 
 const filtered = computed(() => {
   const query = localQuery.value.trim().toLowerCase();
@@ -167,20 +210,19 @@ onUnmounted(() => {
 <style scoped>
 .live-feed {
   min-height: 100vh;
-  background: #fafbff;
+  background: #ffffff;
   padding-bottom: 60px;
 }
 
 /* Header */
 .feed-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
+  background: transparent;
+  border-bottom: none;
   padding: 24px 0;
   margin-bottom: 32px;
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .header-top {
@@ -401,15 +443,130 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(123, 92, 224, 0.3);
 }
 
-/* Articles Grid */
-.articles-grid {
+/* Articles Container */
+.articles-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Featured Article */
+.featured-article {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.featured-article:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #d0d0d0;
+}
+
+.featured-image {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: block;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-article:hover .featured-image img {
+  transform: scale(1.05);
+}
+
+.featured-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+  pointer-events: none;
+}
+
+.featured-image.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+}
+
+.featured-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.featured-source {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #ff6b6b;
+}
+
+.featured-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+
+.featured-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.22s ease;
+}
+
+.featured-title a:hover {
+  color: #7b5ce0;
+}
+
+.featured-summary {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.featured-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.featured-time {
+  font-size: 13px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Articles Grid */
+.articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+
 
 .article-card {
   background: #ffffff;
@@ -542,6 +699,14 @@ onUnmounted(() => {
 
 /* Responsive */
 @media (max-width: 1100px) {
+  .featured-article {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-image {
+    height: 300px;
+  }
+
   .articles-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -562,6 +727,28 @@ onUnmounted(() => {
 }
 
 @media (max-width: 680px) {
+  .featured-article {
+    grid-template-columns: 1fr;
+    margin-bottom: 32px;
+  }
+
+  .featured-image {
+    height: 240px;
+  }
+
+  .featured-content {
+    padding: 24px;
+    gap: 12px;
+  }
+
+  .featured-title {
+    font-size: 24px;
+  }
+
+  .featured-summary {
+    font-size: 14px;
+  }
+
   .articles-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -589,6 +776,10 @@ onUnmounted(() => {
   }
   
   .articles-grid {
+    padding: 0;
+  }
+
+  .articles-container {
     padding: 0 16px;
   }
   
