@@ -41,7 +41,7 @@ const yearRange = `2024-${new Date().getFullYear()}`
 
 <style scoped>
 .footer {
-  background: radial-gradient(circle at 18% 18%, rgba(255, 223, 95, 0.18), transparent 36%),
+  background: radial-gradient(circle at 18% 18%, rgba(123, 92, 224, 0.2), transparent 36%),
               radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.08), transparent 42%),
               #2f0538;
   color: #f6f6f9;
@@ -74,8 +74,8 @@ const yearRange = `2024-${new Date().getFullYear()}`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ffdf5f, #ff9f3f);
-  box-shadow: 0 0 0 6px rgba(255, 223, 95, 0.12);
+  background: linear-gradient(135deg, #7b5ce0, #9d84ff);
+  box-shadow: 0 0 0 6px rgba(123, 92, 224, 0.16);
 }
 
 .name {
@@ -111,24 +111,25 @@ const yearRange = `2024-${new Date().getFullYear()}`
   letter-spacing: 0.1px;
 }
 
-.link:hover {
-  background: rgba(255, 223, 95, 0.16);
-  color: #ffdf5f;
-  border-color: rgba(255, 223, 95, 0.42);
-  box-shadow: 0 4px 14px rgba(255, 223, 95, 0.22);
-}
-
-.contact {
-  justify-self: end;
-  text-align: right;
-  color: #d6d8e3;
+.link {
+  color: #fdf7ff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.18s ease;
+  font-weight: 700;
   font-size: 13px;
+  letter-spacing: 0.1px;
 }
 
-.label { margin: 0 0 4px; font-weight: 700; color: #ffdf5f; }
-.line { margin: 0; opacity: 0.8; }
-
-.bottom {
+.link:hover {
+  background: rgba(123, 92, 224, 0.18);
+  color: #dcd0ff;
+  border-color: rgba(123, 92, 224, 0.46);
+  box-shadow: 0 4px 14px rgba(123, 92, 224, 0.24);
+}
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
