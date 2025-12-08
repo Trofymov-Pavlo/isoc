@@ -21,7 +21,7 @@
           <h4 class="col-title">Explorer</h4>
           <ul class="link-list">
             <li><NuxtLink to="/">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/enDirect">En Direct</NuxtLink></li>
+            <li><NuxtLink to="/inLivePage">En Direct</NuxtLink></li>
             <li><NuxtLink to="/inLivePage">Couverture Live</NuxtLink></li>
           </ul>
         </div>
