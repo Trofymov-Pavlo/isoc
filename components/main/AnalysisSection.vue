@@ -3,13 +3,14 @@
     <div class="section-container">
       <h2 class="section-title">Analyses et décryptage</h2>
       <div class="analysis-grid">
-        <article class="analysis-card" v-for="i in 3" :key="i">
+        <article class="analysis-card" v-for="n in 3" :key="n">
           <div class="analysis-image"></div>
           <div class="analysis-content">
             <span class="analysis-badge">Analyse</span>
-            <h3 class="analysis-title">Analyse approfondie du sujet</h3>
+            <h3 class="analysis-title">Analyse {{ n }}</h3>
             <p class="analysis-author">Par un expert</p>
-            <p class="analysis-excerpt">Point de vue et analyse détaillée...</p>
+            <p class="analysis-excerpt">Vidéo à venir sur le conflit Ukraine-Russie.</p>
+            <a :href="'#video-' + n" class="video-link" target="_blank">Voir la vidéo</a>
           </div>
         </article>
       </div>

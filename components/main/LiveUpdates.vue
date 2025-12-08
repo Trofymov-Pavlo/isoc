@@ -1,25 +1,34 @@
 <template>
   <section class="live-updates">
     <div class="section-container">
-      <h2 class="section-title">Mises à jour en direct</h2>
-      <div class="live-ticker">
-        <div class="ticker-item" v-for="i in 3" :key="i">
-          <span class="ticker-time">{{ getCurrentTime }}</span>
-          <p class="ticker-text">Mise à jour en direct du conflit...</p>
-        </div>
-      </div>
+      <h2 class="section-title">Mise à jour en direct</h2>
+      <ul class="live-list">
+        <li class="live-item" v-for="article in liveUpdates" :key="article.link">
+          <span class="live-dot"></span>
+          {{ article.title }}
+        </li>
+      </ul>
       <a href="/inLivePage" class="view-all-link">Voir tous les mises à jour →</a>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useArticles } from '~/composables/useArticles';
 
-const getCurrentTime = computed(() => {
-  const now = new Date();
-  return now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-});
+const { all, load } = useArticles({ query: 'inLive', hours: 48 });
+onMounted(() => { load(); });
+
+const liveUpdates = computed(() =>
+  all.value
+    .sort((a, b) => {
+      const dateA = a.published ? new Date(a.published).getTime() : 0;
+      const dateB = b.published ? new Date(b.published).getTime() : 0;
+      return dateB - dateA;
+    })
+    .slice(0, 3)
+);
 </script>
 
 <style scoped>
@@ -44,14 +53,17 @@ const getCurrentTime = computed(() => {
   padding-top: 48px;
 }
 
-.live-ticker {
+.live-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 24px;
 }
 
-.ticker-item {
+.live-item {
   background: #fff;
   padding: 16px;
   border-radius: 8px;
@@ -61,18 +73,12 @@ const getCurrentTime = computed(() => {
   align-items: flex-start;
 }
 
-.ticker-time {
-  font-size: 12px;
-  font-weight: 700;
-  color: #ff6b6b;
-  white-space: nowrap;
-}
-
-.ticker-text {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-  flex: 1;
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .view-all-link {

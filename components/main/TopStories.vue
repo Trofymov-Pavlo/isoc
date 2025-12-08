@@ -3,15 +3,17 @@
     <div class="section-container">
       <h2 class="section-title">À la une</h2>
       <div class="stories-grid">
-        <article class="story-card" v-for="i in 2" :key="i">
-          <div class="story-image"></div>
+        <article class="story-card" v-for="article in aLaUne" :key="article.link">
+          <div class="story-image" v-if="article.image">
+            <img :src="article.image" :alt="article.title" loading="lazy" />
+          </div>
           <div class="story-content">
             <span class="story-category">Actualité</span>
-            <h3 class="story-title">Titre de l'article principal</h3>
-            <p class="story-excerpt">Extrait de l'article avec les points clés...</p>
+            <h3 class="story-title">{{ article.title }}</h3>
+            <p class="story-excerpt">{{ article.summary }}</p>
             <div class="story-meta">
-              <span class="story-time">Il y a 4h</span>
-              <span class="story-read">5 min de lecture</span>
+              <span class="story-time">{{ article.published }}</span>
+              <a :href="article.link" target="_blank" class="story-read">Lire l'article</a>
             </div>
           </div>
         </article>
@@ -21,6 +23,29 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
+import { useArticles } from '~/composables/useArticles';
+
+const { all, load } = useArticles({ query: 'inLive', hours: 48 });
+onMounted(() => { load(); });
+
+const now = Date.now();
+const deuxHeuresMs = 2 * 60 * 60 * 1000;
+const aLaUne = computed(() =>
+  all.value
+    .filter(a => a.summary && a.published)
+    .filter(a => {
+      if (!a.published) return false;
+      const date = new Date(a.published);
+      return now - date.getTime() > deuxHeuresMs;
+    })
+    .sort((a, b) => {
+      const dateA = a.published ? new Date(a.published).getTime() : 0;
+      const dateB = b.published ? new Date(b.published).getTime() : 0;
+      return dateB - dateA;
+    })
+    .slice(0, 2)
+);
 </script>
 
 <style scoped>

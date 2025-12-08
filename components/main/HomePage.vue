@@ -4,10 +4,9 @@
     <BreakingNews />
     <FeaturedArticle />
     <TopStories />
+    <PodcastSection />
     <LiveUpdates />
-    <LatestArticles />
     <AnalysisSection />
-    <TopicsSection />
     <NewsletterSection />
   </div>
 </template>
@@ -17,10 +16,9 @@ import HeroSection from './HeroSection.vue';
 import BreakingNews from './BreakingNews.vue';
 import FeaturedArticle from './FeaturedArticle.vue';
 import TopStories from './TopStories.vue';
+import PodcastSection from './PodcastSection.vue';
 import LiveUpdates from './LiveUpdates.vue';
-import LatestArticles from './LatestArticles.vue';
 import AnalysisSection from './AnalysisSection.vue';
-import TopicsSection from './TopicsSection.vue';
 import NewsletterSection from './NewsletterSection.vue';
 </script>
 
