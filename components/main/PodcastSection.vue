@@ -8,8 +8,8 @@
         </div>
         <div class="podcast-content">
           <span class="podcast-badge">Nouveau</span>
-          <h3 class="podcast-title">Épisode du jour : Analyse du conflit</h3>
-          <p class="podcast-desc">Discussion approfondie sur les derniers développements du conflit Ukraine-Russie avec nos experts.</p>
+          <h3 class="podcast-title">La Guerre de l'Information</h3>
+          <p class="podcast-desc">Décryptez les stratégies d'influence, la désinformation et la bataille informationnelle du conflit Ukraine-Russie. Avec nos experts en géopolitique et communication.</p>
           <div class="podcast-meta">
             <span class="podcast-duration">45 min</span>
             <span class="podcast-date">Il y a 2h</span>

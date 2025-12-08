@@ -1,16 +1,18 @@
 <template>
   <section class="analysis">
     <div class="section-container">
-      <h2 class="section-title">Analyses et décryptage</h2>
+      <h2 class="section-title">Analyses & Décryptages (Vidéos)</h2>
       <div class="analysis-grid">
         <article class="analysis-card" v-for="n in 3" :key="n">
-          <div class="analysis-image"></div>
+          <div class="analysis-image">
+            <div class="video-placeholder">▶</div>
+          </div>
           <div class="analysis-content">
-            <span class="analysis-badge">Analyse</span>
+            <span class="analysis-badge">Vidéo</span>
             <h3 class="analysis-title">Analyse {{ n }}</h3>
-            <p class="analysis-author">Par un expert</p>
-            <p class="analysis-excerpt">Vidéo à venir sur le conflit Ukraine-Russie.</p>
-            <a :href="'#video-' + n" class="video-link" target="_blank">Voir la vidéo</a>
+            <p class="analysis-author">Par un expert ISOC</p>
+            <p class="analysis-excerpt">Analyse approfondie et décryptage du conflit Ukraine-Russie.</p>
+            <a :href="'#video-' + n" class="video-link" target="_blank">▶ Regarder la vidéo</a>
           </div>
         </article>
       </div>
@@ -65,6 +67,38 @@
   width: 100%;
   aspect-ratio: 16/9;
   background: linear-gradient(135deg, #2f0538, #4b2faa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder {
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.analysis-card:hover .video-placeholder {
+  font-size: 56px;
+  color: #fff;
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7b5ce0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.video-link:hover {
+  color: #2f0538;
+  gap: 10px;
 }
 
 .analysis-content {
