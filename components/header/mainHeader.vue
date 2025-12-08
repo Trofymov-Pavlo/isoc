@@ -45,8 +45,8 @@ function goIndex() {
 
 .header {
     background: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    border-bottom: none;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
 }
@@ -55,7 +55,7 @@ function goIndex() {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 12px;
     gap: 12px;
     font-size: 11px;
     color: #3b3650;
