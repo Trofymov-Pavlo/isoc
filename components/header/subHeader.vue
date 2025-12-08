@@ -2,15 +2,15 @@
   <div class="sub-header">
     <div class="container">
       <nav class="nav">
-        <NuxtLink to="/" class="nav-link">Accueil</NuxtLink>
-        <NuxtLink to="/inLivePage" class="nav-link active">
+        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Accueil</NuxtLink>
+        <NuxtLink to="/inLivePage" class="nav-link" exact-active-class="is-active">
           <span class="live-badge">●</span>
           En Direct
         </NuxtLink>
         <div class="nav-divider"></div>
-        <NuxtLink to="/" class="nav-link">Analyses</NuxtLink>
-        <NuxtLink to="/" class="nav-link">Ressources</NuxtLink>
-        <NuxtLink to="/" class="nav-link">À propos</NuxtLink>
+        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Analyses</NuxtLink>
+        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Ressources</NuxtLink>
+        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">À propos</NuxtLink>
       </nav>
       <div class="nav-right">
         <button class="icon-btn search-btn" title="Rechercher">
@@ -102,11 +102,12 @@
   width: calc(100% - 32px);
 }
 
-.nav-link.active {
+/* Active state - only when on that page */
+.nav-link.is-active {
   color: #c5b3ff;
 }
 
-.nav-link.active::after {
+.nav-link.is-active::after {
   width: calc(100% - 32px);
 }
 
