@@ -68,12 +68,13 @@ const yearRange = `2024-${new Date().getFullYear()}`
   background: linear-gradient(135deg, #1a1428 0%, #2f0538 50%, #1f1430 100%);
   color: #e8e4f0;
   border-top: 1px solid rgba(123, 92, 224, 0.35);
-  padding: 48px 20px 24px;
+  padding: 0;
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 48px calc(2vw) 24px;
 }
 
 .grid {
