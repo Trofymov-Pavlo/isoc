@@ -3,8 +3,7 @@
     <div class="container">
       <nav class="nav">
         <NuxtLink to="/" class="nav-link">Accueil</NuxtLink>
-        <NuxtLink to="/enDirect" class="nav-link">En Direct</NuxtLink>
-        <NuxtLink to="/inLivePage" class="nav-link">Couverture Live</NuxtLink>
+        <NuxtLink to="/inLivePage" class="nav-link">En Direct</NuxtLink>
       </nav>
     </div>
   </div>
