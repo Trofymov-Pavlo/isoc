@@ -13,13 +13,17 @@
         <NuxtLink to="/" class="nav-link">À propos</NuxtLink>
       </nav>
       <div class="nav-right">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <svg class="theme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
+        <button class="icon-btn search-btn" title="Rechercher">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+        <button class="icon-btn theme-btn" title="Changer de thème">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -34,6 +38,7 @@
   color: #f0f0f3;
   border-bottom: 1px solid rgba(123, 92, 224, 0.25);
   padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -43,6 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 56px;
 }
 
 .nav {
@@ -51,6 +57,7 @@
   align-items: center;
   padding: 0;
   flex: 1;
+  height: 100%;
 }
 
 .nav-link {
@@ -61,10 +68,11 @@
   letter-spacing: 0.3px;
   position: relative;
   transition: all 0.22s ease;
-  padding: 14px 16px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   gap: 6px;
+  height: 100%;
   border-right: 1px solid rgba(123, 92, 224, 0.15);
 }
 
@@ -95,7 +103,7 @@
 }
 
 .nav-link.active {
-  color: #7b5ce0;
+  color: #c5b3ff;
 }
 
 .nav-link.active::after {
@@ -126,45 +134,64 @@
 
 .nav-right {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
   margin-left: auto;
   padding-left: 16px;
   border-left: 1px solid rgba(123, 92, 224, 0.15);
+  height: 100%;
 }
 
-.search-icon,
-.theme-toggle {
-  width: 24px;
-  height: 24px;
+.icon-btn {
+  background: transparent;
+  border: none;
   cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
   transition: all 0.22s ease;
-  padding: 6px;
   color: #e8e4f0;
-  stroke: #e8e4f0;
 }
 
-.search-icon:hover,
-.theme-toggle:hover {
-  color: #7b5ce0;
-  transform: scale(1.1);
+.icon-btn:hover {
+  background: rgba(123, 92, 224, 0.15);
+  color: #c5b3ff;
+  transform: translateY(-2px);
+}
+
+.icon-btn:active {
+  transform: translateY(0);
+  background: rgba(123, 92, 224, 0.25);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
 }
 
 @media (max-width: 1024px) {
   .nav-link {
     font-size: 12px;
-    padding: 12px 12px;
+    padding: 0 12px;
   }
   
   .nav-divider {
     display: none;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
 @media (max-width: 768px) {
   .nav-link {
     font-size: 11px;
-    padding: 10px 8px;
+    padding: 0 8px;
     border-right: none;
   }
 
@@ -174,15 +201,17 @@
 
   .nav-right {
     border-left: none;
-    gap: 8px;
+    gap: 6px;
     padding-left: 8px;
   }
 
-  .search-icon,
-  .theme-toggle {
-    width: 20px;
-    height: 20px;
+  .icon-btn {
     padding: 6px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -193,11 +222,20 @@
 
   .nav-link {
     font-size: 10px;
-    padding: 8px 6px;
+    padding: 0 6px;
   }
 
   .nav-link::after {
     display: none;
+  }
+
+  .icon-btn {
+    padding: 4px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
   }
 }
 </style>
