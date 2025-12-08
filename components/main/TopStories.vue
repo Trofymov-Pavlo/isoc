@@ -33,15 +33,14 @@ const now = Date.now();
 const deuxHeuresMs = 2 * 60 * 60 * 1000;
 const aLaUne = computed(() =>
   all.value
-    .filter(a => a.summary && a.published)
+    .filter(a => a.summary && a.publishedTime)
     .filter(a => {
-      if (!a.published) return false;
-      const date = new Date(a.published);
-      return now - date.getTime() > deuxHeuresMs;
+      if (!a.publishedTime) return false;
+      return now - a.publishedTime > deuxHeuresMs;
     })
     .sort((a, b) => {
-      const dateA = a.published ? new Date(a.published).getTime() : 0;
-      const dateB = b.published ? new Date(b.published).getTime() : 0;
+      const dateA = a.publishedTime || 0;
+      const dateB = b.publishedTime || 0;
       return dateB - dateA;
     })
     .slice(0, 2)

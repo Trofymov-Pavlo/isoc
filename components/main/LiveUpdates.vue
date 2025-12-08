@@ -59,8 +59,8 @@ function getRelativeTime(publishedTime?: number): string {
 const liveUpdates = computed(() =>
   all.value
     .sort((a, b) => {
-      const dateA = a.published ? new Date(a.published).getTime() : 0;
-      const dateB = b.published ? new Date(b.published).getTime() : 0;
+      const dateA = a.publishedTime || 0;
+      const dateB = b.publishedTime || 0;
       return dateB - dateA;
     })
     .slice(0, 3)
