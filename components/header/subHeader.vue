@@ -13,8 +13,13 @@
         <NuxtLink to="/" class="nav-link">À propos</NuxtLink>
       </nav>
       <div class="nav-right">
-        <div class="search-icon">🔍</div>
-        <div class="theme-toggle">🌙</div>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <svg class="theme-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
       </div>
     </div>
   </div>
@@ -130,10 +135,13 @@
 
 .search-icon,
 .theme-toggle {
-  font-size: 16px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
   transition: all 0.22s ease;
-  padding: 8px;
+  padding: 6px;
+  color: #e8e4f0;
+  stroke: #e8e4f0;
 }
 
 .search-icon:hover,
@@ -172,7 +180,8 @@
 
   .search-icon,
   .theme-toggle {
-    font-size: 14px;
+    width: 20px;
+    height: 20px;
     padding: 6px;
   }
 }
