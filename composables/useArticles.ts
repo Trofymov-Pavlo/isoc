@@ -34,6 +34,7 @@ function normalize(a: Raw): CleanArticle | null {
   const source = a.source?.name || a.source || a.site || a.feed || a.publisher || undefined;
 
   let published: string | undefined;
+  let publishedTime: number | undefined;
   const rawDate = a.published || a.pubDate || a.date || a.updated;
   if (rawDate) {
     const d = new Date(rawDate);
@@ -44,12 +45,13 @@ function normalize(a: Raw): CleanArticle | null {
         hour: "2-digit",
         minute: "2-digit",
       });
+      publishedTime = d.getTime();
     }
   }
 
   const summary = (a.summary || a.description || "").toString().replace(/<[^>]+>/g, "").trim();
 
-  return { title, link, image, source, published, summary };
+  return { title, link, image, source, published, publishedTime, summary };
 }
 
 export function useArticles(opts?: {

@@ -1,11 +1,12 @@
 <template>
-  
-  <TopNews />
+  <main>
+    <HomePage />
+  </main>
 </template>
 
 <script setup lang="ts">
 
-import TopNews from '~/components/inLIve/inLiveNewsHeader.vue';
+import HomePage from '~/components/main/HomePage.vue';
 
 </script>
 

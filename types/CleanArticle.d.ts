@@ -4,6 +4,7 @@ export type CleanArticle = {
   image?: string | null;
   source?: string;
   published?: string;
+  publishedTime?: number;
   summary?: string;
 };
 

@@ -198,6 +198,28 @@ def collect_articles(
     if limit and limit > 0:
         filtered = filtered[:limit]
 
+    # Déplier les meta (author/summary) vers le niveau racine si demandé
+    for e in filtered:
+        meta = e.pop("_meta", {}) or {}
+        if include_meta:
+            if meta.get("author"):
+                e["author"] = meta.get("author")
+            if meta.get("summary"):
+                e["summary"] = meta.get("summary")
+
+        # publishedTime en ms pour le frontend
+        pub = e.get("published")
+        try:
+            if pub:
+                dt = datetime.fromisoformat(pub)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                e["publishedTime"] = int(dt.timestamp() * 1000)
+            else:
+                e["publishedTime"] = None
+        except Exception:
+            e["publishedTime"] = None
+
     return filtered
 
 
@@ -271,5 +293,27 @@ def get_articles(
         if img:
             e["image"] = img      # utilisé par le template Vue
             e.setdefault("thumb", img)  # alias pratique
+
+    # Déplier les meta (author/summary) vers le niveau racine si demandé
+    for e in filtered:
+        meta = e.pop("_meta", {}) or {}
+        if include_meta:
+            if meta.get("author"):
+                e["author"] = meta.get("author")
+            if meta.get("summary"):
+                e["summary"] = meta.get("summary")
+
+        # publishedTime en ms pour le frontend
+        pub = e.get("published")
+        try:
+            if pub:
+                dt = datetime.fromisoformat(pub)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                e["publishedTime"] = int(dt.timestamp() * 1000)
+            else:
+                e["publishedTime"] = None
+        except Exception:
+            e["publishedTime"] = None
 
     return filtered
