@@ -48,6 +48,17 @@
   padding-top: 48px;
 }
 
+.section-title::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 28px;
+  background: linear-gradient(180deg, #2f0538, #4b2faa);
+  margin-right: 12px;
+  border-radius: 3px;
+}
+
 .podcast-card {
   background: #fff;
   border-radius: 12px;
