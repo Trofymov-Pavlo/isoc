@@ -69,37 +69,63 @@ const aLaUne = computed(() => {
   padding-top: 48px;
 }
 
+.section-title::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 28px;
+  background: linear-gradient(180deg, #2f0538, #4b2faa);
+  margin-right: 12px;
+  border-radius: 3px;
+}
+
 .stories-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
 .story-card {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.28s ease;
   cursor: pointer;
-  display: block;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 0;
+  align-items: stretch;
 }
 
 .story-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .story-image {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
+  min-height: 200px;
   background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .story-content {
-  padding: 20px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  justify-content: center;
 }
 
 .story-category {
@@ -112,15 +138,15 @@ const aLaUne = computed(() => {
 
 .story-title {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #1a1a1a;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .story-excerpt {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px;
   color: #555;
   line-height: 1.5;
 }
@@ -130,11 +156,18 @@ const aLaUne = computed(() => {
   gap: 12px;
   font-size: 13px;
   color: #999;
+  align-items: center;
 }
 
 @media (max-width: 1100px) {
   .stories-grid {
     grid-template-columns: 1fr;
+  }
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+  .story-image {
+    min-height: 220px;
   }
 }
 
@@ -152,6 +185,12 @@ const aLaUne = computed(() => {
   .section-title {
     font-size: 18px;
     padding-top: 24px;
+  }
+  .story-title {
+    font-size: 16px;
+  }
+  .story-excerpt {
+    font-size: 13px;
   }
 }
 </style>
