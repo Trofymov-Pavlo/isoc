@@ -105,12 +105,9 @@ const aLaUne = computed(() => {
 
 .story-image {
   width: 100%;
-  height: 100%;
-  min-height: 200px;
+  aspect-ratio: 16/9;
   background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .story-image img {
@@ -167,7 +164,8 @@ const aLaUne = computed(() => {
     grid-template-columns: 1fr;
   }
   .story-image {
-    min-height: 220px;
+    aspect-ratio: 16/9;
+    width: 100%;
   }
 }
 
