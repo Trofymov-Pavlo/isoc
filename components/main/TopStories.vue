@@ -62,11 +62,11 @@ const aLaUne = computed(() => {
 
 .section-title {
   margin: 0;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   color: #2f0538;
-  margin-bottom: 32px;
-  padding-top: 48px;
+  margin-bottom: 24px;
+  padding-top: 32px;
 }
 
 .stories-grid {
@@ -138,7 +138,7 @@ const aLaUne = computed(() => {
 
 @media (max-width: 680px) {
   .section-title {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .stories-grid {
@@ -148,8 +148,8 @@ const aLaUne = computed(() => {
 
 @media (max-width: 480px) {
   .section-title {
-    font-size: 18px;
-    padding-top: 24px;
+    font-size: 16px;
+    padding-top: 18px;
   }
 }
 </style>
