@@ -62,46 +62,48 @@ const aLaUne = computed(() => {
 
 .section-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
   color: #2f0538;
-  margin-bottom: 24px;
-  padding-top: 32px;
+  margin-bottom: 32px;
+  padding-top: 48px;
 }
 
 .stories-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 24px;
 }
 
 .story-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
 .story-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .story-image {
   width: 100%;
   aspect-ratio: 16/9;
   background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-  border-radius: 10px;
 }
 
 .story-content {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .story-category {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   color: #ff6b6b;
@@ -110,7 +112,7 @@ const aLaUne = computed(() => {
 
 .story-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #1a1a1a;
   line-height: 1.4;
@@ -118,15 +120,15 @@ const aLaUne = computed(() => {
 
 .story-excerpt {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   line-height: 1.5;
 }
 
 .story-meta {
   display: flex;
-  gap: 16px;
-  font-size: 12px;
+  gap: 12px;
+  font-size: 13px;
   color: #999;
 }
 
@@ -138,7 +140,7 @@ const aLaUne = computed(() => {
 
 @media (max-width: 680px) {
   .section-title {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .stories-grid {
@@ -148,8 +150,8 @@ const aLaUne = computed(() => {
 
 @media (max-width: 480px) {
   .section-title {
-    font-size: 16px;
-    padding-top: 18px;
+    font-size: 18px;
+    padding-top: 24px;
   }
 }
 </style>
