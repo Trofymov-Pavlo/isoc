@@ -14,10 +14,10 @@
             <span class="podcast-duration">45 min</span>
             <span class="podcast-author">Antoine TENA, Nathan BARRACHIN, Pavel TROFYMOV</span>
           </div>
-          <button class="podcast-play-btn">
+          <NuxtLink to="/podcast" class="podcast-play-btn">
             <span class="play-icon">▶</span>
             Écouter l'épisode
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>
