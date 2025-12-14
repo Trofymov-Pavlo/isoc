@@ -1,3 +1,2 @@
 <template>
-  <ArchiveArchiveMain />
-</template>
+  <ArchiveMain /></template>

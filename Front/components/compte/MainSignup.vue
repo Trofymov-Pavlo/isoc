@@ -7,33 +7,44 @@
         <p class="sub">Rejoignez la communauté et suivez vos analyses préférées.</p>
       </div>
 
-      <form class="auth-form" @submit.prevent>
+      <form class="auth-form" @submit.prevent="handleSubmit">
         <label class="field">
-          <span class="label">Nom complet</span>
-          <input type="text" name="fullname" placeholder="Prénom Nom" required />
+          <span class="label">Nom d'utilisateur</span>
+          <input v-model="username" type="text" name="username" placeholder="john_doe" required autocomplete="username" />
         </label>
 
         <label class="field">
           <span class="label">Email</span>
-          <input type="email" name="email" placeholder="vous@example.com" required />
+          <input v-model="email" type="email" name="email" placeholder="vous@example.com" required autocomplete="email" />
+        </label>
+
+        <label class="field">
+          <span class="label">Prénom</span>
+          <input v-model="firstName" type="text" name="firstname" placeholder="Jean" />
+        </label>
+
+        <label class="field">
+          <span class="label">Nom</span>
+          <input v-model="lastName" type="text" name="lastname" placeholder="Dupont" />
         </label>
 
         <label class="field">
           <span class="label">Mot de passe</span>
-          <input type="password" name="password" placeholder="••••••••" required />
+          <input v-model="password" type="password" name="password" placeholder="••••••••" required autocomplete="new-password" />
         </label>
 
         <label class="field">
           <span class="label">Confirmation</span>
-          <input type="password" name="confirm" placeholder="••••••••" required />
+          <input v-model="passwordConfirm" type="password" name="confirm" placeholder="••••••••" required autocomplete="new-password" />
         </label>
 
         <label class="checkbox">
-          <input type="checkbox" name="newsletter" />
+          <input v-model="newsletter" type="checkbox" name="newsletter" />
           <span>Recevoir les mises à jour Axiome</span>
         </label>
 
-        <button type="submit" class="primary">Créer mon compte</button>
+        <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Création en cours...' : 'Créer mon compte' }}</button>
+        <p v-if="error" class="error">{{ error }}</p>
       </form>
 
       <div class="meta">
@@ -43,6 +54,52 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from '#imports';
+import { useAuthState } from '~/composables/useAuthState';
+import { useAuthAPI } from '~/composables/useAuthAPI';
+
+const email = ref('');
+const username = ref('');
+const firstName = ref('');
+const lastName = ref('');
+const password = ref('');
+const passwordConfirm = ref('');
+const newsletter = ref(false);
+const error = ref('');
+const router = useRouter();
+const { setAuth } = useAuthState();
+const { signup, loading } = useAuthAPI();
+
+const handleSubmit = async () => {
+  error.value = '';
+
+  if (!email.value || !username.value || !password.value || !passwordConfirm.value) {
+    error.value = 'Tous les champs requis doivent être remplis.';
+    return;
+  }
+
+  if (password.value !== passwordConfirm.value) {
+    error.value = 'Les mots de passe ne correspondent pas.';
+    return;
+  }
+
+  if (password.value.length < 8) {
+    error.value = 'Le mot de passe doit contenir au moins 8 caractères.';
+    return;
+  }
+
+  try {
+    await signup(email.value, username.value, password.value, firstName.value, lastName.value);
+    setAuth(true, false);
+    await router.push('/');
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : 'Erreur lors de la création du compte';
+  }
+};
+</script>
 
 <style scoped lang="scss">
 .auth-page {

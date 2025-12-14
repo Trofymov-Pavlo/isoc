@@ -1,3 +1,3 @@
 <template>
-  <SupportSupportMain />
+  <ForgotPassword />
 </template>

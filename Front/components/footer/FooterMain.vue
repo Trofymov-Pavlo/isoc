@@ -32,10 +32,10 @@
         <div class="col">
           <h4 class="col-title">Ressources</h4>
           <ul class="link-list">
-            <li><a href="#">Flux RSS</a></li>
-            <li><a href="#">Archive</a></li>
+            <li><NuxtLink to="/rss">Flux RSS</NuxtLink></li>
+            <li><NuxtLink to="/archive">Archive</NuxtLink></li>
             <li><NuxtLink to="/Contact">Nous Contacter</NuxtLink></li>
-            <li><a href="#">À propos</a></li>
+            <li><NuxtLink to="/a-propos">À propos</NuxtLink></li>
           </ul>
         </div>
 

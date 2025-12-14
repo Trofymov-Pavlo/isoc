@@ -11,7 +11,7 @@
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
-        <NuxtLink to="/connexion" class="nav-link" exact-active-class="is-active">Connexion</NuxtLink>
+        <NuxtLink to="/connexion" class="nav-account" exact-active-class="is-active">{{ accountLabel }}</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">
@@ -82,14 +82,17 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import { useArticles } from '~/composables/useArticles';
+import { useAuthState } from '~/composables/useAuthState';
 import type { CleanArticle } from '~/types/CleanArticle';
 
 const isSearchOpen = ref(false);
 const searchTerm = ref('');
 const searchInput = ref<HTMLInputElement | null>(null);
 const searchWrapper = ref<HTMLElement | null>(null);
+const { isAuthenticated } = useAuthState();
+const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'));
 
 const { query, loading, error, all, load } = useArticles({ hours: 72 });
 const results = ref<CleanArticle[]>([]);
@@ -198,6 +201,34 @@ onBeforeUnmount(() => {
 
 .nav-link:last-of-type {
   border-right: none;
+}
+
+.nav-account {
+  margin-left: 12px;
+  padding: 0 18px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #1c0f2a;
+  background: linear-gradient(135deg, #fefefe 0%, #d6c8ff 100%);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav-account:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #e6dcff 100%);
+}
+
+.nav-account.is-active {
+  background: linear-gradient(135deg, #c5b3ff 0%, #9a7be0 100%);
+  color: #1c0f2a;
 }
 
 .nav-link::after {

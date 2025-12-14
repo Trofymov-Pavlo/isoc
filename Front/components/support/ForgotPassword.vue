@@ -2,37 +2,29 @@
   <section class="auth-page">
     <div class="auth-card">
       <div class="auth-header">
-        <p class="eyebrow">Espace membre</p>
-        <h1>Connexion</h1>
-        <p class="sub">Accédez à vos suivis et contenus personnalisés.</p>
+        <p class="eyebrow">Aide</p>
+        <h1>Réinitialiser mon mot de passe</h1>
+        <p class="sub">Entrez votre email pour recevoir les instructions.</p>
       </div>
 
-      <form class="auth-form" @submit.prevent="handleSubmit">
+      <form v-if="!resetSent" class="auth-form" @submit.prevent="handlePasswordReset">
         <label class="field">
           <span class="label">Email</span>
           <input v-model="email" type="email" name="email" placeholder="vous@example.com" required autocomplete="email" />
         </label>
 
-        <label class="field">
-          <span class="label">Mot de passe</span>
-          <input v-model="password" type="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
-        </label>
-
-        <div class="row">
-          <label class="checkbox">
-            <input v-model="remember" type="checkbox" name="remember" />
-            <span>Se souvenir de moi</span>
-          </label>
-          <NuxtLink class="link" to="/support">Mot de passe oublié ?</NuxtLink>
-        </div>
-
-        <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Connexion en cours...' : 'Se connecter' }}</button>
+        <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Envoi en cours...' : 'Envoyer le lien' }}</button>
         <p v-if="error" class="error">{{ error }}</p>
       </form>
 
+      <div v-else class="success-message">
+        <p>✓ Lien de réinitialisation envoyé à <strong>{{ email }}</strong></p>
+        <p>Vérifiez votre email et cliquez sur le lien pour définir un nouveau mot de passe.</p>
+        <button class="primary" @click="resetSent = false">Retour</button>
+      </div>
+
       <div class="meta">
-        <p>Pas encore de compte ? <NuxtLink class="link" to="/signup">Créer un compte</NuxtLink></p>
-        <p class="small">Connexion sécurisée. Vos données restent privées.</p>
+        <p><NuxtLink class="link" to="/connexion">Retour à la connexion</NuxtLink></p>
       </div>
     </div>
   </section>
@@ -40,32 +32,26 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from '#imports';
-import { useAuthState } from '~/composables/useAuthState';
 import { useAuthAPI } from '~/composables/useAuthAPI';
 
 const email = ref('');
-const password = ref('');
-const remember = ref(false);
 const error = ref('');
-const router = useRouter();
-const { setAuth } = useAuthState();
-const { login, loading } = useAuthAPI();
+const resetSent = ref(false);
+const { passwordReset, loading } = useAuthAPI();
 
-const handleSubmit = async () => {
+const handlePasswordReset = async () => {
   error.value = '';
-  
-  if (!email.value || !password.value) {
-    error.value = 'Email et mot de passe requis.';
+
+  if (!email.value) {
+    error.value = 'Email requis.';
     return;
   }
 
   try {
-    await login(email.value, password.value, remember.value);
-    setAuth(true, remember.value);
-    await router.push('/');
+    await passwordReset(email.value);
+    resetSent.value = true;
   } catch (err) {
-    error.value = err instanceof Error ? err.message : 'Erreur de connexion';
+    error.value = err instanceof Error ? err.message : 'Erreur lors de la réinitialisation';
   }
 };
 </script>
@@ -148,26 +134,6 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.15);
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #3c314f;
-}
-
-.checkbox input {
-  width: 16px;
-  height: 16px;
-}
-
 .primary {
   width: 100%;
   border: none;
@@ -181,19 +147,42 @@ input:focus {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(47, 5, 56, 0.16);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .error {
   margin: 8px 0 0;
   color: #c0392b;
   font-size: 13px;
 }
 
-.primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(47, 5, 56, 0.16);
+.success-message {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  background: #edf5e3;
+  border-radius: 12px;
+  color: #2d5016;
 }
 
-.primary:active {
-  transform: translateY(0);
+.success-message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.success-message strong {
+  font-weight: 700;
 }
 
 .meta {
@@ -207,12 +196,6 @@ input:focus {
   color: #7b5ce0;
   text-decoration: none;
   font-weight: 600;
-}
-
-.small {
-  margin: 0;
-  color: #6e6585;
-  font-size: 12px;
 }
 
 @media (max-width: 640px) {
