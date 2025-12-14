@@ -3,7 +3,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-from django_ratelimit.decorators import ratelimit
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.crypto import get_random_string
 from django.views.decorators.cache import cache_page
@@ -12,6 +11,7 @@ from .serializers import (
     PasswordResetSerializer, PasswordResetConfirmSerializer,
     UpdateProfileSerializer, ChangePasswordSerializer
 )
+from .throttles import SignupRateThrottle, LoginRateThrottle, PasswordResetRateThrottle
 
 User = get_user_model()
 
@@ -21,8 +21,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
-    @ratelimit(key='ip', rate='5/h', method='POST')  # 5 sign-ups per hour per IP
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[SignupRateThrottle])
     def signup(self, request):
         """Sign up a new user"""
         serializer = SignUpSerializer(data=request.data)
@@ -36,8 +35,7 @@ class AccountViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
-    @ratelimit(key='ip', rate='10/m', method='POST')  # 10 login attempts per minute per IP
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[LoginRateThrottle])
     def login(self, request):
         """Login a user"""
         serializer = LoginSerializer(data=request.data)
@@ -79,8 +77,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
-    @ratelimit(key='ip', rate='3/h', method='POST')  # 3 reset attempts per hour per IP
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[PasswordResetRateThrottle])
     def password_reset(self, request):
         """Request password reset"""
         serializer = PasswordResetSerializer(data=request.data)
