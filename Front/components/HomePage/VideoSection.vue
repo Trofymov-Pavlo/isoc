@@ -12,7 +12,7 @@
             <h3 class="analysis-title">Analyse vidéo {{ n }}</h3>
             <p class="analysis-author">Par les médias partenaires</p>
             <p class="analysis-excerpt">Analyse approfondie et décryptage du conflit Ukraine-Russie.</p>
-            <a :href="'#video-' + n" class="video-link" target="_blank">▶ Regarder la vidéo</a>
+            <NuxtLink :to="'/video'" class="video-link">▶ Regarder la vidéo</NuxtLink>
           </div>
         </article>
       </div>
