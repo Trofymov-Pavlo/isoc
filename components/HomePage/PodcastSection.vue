@@ -29,7 +29,7 @@
 
 <style scoped>
 .podcast-section {
-  padding: 48px 20px;
+  padding: 24px 20px;
   background: #ffffff;
 }
 
@@ -45,7 +45,7 @@
   font-weight: 700;
   color: #2f0538;
   margin-bottom: 32px;
-  padding-top: 48px;
+  padding-top: 24px;
 }
 
 .section-title::before {

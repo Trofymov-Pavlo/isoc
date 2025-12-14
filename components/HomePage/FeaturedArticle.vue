@@ -25,8 +25,8 @@
 
 <style scoped>
 .featured-main {
-  padding: 48px 20px;
-  margin-bottom: 48px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
 }
 
 .section-container {

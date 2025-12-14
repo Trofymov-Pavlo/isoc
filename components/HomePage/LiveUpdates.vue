@@ -70,8 +70,8 @@ const liveUpdates = computed(() =>
 <style scoped>
 .live-updates {
   background: #ffffff;
-  padding: 48px 20px;
-  margin-bottom: 48px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
 }
 
 .section-container {
@@ -86,7 +86,7 @@ const liveUpdates = computed(() =>
   font-weight: 700;
   color: #2f0538;
   margin-bottom: 32px;
-  padding-top: 48px;
+  padding-top: 24px;
 }
 
 .section-title::before {

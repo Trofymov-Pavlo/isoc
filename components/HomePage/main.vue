@@ -26,6 +26,6 @@ import NewsletterSection from './NewsletterSection.vue';
 .home {
   background: #ffffff;
   min-height: 100vh;
-  padding-bottom: 60px;
+  padding-bottom: 0;
 }
 </style>

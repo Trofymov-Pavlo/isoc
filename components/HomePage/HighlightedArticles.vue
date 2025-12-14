@@ -50,7 +50,7 @@ const aLaUne = computed(() => {
 
 <style scoped>
 .top-stories {
-  padding: 0 20px 48px 20px;
+  padding: 0 20px 24px 20px;
   background: #ffffff;
 }
 
@@ -66,7 +66,7 @@ const aLaUne = computed(() => {
   font-weight: 700;
   color: #2f0538;
   margin-bottom: 32px;
-  padding-top: 48px;
+  padding-top: 24px;
 }
 
 .section-title::before {

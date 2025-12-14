@@ -20,7 +20,7 @@
 <style scoped>
 .newsletter {
   background: linear-gradient(135deg, #2f0538 0%, #4b2faa 100%);
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .section-container {

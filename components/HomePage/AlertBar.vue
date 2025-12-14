@@ -18,8 +18,8 @@
   background: linear-gradient(90deg, #fff5f5 0%, #fff 100%);
   border-bottom: 2px solid #ffe0e0;
   border-top: 2px solid #ffe0e0;
-  padding: 20px 20px;
-  margin-bottom: 48px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
   box-shadow: 0 2px 8px rgba(255, 107, 107, 0.08);
 }
 
