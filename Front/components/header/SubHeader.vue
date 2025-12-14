@@ -198,6 +198,23 @@ onBeforeUnmount(() => {
   border-right: none;
 }
 
+.nav-link:hover {
+  color: #c5b3ff;
+  background: rgba(123, 92, 224, 0.08);
+}
+
+.nav-link:hover::after {
+  width: calc(100% - 32px);
+}
+
+.nav-link.is-active {
+  color: #c5b3ff;
+}
+
+.nav-link.is-active::after {
+  width: calc(100% - 32px);
+}
+
 .nav-account {
   margin-left: 12px;
   padding: 0 18px;

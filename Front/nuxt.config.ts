@@ -7,7 +7,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE || '/api/accounts'
+      apiBase: process.env.API_BASE || '/api/accounts',
+      donationsBase: process.env.DONATIONS_BASE || 'http://localhost:8000/api/donations'
     }
   },
 

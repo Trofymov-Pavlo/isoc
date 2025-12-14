@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="actions-row">
-                    <button class="solid-btn" type="button" title="Soutenir le média">Soutenir</button>
+                    <a href="/support" class="solid-btn" title="Soutenir le média">Soutenir</a>
                     <NuxtLink :to="accountLink" class="solid-btn" :title="accountLabel">{{ accountLabel }}</NuxtLink>
                 </div>
             </div>
@@ -30,18 +30,18 @@
 </template>
 
 <script setup lang="ts">
-            import { computed } from 'vue'
-            import logoIsoc from '@/assets/logoIsoc.png'
-            import { useAuthState } from '~/composables/useAuthState'
+import { computed } from 'vue'
+import logoIsoc from '@/assets/logoIsoc.png'
+import { useAuthState } from '~/composables/useAuthState'
 
-            const logo = logoIsoc
-            const { isAuthenticated } = useAuthState()
-            const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'))
-            const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'))
+const logo = logoIsoc
+const { isAuthenticated } = useAuthState()
+const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'))
+const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'))
 
-            function goIndex() {
-              window.location.href = '/'
-            }
+function goIndex() {
+  window.location.href = '/'
+}
 </script>
 
 <style scoped>
@@ -102,6 +102,8 @@
     align-items: center;
     gap: 0;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -129,6 +131,8 @@
     display: flex;
     gap: 8px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .icon-link {
@@ -182,6 +186,7 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 14px rgba(47, 5, 56, 0.18);
     text-decoration: none;
+    pointer-events: auto;
 }
 
 .solid-btn:hover {
