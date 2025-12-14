@@ -18,7 +18,7 @@
                 <a href="/rss.xml" class="icon-link" title="Flux RSS">
                     <v-icon icon="mdi-rss"></v-icon>
                 </a>
-                <NuxtLink to="/support" class="support-btn" title="Soutenir le média" @click.stop="onSupportClick">Soutenir</NuxtLink>
+                <a href="/support" class="support-btn" title="Soutenir le média">Soutenir</a>
             </div>
         </div>
     </div>
@@ -35,16 +35,7 @@ function goIndex() {
   window.location.href = '/'
 }
 
-function onSupportClick(event: MouseEvent) {
-    event.preventDefault()
-    event.stopPropagation()
-    try {
-        console.debug('[Header] Soutenir clicked → navigating to /support')
-        router.push('/support')
-    } catch {
-        window.location.href = '/support'
-    }
-}
+// Fallback to plain anchor for robust navigation.
 </script>
 
 <style scoped>

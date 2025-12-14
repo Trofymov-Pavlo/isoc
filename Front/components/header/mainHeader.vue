@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="actions-row">
-                    <NuxtLink to="/support" class="solid-btn" title="Soutenir le média" @click.stop="onSupportClick">Soutenir</NuxtLink>
+                    <a href="/support" class="solid-btn" title="Soutenir le média">Soutenir</a>
                     <NuxtLink :to="accountLink" class="solid-btn" :title="accountLabel">{{ accountLabel }}</NuxtLink>
                 </div>
             </div>
@@ -46,16 +46,7 @@
               window.location.href = '/'
             }
 
-                        function onSupportClick(event: MouseEvent) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                            try {
-                                console.debug('[Header] Soutenir clicked → navigating to /support')
-                                router.push('/support')
-                            } catch {
-                                window.location.href = '/support'
-                            }
-                        }
+                        // Fallback to plain anchor for robust navigation.
 </script>
 
 <style scoped>
