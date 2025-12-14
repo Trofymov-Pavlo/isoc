@@ -11,7 +11,6 @@
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
-        <NuxtLink :to="accountLink" class="nav-account" exact-active-class="is-active">{{ accountLabel }}</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">
@@ -82,19 +81,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import { useArticles } from '~/composables/useArticles';
-import { useAuthState } from '~/composables/useAuthState';
 import type { CleanArticle } from '~/types/CleanArticle';
 
 const isSearchOpen = ref(false);
 const searchTerm = ref('');
 const searchInput = ref<HTMLInputElement | null>(null);
 const searchWrapper = ref<HTMLElement | null>(null);
-const { isAuthenticated } = useAuthState();
-const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'));
-const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'));
-
 const { query, loading, error, all, load } = useArticles({ hours: 72 });
 const results = ref<CleanArticle[]>([]);
 
@@ -245,36 +239,22 @@ onBeforeUnmount(() => {
   margin: 0 auto;
 }
 
-.nav-link:hover {
-  color: #c5b3ff;
-  background: rgba(123, 92, 224, 0.08);
-}
-
-.nav-link:hover::after {
-  width: calc(100% - 32px);
-}
-
-/* Active state - only when on that page */
-.nav-link.is-active {
-  color: #c5b3ff;
-}
-
-.nav-link.is-active::after {
-  width: calc(100% - 32px);
-}
-
 .live-badge {
-  font-size: 10px;
+  font-size: 14px;
   color: #ff6b6b;
-  animation: pulse 2s infinite;
+  animation: pulse 1.2s ease-in-out infinite;
+  margin-right: 6px;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
     opacity: 0.4;
+    transform: scale(0.92);
   }
 }
 
