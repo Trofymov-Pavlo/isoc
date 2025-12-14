@@ -1,8 +1,7 @@
 import { ref } from 'vue';
 
-const API_BASE = 'http://127.0.0.1:8000/api/accounts';
-
 export const useAuthAPI = () => {
+  const API_BASE = 'http://localhost:8000/api/accounts';
   const loading = ref(false);
   const error = ref('');
   const user = ref(null);
