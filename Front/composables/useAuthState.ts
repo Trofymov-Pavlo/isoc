@@ -1,8 +1,19 @@
-import { onMounted } from 'vue';
+import { onMounted, watchEffect } from 'vue';
 
 export const useAuthState = () => {
-  const isAuthenticated = useState<boolean>('auth/loggedIn', () => false);
-  const rememberMe = useState<boolean>('auth/remember', () => false);
+  const isAuthenticated = useState<boolean>('auth/loggedIn', () => {
+    // Initialiser depuis le localStorage côté client
+    if (process.server) return false;
+    const storedAuth = localStorage.getItem('auth_logged_in');
+    return storedAuth === '1';
+  });
+  
+  const rememberMe = useState<boolean>('auth/remember', () => {
+    // Initialiser depuis le localStorage côté client
+    if (process.server) return false;
+    const storedRemember = localStorage.getItem('auth_remember');
+    return storedRemember === '1';
+  });
 
   const loadFromStorage = () => {
     if (process.server) return;
@@ -10,9 +21,13 @@ export const useAuthState = () => {
     const storedRemember = localStorage.getItem('auth_remember');
     if (storedAuth === '1') {
       isAuthenticated.value = true;
+    } else {
+      isAuthenticated.value = false;
     }
     if (storedRemember === '1') {
       rememberMe.value = true;
+    } else {
+      rememberMe.value = false;
     }
   };
 
@@ -32,5 +47,10 @@ export const useAuthState = () => {
     loadFromStorage();
   });
 
-  return { isAuthenticated, rememberMe, setAuth };
+  // Surveiller les changements et persister automatiquement
+  watchEffect(() => {
+    persist();
+  });
+
+  return { isAuthenticated, rememberMe, setAuth, loadFromStorage };
 };
