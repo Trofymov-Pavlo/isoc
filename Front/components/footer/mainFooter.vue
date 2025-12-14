@@ -34,6 +34,7 @@
           <ul class="link-list">
             <li><a href="#">Flux RSS</a></li>
             <li><a href="#">Archive</a></li>
+            <li><NuxtLink to="/Contact">Nous Contacter</NuxtLink></li>
             <li><a href="#">À propos</a></li>
           </ul>
         </div>
