@@ -143,6 +143,7 @@ export const useAuthAPI = () => {
   };
 
   const me = async () => {
+    if (!accessToken.value) loadTokensFromStorage();
     if (!accessToken.value) return null;
     try {
       const response = await fetch(`${API_BASE}/me/`, {
@@ -159,6 +160,59 @@ export const useAuthAPI = () => {
     return null;
   };
 
+  const updateProfile = async (username: string, email: string, firstName = '', lastName = '') => {
+    if (!accessToken.value) loadTokensFromStorage();
+    loading.value = true;
+    error.value = '';
+    try {
+      const response = await fetch(`${API_BASE}/update_profile/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken.value}`,
+        },
+        body: JSON.stringify({ username, email, first_name: firstName, last_name: lastName }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.email?.[0] || data.username?.[0] || 'Profile update failed');
+      user.value = data;
+      return data;
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : 'Profile update error';
+      throw err;
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  const changePassword = async (oldPassword: string, newPassword: string) => {
+    if (!accessToken.value) loadTokensFromStorage();
+    loading.value = true;
+    error.value = '';
+    try {
+      const response = await fetch(`${API_BASE}/change_password/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken.value}`,
+        },
+        body: JSON.stringify({ 
+          old_password: oldPassword, 
+          new_password: newPassword,
+          new_password_confirm: newPassword 
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.old_password?.[0] || data.new_password?.[0] || 'Password change failed');
+      return data;
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : 'Password change error';
+      throw err;
+    } finally {
+      loading.value = false;
+    }
+  };
+
   return {
     loading,
     error,
@@ -171,6 +225,8 @@ export const useAuthAPI = () => {
     passwordReset,
     passwordResetConfirm,
     me,
+    updateProfile,
+    changePassword,
     setTokens,
     loadTokensFromStorage,
     clearTokens,

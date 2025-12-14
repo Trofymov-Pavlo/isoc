@@ -7,7 +7,8 @@ from django.contrib.auth import get_user_model, authenticate
 from django.utils.crypto import get_random_string
 from .serializers import (
     UserSerializer, SignUpSerializer, LoginSerializer,
-    PasswordResetSerializer, PasswordResetConfirmSerializer
+    PasswordResetSerializer, PasswordResetConfirmSerializer,
+    UpdateProfileSerializer, ChangePasswordSerializer
 )
 
 User = get_user_model()
@@ -116,3 +117,31 @@ class AccountViewSet(viewsets.ModelViewSet):
         """Get current user info"""
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+    @action(detail=False, methods=['put', 'patch'], permission_classes=[IsAuthenticated])
+    def update_profile(self, request):
+        """Update user profile"""
+        serializer = UpdateProfileSerializer(
+            request.user,
+            data=request.data,
+            context={'request': request},
+            partial=request.method == 'PATCH'
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def change_password(self, request):
+        """Change user password"""
+        serializer = ChangePasswordSerializer(
+            data=request.data,
+            context={'request': request}
+        )
+        if serializer.is_valid():
+            user = request.user
+            user.set_password(serializer.validated_data['new_password'])
+            user.save()
+            return Response({'message': 'Password changed successfully'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

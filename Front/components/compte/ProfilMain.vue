@@ -7,11 +7,15 @@
         <p class="sub">Gérez vos informations et vos préférences.</p>
       </div>
 
-      <div v-if="loading" class="loading">Chargement...</div>
-      <div v-else-if="error" class="error">{{ error }}</div>
+      <div v-if="loading && !user" class="loading">Chargement...</div>
+      <div v-else-if="error && !user" class="error">{{ error }}</div>
       <div v-else-if="user" class="profile-content">
-        <div class="info-section">
-          <h2>Informations personnelles</h2>
+        <!-- Edit Profile Section -->
+        <div class="info-section" v-if="!editMode && !passwordMode">
+          <div class="section-header">
+            <h2>Informations personnelles</h2>
+            <button @click="editMode = true" class="btn-edit">Modifier</button>
+          </div>
           <div class="info-grid">
             <div class="info-item">
               <span class="label">Nom d'utilisateur</span>
@@ -32,7 +36,102 @@
           </div>
         </div>
 
-        <div class="actions">
+        <!-- Edit Profile Form -->
+        <div class="info-section" v-if="editMode">
+          <div class="section-header">
+            <h2>Modifier le profil</h2>
+            <button @click="cancelEdit" class="btn-cancel">Annuler</button>
+          </div>
+          <form @submit.prevent="handleUpdateProfile" class="edit-form">
+            <label class="field">
+              <span class="label">Nom d'utilisateur</span>
+              <input v-model="editData.username" type="text" required />
+            </label>
+            <label class="field">
+              <span class="label">Email</span>
+              <input v-model="editData.email" type="email" required />
+            </label>
+            <label class="field">
+              <span class="label">Prénom</span>
+              <input v-model="editData.firstName" type="text" />
+            </label>
+            <label class="field">
+              <span class="label">Nom</span>
+              <input v-model="editData.lastName" type="text" />
+            </label>
+            <p v-if="editError" class="error">{{ editError }}</p>
+            <button type="submit" class="btn-save" :disabled="loading">
+              {{ loading ? 'Enregistrement...' : 'Enregistrer' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- Change Password Form -->
+        <div class="info-section" v-if="passwordMode">
+          <div class="section-header">
+            <h2>Changer le mot de passe</h2>
+            <button @click="cancelPasswordChange" class="btn-cancel">Annuler</button>
+          </div>
+          <form @submit.prevent="handleChangePassword" class="edit-form">
+            <label class="field">
+              <span class="label">Mot de passe actuel</span>
+              <div class="password-field">
+                <input v-model="passwordData.oldPassword" :type="showOldPassword ? 'text' : 'password'" required />
+                <button type="button" class="toggle-password" @click="showOldPassword = !showOldPassword">
+                  <svg v-if="!showOldPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </label>
+            <label class="field">
+              <span class="label">Nouveau mot de passe</span>
+              <div class="password-field">
+                <input v-model="passwordData.newPassword" :type="showNewPassword ? 'text' : 'password'" required />
+                <button type="button" class="toggle-password" @click="showNewPassword = !showNewPassword">
+                  <svg v-if="!showNewPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </label>
+            <label class="field">
+              <span class="label">Confirmer le nouveau mot de passe</span>
+              <div class="password-field">
+                <input v-model="passwordData.confirmPassword" :type="showConfirmPassword ? 'text' : 'password'" required />
+                <button type="button" class="toggle-password" @click="showConfirmPassword = !showConfirmPassword">
+                  <svg v-if="!showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </label>
+            <p v-if="passwordError" class="error">{{ passwordError }}</p>
+            <p v-if="passwordSuccess" class="success">{{ passwordSuccess }}</p>
+            <button type="submit" class="btn-save" :disabled="loading">
+              {{ loading ? 'Modification...' : 'Changer le mot de passe' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions" v-if="!editMode && !passwordMode">
+          <button @click="passwordMode = true" class="btn-password">Changer le mot de passe</button>
           <button @click="handleLogout" class="btn-logout">Se déconnecter</button>
         </div>
       </div>
@@ -48,11 +147,32 @@ import { useAuthAPI } from '~/composables/useAuthAPI';
 
 const router = useRouter();
 const { isAuthenticated, setAuth } = useAuthState();
-const { me, logout } = useAuthAPI();
+const { me, logout, updateProfile, changePassword, loading } = useAuthAPI();
 
 const user = ref<any>(null);
-const loading = ref(true);
 const error = ref('');
+const editMode = ref(false);
+const passwordMode = ref(false);
+const editError = ref('');
+const passwordError = ref('');
+const passwordSuccess = ref('');
+
+const editData = ref({
+  username: '',
+  email: '',
+  firstName: '',
+  lastName: ''
+});
+
+const passwordData = ref({
+  oldPassword: '',
+  newPassword: '',
+  confirmPassword: ''
+});
+
+const showOldPassword = ref(false);
+const showNewPassword = ref(false);
+const showConfirmPassword = ref(false);
 
 onMounted(async () => {
   if (!isAuthenticated.value) {
@@ -62,13 +182,84 @@ onMounted(async () => {
 
   try {
     const userData = await me();
-    user.value = userData;
+    if (userData) {
+      user.value = userData;
+      editData.value = {
+        username: userData.username || '',
+        email: userData.email || '',
+        firstName: userData.first_name || '',
+        lastName: userData.last_name || ''
+      };
+    }
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Erreur lors du chargement du profil';
-  } finally {
-    loading.value = false;
   }
 });
+
+const cancelEdit = () => {
+  editMode.value = false;
+  editError.value = '';
+  if (user.value) {
+    editData.value = {
+      username: user.value.username || '',
+      email: user.value.email || '',
+      firstName: user.value.first_name || '',
+      lastName: user.value.last_name || ''
+    };
+  }
+};
+
+const cancelPasswordChange = () => {
+  passwordMode.value = false;
+  passwordError.value = '';
+  passwordSuccess.value = '';
+  passwordData.value = {
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  };
+};
+
+const handleUpdateProfile = async () => {
+  editError.value = '';
+  try {
+    const updated = await updateProfile(
+      editData.value.username,
+      editData.value.email,
+      editData.value.firstName,
+      editData.value.lastName
+    );
+    user.value = updated;
+    editMode.value = false;
+  } catch (err) {
+    editError.value = err instanceof Error ? err.message : 'Erreur lors de la mise à jour du profil';
+  }
+};
+
+const handleChangePassword = async () => {
+  passwordError.value = '';
+  passwordSuccess.value = '';
+
+  if (passwordData.value.newPassword !== passwordData.value.confirmPassword) {
+    passwordError.value = 'Les mots de passe ne correspondent pas.';
+    return;
+  }
+
+  if (passwordData.value.newPassword.length < 8) {
+    passwordError.value = 'Le mot de passe doit contenir au moins 8 caractères.';
+    return;
+  }
+
+  try {
+    await changePassword(passwordData.value.oldPassword, passwordData.value.newPassword);
+    passwordSuccess.value = 'Mot de passe changé avec succès !';
+    setTimeout(() => {
+      cancelPasswordChange();
+    }, 2000);
+  } catch (err) {
+    passwordError.value = err instanceof Error ? err.message : 'Erreur lors du changement de mot de passe';
+  }
+};
 
 const handleLogout = async () => {
   try {
@@ -193,6 +384,48 @@ h2 {
   border-top: 1px solid #e8e4f0;
 }
 
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.btn-edit,
+.btn-cancel {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #7b5ce0;
+  color: #7b5ce0;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+
+.btn-edit:hover,
+.btn-cancel:hover {
+  background: #7b5ce0;
+  color: #fff;
+}
+
+.btn-password {
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #6b5ca5;
+  color: #6b5ca5;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-password:hover {
+  background: #6b5ca5;
+  color: #fff;
+}
+
 .btn-logout {
   padding: 10px 20px;
   background: #fff;
@@ -207,5 +440,100 @@ h2 {
 .btn-logout:hover {
   background: #c33;
   color: #fff;
+}
+
+.btn-save {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2f0538 0%, #3a0f4f 100%);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 8px;
+}
+
+.btn-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(47, 5, 56, 0.16);
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-form {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #241431;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #dcd9e6;
+  background: #faf9fd;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #7b5ce0;
+  box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.15);
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  flex: 1;
+  padding-right: 45px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b5ca5;
+  transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #7b5ce0;
+}
+
+.success {
+  background: #efe;
+  border-left: 3px solid #3c3;
+  padding: 12px;
+  color: #3c3;
+  border-radius: 4px;
+  font-size: 13px;
 }
 </style>
