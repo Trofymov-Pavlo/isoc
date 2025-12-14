@@ -15,7 +15,19 @@
 
         <label class="field">
           <span class="label">Mot de passe</span>
-          <input v-model="password" type="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
+          <div class="password-field">
+            <input v-model="password" :type="showPassword ? 'text' : 'password'" name="password" placeholder="••••••••" required autocomplete="current-password" />
+            <button type="button" class="toggle-password" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Cacher le mot de passe' : 'Afficher le mot de passe'">
+              <svg v-if="!showPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
         </label>
 
         <div class="row">
@@ -47,6 +59,7 @@ import { useAuthAPI } from '~/composables/useAuthAPI';
 const email = ref('');
 const password = ref('');
 const remember = ref(false);
+const showPassword = ref(false);
 const error = ref('');
 const router = useRouter();
 const { setAuth } = useAuthState();
@@ -63,7 +76,7 @@ const handleSubmit = async () => {
   try {
     await login(email.value, password.value, remember.value);
     setAuth(true, remember.value);
-    await router.push('/');
+    await router.push('/mon-compte');
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Erreur de connexion';
   }
@@ -146,6 +159,35 @@ input:focus {
   outline: none;
   border-color: #7b5ce0;
   box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.15);
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  flex: 1;
+  padding-right: 45px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b5ca5;
+  transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #7b5ce0;
 }
 
 .row {

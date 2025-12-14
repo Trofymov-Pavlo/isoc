@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-12-14',
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE || '/api/accounts'
+    }
+  },
+
   css: [
     'vuetify/styles',
     '@/assets/styles/main.scss',
