@@ -30,23 +30,18 @@
 </template>
 
 <script setup lang="ts">
-            import { computed } from 'vue'
-            import { useRouter } from 'vue-router'
-            import logoIsoc from '@/assets/logoIsoc.png'
-            import { useAuthState } from '~/composables/useAuthState'
+import { computed } from 'vue'
+import logoIsoc from '@/assets/logoIsoc.png'
+import { useAuthState } from '~/composables/useAuthState'
 
-            const logo = logoIsoc
-            const { isAuthenticated } = useAuthState()
-            const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'))
-            const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'))
+const logo = logoIsoc
+const { isAuthenticated } = useAuthState()
+const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'))
+const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'))
 
-                        const router = useRouter()
-
-                        function goIndex() {
-              window.location.href = '/'
-            }
-
-                        // Fallback to plain anchor for robust navigation.
+function goIndex() {
+  window.location.href = '/'
+}
 </script>
 
 <style scoped>
