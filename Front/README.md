@@ -66,8 +66,8 @@ const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
 ## Pages principales
 
 - **/** - Accueil (page d'accueil principale)
-- **/inLivePage** - Actualités en direct
-- **/Contact** - Page de contact
+- **/en-direct** - Actualités en direct
+- **/contact** - Page de contact
 
 ## Sections de la page d'accueil
 

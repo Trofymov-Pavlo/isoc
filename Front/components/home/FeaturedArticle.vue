@@ -13,7 +13,7 @@
             <span class="featured-author">Par Antoine TENA</span>
             <span class="featured-date">Il y a 2h</span>
           </div>
-          <NuxtLink to="/featuredArticle" class="read-more">Lire l'article complet →</NuxtLink>
+          <NuxtLink to="/article-en-vedette" class="read-more">Lire l'article complet →</NuxtLink>
         </div>
       </article>
     </div>

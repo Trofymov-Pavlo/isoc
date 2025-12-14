@@ -11,7 +11,7 @@
           </div>
         </li>
       </ul>
-      <a href="/inLivePage" class="view-all-link">En Direct →</a>
+        <a href="/en-direct" class="view-all-link">En Direct →</a>
     </div>
   </section>
 </template>
