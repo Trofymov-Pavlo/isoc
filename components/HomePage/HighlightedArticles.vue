@@ -156,6 +156,18 @@ const aLaUne = computed(() => {
   align-items: center;
 }
 
+.story-read {
+  color: #7b5ce0;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.story-read:hover {
+  color: #2f0538;
+  text-decoration: underline;
+}
+
 @media (max-width: 1100px) {
   .stories-grid {
     grid-template-columns: 1fr;

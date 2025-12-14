@@ -15,10 +15,12 @@
 
 <style scoped>
 .breaking-news {
-  background: #fff5f5;
-  border-bottom: 1px solid #f0f0f0;
-  padding: 24px 20px;
+  background: linear-gradient(90deg, #fff5f5 0%, #fff 100%);
+  border-bottom: 2px solid #ffe0e0;
+  border-top: 2px solid #ffe0e0;
+  padding: 20px 20px;
   margin-bottom: 48px;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.08);
 }
 
 .section-container {
@@ -57,12 +59,17 @@
 .breaking-link {
   color: #7b5ce0;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
+  padding: 8px 16px;
+  background: rgba(123, 92, 224, 0.1);
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .breaking-link:hover {
-  text-decoration: underline;
+  background: rgba(123, 92, 224, 0.2);
+  transform: translateX(4px);
 }
 
 @media (max-width: 680px) {

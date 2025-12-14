@@ -95,9 +95,15 @@ const liveUpdates = computed(() =>
   vertical-align: middle;
   width: 6px;
   height: 28px;
-  background: linear-gradient(180deg, #2f0538, #4b2faa);
+  background: linear-gradient(180deg, #ff6b6b, #ff8c8c);
   margin-right: 12px;
   border-radius: 3px;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(0.95); }
 }
 
 .live-list {
@@ -132,8 +138,21 @@ const liveUpdates = computed(() =>
   background: #ff6b6b;
   border-radius: 50%;
   flex-shrink: 0;
-  margin-top: 2px;
-  animation: pulse 2s infinite;
+  margin-top: 4px;
+  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  animation: liveDotPulse 2s infinite;
+}
+
+@keyframes liveDotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
 }
 
 .live-content {

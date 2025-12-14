@@ -67,11 +67,13 @@
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
+  border: 2px solid #f0f0f0;
 }
 
 .analysis-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(47, 5, 56, 0.15);
+  border-color: #7b5ce0;
 }
 
 .analysis-image {

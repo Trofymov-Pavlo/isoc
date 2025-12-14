@@ -3,10 +3,10 @@
     <div class="section-container">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        En continu
+        En direct 24/7
       </div>
-      <h1 class="hero-title">Média indépendant dédié au conflit Ukraine-Russie</h1>
-      <p class="hero-subtitle">Suivez en direct les derniers développements, analyses et reportages</p>
+      <h1 class="hero-title"><span class="brand">AXIOME</span> — Toute l'actualité du conflit Ukraine-Russie</h1>
+      <p class="hero-subtitle">Suivez en temps réel les développements, analyses d'experts et reportages terrain sur le conflit</p>
     </div>
   </section>
 </template>
@@ -62,6 +62,15 @@
   line-height: 1.2;
   margin: 0 0 16px 0;
   color: #fff;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ffffff, #d8c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {

@@ -42,10 +42,15 @@
   align-items: center;
   transition: all 0.28s ease;
   cursor: pointer;
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .featured-article:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(47, 5, 56, 0.12);
 }
 
 .featured-image {
@@ -107,14 +112,23 @@
 }
 
 .read-more {
-  color: #7b5ce0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, #2f0538, #4b2faa);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   width: fit-content;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(47, 5, 56, 0.2);
 }
 
 .read-more:hover {
-  text-decoration: underline;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(47, 5, 56, 0.3);
 }
 
 @media (max-width: 1100px) {
