@@ -1,11 +1,11 @@
 <template>
   <main>
-    <video-page />
+    <main-video />
   </main>
 </template>
 
 <script setup lang="ts">
-import videoPage from '~/components/video/videoPage.vue';
+import mainVideo from '~/components/video/mainVideo.vue';
 </script>
 
 <style lang="scss" scoped>
