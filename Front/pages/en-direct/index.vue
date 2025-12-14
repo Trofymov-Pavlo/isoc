@@ -1,3 +1,3 @@
 <template>
-  <InLiveInLiveMain />
+  <InLiveMain />
 </template>
