@@ -1,11 +1,9 @@
 <template>
-  <main>
-    <main-video />
-  </main>
+  <MainVideo />
 </template>
 
 <script setup lang="ts">
-import mainVideo from '~/components/video/mainVideo.vue';
+import MainVideo from '~/components/video/mainVideo.vue';
 </script>
 
 <style lang="scss" scoped>

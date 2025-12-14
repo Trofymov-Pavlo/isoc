@@ -1,12 +1,11 @@
 <template>
-  <main>
-    <main-page />
-  </main>
+  <MainHome />
+  
 </template>
 
 <script setup lang="ts">
 
-import mainPage from '~/components/HomePage/mainHome.vue';
+import MainHome from '~/components/HomePage/mainHome.vue';
 
 </script>
 

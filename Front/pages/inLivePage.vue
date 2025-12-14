@@ -1,11 +1,10 @@
 <template>
-  
-  <liveNews />
+  <MainInLive />
 </template>
 
 <script setup lang="ts">
 
-import liveNews from '~/components/inLive/mainInLive.vue';
+import MainInLive from '~/components/inLive/mainInLive.vue';
 </script>
 
 <style scoped></style>
