@@ -1,22 +1,16 @@
 <template>
   <div class="site-container">
-    <MainHeader />
+    <HeaderHeaderMain />
   </div>
 
-  <SubHeader />
+  <HeaderSubHeader />
 
   <div class="site-container">
     <slot />
   </div>
 
-  <MainFooter />
+  <FooterFooterMain />
 </template>
-
-<script setup lang="ts">
-import MainHeader from "@/components/header/mainHeader.vue"
-import SubHeader from "@/components/header/subHeader.vue"
-import MainFooter from "@/components/footer/mainFooter.vue"
-</script>
 
 <style>
 .site-container {

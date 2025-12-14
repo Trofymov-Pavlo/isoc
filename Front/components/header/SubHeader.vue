@@ -3,12 +3,12 @@
     <div class="container">
       <nav class="nav">
         <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Accueil</NuxtLink>
-        <NuxtLink to="/inLivePage" class="nav-link" exact-active-class="is-active">
+        <NuxtLink to="/en-direct" class="nav-link" exact-active-class="is-active">
           <span class="live-badge">●</span>
           En Direct
         </NuxtLink>
         <div class="nav-divider"></div>
-        <NuxtLink to="/featuredArticle" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
+        <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
         <NuxtLink to="/connexion" class="nav-link" exact-active-class="is-active">Connexion</NuxtLink>

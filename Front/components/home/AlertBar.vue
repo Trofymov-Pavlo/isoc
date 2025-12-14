@@ -4,7 +4,7 @@
       <div class="breaking-item">
         <span class="breaking-badge">DIRECT</span>
         <p class="breaking-text">Actualités en temps réel</p>
-        <a href="/inLivePage" class="breaking-link">Voir le live →</a>
+          <a href="/en-direct" class="breaking-link">Voir le live →</a>
       </div>
     </div>
   </section>

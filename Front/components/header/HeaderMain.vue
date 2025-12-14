@@ -12,7 +12,7 @@
 
             <div class="main-right">
                 <a class="icon-link language-link" href="/">FR</a>
-                <NuxtLink to="/Contact" class="icon-link" title="Contact">
+                <NuxtLink to="/contact" class="icon-link" title="Contact">
                     <v-icon icon="mdi-email-outline"></v-icon>
                 </NuxtLink>
                 <a href="/rss.xml" class="icon-link" title="Flux RSS">

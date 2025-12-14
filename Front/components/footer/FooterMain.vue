@@ -21,8 +21,8 @@
           <h4 class="col-title">Explorer</h4>
           <ul class="link-list">
             <li><NuxtLink to="/">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/inLivePage">En Direct</NuxtLink></li>
-            <li><NuxtLink to="/featuredArticle">Article en Vedette</NuxtLink></li>
+            <li><NuxtLink to="/en-direct">En Direct</NuxtLink></li>
+            <li><NuxtLink to="/article-en-vedette">Article en Vedette</NuxtLink></li>
             <li><NuxtLink to="/podcast">Podcast</NuxtLink></li>
             <li><NuxtLink to="/video">Vidéo</NuxtLink></li>
           </ul>
