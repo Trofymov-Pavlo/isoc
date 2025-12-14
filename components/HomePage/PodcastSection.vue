@@ -12,7 +12,7 @@
           <p class="podcast-desc">Décryptez les stratégies d'influence, la désinformation et la bataille informationnelle du conflit Ukraine-Russie. Avec nos experts en géopolitique et communication.</p>
           <div class="podcast-meta">
             <span class="podcast-duration">45 min</span>
-            <span class="podcast-date">Il y a 2h</span>
+            <span class="podcast-author">Antoine TENA, Nathan BARRACHIN, Pavel TROFYMOV</span>
           </div>
           <button class="podcast-play-btn">
             <span class="play-icon">▶</span>
@@ -127,6 +127,12 @@
   font-size: 13px;
   color: #999;
   font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.podcast-author {
+  color: #7b5ce0;
+  font-weight: 600;
 }
 
 .podcast-play-btn {

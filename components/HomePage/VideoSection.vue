@@ -1,7 +1,7 @@
 <template>
   <section class="analysis">
     <div class="section-container">
-      <h2 class="section-title">Analyses & Décryptages (Vidéos)</h2>
+      <h2 class="section-title">Analyses & Décryptages Vidéo</h2>
       <div class="analysis-grid">
         <article class="analysis-card" v-for="n in 3" :key="n">
           <div class="analysis-image">
@@ -9,8 +9,8 @@
           </div>
           <div class="analysis-content">
             <span class="analysis-badge">Vidéo</span>
-            <h3 class="analysis-title">Analyse {{ n }}</h3>
-            <p class="analysis-author">Par un expert ISOC</p>
+            <h3 class="analysis-title">Analyse vidéo {{ n }}</h3>
+            <p class="analysis-author">Par les médias partenaires</p>
             <p class="analysis-excerpt">Analyse approfondie et décryptage du conflit Ukraine-Russie.</p>
             <a :href="'#video-' + n" class="video-link" target="_blank">▶ Regarder la vidéo</a>
           </div>

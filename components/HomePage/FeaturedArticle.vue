@@ -10,7 +10,7 @@
           <h2 class="featured-title">Article principal en vedette</h2>
           <p class="featured-desc">Résumé de l'article principal avec contexte et analyse détaillée sur le conflit...</p>
           <div class="featured-meta">
-            <span class="featured-author">Par ISOC Media</span>
+            <span class="featured-author">Par Antoine TENA</span>
             <span class="featured-date">Il y a 2h</span>
           </div>
           <a href="#" class="read-more">Lire l'article complet →</a>
