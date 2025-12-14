@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 
-import mainPage from '~/components/HomePage/main.vue';
+import mainPage from '~/components/HomePage/mainHome.vue';
 
 </script>
 

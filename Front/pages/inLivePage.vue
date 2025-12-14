@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 
-import liveNews from '~/components/inLIve/liveNews.vue';
+import liveNews from '~/components/inLive/mainInLive.vue';
 </script>
 
 <style scoped></style>
