@@ -1,6 +1,6 @@
 <template>
   <div class="site-container">
-    <HeaderMain />
+    <HeaderMainHeader />
   </div>
 
   <HeaderSubHeader />
