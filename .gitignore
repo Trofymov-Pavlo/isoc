@@ -1,3 +1,9 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
 # Nuxt dev/build outputs
 .output
 .data
@@ -19,6 +25,12 @@ __pycache__/
 *.pyo
 *.egg-info/
 .Python
+*.egg
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
 .env
 
 # State files
