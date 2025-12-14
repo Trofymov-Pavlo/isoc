@@ -11,7 +11,6 @@
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
-        <NuxtLink to="/support" class="nav-link" exact-active-class="is-active">Soutenir</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">
@@ -197,6 +196,23 @@ onBeforeUnmount(() => {
 
 .nav-link:last-of-type {
   border-right: none;
+}
+
+.nav-link:hover {
+  color: #c5b3ff;
+  background: rgba(123, 92, 224, 0.08);
+}
+
+.nav-link:hover::after {
+  width: calc(100% - 32px);
+}
+
+.nav-link.is-active {
+  color: #c5b3ff;
+}
+
+.nav-link.is-active::after {
+  width: calc(100% - 32px);
 }
 
 .nav-account {
