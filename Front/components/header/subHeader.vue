@@ -8,9 +8,9 @@
           En Direct
         </NuxtLink>
         <div class="nav-divider"></div>
-        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Analyses</NuxtLink>
-        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">Ressources</NuxtLink>
-        <NuxtLink to="/" class="nav-link" exact-active-class="is-active">À propos</NuxtLink>
+        <NuxtLink to="/featuredArticle" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
+        <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
+        <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Vidéo</NuxtLink>
       </nav>
       <div class="nav-right">
         <button class="icon-btn search-btn" title="Rechercher">
