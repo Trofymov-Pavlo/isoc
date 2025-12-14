@@ -20,12 +20,12 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
-import FeaturedLive from '~/components/inLive/FeaturedLive.vue';
-import LiveAlert from '~/components/inLive/LiveAlert.vue';
-import LiveArticlesGrid from '~/components/inLive/LiveArticlesGrid.vue';
-import LiveEmptyState from '~/components/inLive/LiveEmptyState.vue';
-import LiveHeader from '~/components/inLive/LiveHeader.vue';
-import LiveLoading from '~/components/inLive/LiveLoading.vue';
+import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
+import LiveAlert from '~/components/in-live/LiveAlert.vue';
+import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
+import LiveEmptyState from '~/components/in-live/LiveEmptyState.vue';
+import LiveHeader from '~/components/in-live/LiveHeader.vue';
+import LiveLoading from '~/components/in-live/LiveLoading.vue';
 
 const { all, loading, error, load } = useArticles({
   apiBase: 'http://127.0.0.1:5000',
