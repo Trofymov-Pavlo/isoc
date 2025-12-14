@@ -7,26 +7,27 @@
         <p class="sub">Accédez à vos suivis et contenus personnalisés.</p>
       </div>
 
-      <form class="auth-form" @submit.prevent>
+      <form class="auth-form" @submit.prevent="handleSubmit">
         <label class="field">
           <span class="label">Email</span>
-          <input type="email" name="email" placeholder="vous@example.com" required />
+          <input v-model="email" type="email" name="email" placeholder="vous@example.com" required autocomplete="email" />
         </label>
 
         <label class="field">
           <span class="label">Mot de passe</span>
-          <input type="password" name="password" placeholder="••••••••" required />
+          <input v-model="password" type="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
         </label>
 
         <div class="row">
           <label class="checkbox">
-            <input type="checkbox" name="remember" />
+            <input v-model="remember" type="checkbox" name="remember" />
             <span>Se souvenir de moi</span>
           </label>
-          <a class="link" href="#">Mot de passe oublié ?</a>
+          <NuxtLink class="link" to="/support">Mot de passe oublié ?</NuxtLink>
         </div>
 
-        <button type="submit" class="primary">Se connecter</button>
+        <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Connexion en cours...' : 'Se connecter' }}</button>
+        <p v-if="error" class="error">{{ error }}</p>
       </form>
 
       <div class="meta">
@@ -36,6 +37,37 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from '#imports';
+import { useAuthState } from '~/composables/useAuthState';
+
+const email = ref('');
+const password = ref('');
+const remember = ref(false);
+const loading = ref(false);
+const error = ref('');
+const router = useRouter();
+const { setAuth } = useAuthState();
+
+const handleSubmit = async () => {
+  error.value = '';
+  loading.value = true;
+  await new Promise((resolve) => setTimeout(resolve, 400));
+
+  if (!email.value || !password.value) {
+    error.value = 'Email et mot de passe requis.';
+    loading.value = false;
+    return;
+  }
+
+  // TODO: remplacer par un appel API sécurisé côté backend (Django/Flask)
+  setAuth(true, remember.value);
+  loading.value = false;
+  await router.push('/');
+};
+</script>
 
 <style scoped lang="scss">
 .auth-page {
@@ -146,6 +178,12 @@ input:focus {
   color: #ffffff;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.error {
+  margin: 8px 0 0;
+  color: #c0392b;
+  font-size: 13px;
 }
 
 .primary:hover {
