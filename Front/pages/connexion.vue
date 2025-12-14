@@ -1,9 +1,3 @@
 <template>
-  <main>
-    <MainLogin />
-  </main>
+  <CompteMainLogin />
 </template>
-
-<script setup lang="ts">
-import MainLogin from '~/components/Compte/mainLogin.vue';
-</script>

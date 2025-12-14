@@ -1,3 +1,3 @@
 <template>
-  <LikedLikedMain />
+  <VideoVideoMain />
 </template>

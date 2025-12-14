@@ -1,9 +1,3 @@
 <template>
-  <main>
-    <MainContact />
-  </main>
+  <ContactContactMain />
 </template>
-
-<script setup lang="ts">
-import MainContact from '~/components/Contact/mainContact.vue';
-</script>
