@@ -1,145 +1,45 @@
 <template>
   <main class="live-feed">
-    <header class="feed-header">
-      <div class="header-top">
-        <div class="title-section">
-          <h1 class="feed-title">
-            <span class="live-indicator">●</span>
-            Live en cours
-          </h1>
-          <p class="article-count">Mis à jour aujourd'hui à {{ updateTime }}</p>
-        </div>
-        <div class="search-controls">
-          <div class="search-wrapper">
-            <input 
-              v-model="localQuery" 
-              class="search-input" 
-              placeholder="Rechercher..." 
-              @keyup.enter="reload"
-            />
-            <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <button v-else @click="localQuery = ''" class="clear-btn">×</button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <LiveHeader
+      v-model:query="localQuery"
+      :update-time="updateTime"
+      @search="reload"
+    />
 
-    <div v-if="error" class="alert alert-error">
-      <span class="alert-icon">⚠️</span>
-      <span>{{ error }}</span>
-    </div>
-
-    <div v-else-if="loading" class="loading-state">
-      <div class="spinner"></div>
-      <p>Chargement des actualités...</p>
-    </div>
-
-    <div v-else-if="filtered.length === 0" class="empty-state">
-      <span class="empty-icon">🔍</span>
-      <p class="empty-text">Aucun article ne correspond à votre recherche</p>
-      <button class="reset-btn" @click="localQuery = ''; reload()">Réinitialiser</button>
-    </div>
+    <LiveAlert v-if="error" :message="error" />
+    <LiveLoading v-else-if="loading" />
+    <LiveEmptyState v-else-if="filtered.length === 0" @reset="resetSearch" />
 
     <section v-else class="articles-container">
-      <!-- Featured Article -->
-      <article v-if="filtered[0]" class="featured-article">
-        <a 
-          v-if="filtered[0].image" 
-          :href="filtered[0].link" 
-          target="_blank" 
-          rel="noopener" 
-          class="featured-image"
-        >
-          <img :src="filtered[0].image" :alt="filtered[0].title" loading="lazy" />
-          <div class="featured-overlay"></div>
-        </a>
-        <div v-else class="featured-image placeholder">
-          <span class="placeholder-icon">📰</span>
-        </div>
-
-        <div class="featured-content">
-          <p v-if="filtered[0].source" class="featured-source">{{ filtered[0].source }}</p>
-          <h2 class="featured-title">
-            <a :href="filtered[0].link" target="_blank" rel="noopener">{{ filtered[0].title }}</a>
-          </h2>
-          <p v-if="filtered[0].summary" class="featured-summary">
-            {{ filtered[0].summary }}
-          </p>
-          <div class="featured-footer">
-            <time v-if="filtered[0].published" class="featured-time">
-              {{ formatTime(filtered[0].published) }}
-            </time>
-            <a :href="filtered[0].link" target="_blank" rel="noopener" class="read-link">
-              Lire l'article complet →
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Grid of remaining articles -->
-      <div v-if="filtered.length > 1" class="articles-grid">
-        <article 
-          v-for="(article, i) in filtered.slice(1)" 
-          :key="(article.link || article.title) + (i + 1)" 
-          class="article-card"
-        >
-          <a 
-            v-if="article.image" 
-            :href="article.link" 
-            target="_blank" 
-            rel="noopener" 
-            class="article-image"
-          >
-            <img :src="article.image" :alt="article.title" loading="lazy" />
-            <div class="image-overlay"></div>
-          </a>
-          <div v-else class="article-image placeholder">
-            <span class="placeholder-icon">📰</span>
-          </div>
-
-          <div class="article-content">
-            <p v-if="article.source" class="article-source">{{ article.source }}</p>
-            <h2 class="article-title">
-              <a :href="article.link" target="_blank" rel="noopener">{{ article.title }}</a>
-            </h2>
-            <p v-if="article.summary" class="article-summary">
-              {{ truncate(article.summary, 120) }}
-            </p>
-            <div class="article-footer">
-              <time v-if="article.published" class="article-time">
-                {{ formatTime(article.published) }}
-              </time>
-              <a :href="article.link" target="_blank" rel="noopener" class="read-link">
-                Lire →
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
+      <FeaturedLive v-if="filtered[0]" :article="filtered[0]" />
+      <LiveArticlesGrid v-if="filtered.length > 1" :articles="filtered.slice(1)" />
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, onUnmounted } from "vue";
-import { useArticles } from "@/composables/useArticles";
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { useArticles } from '@/composables/useArticles';
+import FeaturedLive from '~/components/inLive/FeaturedLive.vue';
+import LiveAlert from '~/components/inLive/LiveAlert.vue';
+import LiveArticlesGrid from '~/components/inLive/LiveArticlesGrid.vue';
+import LiveEmptyState from '~/components/inLive/LiveEmptyState.vue';
+import LiveHeader from '~/components/inLive/LiveHeader.vue';
+import LiveLoading from '~/components/inLive/LiveLoading.vue';
 
 const { all, loading, error, load } = useArticles({
-  apiBase: "http://127.0.0.1:5000",
-  query: "ukraine",
+  apiBase: 'http://127.0.0.1:5000',
+  query: 'ukraine',
   hours: 48,
   meta: 1,
 });
 
-const localQuery = ref("");
+const localQuery = ref('');
 let refreshInterval: number | null = null;
 
 const updateTime = computed(() => {
   const now = new Date();
-  return now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  return now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
 });
 
 const filtered = computed(() => {
@@ -147,52 +47,19 @@ const filtered = computed(() => {
   if (!query) return all.value;
   return all.value.filter(a =>
     a.title.toLowerCase().includes(query) ||
-    (a.summary ?? "").toLowerCase().includes(query) ||
-    (a.source ?? "").toLowerCase().includes(query)
+    (a.summary ?? '').toLowerCase().includes(query) ||
+    (a.source ?? '').toLowerCase().includes(query)
   );
 });
 
-function reload() {
+const reload = () => {
   load();
-}
+};
 
-function truncate(text: string, max: number): string {
-  if (text.length <= max) return text;
-  return text.substring(0, max).trim() + '...';
-}
-
-function formatTime(dateString: string): string {
-  if (!dateString) return "";
-  
-  try {
-    // Si la date est déjà formatée (contient "déc" ou autre mois), la retourner telle quelle
-    if (/jan|fév|mar|avr|mai|jui|aoû|sep|oct|nov|déc/i.test(dateString)) {
-      return dateString;
-    }
-
-    const date = new Date(dateString);
-    
-    // Vérifier si la date est valide
-    if (isNaN(date.getTime())) {
-      return dateString; // Retourner la date originale si invalide
-    }
-
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 1) return "À l'instant";
-    if (diffMins < 60) return `Il y a ${diffMins}m`;
-    if (diffHours < 24) return `Il y a ${diffHours}h`;
-    if (diffDays < 7) return `Il y a ${diffDays}j`;
-    
-    return date.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
-  } catch {
-    return dateString;
-  }
-}
+const resetSearch = () => {
+  localQuery.value = '';
+  reload();
+};
 
 onMounted(() => {
   load();
@@ -211,554 +78,14 @@ onUnmounted(() => {
   padding-bottom: 60px;
 }
 
-/* Header */
-.feed-header {
-  background: transparent;
-  border-bottom: none;
-  padding: 24px 0;
-  margin-bottom: 32px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.header-top {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.title-section {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.feed-title {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-  color: #2f0538;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.live-indicator {
-  font-size: 12px;
-  color: #ff6b6b;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.article-count {
-  margin: 0;
-  font-size: 13px;
-  color: #666;
-  font-weight: 500;
-}
-
-.search-controls {
-  display: flex;
-  align-items: center;
-}
-
-.search-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  width: 280px;
-  padding: 10px 36px 10px 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.22s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #7b5ce0;
-  box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.1);
-}
-
-.search-icon {
-  position: absolute;
-  right: 12px;
-  width: 18px;
-  height: 18px;
-  opacity: 0.5;
-  pointer-events: none;
-  color: #666;
-}
-
-.clear-btn {
-  position: absolute;
-  right: 8px;
-  width: 24px;
-  height: 24px;
-  border: none;
-  background: rgba(123, 92, 224, 0.1);
-  color: #7b5ce0;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.22s ease;
-}
-
-.clear-btn:hover {
-  background: rgba(123, 92, 224, 0.2);
-}
-
-.search-controls {
-  gap: 0;
-}
-
-/* Alerts */
-.alert {
-  max-width: 1200px;
-  margin: 0 auto 24px;
-  padding: 14px 18px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-}
-
-.alert-error {
-  background: rgba(255, 107, 107, 0.1);
-  border: 1px solid rgba(255, 107, 107, 0.3);
-  color: #d32f2f;
-}
-
-.alert-icon {
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-/* Loading State */
-.loading-state {
-  text-align: center;
-  padding: 80px 20px;
-  color: #666;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 16px;
-  border: 3px solid rgba(123, 92, 224, 0.2);
-  border-top-color: #7b5ce0;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.empty-icon {
-  font-size: 64px;
-  display: block;
-  margin-bottom: 16px;
-  opacity: 0.4;
-}
-
-.empty-text {
-  font-size: 16px;
-  color: #666;
-  margin: 0 0 20px;
-}
-
-.reset-btn {
-  padding: 10px 24px;
-  background: #7b5ce0;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.22s ease;
-}
-
-.reset-btn:hover {
-  background: #6a4dc7;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(123, 92, 224, 0.3);
-}
-
-/* Articles Container */
 .articles-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/* Featured Article */
-.featured-article {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-  margin-bottom: 48px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.featured-article:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: #d0d0d0;
-}
-
-.featured-image {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  background: #f5f5f5;
-  display: block;
-}
-
-.featured-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.featured-article:hover .featured-image img {
-  transform: scale(1.05);
-}
-
-.featured-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
-  pointer-events: none;
-}
-
-.featured-image.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-}
-
-.featured-content {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
-}
-
-.featured-source {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #ff6b6b;
-}
-
-.featured-title {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #1a1a1a;
-}
-
-.featured-title a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.22s ease;
-}
-
-.featured-title a:hover {
-  color: #7b5ce0;
-}
-
-.featured-summary {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-}
-
-.featured-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding-top: 16px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.featured-time {
-  font-size: 13px;
-  color: #999;
-  font-weight: 500;
-}
-
-/* Articles Grid */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-
-.article-card {
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-.article-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: #d0d0d0;
-}
-
-.article-image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #f5f5f5;
-  display: block;
-}
-
-.article-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.article-card:hover .article-image img {
-  transform: scale(1.05);
-}
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
-  pointer-events: none;
-}
-
-.article-image.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-}
-
-.placeholder-icon {
-  font-size: 48px;
-  opacity: 0.3;
-}
-
-.article-content {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-
-.article-source {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #ff6b6b;
-}
-
-.article-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #1a1a1a;
-}
-
-.article-title a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.22s ease;
-}
-
-.article-title a:hover {
-  color: #7b5ce0;
-}
-
-.article-summary {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #555;
-  flex: 1;
-}
-
-.article-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding-top: 12px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.article-time {
-  font-size: 12px;
-  color: #999;
-  font-weight: 500;
-}
-
-.read-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: #7b5ce0;
-  text-decoration: none;
-  transition: all 0.22s ease;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.read-link:hover {
-  background: rgba(123, 92, 224, 0.1);
-  color: #6a4dc7;
-}
-
-/* Responsive */
-@media (max-width: 1100px) {
-  .featured-article {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-image {
-    height: 300px;
-  }
-
-  .articles-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .header-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .search-controls {
-    flex-direction: column;
-  }
-  
-  .search-input {
-    width: 100%;
-  }
-}
-
 @media (max-width: 680px) {
-  .featured-article {
-    grid-template-columns: 1fr;
-    margin-bottom: 32px;
-  }
-
-  .featured-image {
-    height: 240px;
-  }
-
-  .featured-content {
-    padding: 24px;
-    gap: 12px;
-  }
-
-  .featured-title {
-    font-size: 24px;
-  }
-
-  .featured-summary {
-    font-size: 14px;
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .feed-header {
-    padding: 16px 0;
-  }
-  
-  .header-top {
-    padding: 0 16px;
-  }
-  
-  .feed-title {
-    font-size: 24px;
-  }
-  
-  .article-count {
-    font-size: 12px;
-  }
-  
-  .search-input {
-    font-size: 13px;
-    padding: 8px 32px 8px 12px;
-  }
-  
-  .articles-grid {
-    padding: 0;
-  }
-
   .articles-container {
     padding: 0 16px;
-  }
-  
-  .article-content {
-    padding: 14px;
-  }
-  
-  .article-title {
-    font-size: 15px;
-  }
-  
-  .article-summary {
-    font-size: 13px;
   }
 }
 </style>
