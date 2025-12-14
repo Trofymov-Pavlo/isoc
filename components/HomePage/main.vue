@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <HeroSection />
-    <BreakingNews />
+    <AlertBar />
     <FeaturedArticle />
-    <TopStories />
+    <HighlightedArticles />
     <PodcastSection />
     <LiveUpdates />
     <AnalysisSection />
@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
 import HeroSection from './HeroSection.vue';
-import BreakingNews from './BreakingNews.vue';
+import AlertBar from './AlertBar.vue';
 import FeaturedArticle from './FeaturedArticle.vue';
-import TopStories from './TopStories.vue';
+import HighlightedArticles from './HighlightedArticles.vue';
 import PodcastSection from './PodcastSection.vue';
 import LiveUpdates from './LiveUpdates.vue';
 import AnalysisSection from './AnalysisSection.vue';
