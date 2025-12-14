@@ -1,52 +1,140 @@
-# Project Setup Guide
-------------------------------------------------------------------------------------
+# AXIOME - Média indépendant du conflit Ukraine-Russie
 
-## Scraping Backend Setup
+Architecture réstructurée avec **Backend** (Flask/Scraping) et **Frontend** (Nuxt/Vue).
 
-To run the RSS scraping scraping, you must create and activate the Python virtual environment, install scraping dependencies, and start the scraper manually.
+## 📁 Structure du projet
 
-### 1. Create the virtual environment (only once)
-python -m venv scraping/venv
+```
+ISOC/
+├── Back/              # Backend Flask + Scraping RSS
+│   ├── scraping/      # Module de scraping (RSS, parsing, filtrage)
+│   ├── venv/          # Environnement Python virtuel
+│   ├── requirements.txt
+│   └── README.md
+├── Front/             # Frontend Nuxt + Vue + Vuetify
+│   ├── components/    # Composants Vue
+│   ├── pages/         # Pages (routage auto)
+│   ├── composables/   # Logique réutilisable
+│   ├── plugins/       # Plugins Vue (Vuetify)
+│   ├── assets/        # Styles SCSS
+│   ├── public/        # Fichiers statiques
+│   ├── node_modules/  # Dépendances npm
+│   ├── package.json
+│   └── README.md
+└── README.md          # Ce fichier
+```
 
-### 2. Activate the virtual environment
-# Windows (bash)
-source scraping/venv/Scripts/activate
+## 🚀 Démarrage rapide
 
-# macOS / Linux
-source scraping/venv/bin/activate
+### Backend (Terminal 1)
 
-### 3. Install scraping dependencies
-pip install flask
-pip install flask_cors
-pip install requests
-pip install feedparser
-pip install APScheduler
-
-### 4. Start the scraping module
+```bash
+cd Back
+source venv/Scripts/activate    # Windows
+pip install -r requirements.txt # Si première fois
 python -m scraping.api
+```
 
-# IMPORTANT
-# Keep this terminal open.
-# The scraper must remain active for the website to display updated data.
-# For the website to work correctly, you must keep two terminals running:
-# 1. Terminal 1 -> scraping scraper (python -m scraping.api)
-# 2. Terminal 2 -> frontend dev server (npm run dev)
+L'API sera disponible sur `http://127.0.0.1:5000`
 
-------------------------------------------------------------------------------------
+### Frontend (Terminal 2)
 
-## Frontend Setup
-
-### Install dependencies
-npm install
-
-### Development Server
-# Starts the dev server on http://localhost:3000
+```bash
+cd Front
+npm install                     # Si première fois
 npm run dev
+```
 
-### Production Build
-npm run build
+Le site sera disponible sur `http://localhost:3000`
 
-------------------------------------------------------------------------------------
+## 📋 Prérequis
+
+- **Python 3.8+** (pour le backend)
+- **Node.js 16+** (pour le frontend)
+- **npm** ou **yarn**
+
+## 🎯 Features
+
+### Backend
+- ✅ Scraping de 50+ flux RSS français
+- ✅ Filtrage par mots-clés (Ukraine, Russie, NATO)
+- ✅ Cache 15 minutes des articles
+- ✅ Extraction d'images et auteurs
+- ✅ API REST avec CORS
+- ✅ Planification automatique du scraping
+
+### Frontend
+- ✅ Page d'accueil dynamique
+- ✅ Actualités en direct
+- ✅ Articles à la une (scraping)
+- ✅ Podcast AXIOME original
+- ✅ Vidéos d'analyse
+- ✅ Newsletter
+- ✅ Design responsive
+- ✅ Animations fluides
+
+## 👥 Équipe éditoriale
+
+- **Article principal**: Antoine TENA
+- **Podcast**: Antoine TENA, Nathan BARRACHIN, Pavel TROFYMOV
+- **Scraping/Source**: Médias français (50+ sources)
+
+## 🔗 Connexion Backend-Frontend
+
+L'URL de l'API est configurée dans `Front/composables/useArticles.ts`:
+
+```typescript
+const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
+```
+
+## 📊 Flux RSS sources
+
+Le backend récupère les articles depuis 50+ sources françaises:
+- **Généralistes**: Le Monde, Figaro, Franceinfo, Libération
+- **Internationaux**: RFI, France 24
+- **Régionaux**: Ouest-France, Le Parisien, Sud Ouest
+- **Spécialisés**: La Croix, Challenges, Les Échos
+- Et bien d'autres...
+
+Voir `Back/scraping/feeds.py` pour la liste complète.
+
+## 📝 Commits et versioning
+
+- Branch principale: `develop`
+- Features en développement: `feature/*`
+
+### Dernier merge
+- Branche `feature/config` merge de `develop`
+- Restructuration Back/Front avec Nuxt et Flask
+
+## 🔧 Dépannage
+
+### L'API ne répond pas?
+```bash
+# Vérifier que le backend est lancé
+curl http://127.0.0.1:5000/articles?q=ukraine
+```
+
+### Les articles ne s'affichent pas?
+1. Vérifier que le backend est en cours d'exécution
+2. Vérifier la console du navigateur pour les erreurs CORS
+3. Vérifier que l'URL API est correcte dans `useArticles.ts`
+
+### Les styles Vuetify ne fonctionnent pas?
+```bash
+cd Front
+npm install
+npm run dev
+```
+
+## 📚 Documentation
+
+- [Backend - README.md](Back/README.md)
+- [Frontend - README.md](Front/README.md)
+
+## 📄 License
+
+Propriétaire - ISOC Media AXIOME 2025
 
 
 

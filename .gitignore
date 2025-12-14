@@ -8,6 +8,22 @@ dist
 
 # Node dependencies
 node_modules
+Front/node_modules/
+Front/.nuxt/
+
+# Python
+venv/
+Back/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.Python
+.env
+
+# State files
+.rss_multi_fr_state.json
+Back/.rss_multi_fr_state.json
 
 # Logs
 logs
@@ -17,6 +33,10 @@ logs
 .DS_Store
 .fleet
 .idea
+.vscode
+
+# OS
+Thumbs.db
 
 # Local env files
 .env
