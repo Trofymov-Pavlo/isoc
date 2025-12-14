@@ -1,2 +1,5 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Allow: /
+
+# Sitemap (update URL if available)
+# Sitemap: https://isoc501-axiom.example/sitemap.xml
