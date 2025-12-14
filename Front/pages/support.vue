@@ -1,2 +1,3 @@
 <template>
-  <SupportForgotPassword />
+  <ForgotPassword />
+</template>
