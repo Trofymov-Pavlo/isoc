@@ -23,9 +23,6 @@
             </svg>
             <button v-else @click="localQuery = ''" class="clear-btn">×</button>
           </div>
-          <button class="refresh-btn" :disabled="loading" @click="reload" title="Actualiser">
-            <span class="refresh-icon" :class="{ spinning: loading }">↻</span>
-          </button>
         </div>
       </div>
     </header>
@@ -272,7 +269,6 @@ onUnmounted(() => {
 .search-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .search-wrapper {
@@ -328,42 +324,8 @@ onUnmounted(() => {
   background: rgba(123, 92, 224, 0.2);
 }
 
-.refresh-btn {
-  padding: 10px 14px;
-  background: transparent;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.22s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 42px;
-}
-
-.refresh-btn:hover:not(:disabled) {
-  border-color: #7b5ce0;
-  background: rgba(123, 92, 224, 0.05);
-}
-
-.refresh-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.refresh-icon {
-  font-size: 18px;
-  color: #7b5ce0;
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.refresh-icon.spinning {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.search-controls {
+  gap: 0;
 }
 
 /* Alerts */
@@ -404,6 +366,10 @@ onUnmounted(() => {
   border-top-color: #7b5ce0;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Empty State */
