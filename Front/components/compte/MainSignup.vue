@@ -94,7 +94,7 @@ const handleSubmit = async () => {
   try {
     await signup(email.value, username.value, password.value, firstName.value, lastName.value);
     setAuth(true, false);
-    await router.push('/');
+    await router.push('/mon-compte');
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Erreur lors de la création du compte';
   }

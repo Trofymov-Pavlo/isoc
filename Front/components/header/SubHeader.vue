@@ -11,7 +11,7 @@
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
-        <NuxtLink to="/connexion" class="nav-account" exact-active-class="is-active">{{ accountLabel }}</NuxtLink>
+        <NuxtLink :to="accountLink" class="nav-account" exact-active-class="is-active">{{ accountLabel }}</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">
@@ -93,6 +93,7 @@ const searchInput = ref<HTMLInputElement | null>(null);
 const searchWrapper = ref<HTMLElement | null>(null);
 const { isAuthenticated } = useAuthState();
 const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'));
+const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'));
 
 const { query, loading, error, all, load } = useArticles({ hours: 72 });
 const results = ref<CleanArticle[]>([]);
