@@ -1,6 +1,6 @@
 <template>
   <div class="site-container">
-    <HeaderHeaderMain />
+    <HeaderMain />
   </div>
 
   <HeaderSubHeader />
@@ -9,7 +9,7 @@
     <slot />
   </div>
 
-  <FooterFooterMain />
+  <FooterMain />
 </template>
 
 <style>
