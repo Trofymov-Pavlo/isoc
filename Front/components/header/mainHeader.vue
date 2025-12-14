@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="actions-row">
-                    <button class="solid-btn" type="button" title="Soutenir le média" @click="goSupport">Soutenir</button>
+                    <button class="solid-btn" type="button" title="Soutenir le média" role="link" @click.stop="goSupport">Soutenir</button>
                     <NuxtLink :to="accountLink" class="solid-btn" :title="accountLabel">{{ accountLabel }}</NuxtLink>
                 </div>
             </div>

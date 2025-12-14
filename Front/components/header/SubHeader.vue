@@ -11,6 +11,7 @@
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
+        <NuxtLink to="/support" class="nav-link" exact-active-class="is-active">Soutenir</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">

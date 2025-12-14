@@ -18,7 +18,7 @@
                 <a href="/rss.xml" class="icon-link" title="Flux RSS">
                     <v-icon icon="mdi-rss"></v-icon>
                 </a>
-                <button class="support-btn" type="button" title="Soutenir le média" @click="goSupport">Soutenir</button>
+                <button class="support-btn" type="button" title="Soutenir le média" role="link" @click.stop="goSupport">Soutenir</button>
             </div>
         </div>
     </div>
