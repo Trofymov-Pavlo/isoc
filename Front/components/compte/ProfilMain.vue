@@ -134,6 +134,64 @@
           <button @click="passwordMode = true" class="btn-password">Changer le mot de passe</button>
           <button @click="handleLogout" class="btn-logout">Se déconnecter</button>
         </div>
+
+        <!-- Preferences & activity -->
+        <div class="info-section" v-if="!editMode && !passwordMode">
+          <div class="section-header">
+            <h2>Préférences & notifications</h2>
+          </div>
+          <div class="pref-grid">
+            <div class="pref-card">
+              <div class="card-header">Newsletter</div>
+              <p class="card-text">Gérez votre abonnement aux emails Axiome.</p>
+              <div class="pill" :class="newsletterEnabled ? 'pill-on' : 'pill-off'">
+                {{ newsletterEnabled ? 'Abonnement actif' : 'Abonnement désactivé' }}
+              </div>
+              <button class="card-btn" @click="toggleNewsletter">{{ newsletterEnabled ? 'Résilier la newsletter' : "Se réabonner" }}</button>
+              <p v-if="newsletterMessage" class="note success-lite">{{ newsletterMessage }}</p>
+            </div>
+
+            <div class="pref-card">
+              <div class="card-header">Sécurité</div>
+              <ul class="card-list">
+                <li>Authentification par mot de passe (JWT).</li>
+                <li>Pensez à mettre à jour votre mot de passe régulièrement.</li>
+                <li>Les sessions inactives expirent automatiquement.</li>
+              </ul>
+              <button class="card-link" @click="passwordMode = true">Mettre à jour le mot de passe</button>
+            </div>
+
+            <div class="pref-card">
+              <div class="card-header">Sessions & activité</div>
+              <ul class="card-list">
+                <li>Connexion active sur ce navigateur.</li>
+                <li>Déconnexion possible sur tous les appareils via « Se déconnecter ».</li>
+                <li>Les jetons d’accès expirent après 1h, refresh 7j.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved articles -->
+        <div class="info-section" v-if="!editMode && !passwordMode">
+          <div class="section-header">
+            <h2>Derniers articles enregistrés</h2>
+            <NuxtLink class="link" to="/liked">Voir tous</NuxtLink>
+          </div>
+          <ul v-if="savedArticles.length" class="saved-list">
+            <li v-for="item in savedArticles" :key="item.title" class="saved-item">
+              <div class="saved-meta">
+                <p class="saved-title">{{ item.title }}</p>
+                <p class="saved-info">{{ item.category }} • {{ item.date }}</p>
+              </div>
+              <div class="saved-actions">
+                <NuxtLink :to="item.link" class="chip">Ouvrir</NuxtLink>
+                <button class="chip ghost" @click="removeSaved(item.title)">Retirer</button>
+              </div>
+            </li>
+          </ul>
+          <p v-else class="muted">Vous n'avez pas encore enregistré d'article.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -173,6 +231,14 @@ const passwordData = ref({
 const showOldPassword = ref(false);
 const showNewPassword = ref(false);
 const showConfirmPassword = ref(false);
+
+const newsletterEnabled = ref(true);
+const newsletterMessage = ref('');
+const savedArticles = ref([
+  { title: 'Analyse : Situation sur le front Est', date: '13 déc 2025', category: 'Analyse', link: '/article-en-vedette' },
+  { title: 'Podcast : Voix du terrain', date: '12 déc 2025', category: 'Podcast', link: '/podcast' },
+  { title: 'Dossier vidéo : décryptage', date: '10 déc 2025', category: 'Vidéo', link: '/video' },
+]);
 
 onMounted(async () => {
   if (!isAuthenticated.value) {
@@ -269,6 +335,18 @@ const handleLogout = async () => {
   } catch (err) {
     console.error('Erreur lors de la déconnexion', err);
   }
+};
+
+const toggleNewsletter = () => {
+  newsletterEnabled.value = !newsletterEnabled.value;
+  newsletterMessage.value = newsletterEnabled.value
+    ? 'Newsletter réactivée. Vous recevrez les prochaines publications.'
+    : 'Newsletter désactivée. Vous ne recevrez plus les emails.';
+  setTimeout(() => { newsletterMessage.value = ''; }, 2500);
+};
+
+const removeSaved = (title: string) => {
+  savedArticles.value = savedArticles.value.filter((item) => item.title !== title);
 };
 </script>
 
@@ -535,5 +613,161 @@ input:focus {
   color: #3c3;
   border-radius: 4px;
   font-size: 13px;
+}
+
+.pref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.pref-card {
+  background: #f7f7fb;
+  border-radius: 10px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+  border: 1px solid #e8e4f0;
+}
+
+.card-header {
+  font-weight: 700;
+  color: #241431;
+}
+
+.card-text {
+  margin: 0;
+  color: #4a4a55;
+  font-size: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.pill-on {
+  background: #e8f8ef;
+  color: #1b8a4d;
+  border: 1px solid #b8e6c9;
+}
+
+.pill-off {
+  background: #fff4f4;
+  color: #c0392b;
+  border: 1px solid #f3c7c1;
+}
+
+.card-btn,
+.card-link {
+  border: none;
+  background: linear-gradient(135deg, #2f0538 0%, #3a0f4f 100%);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-link {
+  background: #fff;
+  color: #6b5ca5;
+  border: 1px solid #dcd9e6;
+}
+
+.card-btn:hover,
+.card-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 14px rgba(47, 5, 56, 0.12);
+}
+
+.card-list {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 6px;
+  color: #4a4a55;
+  font-size: 14px;
+}
+
+.note {
+  margin: 0;
+  font-size: 13px;
+}
+
+.success-lite {
+  color: #1b8a4d;
+}
+
+.saved-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.saved-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f7f7fb;
+  border: 1px solid #e8e4f0;
+}
+
+.saved-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.saved-title {
+  margin: 0;
+  font-weight: 700;
+  color: #241431;
+}
+
+.saved-info {
+  margin: 0;
+  color: #6b5ca5;
+  font-size: 13px;
+}
+
+.saved-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #2f0538;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chip.ghost {
+  background: #fff;
+  color: #6b5ca5;
+  border: 1px solid #dcd9e6;
+}
+
+.muted {
+  color: #6e6585;
+  font-size: 14px;
+  margin: 0;
 }
 </style>
