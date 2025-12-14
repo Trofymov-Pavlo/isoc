@@ -18,7 +18,7 @@
                 <a href="/rss.xml" class="icon-link" title="Flux RSS">
                     <v-icon icon="mdi-rss"></v-icon>
                 </a>
-                <button class="support-btn" type="button" title="Soutenir le média">Soutenir</button>
+                <NuxtLink to="/support" class="support-btn" title="Soutenir le média">Soutenir</NuxtLink>
             </div>
         </div>
     </div>
