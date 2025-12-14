@@ -77,48 +77,21 @@
               <span class="label">Mot de passe actuel</span>
               <div class="password-field">
                 <input v-model="passwordData.oldPassword" :type="showOldPassword ? 'text' : 'password'" required />
-                <button type="button" class="toggle-password" @click="showOldPassword = !showOldPassword">
-                  <svg v-if="!showOldPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
-                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
-                    <line x1="1" y1="1" x2="23" y2="23"/>
-                  </svg>
-                </button>
+                <PasswordToggle :is-shown="showOldPassword" @toggle="showOldPassword = !showOldPassword" />
               </div>
             </label>
             <label class="field">
               <span class="label">Nouveau mot de passe</span>
               <div class="password-field">
                 <input v-model="passwordData.newPassword" :type="showNewPassword ? 'text' : 'password'" required />
-                <button type="button" class="toggle-password" @click="showNewPassword = !showNewPassword">
-                  <svg v-if="!showNewPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
-                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
-                    <line x1="1" y1="1" x2="23" y2="23"/>
-                  </svg>
-                </button>
+                <PasswordToggle :is-shown="showNewPassword" @toggle="showNewPassword = !showNewPassword" />
               </div>
             </label>
             <label class="field">
               <span class="label">Confirmer le nouveau mot de passe</span>
               <div class="password-field">
                 <input v-model="passwordData.confirmPassword" :type="showConfirmPassword ? 'text' : 'password'" required />
-                <button type="button" class="toggle-password" @click="showConfirmPassword = !showConfirmPassword">
-                  <svg v-if="!showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
-                  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
-                    <line x1="1" y1="1" x2="23" y2="23"/>
-                  </svg>
-                </button>
+                <PasswordToggle :is-shown="showConfirmPassword" @toggle="showConfirmPassword = !showConfirmPassword" />
               </div>
             </label>
             <p v-if="passwordError" class="error">{{ passwordError }}</p>
@@ -586,24 +559,6 @@ input:focus {
 .password-field input {
   flex: 1;
   padding-right: 45px;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b5ca5;
-  transition: color 0.2s ease;
-}
-
-.toggle-password:hover {
-  color: #7b5ce0;
 }
 
 .success {

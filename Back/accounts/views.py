@@ -5,11 +5,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.crypto import get_random_string
+from django.views.decorators.cache import cache_page
 from .serializers import (
     UserSerializer, SignUpSerializer, LoginSerializer,
     PasswordResetSerializer, PasswordResetConfirmSerializer,
     UpdateProfileSerializer, ChangePasswordSerializer
 )
+from .throttles import SignupRateThrottle, LoginRateThrottle, PasswordResetRateThrottle
 
 User = get_user_model()
 
@@ -19,7 +21,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[SignupRateThrottle])
     def signup(self, request):
         """Sign up a new user"""
         serializer = SignUpSerializer(data=request.data)
@@ -33,7 +35,7 @@ class AccountViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[LoginRateThrottle])
     def login(self, request):
         """Login a user"""
         serializer = LoginSerializer(data=request.data)
@@ -75,19 +77,25 @@ class AccountViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[PasswordResetRateThrottle])
     def password_reset(self, request):
         """Request password reset"""
         serializer = PasswordResetSerializer(data=request.data)
         if serializer.is_valid():
             email = serializer.validated_data.get('email')
-            user = User.objects.get(email=email)
-            reset_token = get_random_string(64)
-            user.password_reset_token = reset_token
-            user.save()
+            try:
+                user = User.objects.get(email=email)
+                reset_token = get_random_string(64)
+                user.password_reset_token = reset_token
+                user.save()
+                # In production: send reset token via email
+                # send_password_reset_email(user.email, reset_token)
+            except User.DoesNotExist:
+                # Don't reveal if email exists
+                pass
+            
             return Response({
-                'message': 'Password reset link sent to email',
-                'token': reset_token,  # In production, send via email
+                'message': 'Check your email for password reset link'
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
