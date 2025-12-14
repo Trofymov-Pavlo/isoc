@@ -18,7 +18,7 @@
                 <a href="/rss.xml" class="icon-link" title="Flux RSS">
                     <v-icon icon="mdi-rss"></v-icon>
                 </a>
-                <NuxtLink to="/support" class="support-btn" title="Soutenir le média">Soutenir</NuxtLink>
+                <button class="support-btn" type="button" title="Soutenir le média" @click="goSupport">Soutenir</button>
             </div>
         </div>
     </div>
@@ -31,6 +31,14 @@ const logo = logoIsoc
 
 function goIndex() {
   window.location.href = '/'
+}
+
+function goSupport() {
+    try {
+        // @ts-ignore Nuxt navigateTo
+        if (typeof navigateTo === 'function') { navigateTo('/support'); return }
+    } catch {}
+    window.location.href = '/support'
 }
 </script>
 

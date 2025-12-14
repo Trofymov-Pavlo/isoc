@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="actions-row">
-                    <NuxtLink to="/support" class="solid-btn" title="Soutenir le média">Soutenir</NuxtLink>
+                    <button class="solid-btn" type="button" title="Soutenir le média" @click="goSupport">Soutenir</button>
                     <NuxtLink :to="accountLink" class="solid-btn" :title="accountLabel">{{ accountLabel }}</NuxtLink>
                 </div>
             </div>
@@ -42,6 +42,15 @@
             function goIndex() {
               window.location.href = '/'
             }
+
+                        function goSupport() {
+                            try {
+                                // Prefer Nuxt navigation if available
+                                // @ts-ignore navigateTo global in Nuxt context
+                                if (typeof navigateTo === 'function') { navigateTo('/support'); return }
+                            } catch {}
+                            window.location.href = '/support'
+                        }
 </script>
 
 <style scoped>
