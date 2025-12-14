@@ -76,7 +76,7 @@ const handleSubmit = async () => {
   try {
     await login(email.value, password.value, remember.value);
     setAuth(true, remember.value);
-    await router.push('/');
+    await router.push('/mon-compte');
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Erreur de connexion';
   }
