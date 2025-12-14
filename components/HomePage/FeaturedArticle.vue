@@ -40,6 +40,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
+  transition: all 0.28s ease;
+  cursor: pointer;
+}
+
+.featured-article:hover {
+  transform: translateY(-4px);
 }
 
 .featured-image {

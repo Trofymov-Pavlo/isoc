@@ -30,7 +30,7 @@
 <style scoped>
 .podcast-section {
   padding: 48px 20px;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 
 .section-container {

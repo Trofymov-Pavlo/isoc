@@ -69,7 +69,7 @@ const liveUpdates = computed(() =>
 
 <style scoped>
 .live-updates {
-  background: #f5f5f5;
+  background: #ffffff;
   padding: 48px 20px;
   margin-bottom: 48px;
 }

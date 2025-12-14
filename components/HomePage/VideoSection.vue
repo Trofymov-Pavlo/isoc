@@ -25,7 +25,7 @@
 
 <style scoped>
 .analysis {
-  background: #f9f9f9;
+  background: #ffffff;
   padding: 48px 20px;
 }
 
