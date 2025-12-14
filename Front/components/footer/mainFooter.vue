@@ -22,7 +22,9 @@
           <ul class="link-list">
             <li><NuxtLink to="/">Accueil</NuxtLink></li>
             <li><NuxtLink to="/inLivePage">En Direct</NuxtLink></li>
-            <li><NuxtLink to="/inLivePage">Couverture Live</NuxtLink></li>
+            <li><NuxtLink to="/featuredArticle">Article en Vedette</NuxtLink></li>
+            <li><NuxtLink to="/podcast">Podcast</NuxtLink></li>
+            <li><NuxtLink to="/video">Vidéo</NuxtLink></li>
           </ul>
         </div>
 
