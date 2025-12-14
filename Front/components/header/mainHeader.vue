@@ -31,6 +31,7 @@
 
 <script setup lang="ts">
             import { computed } from 'vue'
+            import { useRouter } from 'vue-router'
             import logoIsoc from '@/assets/logoIsoc.png'
             import { useAuthState } from '~/composables/useAuthState'
 
@@ -39,17 +40,18 @@
             const accountLabel = computed(() => (isAuthenticated.value ? 'Mon compte' : 'Compte'))
             const accountLink = computed(() => (isAuthenticated.value ? '/mon-compte' : '/connexion'))
 
-            function goIndex() {
+                        const router = useRouter()
+
+                        function goIndex() {
               window.location.href = '/'
             }
 
                         function goSupport() {
                             try {
-                                // Prefer Nuxt navigation if available
-                                // @ts-ignore navigateTo global in Nuxt context
-                                if (typeof navigateTo === 'function') { navigateTo('/support'); return }
-                            } catch {}
-                            window.location.href = '/support'
+                                router.push('/support')
+                            } catch {
+                                window.location.href = '/support'
+                            }
                         }
 </script>
 

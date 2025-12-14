@@ -26,8 +26,10 @@
 
 <script setup lang="ts">
 import logoIsoc from '@/assets/logoIsoc.png'
+import { useRouter } from 'vue-router'
 
 const logo = logoIsoc
+const router = useRouter()
 
 function goIndex() {
   window.location.href = '/'
@@ -35,10 +37,10 @@ function goIndex() {
 
 function goSupport() {
     try {
-        // @ts-ignore Nuxt navigateTo
-        if (typeof navigateTo === 'function') { navigateTo('/support'); return }
-    } catch {}
-    window.location.href = '/support'
+        router.push('/support')
+    } catch {
+        window.location.href = '/support'
+    }
 }
 </script>
 
