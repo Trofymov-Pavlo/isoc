@@ -1,7 +1,8 @@
 import { ref } from 'vue';
 
 export const useAuthAPI = () => {
-  const API_BASE = 'http://localhost:8000/api/accounts';
+  const config = useRuntimeConfig();
+  const API_BASE = config.public.apiBase || 'http://localhost:8000/api/accounts';
   const loading = ref(false);
   const error = ref('');
   const user = ref(null);

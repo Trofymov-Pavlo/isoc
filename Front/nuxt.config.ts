@@ -3,12 +3,16 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-12-14',
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === 'development' },
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE || '/api/accounts',
-      donationsBase: process.env.DONATIONS_BASE || 'http://localhost:8000/api/donations'
+      // Backend API URLs - configurable par environment
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/accounts',
+      apiDonations: process.env.NUXT_PUBLIC_API_DONATIONS || 'http://localhost:8000/api/donations',
+      apiScraper: process.env.NUXT_PUBLIC_SCRAPER_BASE || 'http://localhost:5000',
+      // Feature flags
+      enableScraperIntegration: process.env.NUXT_PUBLIC_ENABLE_SCRAPER === 'true',
     }
   },
 
