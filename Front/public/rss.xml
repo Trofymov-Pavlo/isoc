@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>ISOC501 AXIOM</title>
+    <link>https://isoc501-axiom.example/</link>
+    <description>Dernières publications d'ISOC501 AXIOM</description>
+    <language>fr</language>
+    <item>
+      <title>Bienvenue sur ISOC501 AXIOM</title>
+      <link>https://isoc501-axiom.example/</link>
+      <description>Page d'accueil du site.</description>
+      <guid isPermaLink="true">https://isoc501-axiom.example/</guid>
+      <pubDate>Sat, 14 Dec 2024 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
