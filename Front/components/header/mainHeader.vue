@@ -48,6 +48,7 @@
 
                         function goSupport() {
                             try {
+                                console.debug('[Header] Soutenir clicked → navigating to /support')
                                 router.push('/support')
                             } catch {
                                 window.location.href = '/support'
@@ -113,6 +114,8 @@
     align-items: center;
     gap: 0;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -140,6 +143,8 @@
     display: flex;
     gap: 8px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .icon-link {
@@ -193,6 +198,7 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 14px rgba(47, 5, 56, 0.18);
     text-decoration: none;
+    pointer-events: auto;
 }
 
 .solid-btn:hover {

@@ -37,6 +37,7 @@ function goIndex() {
 
 function goSupport() {
     try {
+        console.debug('[Header] Soutenir clicked → navigating to /support')
         router.push('/support')
     } catch {
         window.location.href = '/support'
@@ -102,6 +103,8 @@ function goSupport() {
     align-items: center;
     gap: 0;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -117,6 +120,8 @@ function goSupport() {
     justify-content: flex-end;
     gap: 8px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .icon-link {
