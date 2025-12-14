@@ -2,14 +2,17 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-  nitro: { compatibilityDate: '2025-12-14' },
+  compatibilityDate: '2025-12-14',
+  devtools: { enabled: true },
 
   css: [
     'vuetify/styles',
     '@/assets/styles/main.scss',
     '@mdi/font/css/materialdesignicons.css'
   ],
+
+  components: [{ path: '@/components', pathPrefix: true }],
+  typescript: { strict: true },
 
   build: {
     transpile: ['vuetify']
