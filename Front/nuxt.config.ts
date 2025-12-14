@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  nitro: { compatibilityDate: '2025-10-19', },
+  nitro: { compatibilityDate: '2025-12-14' },
 
   css: [
     'vuetify/styles',
