@@ -1,3 +1,3 @@
 <template>
-  <RssRssMain />
+  <RssMain />
 </template>

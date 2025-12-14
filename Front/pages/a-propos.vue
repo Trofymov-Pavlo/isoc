@@ -1,3 +1,3 @@
 <template>
-  <AProposAProposMain />
+  <AProposMain />
 </template>
