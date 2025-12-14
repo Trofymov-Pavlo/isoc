@@ -66,6 +66,7 @@ import { ref } from 'vue';
 import { useRouter } from '#imports';
 import { useAuthState } from '~/composables/useAuthState';
 import { useAuthAPI } from '~/composables/useAuthAPI';
+import { useRateLimit } from '~/composables/useRateLimit';
 
 const email = ref('');
 const username = ref('');
@@ -80,9 +81,24 @@ const error = ref('');
 const router = useRouter();
 const { setAuth } = useAuthState();
 const { signup, loading } = useAuthAPI();
+const { checkLimit, isLockedOut, lockoutRemainingSeconds, getAttemptsRemaining } = useRateLimit({
+  maxAttempts: 3,
+  windowMs: 3600000, // 1 heure
+  lockoutMs: 1800000, // 30 minutes de blocage
+});
 
 const handleSubmit = async () => {
   error.value = '';
+
+  // Vérifier le rate limit
+  if (!checkLimit()) {
+    if (isLockedOut.value) {
+      error.value = `Trop de tentatives. Veuillez attendre ${lockoutRemainingSeconds.value}s`;
+    } else {
+      error.value = `Limite atteinte. Tentatives restantes: ${getAttemptsRemaining()}`;
+    }
+    return;
+  }
 
   if (!email.value || !username.value || !password.value || !passwordConfirm.value) {
     error.value = 'Tous les champs requis doivent être remplis.';

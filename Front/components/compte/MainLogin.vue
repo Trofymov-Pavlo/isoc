@@ -55,9 +55,24 @@ const error = ref('');
 const router = useRouter();
 const { setAuth } = useAuthState();
 const { login, loading } = useAuthAPI();
+const { checkLimit, isLockedOut, lockoutRemainingSeconds, getAttemptsRemaining } = useRateLimit({
+  maxAttempts: 5,
+  windowMs: 60000, // 1 minute
+  lockoutMs: 300000, // 5 minutes de blocage
+});
 
 const handleSubmit = async () => {
   error.value = '';
+  
+  // Vérifier le rate limit
+  if (!checkLimit()) {
+    if (isLockedOut.value) {
+      error.value = `Trop de tentatives. Veuillez attendre ${lockoutRemainingSeconds.value}s`;
+    } else {
+      error.value = `Limite atteinte. Tentatives restantes: ${getAttemptsRemaining()}`;
+    }
+    return;
+  }
   
   if (!email.value || !password.value) {
     error.value = 'Email et mot de passe requis.';
