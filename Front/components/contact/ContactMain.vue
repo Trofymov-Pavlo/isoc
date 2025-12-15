@@ -362,5 +362,4 @@ import PageHero from '~/components/shared/PageHero.vue';
   .contact-form {
     gap: 18px;
   }
-}
 </style>

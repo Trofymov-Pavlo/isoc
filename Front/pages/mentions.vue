@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <main class="legal-page">
     <PageHero
       title="Mentions Légales"
@@ -8,29 +8,24 @@
     />
 
     <section class="legal-content">
-      <div class="content-wrapper">
-        <h2>Directeur de la publication</h2>
-        <p>ISOC501 AXIOM</p>
+      <div class="legal-wrapper">
+        <h2>Mentions Légales</h2>
 
-        <h2>Hébergeur</h2>
-        <p>Ce site est hébergé chez [Hébergeur à préciser]</p>
+        <h3>Informations sur le Site</h3>
+        <p><strong>Dénomination :</strong> ISOC501 AXIOM</p>
+        <p><strong>Description :</strong> Média indépendant d'analyse et de veille sur le conflit Ukraine-Russie</p>
 
-        <h2>Développement</h2>
-        <p>Site développé avec Nuxt.js et Vue 3</p>
+        <h3>Propriété et Direction</h3>
+        <p>Ce site est une initiative éditoriale indépendante dédiée à la couverture rigoureuse et vérifiée de l'actualité.</p>
 
-        <h2>Responsabilité</h2>
-        <p>
-          Les informations présentes sur ce site sont fournies à titre informatif. 
-          Bien que nous nous efforçons de garantir l'exactitude de nos contenus, 
-          ISOC501 AXIOM ne peut être tenu responsable de toute erreur ou omission.
-        </p>
+        <h3>Hébergement</h3>
+        <p>Ce site est hébergé et maintenu dans le respect des lois applicables.</p>
 
-        <h2>Propriété intellectuelle</h2>
-        <p>
-          Tous les contenus de ce site (articles, vidéos, podcasts) sont protégés 
-          par les droits d'auteur. Toute reproduction, même partielle, est interdite 
-          sans autorisation préalable.
-        </p>
+        <h3>Propriété Intellectuelle</h3>
+        <p>Tous les contenus (textes, images, vidéos) sont la propriété d'AXIOM ou de ses contributeurs. Toute reproduction sans autorisation est interdite.</p>
+
+        <h3>Données Personnelles</h3>
+        <p>Consultez notre Politique de Confidentialité pour connaître comment nous traitons vos données.</p>
       </div>
     </section>
   </main>
@@ -52,25 +47,28 @@ import PageHero from '~/components/shared/PageHero.vue';
   padding: 48px calc(2vw) 60px;
 }
 
-.content-wrapper {
+.legal-wrapper {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.content-wrapper h2 {
-  font-size: 24px;
+.legal-wrapper h2 {
+  font-size: 28px;
   font-weight: 700;
   color: #2f0538;
-  margin: 40px 0 20px;
-  padding-bottom: 12px;
+  margin: 0 0 24px;
+  padding-bottom: 16px;
   border-bottom: 2px solid #f0f0f0;
 }
 
-.content-wrapper h2:first-child {
-  margin-top: 0;
+.legal-wrapper h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f0538;
+  margin: 32px 0 16px;
 }
 
-.content-wrapper p {
+.legal-wrapper p {
   font-size: 16px;
   line-height: 1.75;
   color: #4a4a55;

@@ -4,49 +4,33 @@
       title="Conditions d'Utilisation"
       subtitle="Conditions d'accès et d'utilisation du site"
       badge="Conditions"
-      badge-icon="📋"
+      badge-icon="���"
     />
 
     <section class="legal-content">
-      <div class="content-wrapper">
-        <h2>Acceptation des conditions</h2>
+      <div class="legal-wrapper">
+        <h2>Conditions d'Utilisation</h2>
         <p>
-          En accédant et en utilisant ce site, vous acceptez pleinement les conditions 
-          d'utilisation exposées ci-dessous. Si vous n'acceptez pas ces conditions, 
-          veuillez ne pas utiliser ce site.
+          En accédant et en utilisant ce site, vous acceptez de respecter ces conditions d'utilisation. Si vous n'acceptez pas ces termes, veuillez ne pas utiliser ce site.
         </p>
 
-        <h2>Utilisation du contenu</h2>
+        <h3>Utilisation Acceptable</h3>
+        <p>Vous vous engagez à ne pas :</p>
+        <ul>
+          <li>Utiliser le site à des fins illégales ou frauduleuses</li>
+          <li>Diffuser du contenu haineux, harcelant ou diffamatoire</li>
+          <li>Copier ou reproduire le contenu sans autorisation</li>
+          <li>Perturber le fonctionnement normal du site</li>
+        </ul>
+
+        <h3>Limitation de Responsabilité</h3>
         <p>
-          Les contenus (articles, vidéos, podcasts) sont fournis à titre informatif 
-          pour votre usage personnel. Toute utilisation commerciale ou reproduction 
-          est strictement interdite sans autorisation.
+          Le site est fourni "tel quel" sans garanties. Nous déclinons toute responsabilité pour les dommages directs ou indirects résultant de l'utilisation du site.
         </p>
 
-        <h2>Limitation de responsabilité</h2>
+        <h3>Modifications</h3>
         <p>
-          ISOC501 AXIOM décline toute responsabilité pour les dommages directs ou 
-          indirects résultant de l'accès ou de l'utilisation de ce site. Les utilisateurs 
-          utilisent le site à leurs propres risques.
-        </p>
-
-        <h2>Modification des conditions</h2>
-        <p>
-          ISOC501 AXIOM se réserve le droit de modifier ces conditions à tout moment. 
-          Les modifications entreront en vigueur immédiatement. Votre utilisation continue 
-          du site implique votre acceptation des nouvelles conditions.
-        </p>
-
-        <h2>Liens externes</h2>
-        <p>
-          Ce site peut contenir des liens vers d'autres sites. ISOC501 AXIOM n'est pas 
-          responsable du contenu de ces sites externes et ne les endosse pas.
-        </p>
-
-        <h2>Résiliation</h2>
-        <p>
-          ISOC501 AXIOM se réserve le droit de refuser le service ou de résilier 
-          l'accès à tout moment, avec ou sans préavis.
+          Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications seront effectives immédiatement après leur publication.
         </p>
       </div>
     </section>
@@ -69,28 +53,42 @@ import PageHero from '~/components/shared/PageHero.vue';
   padding: 48px calc(2vw) 60px;
 }
 
-.content-wrapper {
+.legal-wrapper {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.content-wrapper h2 {
-  font-size: 24px;
+.legal-wrapper h2 {
+  font-size: 28px;
   font-weight: 700;
   color: #2f0538;
-  margin: 40px 0 20px;
-  padding-bottom: 12px;
+  margin: 0 0 24px;
+  padding-bottom: 16px;
   border-bottom: 2px solid #f0f0f0;
 }
 
-.content-wrapper h2:first-child {
-  margin-top: 0;
+.legal-wrapper h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f0538;
+  margin: 32px 0 16px;
 }
 
-.content-wrapper p {
+.legal-wrapper p {
   font-size: 16px;
   line-height: 1.75;
   color: #4a4a55;
   margin: 0 0 16px;
+}
+
+.legal-wrapper ul {
+  margin: 16px 0 16px 24px;
+  padding: 0;
+  color: #4a4a55;
+}
+
+.legal-wrapper li {
+  margin: 8px 0;
+  line-height: 1.6;
 }
 </style>
