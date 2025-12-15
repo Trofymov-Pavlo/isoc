@@ -1,11 +1,13 @@
 <template>
-  <div class="contact-page">
-    <div class="contact-container">
-      <div class="contact-header">
-        <h1 class="contact-title">Nous contacter</h1>
-        <p class="contact-subtitle">Vos questions, vos suggestions, vos retours - tous les messages comptent</p>
-      </div>
+  <main class="contact-page">
+    <PageHero
+      title="Nous contacter"
+      subtitle="Vos questions, vos suggestions, vos retours - tous les messages comptent"
+      badge="Contact"
+      badge-icon="📧"
+    />
 
+    <div class="contact-wrapper">
       <div class="form-wrapper">
         <form class="contact-form" action="https://formsubmit.co/nathan.barrachin@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nouveau message depuis Axiome">
@@ -68,10 +70,105 @@
         </form>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
-<style scoped lang="scss">
+<script setup lang="ts">
+import PageHero from '~/components/shared/PageHero.vue';
+</script>
+
+<style scoped>
+.contact-page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.contact-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px calc(2vw) 60px;
+}
+
+.form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f0538;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-textarea {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #999;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #2f0538;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(47, 5, 56, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.submit-btn {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #2f0538 0%, #4b2faa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(47, 5, 56, 0.3);
+}
+
+@media (max-width: 680px) {
+  .contact-wrapper {
+    padding: 32px calc(2vw) 40px;
+  }
+}
+</style>
 .contact-page {
   background: linear-gradient(135deg, #f8f7fc 0%, #fafbff 100%);
   min-height: calc(100vh - 300px);
