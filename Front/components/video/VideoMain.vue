@@ -1,18 +1,41 @@
 <template>
   <main class="live-feed">
-    <VideoHeader v-model:query="localQuery" @search="filterVideos" />
+    <PageHero
+      title="Analyses & Décryptages Vidéo"
+      subtitle="Découvrez nos analyses approfondies et décryptages vidéo du conflit"
+      badge="Vidéos"
+      badge-icon="▶"
+    />
 
-    <EmptyState v-if="filteredVideos.length === 0" @reset="resetSearch" />
-    <section v-else class="articles-container">
-      <FeaturedVideo v-if="filteredVideos[0]" :video="filteredVideos[0]" />
-      <VideosGrid v-if="filteredVideos.length > 1" :videos="filteredVideos.slice(1)" />
-    </section>
+    <div class="video-content">
+      <div class="search-bar-container">
+        <div class="search-wrapper">
+          <input
+            v-model="localQuery"
+            class="search-input"
+            placeholder="Rechercher une vidéo..."
+            @keyup.enter="filterVideos"
+          />
+          <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <button v-else @click="localQuery = ''; filterVideos()" class="clear-btn">×</button>
+        </div>
+      </div>
+
+      <EmptyState v-if="filteredVideos.length === 0" @reset="resetSearch" />
+      <section v-else class="articles-container">
+        <FeaturedVideo v-if="filteredVideos[0]" :video="filteredVideos[0]" />
+        <VideosGrid v-if="filteredVideos.length > 1" :videos="filteredVideos.slice(1)" />
+      </section>
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import VideoHeader from '~/components/video/VideoHeader.vue';
+import PageHero from '~/components/shared/PageHero.vue';
 import EmptyState from '~/components/video/EmptyState.vue';
 import FeaturedVideo from '~/components/video/FeaturedVideo.vue';
 import VideosGrid from '~/components/video/VideosGrid.vue';
@@ -52,12 +75,90 @@ const resetSearch = () => {
   padding-bottom: 60px;
 }
 
+.video-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 calc(2vw);
+}
+
+.search-bar-container {
+  padding: 32px 0 24px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 32px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 38px 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  color: #333;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2f0538;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(47, 5, 56, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #999;
+  pointer-events: none;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.clear-btn:hover {
+  color: #333;
+}
+
 .articles-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
 }
+
 @media (max-width: 680px) {
-  .articles-container { padding: 0 16px; }
+  .search-wrapper {
+    max-width: 100%;
+  }
 }
 </style>
