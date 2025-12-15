@@ -76,24 +76,13 @@
           </div>
         </div>
 
-        <div v-if="form.method === 'card'" class="card-form">
-          <div class="field full">
-            <label for="don-card">Numéro de carte</label>
-            <input id="don-card" v-model="form.cardNumber" inputmode="numeric" placeholder="4242 4242 4242 4242" />
-          </div>
-          <div class="field">
-            <label for="don-exp">Expiration</label>
-            <input id="don-exp" v-model="form.cardExpiry" placeholder="MM/AA" />
-          </div>
-          <div class="field">
-            <label for="don-cvc">CVC</label>
-            <input id="don-cvc" v-model="form.cardCvc" inputmode="numeric" placeholder="123" />
-          </div>
-          <p class="note">Saisie illustrative : la capture réelle passe par un PSP (Stripe, Mollie…) que nous pourrons connecter.</p>
+        <div v-if="form.method === 'card'" class="payment-hint card-hint">
+          <p class="hint-title">Paiement carte sécurisé</p>
+          <p class="note">Vous serez redirigé vers une page Stripe Checkout sécurisée. Aucune donnée carte n'est stockée sur nos serveurs.</p>
         </div>
-        <div v-else class="paypal-hint">
-          <p class="paypal-title">Paiement PayPal</p>
-          <p class="note">Après validation, vous serez redirigé vers PayPal pour confirmer. La référence ci-dessous permettra d'associer le règlement.</p>
+        <div v-else class="payment-hint paypal-hint">
+          <p class="hint-title">Paiement PayPal</p>
+          <p class="note">Après validation, vous serez redirigé vers PayPal pour confirmer le paiement.</p>
         </div>
 
         <div class="cta-row">
@@ -155,14 +144,21 @@
   </section>
 </template>
 
+type PaymentMethod = 'card' | 'paypal';
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
 
 const runtimeConfig = useRuntimeConfig();
-const donationsBase = runtimeConfig.public.donationsBase || 'http://localhost:8000/api/donations';
+const donationsBase = runtimeConfig.public.apiDonations || runtimeConfig.public.donationsBase || 'http://localhost:8000/api/donations';
 const presetAmounts = [10, 20, 35, 50, 100];
 
 type PaymentMethod = 'card' | 'paypal';
+
+interface DonationResponse {
+  id: number;
+  reference: string;
+  method: PaymentMethod;
+}
 
 const form = reactive({
   amount: 20,
@@ -171,9 +167,6 @@ const form = reactive({
   name: '',
   email: '',
   message: '',
-  cardNumber: '',
-  cardExpiry: '',
-  cardCvc: '',
 });
 
 const loading = ref(false);
@@ -204,6 +197,12 @@ const submitDonation = async () => {
     return;
   }
 
+  if (!form.email) {
+    status.value = 'error';
+    feedback.value = 'Merci de renseigner un email pour le reçu.';
+    return;
+  }
+
   loading.value = true;
   try {
     const payload = {
@@ -215,18 +214,30 @@ const submitDonation = async () => {
       message: form.message,
     };
 
-    const data = await $fetch(donationsBase + '/', {
+    const donation = await $fetch<DonationResponse>(donationsBase + '/', {
       method: 'POST',
       body: payload,
     });
 
-    reference.value = (data as { reference?: string }).reference || '';
+    reference.value = donation.reference || '';
+
+    const checkoutEndpoint = `${donationsBase}/${donation.id}/checkout/${form.method}/`;
+    const checkout = await $fetch<{ checkout_url?: string; approval_url?: string }>(checkoutEndpoint, {
+      method: 'POST',
+    });
+
+    const redirectUrl = checkout.checkout_url || checkout.approval_url;
+    if (!redirectUrl) {
+      throw new Error('URL de paiement indisponible.');
+    }
+
     status.value = 'success';
-    feedback.value = 'Référence générée. Finalisez le paiement via le prestataire choisi.';
+    feedback.value = 'Redirection vers le paiement sécurisé en cours...';
+    window.location.href = redirectUrl;
   } catch (err) {
     console.error(err);
     status.value = 'error';
-    feedback.value = 'Impossible de créer le don pour le moment.';
+    feedback.value = 'Impossible de lancer le paiement pour le moment.';
   } finally {
     loading.value = false;
   }
@@ -264,9 +275,11 @@ const submitDonation = async () => {
 label { font-weight: 700; color: #2f0538; }
 input, textarea { border: 1px solid #e4ddff; border-radius: 10px; padding: 10px 12px; font-size: 14px; width: 100%; background: #fff; }
 textarea { resize: vertical; }
-.card-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.payment-hint { border: 1px dashed #d9d2ff; border-radius: 12px; padding: 12px; background: #fbfaff; }
+.payment-hint .hint-title { margin: 0 0 6px; font-weight: 800; color: #2f0538; }
+.payment-hint.card-hint { border-color: #c8e4ff; background: #f5faff; }
+.payment-hint.paypal-hint { border-color: #ffd8a8; background: #fff8ec; }
 .note { margin: 0; color: #6f6689; font-size: 13px; }
-.paypal-hint { border: 1px dashed #d9d2ff; border-radius: 12px; padding: 12px; background: #fbfaff; }
 .paypal-title { margin: 0 0 4px; font-weight: 700; }
 .cta-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 .amount { margin: 0; font-size: 28px; font-weight: 800; color: #2f0538; }
