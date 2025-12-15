@@ -96,6 +96,8 @@
           </button>
         </div>
 
+        <div v-if="form.method === 'paypal'" id="paypal-button-container" class="paypal-buttons"></div>
+
         <div v-if="status === 'success'" class="feedback success">
           Merci ! Référence : <strong>{{ reference }}</strong>. Suivez les instructions de paiement ci-dessus.
         </div>
@@ -150,6 +152,8 @@ import { computed, reactive, ref } from 'vue';
 
 const runtimeConfig = useRuntimeConfig();
 const donationsBase = runtimeConfig.public.apiDonations || runtimeConfig.public.donationsBase || 'http://localhost:8000/api/donations';
+const paymentsBase = runtimeConfig.public.paymentsBase || runtimeConfig.public.NUXT_PUBLIC_PAYMENTS_BASE || 'http://localhost:8000/api/payments';
+const paypalClientId = runtimeConfig.public.paypalClientId || '';
 const presetAmounts = [10, 20, 35, 50, 100];
 
 type PaymentMethod = 'card' | 'paypal';
@@ -221,19 +225,20 @@ const submitDonation = async () => {
 
     reference.value = donation.reference || '';
 
-    const checkoutEndpoint = `${donationsBase}/${donation.id}/checkout/${form.method}/`;
-    const checkout = await $fetch<{ checkout_url?: string; approval_url?: string }>(checkoutEndpoint, {
-      method: 'POST',
-    });
-
-    const redirectUrl = checkout.checkout_url || checkout.approval_url;
-    if (!redirectUrl) {
-      throw new Error('URL de paiement indisponible.');
+    if (form.method === 'card') {
+      const checkoutEndpoint = `${donationsBase}/${donation.id}/checkout/card/`;
+      const checkout = await $fetch<{ checkout_url?: string }>(checkoutEndpoint, { method: 'POST' });
+      if (!checkout.checkout_url) throw new Error('URL Stripe indisponible.');
+      status.value = 'success';
+      feedback.value = 'Redirection vers Stripe Checkout...';
+      window.location.href = checkout.checkout_url as string;
+      return;
     }
 
+    // PayPal: utiliser le SDK JS pour approuver et capturer
     status.value = 'success';
-    feedback.value = 'Redirection vers le paiement sécurisé en cours...';
-    window.location.href = redirectUrl;
+    feedback.value = 'Chargement du bouton PayPal...';
+    await renderPaypalButtons();
   } catch (err) {
     console.error(err);
     status.value = 'error';
@@ -242,6 +247,61 @@ const submitDonation = async () => {
     loading.value = false;
   }
 };
+
+async function renderPaypalButtons() {
+  // Charger dynamiquement le SDK PayPal si nécessaire
+  if (!(window as any).paypal) {
+    if (!paypalClientId) {
+      feedback.value = 'Client ID PayPal manquant.';
+      status.value = 'error';
+      return;
+    }
+    await new Promise<void>((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=EUR`;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Échec chargement SDK PayPal'));
+      document.head.appendChild(s);
+    });
+  }
+
+  const container = document.getElementById('paypal-button-container');
+  if (!container) return;
+
+  (window as any).paypal.Buttons({
+    createOrder: async () => {
+      const fd = new FormData();
+      fd.append('amount', String(resolvedAmount.value));
+      fd.append('currency', 'EUR');
+      fd.append('donor_name', form.name);
+      fd.append('donor_email', form.email);
+      fd.append('message', form.message);
+      const res = await fetch(`${paymentsBase}/paypal/create/`, { method: 'POST', body: fd });
+      const data = await res.json();
+      reference.value = data.reference || reference.value;
+      return data.orderID;
+    },
+    onApprove: async (data: any) => {
+      const fd = new FormData();
+      fd.append('orderID', data.orderID);
+      const res = await fetch(`${paymentsBase}/paypal/capture/`, { method: 'POST', body: fd });
+      const result = await res.json();
+      if (result.status === 'authorized') {
+        feedback.value = 'Paiement PayPal complété. Merci !';
+        status.value = 'success';
+        window.location.href = `/merci?ref=${encodeURIComponent(result.reference)}`;
+      } else {
+        feedback.value = 'Le paiement PayPal a échoué.';
+        status.value = 'error';
+      }
+    },
+    onError: (err: any) => {
+      console.error('Erreur PayPal', err);
+      feedback.value = 'Erreur PayPal: ' + String(err);
+      status.value = 'error';
+    }
+  }).render('#paypal-button-container');
+}
 </script>
 
 <style scoped>
