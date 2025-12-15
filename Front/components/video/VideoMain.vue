@@ -1,16 +1,9 @@
 <template>
-  <main class="video-feed">
-    <VideoHeader
-      v-model:query="localQuery"
-      @search="filterVideos"
-    />
+  <main class="live-feed">
+    <VideoHeader v-model:query="localQuery" @search="filterVideos" />
 
-    <EmptyState
-      v-if="filteredVideos.length === 0"
-      @reset="resetSearch"
-    />
-
-    <section v-else class="videos-container">
+    <EmptyState v-if="filteredVideos.length === 0" @reset="resetSearch" />
+    <section v-else class="articles-container">
       <FeaturedVideo v-if="filteredVideos[0]" :video="filteredVideos[0]" />
       <VideosGrid v-if="filteredVideos.length > 1" :videos="filteredVideos.slice(1)" />
     </section>
@@ -44,9 +37,7 @@ const filteredVideos = computed(() => {
   );
 });
 
-const filterVideos = () => {
-  // computed reacts to localQuery changes
-};
+const filterVideos = () => {};
 
 const resetSearch = () => {
   localQuery.value = '';
@@ -55,6 +46,18 @@ const resetSearch = () => {
 </script>
 
 <style scoped>
-.video-feed { min-height: 100vh; background: #fafafa; }
-.videos-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+.live-feed {
+  min-height: 100vh;
+  background: #ffffff;
+  padding-bottom: 60px;
+}
+
+.articles-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media (max-width: 680px) {
+  .articles-container { padding: 0 16px; }
+}
 </style>
