@@ -6,7 +6,9 @@ from threading import Lock
 import time
 
 from scraping.core import get_articles
-from scraping.feeds import FR_FEEDS
+from scraping.feeds import FR_FEEDS, FR_VIDEO_FEEDS
+from scraping.video import get_videos
+from scraping.archive import add_articles, add_videos, get_archive_stats
 
 # -----------------------------
 # Initialisation Flask
@@ -56,6 +58,23 @@ def _refresh_all():
             _refresh_combo(q, h, m)
         except Exception as e:
             print("⚠️ refresh error:", q, h, m, e)
+    
+    # Scrape et archive les articles
+    try:
+        articles = get_articles(FR_FEEDS, query="ukraine", since_hours=48, include_meta=True)
+        if articles:
+            add_articles(articles)
+    except Exception as e:
+        print("⚠️ Erreur archivage articles:", e)
+    
+    # Scrape et archive les vidéos
+    try:
+        videos = get_videos(FR_VIDEO_FEEDS, since_hours=48, limit=50)
+        if videos:
+            add_videos(videos)
+    except Exception as e:
+        print("⚠️ Erreur archivage vidéos:", e)
+    
     print("✅ Refresh OK")
 
 # Flask 3 : before_first_request supprimé → on initialise manuellement
@@ -100,10 +119,48 @@ def articles():
 
     try:
         data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
+        # Archive les articles récupérés
+        if data:
+            add_articles(data)
         _set_cache(key, data)
         return jsonify({"articles": data})
     except Exception as e:
         return jsonify({"articles": [], "_meta": {"error": str(e)}}), 500
+
+
+@app.get("/videos")
+def videos():
+    """
+    Endpoint pour récupérer les vidéos YouTube
+    Paramètres:
+    - hours: nombre d'heures à remonter (défaut: 48)
+    - channel: filtrer par canal YouTube spécifique (optionnel)
+    - limit: nombre max de vidéos (défaut: 30)
+    """
+    start_scheduler_once()
+    
+    hours = int(request.args.get("hours", 48))
+    channel = request.args.get("channel", None)
+    limit = int(request.args.get("limit", 30))
+    
+    try:
+        data = get_videos(FR_VIDEO_FEEDS, since_hours=hours, channel=channel, limit=limit)
+        # Archive les vidéos récupérées
+        if data:
+            add_videos(data)
+        return jsonify({"videos": data})
+    except Exception as e:
+        return jsonify({"videos": [], "_meta": {"error": str(e)}}), 500
+
+
+@app.get("/stats")
+def stats():
+    """Retourne les statistiques de l'archive"""
+    try:
+        archive_stats = get_archive_stats()
+        return jsonify(archive_stats)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 # (Optionnel) endpoint manuel d’admin pour forcer un refresh immédiat
