@@ -135,4 +135,5 @@ DONATION_CANCEL_URL = os.environ.get(
 PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET')
 PAYPAL_API_BASE = os.environ.get('PAYPAL_API_BASE', 'https://api-m.sandbox.paypal.com')
+PAYPAL_ENV = os.environ.get('PAYPAL_ENV', 'sandbox')
 
