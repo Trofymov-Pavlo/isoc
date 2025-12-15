@@ -10,9 +10,39 @@
 </script>
 
 <style scoped>
-.empty-state { max-width: 1200px; margin: 80px auto; padding: 60px 20px; text-align: center; }
-.empty-icon { font-size: 64px; display: block; margin-bottom: 20px; }
-.empty-text { font-size: 18px; color: #666; margin-bottom: 24px; }
-.reset-btn { padding: 12px 24px; border-radius: 8px; border: none; background: linear-gradient(135deg, #2f0538, #4b2faa); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-.reset-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(47, 5, 56, 0.3); }
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 20px;
+}
+
+.reset-btn {
+  padding: 10px 24px;
+  background: #2f0538;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.reset-btn:hover {
+  background: #4b2faa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 5, 56, 0.3);
+}
 </style>

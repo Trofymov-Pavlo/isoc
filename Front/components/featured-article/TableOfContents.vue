@@ -12,10 +12,57 @@
     </nav>
   </aside>
 </template>
+
 <script setup lang="ts"></script>
+
 <style scoped>
-.table-of-contents{position:sticky;top:1rem;align-self:flex-start;border:1px solid #eee;padding:1rem;border-radius:.5rem}
-.toc-title{margin:0 0 .5rem;font-weight:600}
-.toc-nav{display:flex;flex-direction:column;gap:.25rem}
-.toc-link{color:#1976d2;text-decoration:none}
+.table-of-contents {
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.toc-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2f0538;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toc-link {
+  color: #666;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+  color: #2f0538;
+  background: #f8f8f8;
+  border-left-color: #ff6b6b;
+}
+
+@media (max-width: 968px) {
+  .table-of-contents {
+    position: relative;
+    top: 0;
+    margin-bottom: 32px;
+  }
+}
 </style>
