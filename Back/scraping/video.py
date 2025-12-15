@@ -2,52 +2,55 @@
 # -*- coding: utf-8 -*-
 """
 Video scraping module
-Gère le scraping des vidéos YouTube via les flux RSS
+Utilise maintenant YouTube Data API v3 au lieu du parsing RSS
 """
 
-import json
-from typing import List, Dict, Tuple
-from datetime import datetime, timezone
-import feedparser
+from typing import List, Dict, Optional
+from datetime import datetime, timezone, timedelta
 
-from .http_state import fetch_rss_once
-from .textops import to_iso, norm_text
-from .filters import passes_filter
+from .video_api import get_all_videos
 
 
-def parse_youtube_feed(xml_bytes: bytes, channel_name: str) -> Tuple[List[Dict], List[str]]:
+def get_videos(
+    feeds_dict=None,  # Ignoré maintenant, on utilise video_api
+    since_hours: int = 24,
+    channel: Optional[str] = None,
+    limit: int = 30
+) -> List[Dict]:
     """
-    Parse un flux RSS YouTube et extrait les vidéos
-    Les flux YouTube retournent la structure suivante:
-    - title: titre de la vidéo
-    - link: URL de la vidéo
-    - published: date de publication
-    - media:thumbnail: image de la vidéo (en tant qu'attribut du media namespace)
+    Récupère les vidéos YouTube filtrées par mots-clés via API.
+    
+    Args:
+        feeds_dict: Ignoré (rétro-compatibilité)
+        since_hours: Nombre d'heures en arrière (0 = toutes les vidéos)
+        channel: Filtrer par nom de chaîne (optionnel)
+        limit: Nombre max de vidéos à retourner
+    
+    Returns:
+        Liste de dicts avec: channel, title, link, published, publishedTime, thumbnail, summary, type
     """
-    try:
-        feed = feedparser.parse(xml_bytes)
-        if feed.bozo:
-            raise RuntimeError(f"Flux YouTube mal formé pour {channel_name}")
-        
-        items = []
-        hay = []
-        
-        for entry in feed.entries:
-            title = getattr(entry, 'title', '').strip()
-            link = getattr(entry, 'link', '').strip()
-            published_struct = getattr(entry, 'published_parsed', None)
-            published_iso = to_iso(published_struct) if published_struct else ""
-            
-            # Extrait la miniature YouTube
-            # YouTube fournit media_thumbnail dans les flux RSS
-            thumbnail = None
-            if hasattr(entry, 'media_thumbnail'):
-                try:
-                    if isinstance(entry.media_thumbnail, list) and len(entry.media_thumbnail) > 0:
-                        thumbnail = entry.media_thumbnail[0].get('url')
-                    elif isinstance(entry.media_thumbnail, dict):
-                        thumbnail = entry.media_thumbnail.get('url')
-                except Exception:
+    print(f"📹 Récupération des vidéos via YouTube API...")
+    
+    # Récupère toutes les vidéos via API
+    all_videos = get_all_videos(limit_per_channel=100)
+    
+    # Filtre par date si nécessaire
+    if since_hours > 0:
+        cutoff_time = datetime.now(timezone.utc) - timedelta(hours=since_hours)
+        cutoff_ms = int(cutoff_time.timestamp() * 1000)
+        all_videos = [v for v in all_videos if (v.get("publishedTime") or 0) >= cutoff_ms]
+        print(f"✅ Après filtre {since_hours}h: {len(all_videos)} vidéos")
+    
+    # Filtre par chaîne si spécifié
+    if channel:
+        all_videos = [v for v in all_videos if v.get("channel") == channel]
+        print(f"✅ Après filtre channel '{channel}': {len(all_videos)} vidéos")
+    
+    # Limite le nombre de résultats
+    result = all_videos[:limit]
+    print(f"🎬 Retour de {len(result)} vidéos (limite: {limit})")
+    
+    return result
                     pass
             
             # Fallback: utilise le premier media_content s'il existe
