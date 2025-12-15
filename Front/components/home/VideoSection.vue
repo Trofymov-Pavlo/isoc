@@ -1,18 +1,20 @@
 <template>
   <section class="analysis">
     <div class="section-container">
-      <h2 class="section-title">Analyses & Décryptages Vidéo</h2>
-      <div class="analysis-grid">
-        <article class="analysis-card" v-for="n in 3" :key="n">
-          <div class="analysis-image">
+      <h2 class="section-title">Vidéos</h2>
+      <div v-if="loading" class="loading-state">Chargement des vidéos...</div>
+      <div v-else-if="videos.length === 0" class="empty-state">Aucune vidéo disponible</div>
+      <div v-else class="analysis-grid">
+        <article class="analysis-card" v-for="video in videos.slice(0, 3)" :key="video.link">
+          <a :href="video.link" target="_blank" rel="noopener" class="analysis-image" :style="getBackgroundStyle(video.thumbnail)">
             <div class="video-placeholder">▶</div>
-          </div>
+          </a>
           <div class="analysis-content">
             <span class="analysis-badge">Vidéo</span>
-            <h3 class="analysis-title">Analyse vidéo {{ n }}</h3>
-            <p class="analysis-author">Par les médias partenaires</p>
-            <p class="analysis-excerpt">Analyse approfondie et décryptage du conflit Ukraine-Russie.</p>
-            <NuxtLink :to="'/video'" class="video-link">▶ Regarder la vidéo</NuxtLink>
+            <h3 class="analysis-title">{{ video.title }}</h3>
+            <p class="analysis-author">{{ video.channel || 'Chaîne inconnue' }}</p>
+            <p class="analysis-excerpt">{{ truncate(video.summary, 100) }}</p>
+            <a :href="video.link" target="_blank" rel="noopener" class="video-link">▶ Regarder la vidéo</a>
           </div>
         </article>
       </div>
@@ -21,12 +23,65 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+
+interface Video {
+  channel: string;
+  title: string;
+  link: string;
+  published: string;
+  publishedTime: number;
+  thumbnail?: string;
+  summary?: string;
+}
+
+const videos = ref<Video[]>([]);
+const loading = ref(false);
+
+const getBackgroundStyle = (thumbnail?: string) => {
+  if (thumbnail) {
+    return { backgroundImage: `url('${thumbnail}')`, backgroundSize: 'cover', backgroundPosition: 'center' };
+  }
+  return { background: 'linear-gradient(135deg, #2f0538, #4b2faa)' };
+};
+
+const truncate = (text?: string, length = 100) => {
+  if (!text) return 'Analyse approfondie et décryptage du conflit Ukraine-Russie.';
+  return text.length > length ? text.substring(0, length) + '...' : text;
+};
+
+const fetchVideos = async () => {
+  loading.value = true;
+  try {
+    const res = await fetch('http://localhost:5000/videos?hours=24&limit=10');
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    videos.value = data.videos || [];
+  } catch (e) {
+    console.error('Erreur chargement vidéos:', e);
+    videos.value = [];
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  void fetchVideos();
+});
 </script>
 
 <style scoped>
 .analysis {
   background: #ffffff;
   padding: 24px 20px;
+}
+
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
 }
 
 .section-container {
@@ -83,6 +138,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .video-placeholder {

@@ -8,7 +8,7 @@ import time
 from scraping.core import get_articles
 from scraping.feeds import FR_FEEDS, FR_VIDEO_FEEDS
 from scraping.video import get_videos
-from scraping.archive import add_articles, add_videos, get_archive_stats
+from scraping.archive import add_articles, add_videos, get_archive_stats, _load_archive
 
 # -----------------------------
 # Initialisation Flask
@@ -23,8 +23,11 @@ CACHE = {}       # key -> {"ts": float, "data": [...]}
 LOCK = Lock()
 scheduler = BackgroundScheduler(daemon=True)
 
-def _cache_key(q: str, hours: int, include_meta: bool) -> str:
-    return f"q={q}|h={hours}|m={1 if include_meta else 0}"
+def _cache_key_articles(q: str, hours: int, include_meta: bool) -> str:
+    return f"articles|q={q}|h={hours}|m={1 if include_meta else 0}"
+
+def _cache_key_videos(channel: str, hours: int, limit: int) -> str:
+    return f"videos|c={channel or 'all'}|h={hours}|l={limit}"
 
 def _get_cache(key: str):
     with LOCK:
@@ -43,14 +46,14 @@ def _set_cache(key: str, data):
 def _refresh_combo(q: str, hours: int, include_meta: bool):
     # Scrape et alimente le cache pour 1 combinaison
     data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
-    _set_cache(_cache_key(q, hours, include_meta), data)
+    _set_cache(_cache_key_articles(q, hours, include_meta), data)
 
 def _refresh_all():
     """
     Liste des combinaisons à rafraîchir. Ajoute ici celles dont tu as besoin.
     """
     combos = [
-        ("ukraine",48,True),  # ta page principale
+        ("ukraine",24,True),  # ta page principale
     ]
     print("🔄 Refresh scraping (scheduled)…")
     for q, h, m in combos:
@@ -61,16 +64,18 @@ def _refresh_all():
     
     # Scrape et archive les articles
     try:
-        articles = get_articles(FR_FEEDS, query="ukraine", since_hours=48, include_meta=True)
+        articles = get_articles(FR_FEEDS, query="ukraine", since_hours=24, include_meta=True)
         if articles:
+            _set_cache(_cache_key_articles("ukraine", 24, True), articles)
             add_articles(articles)
     except Exception as e:
         print("⚠️ Erreur archivage articles:", e)
     
     # Scrape et archive les vidéos
     try:
-        videos = get_videos(FR_VIDEO_FEEDS, since_hours=48, limit=50)
+        videos = get_videos(FR_VIDEO_FEEDS, since_hours=24, limit=50)
         if videos:
+            _set_cache(_cache_key_videos(None, 24, 50), videos)
             add_videos(videos)
     except Exception as e:
         print("⚠️ Erreur archivage vidéos:", e)
@@ -109,10 +114,10 @@ def articles():
 
     # paramètres côté client
     q = request.args.get("q", "ukraine")
-    hours = int(request.args.get("hours", 48))
+    hours = int(request.args.get("hours", 24))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
-    key = _cache_key(q, hours, include_meta)
+    key = _cache_key_articles(q, hours, include_meta)
     cached = _get_cache(key)
     if cached is not None:
         return jsonify({"articles": cached})
@@ -139,18 +144,46 @@ def videos():
     """
     start_scheduler_once()
     
-    hours = int(request.args.get("hours", 48))
+    hours = int(request.args.get("hours", 24))
     channel = request.args.get("channel", None)
     limit = int(request.args.get("limit", 30))
+
+    cache_key = _cache_key_videos(channel, hours, limit)
+    cached = _get_cache(cache_key)
+    if cached is not None:
+        return jsonify({"videos": cached})
     
     try:
         data = get_videos(FR_VIDEO_FEEDS, since_hours=hours, channel=channel, limit=limit)
         # Archive les vidéos récupérées
         if data:
+            _set_cache(cache_key, data)
             add_videos(data)
         return jsonify({"videos": data})
     except Exception as e:
+        # fallback archive si dispo
+        try:
+            from scraping.archive import _load_archive
+            archive = _load_archive()
+            fallback = archive.get("videos", [])
+            if fallback:
+                return jsonify({"videos": fallback, "_meta": {"error": str(e), "source": "archive"}}), 206
+        except Exception:
+            pass
         return jsonify({"videos": [], "_meta": {"error": str(e)}}), 500
+
+
+@app.get("/archive")
+def archive():
+    """Retourne l'archive complète (articles et vidéos)"""
+    try:
+        data = _load_archive()
+        return jsonify({
+            "articles": data.get("articles", []),
+            "videos": data.get("videos", []),
+        })
+    except Exception as e:
+        return jsonify({"articles": [], "videos": [], "error": str(e)}), 500
 
 
 @app.get("/stats")

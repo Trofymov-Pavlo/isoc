@@ -183,10 +183,6 @@ FR_VIDEO_FEEDS = {
     "Warthog Defense": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2JaXg63L_VqvXN4SwF4zOQ",
     "Defense Updates": "https://www.youtube.com/feeds/videos.xml?channel_id=UCKNCbBWiMiXBVXUmUuu_dsQ",
     
-    # --- Russian/Eastern European ---
-    "TV Rain (Дождь)": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdubelOloxR3wzwJG9x8YqQ",
-    "Популярная политика": "https://www.youtube.com/feeds/videos.xml?channel_id=UC7Elc-kLydl-NAV4g204pDQ",
-    
     # --- Documentary/Nature ---
     "National Geographic": "https://www.youtube.com/feeds/videos.xml?channel_id=UCpVm7bg6pXKo1Pr6k5kxG9A",
     "Discovery Channel": "https://www.youtube.com/feeds/videos.xml?channel_id=UCqOoboPm3uhY_YXhvhmL-WA",

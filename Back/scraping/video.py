@@ -12,6 +12,7 @@ import feedparser
 
 from .http_state import fetch_rss_once
 from .textops import to_iso, norm_text
+from .filters import passes_filter
 
 
 def parse_youtube_feed(xml_bytes: bytes, channel_name: str) -> Tuple[List[Dict], List[str]]:
@@ -93,16 +94,13 @@ def fetch_all_videos(feeds: Dict[str, str], timeout: int = 20) -> Tuple[List[Dic
         try:
             xml = fetch_rss_once(url, timeout=timeout)
             if xml is None:
-                print(f"⚠️ Flux YouTube {channel_name}: aucune réponse")
                 continue
             
             videos, hay = parse_youtube_feed(xml, channel_name)
             all_videos.extend(videos)
             all_hay.extend(hay)
-            print(f"✅ {channel_name}: {len(videos)} vidéo(s) récupérée(s)")
         
         except Exception as ex:
-            print(f"❌ Erreur lecture flux {channel_name}: {ex}")
             all_videos.append({
                 "channel": channel_name,
                 "title": f"[AVERTISSEMENT] Échec de lecture du flux YouTube: {channel_name}",
@@ -115,6 +113,14 @@ def fetch_all_videos(feeds: Dict[str, str], timeout: int = 20) -> Tuple[List[Dic
             })
             all_hay.append("")
     
+    # Filtre par mots-clés (mêmes règles que les articles)
+    if all_hay:
+        filtered = []
+        for v, hay in zip(all_videos, all_hay):
+            if passes_filter(hay):
+                filtered.append(v)
+        all_videos = filtered
+
     # Tri par date de publication (plus récentes d'abord)
     all_videos = sorted(all_videos, key=lambda v: v.get("published", ""), reverse=True)
     
@@ -164,7 +170,7 @@ def within_hours_videos(videos: List[Dict], hours: int) -> List[Dict]:
 
 def collect_videos(
     feeds: Dict[str, str],
-    since_hours: int = 48,
+    since_hours: int = 24,
     channel: str = None,
     limit: int = 30,
 ) -> List[Dict]:
@@ -207,7 +213,7 @@ def collect_videos(
 
 def get_videos(
     feeds: Dict[str, str],
-    since_hours: int = 48,
+    since_hours: int = 24,
     channel: str = None,
     limit: int = 30,
 ) -> List[Dict]:

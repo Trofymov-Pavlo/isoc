@@ -7,10 +7,13 @@
           <span class="live-badge">●</span>
           En Direct
         </NuxtLink>
+        <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">
+          <span class="video-badge">●</span>
+          Vidéos
+        </NuxtLink>
         <div class="nav-divider"></div>
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>
-        <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">Analyses &amp; Decryptages video</NuxtLink>
       </nav>
       <div class="nav-right">
         <div class="search-container" :class="{ open: isSearchOpen }" ref="searchWrapper">
@@ -256,22 +259,23 @@ onBeforeUnmount(() => {
   margin: 0 auto;
 }
 
-.live-badge {
-  font-size: 14px;
+.live-badge,
+.video-badge {
+  font-size: 12px;
   color: #ff6b6b;
-  animation: pulse 1.2s ease-in-out infinite;
+  animation: pulse-red 1.4s ease-in-out infinite;
   margin-right: 6px;
 }
 
-@keyframes pulse {
+@keyframes pulse-red {
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
   }
   50% {
-    opacity: 0.4;
-    transform: scale(0.92);
+    opacity: 0.35;
+    transform: scale(0.9);
   }
 }
 

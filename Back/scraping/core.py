@@ -164,7 +164,7 @@ def run_cli(feeds: Dict[str, str], *, dump_all: bool, since_hours: int, timeout:
 # --- API helpers (réutilisables par Flask) ---
 def collect_articles(
     feeds: Dict[str, str],
-    since_hours: int = 48,
+    since_hours: int = 24,
     include_meta: bool = True,
     q: Optional[str] = None,
     source: Optional[str] = None,
@@ -226,7 +226,7 @@ def collect_articles(
 def get_articles(
     feeds: Dict[str, str],
     query: str = "ukraine",
-    since_hours: int = 48,
+    since_hours: int = 24,
     include_meta: bool = True,
 ) -> list[dict]:
     # 1) Récupération + tri + fenêtre temporelle
