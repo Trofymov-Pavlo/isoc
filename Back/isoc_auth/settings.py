@@ -121,3 +121,18 @@ CSRF_COOKIE_SAMESITE = 'Strict'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# Payments (Stripe / PayPal)
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+DONATION_SUCCESS_URL = os.environ.get(
+    'DONATION_SUCCESS_URL',
+    'http://localhost:3001/support?status=success&ref={reference}'
+)
+DONATION_CANCEL_URL = os.environ.get(
+    'DONATION_CANCEL_URL',
+    'http://localhost:3001/support?status=cancel&ref={reference}'
+)
+PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
+PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET')
+PAYPAL_API_BASE = os.environ.get('PAYPAL_API_BASE', 'https://api-m.sandbox.paypal.com')
+
