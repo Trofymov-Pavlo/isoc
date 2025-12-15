@@ -26,7 +26,7 @@
             <input v-model="remember" type="checkbox" name="remember" />
             <span>Se souvenir de moi</span>
           </label>
-          <NuxtLink class="link" to="/support">Mot de passe oublié ?</NuxtLink>
+          <span></span>
         </div>
 
         <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Connexion en cours...' : 'Se connecter' }}</button>

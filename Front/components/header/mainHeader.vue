@@ -21,7 +21,6 @@
                     </a>
                 </div>
                 <div class="actions-row">
-                    <a href="/support" class="solid-btn" title="Soutenir le média">Soutenir</a>
                     <NuxtLink :to="accountLink" class="solid-btn" :title="accountLabel">{{ accountLabel }}</NuxtLink>
                 </div>
             </div>
@@ -221,13 +220,11 @@ function goIndex() {
     .logo { width: 150px; }
 
     .icon-link { width: 30px; height: 30px; }
-    .support-btn { padding: 6px 8px; font-size: 12px; }
 }
 
 @media (max-width: 480px) {
     .main-bar { gap: 8px; }
     .main-left { gap: 6px; font-size: 10px; }
     .tagline { display: none; }
-    .support-btn { width: 100%; text-align: center; padding: 6px 8px; }
 }
 </style>
