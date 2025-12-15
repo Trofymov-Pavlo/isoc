@@ -89,11 +89,12 @@ def within_hours(entries: List[Dict], hours: int) -> List[Dict]:
 
 
 # ----------------- Orchestration -----------------
-def fetch_all(feeds: Dict[str, str], timeout: int = 20) -> Tuple[List[Dict], List[str]]:
+def fetch_all(feeds: Dict[str, str], timeout: int = 8) -> Tuple[List[Dict], List[str]]:
     all_items: List[Dict] = []
     all_hay: List[str] = []
     for name, url in feeds.items():
         try:
+            print(f"➡️ RSS {name} ...", flush=True)
             xml = fetch_rss_once(url, timeout=timeout)
             if xml is None:
                 continue
@@ -101,6 +102,7 @@ def fetch_all(feeds: Dict[str, str], timeout: int = 20) -> Tuple[List[Dict], Lis
             all_items.extend(items)
             all_hay.extend(hay)
         except Exception as ex:
+            print(f"⚠️ RSS erreur {name}: {ex}", flush=True)
             all_items.append({
                 "source": name,
                 "title": f"[AVERTISSEMENT] Échec de lecture du flux: {name}",
@@ -169,8 +171,9 @@ def collect_articles(
     q: Optional[str] = None,
     source: Optional[str] = None,
     limit: Optional[int] = 30,
+    timeout: int = 8,
 ) -> list[dict]:
-    entries, _hay = fetch_all(feeds, timeout=20)
+    entries, _hay = fetch_all(feeds, timeout=timeout)
 
     if since_hours and since_hours > 0:
         entries = within_hours(entries, since_hours)
@@ -220,6 +223,13 @@ def collect_articles(
         except Exception:
             e["publishedTime"] = None
 
+    # Archivage immédiat
+    try:
+        from scraping.archive import add_articles
+        add_articles(filtered)
+    except Exception as e:
+        print(f"⚠️ Archivage articles (collect_articles) échoué: {e}")
+
     return filtered
 
 
@@ -228,9 +238,10 @@ def get_articles(
     query: str = "ukraine",
     since_hours: int = 24,
     include_meta: bool = True,
+    timeout: int = 8,
 ) -> list[dict]:
     # 1) Récupération + tri + fenêtre temporelle
-    entries, _hay = fetch_all(feeds, timeout=20)
+    entries, _hay = fetch_all(feeds, timeout=timeout)
     entries = deduplicate(sort_by_published_desc(entries))
     if since_hours and since_hours > 0:
         entries = within_hours(entries, since_hours)
@@ -315,5 +326,12 @@ def get_articles(
                 e["publishedTime"] = None
         except Exception:
             e["publishedTime"] = None
+
+    # Archivage immédiat
+    try:
+        from scraping.archive import add_articles
+        add_articles(filtered)
+    except Exception as e:
+        print(f"⚠️ Archivage articles (get_articles) échoué: {e}")
 
     return filtered

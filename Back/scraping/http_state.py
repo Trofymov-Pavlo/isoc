@@ -14,6 +14,8 @@ def new_session() -> requests.Session:
         "Connection": "keep-alive",
         "Referer": "https://example.org/",
     })
+    # Certains flux ont des certificats non standards → désactive la vérification pour éviter les blocages
+    s.verify = False
     return s
 
 def load_state() -> Dict[str, Dict[str, str]]:
@@ -31,7 +33,7 @@ def save_state(state: Dict[str, Dict[str, str]]):
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
 
-def fetch_rss_once(url: str, timeout: int = 20) -> Optional[bytes]:
+def fetch_rss_once(url: str, timeout: int = 8) -> Optional[bytes]:
     """
     Télécharge un flux RSS avec ETag/Last-Modified + retries.
     - Retourne None si 304 (Not Modified)
@@ -47,13 +49,14 @@ def fetch_rss_once(url: str, timeout: int = 20) -> Optional[bytes]:
     if url_state.get("last_modified"):
         headers["If-Modified-Since"] = url_state["last_modified"]
 
-    attempts = 3
+    attempts = 1  # réduit pour ne pas bloquer le démarrage
     backoff = 1.5
 
     last_err: Exception | None = None
     for i in range(attempts):
         try:
-            r = sess.get(url, headers=headers, timeout=timeout)
+            # Timeout tuple: connexion 3s, lecture 'timeout' secondes pour éviter les blocages SSL
+            r = sess.get(url, headers=headers, timeout=(3, timeout))
             if r.status_code == 304:
                 return None
 

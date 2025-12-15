@@ -62,23 +62,20 @@ def _refresh_all():
         except Exception as e:
             print("⚠️ refresh error:", q, h, m, e)
     
-    # Scrape et archive les articles
+    # Scrape et met en cache (archivage maintenant géré dans core/video)
     try:
         articles = get_articles(FR_FEEDS, query="ukraine", since_hours=24, include_meta=True)
         if articles:
             _set_cache(_cache_key_articles("ukraine", 24, True), articles)
-            add_articles(articles)
     except Exception as e:
-        print("⚠️ Erreur archivage articles:", e)
+        print("⚠️ Erreur rafraîchissement articles:", e)
     
-    # Scrape et archive les vidéos
     try:
-        videos = get_videos(FR_VIDEO_FEEDS, since_hours=24, limit=50)
+        videos = get_videos(FR_VIDEO_FEEDS, since_hours=0, limit=50)
         if videos:
-            _set_cache(_cache_key_videos(None, 24, 50), videos)
-            add_videos(videos)
+            _set_cache(_cache_key_videos(None, 0, 50), videos)
     except Exception as e:
-        print("⚠️ Erreur archivage vidéos:", e)
+        print("⚠️ Erreur rafraîchissement vidéos:", e)
     
     print("✅ Refresh OK")
 
@@ -124,9 +121,6 @@ def articles():
 
     try:
         data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
-        # Archive les articles récupérés
-        if data:
-            add_articles(data)
         _set_cache(key, data)
         return jsonify({"articles": data})
     except Exception as e:
@@ -144,7 +138,7 @@ def videos():
     """
     start_scheduler_once()
     
-    hours = int(request.args.get("hours", 24))
+    hours = int(request.args.get("hours", 0))
     channel = request.args.get("channel", None)
     limit = int(request.args.get("limit", 30))
 
@@ -155,10 +149,8 @@ def videos():
     
     try:
         data = get_videos(FR_VIDEO_FEEDS, since_hours=hours, channel=channel, limit=limit)
-        # Archive les vidéos récupérées
         if data:
             _set_cache(cache_key, data)
-            add_videos(data)
         return jsonify({"videos": data})
     except Exception as e:
         # fallback archive si dispo

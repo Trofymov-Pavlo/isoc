@@ -59,7 +59,7 @@ def get_uploads_playlist_id(channel_id: str) -> str:
         "part": "contentDetails",
         "id": channel_id,
         "key": API_KEY
-    }, timeout=10)
+    }, timeout=(5, 10))
     r.raise_for_status()
     items = r.json().get("items", [])
     if not items:
@@ -89,7 +89,8 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
     page = 0
     while True:
         try:
-            r = requests.get(f"{YTB_API}/playlistItems", params=params, timeout=10)
+            # Timeout tuple: 5s connexion, 10s lecture pour éviter les blocages
+            r = requests.get(f"{YTB_API}/playlistItems", params=params, timeout=(5, 10))
             r.raise_for_status()
             data = r.json()
 
