@@ -51,13 +51,6 @@ def get_videos(
     print(f"🎬 Retour de {len(result)} vidéos (limite: {limit})")
     
     return result
-                    pass
-            
-            # Fallback: utilise le premier media_content s'il existe
-            if not thumbnail and hasattr(entry, 'media_content'):
-                try:
-                    if isinstance(entry.media_content, list) and len(entry.media_content) > 0:
-                        thumbnail = entry.media_content[0].get('url')
                 except Exception:
                     pass
             
