@@ -71,9 +71,19 @@ import RelatedGrid from './RelatedGrid.vue'
 </script>
 
 <style scoped>
-.featured-article-page{max-width:1100px;margin:2rem auto;padding:1rem}
-.article-image-section{display:flex;justify-content:center;margin:1rem 0}
-.featured-image{max-width:240px}
-.content-container{display:grid;grid-template-columns:280px 1fr;gap:2rem}
-.main-content{min-width:0}
+.featured-article-page {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #ffffff;
+}
+.article-image-section { display: flex; justify-content: center; margin: 1rem 0; }
+.featured-image { max-width: 240px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); }
+.content-container { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
+.main-content { min-width: 0; }
+
+/* Harmonize with site visuals */
+.section-title { font-size: 22px; color: #2f0538; margin: 0 0 12px; }
+article p { color: #4a4a55; line-height: 1.6; }
+ul { padding-left: 18px; }
 </style>
