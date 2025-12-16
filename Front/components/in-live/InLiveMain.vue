@@ -22,7 +22,7 @@
           </svg>
           <button v-else @click="localQuery = ''; reload()" class="clear-btn">×</button>
         </div>
-        <div class="update-section">
+        <div class="sort-section">
           <span class="update-time">Mis à jour à {{ updateTime }}</span>
         </div>
       </div>
@@ -129,11 +129,15 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 24px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* counters removed */
@@ -141,14 +145,14 @@ onUnmounted(() => {
 .search-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   order: 0;
 }
 
-.update-section {
+.sort-section {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: flex-end;
   min-width: 100px;
   order: 1;
 }
