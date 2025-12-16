@@ -35,9 +35,15 @@
           <time v-if="article.published" class="article-time">
             {{ formatTime(article.published) }}
           </time>
-          <a :href="article.link" target="_blank" rel="noopener" class="read-link">
-            Lire →
-          </a>
+          <div class="footer-actions">
+            <a :href="article.link" target="_blank" rel="noopener" class="read-link">
+              Lire →
+            </a>
+            <LikeButton 
+              :is-liked="isArticleLiked(article.link)" 
+              @toggle="toggleLike(article.link)"
+            />
+          </div>
         </div>
       </div>
     </article>
@@ -45,6 +51,10 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useLiked } from '~/composables/useLiked';
+import LikeButton from '~/components/shared/LikeButton.vue';
+
 interface Article {
   title: string;
   link: string;
@@ -56,6 +66,11 @@ interface Article {
 }
 
 const props = defineProps<{ articles: Article[] }>();
+const { likedArticles, toggleLike } = useLiked();
+
+const isArticleLiked = (link: string): boolean => {
+  return likedArticles.value.has(link);
+};
 
 const truncate = (text: string, max: number): string => {
   if (!text) return '';
@@ -250,6 +265,12 @@ const formatTime = (dateString?: string): string => {
   font-size: 12px;
   color: #999;
   font-weight: 500;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .read-link {

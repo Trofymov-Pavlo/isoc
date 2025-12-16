@@ -41,11 +41,12 @@
 
         <!-- Legal -->
         <div class="col">
-          <h4 class="col-title">Légal</h4>
+          <h4 class="col-title">À Propos</h4>
           <ul class="link-list">
-            <li><a href="#">Mentions</a></li>
-            <li><a href="#">Conditions</a></li>
-            <li><a href="#">Confidentialité</a></li>
+            <li><NuxtLink to="/conditions">Conditions Générales</NuxtLink></li>
+            <li><NuxtLink to="/donnees-personnelles">Données Personnelles</NuxtLink></li>
+            <li><NuxtLink to="/mentions">Mentions Légales</NuxtLink></li>
+            <li><NuxtLink to="/cookies">Cookies</NuxtLink></li>
           </ul>
         </div>
       </div>

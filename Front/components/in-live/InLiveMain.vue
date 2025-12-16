@@ -130,7 +130,7 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 24px;
   border-bottom: 1px solid #f0f0f0;
@@ -138,21 +138,23 @@ onUnmounted(() => {
 }
 
 .counter-spacer {
-  min-width: 120px;
+  min-width: 100px;
+  order: -1;
 }
 
 .search-wrapper {
   position: relative;
   width: 100%;
   max-width: 400px;
-  flex-shrink: 0;
+  order: 0;
 }
 
 .update-section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  min-width: 120px;
+  min-width: 100px;
+  order: 1;
 }
 
 .search-input {

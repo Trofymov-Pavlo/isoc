@@ -1,9 +1,9 @@
 <template>
   <main class="articles-page">
     <PageHero
-      title="Archive complète"
+      title="Archive article"
       subtitle="Tous les articles sur le conflit Ukraine-Russie"
-      badge="Articles"
+      badge="Article"
     />
 
     <div class="articles-content">
@@ -76,6 +76,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { usePagination } from '@/composables/usePagination';
+import { compareAlphabetic } from '@/utils/sortUtils';
 import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
@@ -114,13 +115,13 @@ const filteredArticles = computed(() => {
       sorted.sort((a, b) => (a.publishedTime || 0) - (b.publishedTime || 0));
       break;
     case 'title-asc':
-      sorted.sort((a, b) => a.title.localeCompare(b.title));
+      sorted.sort((a, b) => compareAlphabetic(a.title, b.title));
       break;
     case 'title-desc':
-      sorted.sort((a, b) => b.title.localeCompare(a.title));
+      sorted.sort((a, b) => compareAlphabetic(b.title, a.title));
       break;
     case 'source-asc':
-      sorted.sort((a, b) => (a.source || '').localeCompare(b.source || ''));
+      sorted.sort((a, b) => compareAlphabetic(a.source || '', b.source || ''));
       break;
   }
   
@@ -176,7 +177,7 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 24px;
   border-bottom: 1px solid #f0f0f0;
@@ -187,7 +188,8 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-width: 120px;
+  min-width: 100px;
+  order: -1;
 }
 
 .counter-label {
@@ -212,7 +214,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 200px;
+  min-width: 100px;
+  order: 1;
 }
 
 .sort-label {
@@ -251,7 +254,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   max-width: 400px;
-  flex-shrink: 0;
+  order: 0;
 }
 
 .search-input {
