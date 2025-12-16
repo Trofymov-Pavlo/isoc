@@ -222,9 +222,6 @@ onUnmounted(() => {
   min-width: 100px;
   order: -1;
 }
-  align-items: flex-start;
-  min-width: 120px;
-}
 
 .counter-label {
   font-size: 12px;
