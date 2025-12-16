@@ -11,6 +11,7 @@ export interface Video {
   summary?: string;
   type: string;
   archived_at?: string;
+  source?: string; // Add for type consistency with articles
 }
 
 export const useVideos = () => {

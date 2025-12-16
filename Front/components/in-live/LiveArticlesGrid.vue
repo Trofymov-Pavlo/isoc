@@ -66,10 +66,10 @@ interface Article {
 }
 
 const props = defineProps<{ articles: Article[] }>();
-const { likedArticles, toggleLike } = useLiked();
+const { likedItems, toggleLike } = useLiked();
 
 const isArticleLiked = (link: string): boolean => {
-  return likedArticles.value.has(link);
+  return likedItems.value.has(link);
 };
 
 const truncate = (text: string, max: number): string => {

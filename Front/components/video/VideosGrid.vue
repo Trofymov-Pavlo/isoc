@@ -65,14 +65,10 @@ interface VideoItem {
 }
 
 const props = defineProps<{ videos: VideoItem[] }>();
-const { likedVideos, toggleLike: toggleVideoLike } = useLiked();
+const { likedItems, toggleLike } = useLiked();
 
 const isVideoLiked = (link: string): boolean => {
-  return likedVideos.value.has(link);
-};
-
-const toggleLike = (link: string) => {
-  toggleVideoLike(link);
+  return likedItems.value.has(link);
 };
 
 const truncate = (text: string, max: number): string => {

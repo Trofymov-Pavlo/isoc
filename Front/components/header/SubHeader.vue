@@ -60,7 +60,8 @@
                   <a :href="item.link" target="_blank" rel="noopener" class="result-link">
                     <span class="result-type">{{ item.type === 'video' ? '▶ Vidéo' : '📄 Article' }}</span>
                     <span class="result-title">{{ item.title }}</span>
-                    <span class="result-meta">{{ item.type === 'video' ? (item.channel || 'Chaîne inconnue') : (item.source || 'Source inconnue') }}</span>
+                    <span class="result-meta" v-if="item.type === 'video'">{{ (item as any)['channel'] || 'Chaîne inconnue' }}</span>
+                    <span class="result-meta" v-else>{{ (item as any)['source'] || 'Source inconnue' }}</span>
                   </a>
                 </li>
               </ul>
@@ -137,19 +138,19 @@ const results = computed(() => {
       (a.source ?? '').toLowerCase().includes(term)
     )
     .slice(0, 4)
-    .map(a => ({ ...a, type: 'article' }));
+    .map(a => ({ ...a, type: 'article' as const }));
 
   // Search in videos
   const videoResults = videos.value
     .filter(v =>
       v.title.toLowerCase().includes(term) ||
-      (v.description ?? '').toLowerCase().includes(term) ||
+      (v.summary ?? '').toLowerCase().includes(term) ||
       (v.channel ?? '').toLowerCase().includes(term)
     )
     .slice(0, 4)
-    .map(v => ({ ...v, type: 'video' }));
+    .map(v => ({ ...v, type: 'video' as const }));
 
-  return [...articleResults, ...videoResults];
+  return [...articleResults, ...videoResults] as Array<any>;
 });
 
 function toggleSearch() {
