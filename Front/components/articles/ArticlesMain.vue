@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
@@ -80,8 +80,16 @@ const resetSearch = () => {
   localQuery.value = '';
 };
 
+let refreshInterval: number | null = null;
+
 onMounted(() => {
   load();
+  // Auto-refresh toutes les 5 minutes pour recharger archive.json
+  refreshInterval = window.setInterval(load, 5 * 60 * 1000);
+});
+
+onUnmounted(() => {
+  if (refreshInterval) clearInterval(refreshInterval);
 });
 </script>
 

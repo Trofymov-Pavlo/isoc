@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import PageHero from '~/components/shared/PageHero.vue';
 import EmptyState from '~/components/video/EmptyState.vue';
 import FeaturedVideo from '~/components/video/FeaturedVideo.vue';
@@ -117,6 +117,16 @@ const loadVideos = async () => {
 
 onMounted(() => {
   loadVideos();
+});
+
+let refreshInterval: number | null = null;
+onMounted(() => {
+  // Déjà un premier chargement via loadVideos()
+  refreshInterval = window.setInterval(() => loadVideos(), 5 * 60 * 1000);
+});
+
+onUnmounted(() => {
+  if (refreshInterval) clearInterval(refreshInterval);
 });
 </script>
 

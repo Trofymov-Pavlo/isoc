@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { useArticles } from '@/composables/useArticles';
+import { useArchiveFeed } from '@/composables/useArchiveFeed';
 import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
 import LiveAlert from '~/components/in-live/LiveAlert.vue';
@@ -47,12 +47,7 @@ import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
 import LiveEmptyState from '~/components/in-live/LiveEmptyState.vue';
 import LiveLoading from '~/components/in-live/LiveLoading.vue';
 
-const { all, loading, error, load } = useArticles({
-  apiBase: 'http://127.0.0.1:5000',
-  query: '', // Pas de filtre supplémentaire, le backend filtre déjà avec keywords.py
-  hours: 24, // Articles de moins de 24h
-  meta: 1,
-});
+const { items, loading, error, load } = useArchiveFeed();
 
 const localQuery = ref('');
 let refreshInterval: number | null = null;
@@ -66,19 +61,31 @@ const filtered = computed(() => {
   const now = Date.now();
   const twentyFourHoursAgo = now - (24 * 60 * 60 * 1000);
   
+  console.log(`⏰ Filtre 24h: now=${now}, cutoff=${twentyFourHoursAgo}`);
+  console.log(`📦 Items total avant filtre: ${items.value.length}`);
+  
   // Filtrer par date (dernières 24h)
-  let result = all.value.filter(a => {
-    const articleTime = a.publishedTime || 0;
-    return articleTime >= twentyFourHoursAgo;
+  let result = items.value.filter(item => {
+    const publishedTime = item.publishedTime || 0;
+    const isRecent = publishedTime >= twentyFourHoursAgo;
+    if (!isRecent && item.type === 'video') {
+      console.log(`⏭️ Vidéo filtrée (trop ancienne):`, item.title.substring(0, 40), publishedTime, '<', twentyFourHoursAgo);
+    }
+    return isRecent;
   });
+  
+  const articlesCount = result.filter(r => r.type === 'article').length;
+  const videosCount = result.filter(r => r.type === 'video').length;
+  
+  console.log(`🔍 En direct: ${result.length} items <24h (${articlesCount} articles, ${videosCount} vidéos)`);
   
   // Filtrer par recherche si une query existe
   const query = localQuery.value.trim().toLowerCase();
   if (query) {
-    result = result.filter(a =>
-      a.title.toLowerCase().includes(query) ||
-      (a.summary ?? '').toLowerCase().includes(query) ||
-      (a.source ?? '').toLowerCase().includes(query)
+    result = result.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      (item.summary ?? '').toLowerCase().includes(query) ||
+      (item.source ?? '').toLowerCase().includes(query)
     );
   }
   

@@ -7,6 +7,7 @@ import os
 import time
 import requests
 from datetime import datetime, timezone
+from typing import Optional
 from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 
 # Désactiver les warnings SSL
@@ -71,18 +72,22 @@ def get_uploads_playlist_id(channel_id: str) -> str:
     return items[0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
 
-def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 50, stop_after_match: int = 5) -> list:
+def fetch_channel_videos(
+    channel_name: str,
+    channel_id: str,
+    max_results: int = 50,
+) -> list:
     """
-    Récupère les vidéos d'une chaîne qui matchent nos mots-clés.
+    Récupère TOUTES les vidéos d'une chaîne qui matchent nos mots-clés.
+    AUCUNE limite artificielle - scrape jusqu'à épuisement des vidéos matchantes.
     
     Args:
         channel_name: Nom de la chaîne
         channel_id: ID YouTube de la chaîne
         max_results: Nombre max de vidéos à récupérer de l'API par page (50 max)
-        stop_after_match: Arrête après avoir trouvé ce nombre de vidéos matchantes
     
     Returns:
-        Liste de vidéos qui matchent les mots-clés
+        TOUTES les vidéos qui matchent les mots-clés
     """
     try:
         uploads_id = get_uploads_playlist_id(channel_id)
@@ -99,6 +104,7 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
     }
 
     page = 0
+
     while True:
         try:
             # Timeout tuple: 5s connexion, 10s lecture pour éviter les blocages
@@ -139,10 +145,6 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
                     "summary": snippet.get("description", "")[:300],
                     "type": "youtube",
                 })
-                
-                # Arrêter si on a assez de vidéos matchantes
-                if len(videos) >= stop_after_match:
-                    return videos
 
             # Pagination
             token = data.get("nextPageToken")
@@ -160,24 +162,31 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
     return videos
 
 
-def get_all_videos(limit_per_channel: int = 50, stop_after_match: int = 5) -> list:
+def get_all_videos(limit_per_channel: int = 50) -> list:
     """
-    Récupère les vidéos de toutes les chaînes configurées.
+    Récupère TOUTES les vidéos de toutes les chaînes configurées.
+    AUCUNE limite artificielle - seul filtre : les mots-clés.
     
     Args:
-        limit_per_channel: Nombre max de vidéos à récupérer par channel
-        stop_after_match: Arrête après avoir trouvé ce nombre de vidéos matchantes par channel
+        limit_per_channel: Taille de page API (max 50)
     
     Returns:
-        Liste de dicts avec channel, title, link, published, etc.
+        TOUTES les vidéos qui matchent les keywords, tous channels confondus
     """
     all_videos = []
     
     for channel_name, channel_id in YOUTUBE_CHANNELS.items():
         print(f"🔍 Scraping {channel_name}...")
-        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel, stop_after_match=stop_after_match)
+        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel)
         all_videos.extend(videos)
         print(f"✅ {channel_name}: {len(videos)} vidéos matchent les mots-clés")
+        # Archivage immédiat par chaîne avant de passer à la suivante
+        if videos:
+            try:
+                from scraping.archive import add_videos
+                add_videos(videos)
+            except Exception as e:
+                print(f"⚠️ Archivage pour {channel_name} échoué: {e}")
         time.sleep(0.2)  # rate limiting entre chaînes
 
     # Trier par date décroissante
@@ -188,7 +197,7 @@ def get_all_videos(limit_per_channel: int = 50, stop_after_match: int = 5) -> li
 
 if __name__ == "__main__":
     # Test
-    videos = get_all_videos(limit_per_channel=20)
-    print(f"\n🎬 Total: {len(videos)} vidéos filtrées")
-    for v in videos[:5]:
+    videos = get_all_videos(limit_per_channel=50)
+    print(f"\n🎬 Total: {len(videos)} vidéos matchant les keywords")
+    for v in videos[:10]:
         print(f"  - {v['channel']}: {v['title'][:60]}")

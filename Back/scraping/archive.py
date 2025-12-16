@@ -12,8 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 import threading
 
-# Chemin vers le fichier archive
-ARCHIVE_FILE = Path(__file__).parent / "archive.json"
+# Chemin vers le fichier archive dans Front/public pour que Nuxt puisse le lire
+ARCHIVE_FILE = Path(__file__).parent.parent.parent / "Front" / "public" / "archive.json"
 ARCHIVE_LOCK = threading.Lock()
 
 
@@ -37,6 +37,8 @@ def _load_archive() -> Dict[str, List[Dict]]:
                 data["articles"] = []
             if "videos" not in data:
                 data["videos"] = []
+            data["articles"] = _sort_entries(data.get("articles", []))
+            data["videos"] = _sort_entries(data.get("videos", []))
             return data
     except Exception as e:
         print(f"⚠️ Erreur lors de la lecture de l'archive: {e}")
@@ -52,6 +54,38 @@ def _save_archive(data: Dict[str, List[Dict]]):
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"❌ Erreur lors de la sauvegarde de l'archive: {e}")
+
+
+def _to_timestamp(entry: Dict) -> int:
+    """Retourne un timestamp (ms) basé sur published/publishedTime/archived_at."""
+    if not entry:
+        return 0
+
+    try:
+        pt = entry.get("publishedTime")
+        if pt is not None:
+            return int(pt)
+    except Exception:
+        pass
+
+    for key in ("published", "archived_at", "archivedAt"):
+        iso = entry.get(key)
+        if not iso:
+            continue
+        try:
+            dt = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return int(dt.timestamp() * 1000)
+        except Exception:
+            continue
+
+    return 0
+
+
+def _sort_entries(entries: List[Dict]) -> List[Dict]:
+    """Trie les entrées par date décroissante sans supprimer les anciens éléments."""
+    return sorted(entries, key=_to_timestamp, reverse=True)
 
 
 def _is_duplicate(item: Dict, existing_list: List[Dict]) -> bool:
@@ -83,10 +117,10 @@ def add_articles(articles: List[Dict]):
                 # Ajoute un timestamp de sauvegarde
                 article_copy = article.copy()
                 article_copy["archived_at"] = datetime.now(timezone.utc).isoformat()
-                existing_articles.insert(0, article_copy)  # Insère au début (plus récent en premier)
+                existing_articles.append(article_copy)
                 added_count += 1
         
-        archive["articles"] = existing_articles
+        archive["articles"] = _sort_entries(existing_articles)
         _save_archive(archive)
         
         if added_count > 0:
@@ -112,10 +146,10 @@ def add_videos(videos: List[Dict]):
                 # Ajoute un timestamp de sauvegarde
                 video_copy = video.copy()
                 video_copy["archived_at"] = datetime.now(timezone.utc).isoformat()
-                existing_videos.insert(0, video_copy)  # Insère au début
+                existing_videos.append(video_copy)
                 added_count += 1
         
-        archive["videos"] = existing_videos
+        archive["videos"] = _sort_entries(existing_videos)
         _save_archive(archive)
         
         if added_count > 0:

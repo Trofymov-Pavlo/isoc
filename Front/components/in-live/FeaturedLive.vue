@@ -6,8 +6,12 @@
       target="_blank"
       rel="noopener"
       class="featured-image"
+      :class="{ 'video-thumbnail': article.type === 'video' }"
     >
       <img :src="article.image" :alt="article.title" loading="lazy" />
+      <div v-if="article.type === 'video'" class="video-overlay">
+        <span class="play-icon">▶</span>
+      </div>
       <div class="featured-overlay"></div>
     </a>
     <div v-else class="featured-image placeholder">
@@ -42,6 +46,7 @@ interface Article {
   image?: string;
   source?: string;
   published?: string;
+  type?: 'article' | 'video';
 }
 
 const props = defineProps<{ article: Article }>();
@@ -103,6 +108,32 @@ const formatTime = (dateString?: string): string => {
   display: block;
 }
 
+.featured-image.video-thumbnail .video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(47, 5, 56, 0.3);
+  transition: all 0.3s ease;
+}
+
+.featured-article:hover .video-overlay {
+  background: rgba(47, 5, 56, 0.4);
+}
+
+.play-icon {
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.featured-article:hover .play-icon {
+  font-size: 72px;
+  color: #fff;
+}
+
 .featured-image img {
   width: 100%;
   height: 100%;
@@ -134,6 +165,12 @@ const formatTime = (dateString?: string): string => {
   flex-direction: column;
   gap: 16px;
   justify-content: center;
+}
+
+.featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .featured-source {

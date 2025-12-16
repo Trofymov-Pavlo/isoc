@@ -26,8 +26,9 @@ scheduler = BackgroundScheduler(daemon=True)
 def _cache_key_articles(q: str, hours: int, include_meta: bool) -> str:
     return f"articles|q={q}|h={hours}|m={1 if include_meta else 0}"
 
-def _cache_key_videos(channel: str, hours: int, limit: int) -> str:
-    return f"videos|c={channel or 'all'}|h={hours}|l={limit}"
+def _cache_key_videos(channel: str, hours: int, limit: int, stop_after: int | None) -> str:
+    stop_key = stop_after if stop_after is not None else "all"
+    return f"videos|c={channel or 'all'}|h={hours}|l={limit}|s={stop_key}"
 
 def _get_cache(key: str):
     with LOCK:
@@ -50,32 +51,29 @@ def _refresh_combo(q: str, hours: int, include_meta: bool):
 
 def _refresh_all():
     """
-    Liste des combinaisons à rafraîchir. Ajoute ici celles dont tu as besoin.
+    Scraping automatique toutes les 15 minutes : articles + vidéos des dernières 24h.
+    AUCUNE limite artificielle - seuls filtres : keywords + 24h.
     """
-    combos = [
-        ("",24,True),  # Query vide = utilise uniquement les filtres keywords.py
-    ]
-    print("🔄 Refresh scraping (scheduled)…")
-    for q, h, m in combos:
-        try:
-            _refresh_combo(q, h, m)
-        except Exception as e:
-            print("⚠️ refresh error:", q, h, m, e)
+    print("🔄 Refresh scraping (scheduled) - dernières 24h…")
     
-    # Scrape et met en cache (archivage maintenant géré dans core/video)
+    # Scrape articles 24h
     try:
-        articles = get_articles(FR_FEEDS, query="", since_hours=24, include_meta=True)  # Query vide
+        articles = get_articles(FR_FEEDS, query="", since_hours=24, include_meta=True)
         if articles:
             _set_cache(_cache_key_articles("", 24, True), articles)
+            print(f"✅ {len(articles)} articles scrapés et archivés")
     except Exception as e:
-        print("⚠️ Erreur rafraîchissement articles:", e)
+        print(f"⚠️ Erreur rafraîchissement articles: {e}")
     
+    # Scrape vidéos 24h (SANS LIMITE)
     try:
-        videos = get_videos(FR_VIDEO_FEEDS, since_hours=0, limit=50)
+        videos = get_videos(FR_VIDEO_FEEDS, since_hours=24)
         if videos:
-            _set_cache(_cache_key_videos(None, 0, 50), videos)
+            # Cache sans limite - clé simplifiée
+            _set_cache("videos_24h", videos)
+            print(f"✅ {len(videos)} vidéos scrapées et archivées")
     except Exception as e:
-        print("⚠️ Erreur rafraîchissement vidéos:", e)
+        print(f"⚠️ Erreur rafraîchissement vidéos: {e}")
     
     print("✅ Refresh OK")
 
@@ -130,25 +128,31 @@ def articles():
 @app.get("/videos")
 def videos():
     """
-    Endpoint pour récupérer les vidéos YouTube
+    Endpoint pour récupérer les vidéos YouTube des dernières 24h.
+    AUCUNE limite - retourne TOUTES les vidéos matchant les keywords.
+    
     Paramètres:
-    - hours: nombre d'heures à remonter (défaut: 48)
+    - hours: nombre d'heures à remonter (défaut: 24)
     - channel: filtrer par canal YouTube spécifique (optionnel)
-    - limit: nombre max de vidéos (défaut: 30)
     """
     start_scheduler_once()
     
-    hours = int(request.args.get("hours", 0))
+    hours = int(request.args.get("hours", 24))
     channel = request.args.get("channel", None)
-    limit = int(request.args.get("limit", 30))
 
-    cache_key = _cache_key_videos(channel, hours, limit)
+    # Cache basé sur hours + channel uniquement
+    cache_key = f"videos_{hours}h_{channel or 'all'}"
     cached = _get_cache(cache_key)
     if cached is not None:
         return jsonify({"videos": cached})
     
     try:
-        data = get_videos(FR_VIDEO_FEEDS, since_hours=hours, channel=channel, limit=limit)
+        # Récupère TOUTES les vidéos (pas de limite)
+        data = get_videos(
+            FR_VIDEO_FEEDS,
+            since_hours=hours,
+            channel=channel,
+        )
         if data:
             _set_cache(cache_key, data)
         return jsonify({"videos": data})
