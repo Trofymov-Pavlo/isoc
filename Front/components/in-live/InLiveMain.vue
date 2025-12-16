@@ -9,18 +9,20 @@
 
     <div class="live-content">
       <div class="search-bar-container">
-        <div class="search-wrapper">
-          <input
-            v-model="localQuery"
-            class="search-input"
-            placeholder="Rechercher..."
-            @keyup.enter="reload"
-          />
-          <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-          <button v-else @click="localQuery = ''; reload()" class="clear-btn">×</button>
+        <div class="search-row">
+          <div class="search-wrapper">
+            <input
+              v-model="localQuery"
+              class="search-input"
+              placeholder="Rechercher..."
+              @keyup.enter="reload"
+            />
+            <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <button v-else @click="localQuery = ''; reload()" class="clear-btn">×</button>
+          </div>
         </div>
         <div class="sort-section">
           <span class="update-time">Mis à jour à {{ updateTime }}</span>
@@ -129,15 +131,18 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
-  flex-wrap: wrap;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+}
+
+.search-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 /* counters removed */
@@ -145,16 +150,14 @@ onUnmounted(() => {
 .search-wrapper {
   position: relative;
   width: 100%;
-  max-width: 350px;
-  order: 0;
+  max-width: 400px;
 }
 
 .sort-section {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  min-width: 100px;
-  order: 1;
+  justify-content: center;
+  gap: 8px;
 }
 
 .search-input {
