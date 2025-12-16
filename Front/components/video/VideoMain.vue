@@ -116,7 +116,7 @@ const {
   filterByQuery,
 } = useVideos();
 
-const channels = computed(() => getChannels);
+const channels = getChannels;
 
 const filteredVideos = computed(() => {
   let result = videos.value;
@@ -177,13 +177,11 @@ const loadVideos = async () => {
   await fetchVideos({ hours: 0, limit: 1000 }); // Toutes les vidéos
 };
 
+let refreshInterval: number | null = null;
+
 onMounted(() => {
   loadVideos();
-});
-
-let refreshInterval: number | null = null;
-onMounted(() => {
-  // Déjà un premier chargement via loadVideos()
+  // Auto-refresh toutes les 5 minutes
   refreshInterval = window.setInterval(() => loadVideos(), 5 * 60 * 1000);
 });
 

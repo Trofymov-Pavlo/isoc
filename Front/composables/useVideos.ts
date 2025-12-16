@@ -13,11 +13,11 @@ export interface Video {
   archived_at?: string;
 }
 
-const videos = ref<Video[]>([]);
-const loading = ref(false);
-const error = ref<string | null>(null);
-
 export const useVideos = () => {
+  const videos = ref<Video[]>([]);
+  const loading = ref(false);
+  const error = ref<string | null>(null);
+
   const fetchVideos = async (options?: {
     hours?: number;
     channel?: string;
