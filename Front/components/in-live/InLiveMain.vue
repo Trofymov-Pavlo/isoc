@@ -9,6 +9,7 @@
 
     <div class="live-content">
       <div class="search-bar-container">
+        <div class="counter-spacer"></div>
         <div class="search-wrapper">
           <input
             v-model="localQuery"
@@ -22,7 +23,9 @@
           </svg>
           <button v-else @click="localQuery = ''; reload()" class="clear-btn">×</button>
         </div>
-        <span class="update-time">Mis à jour à {{ updateTime }}</span>
+        <div class="update-section">
+          <span class="update-time">Mis à jour à {{ updateTime }}</span>
+        </div>
       </div>
 
       <LiveAlert v-if="error" :message="error" />
@@ -129,15 +132,27 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
 }
 
+.counter-spacer {
+  min-width: 120px;
+}
+
 .search-wrapper {
   position: relative;
-  flex: 1;
+  width: 100%;
   max-width: 400px;
+  flex-shrink: 0;
+}
+
+.update-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 120px;
 }
 
 .search-input {

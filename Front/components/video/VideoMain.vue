@@ -1,14 +1,17 @@
 <template>
   <main class="live-feed">
     <PageHero
-      title="Vidéos"
-      subtitle="Suivez en temps réel les derniers développements du conflit Ukraine-Russie"
-      badge="Vidéos"
-      badge-icon="▶"
+      title="▶ Vidéos"
+      subtitle="Toutes les vidéos sur le conflit Ukraine-Russie"
+      badge="Archive vidéo"
     />
 
     <div class="video-content">
       <div class="search-bar-container">
+        <div class="counter-section">
+          <span class="counter-label">Vidéos</span>
+          <span class="counter-value">{{ filteredVideos.length }}</span>
+        </div>
         <div class="search-wrapper">
           <input
             v-model="localQuery"
@@ -21,6 +24,16 @@
             <path d="m21 21-4.35-4.35"></path>
           </svg>
           <button v-else @click="localQuery = ''; filterVideos()" class="clear-btn">×</button>
+        </div>
+        <div class="sort-section">
+          <label for="sort-videos" class="sort-label">Trier par :</label>
+          <select id="sort-videos" v-model="sortBy" class="sort-select">
+            <option value="date-desc">Plus récent</option>
+            <option value="date-asc">Plus ancien</option>
+            <option value="title-asc">Titre (A-Z)</option>
+            <option value="title-desc">Titre (Z-A)</option>
+            <option value="channel-asc">Chaîne (A-Z)</option>
+          </select>
         </div>
       </div>
 
@@ -57,10 +70,23 @@
       <EmptyState v-else-if="filteredVideos.length === 0" @reset="resetSearch" />
 
       <!-- Videos content -->
-      <section v-else class="articles-container">
-        <FeaturedVideo v-if="filteredVideos[0]" :video="filteredVideos[0]" />
-        <VideosGrid v-if="filteredVideos.length > 1" :videos="filteredVideos.slice(1)" />
-      </section>
+      <template v-else>
+        <section class="articles-container">
+          <FeaturedVideo v-if="paginatedVideos[0]" :video="paginatedVideos[0]" />
+          <VideosGrid v-if="paginatedVideos.length > 1" :videos="paginatedVideos.slice(1)" />
+        </section>
+
+        <Pagination
+          :current-page="currentPage"
+          :total-pages="totalPages"
+          :items-per-page="itemsPerPage"
+          :visible-pages="visiblePages"
+          @update:items-per-page="setItemsPerPage"
+          @next="nextPage"
+          @prev="prevPage"
+          @go-to="goToPage"
+        />
+      </template>
     </div>
   </main>
 </template>
@@ -71,10 +97,13 @@ import PageHero from '~/components/shared/PageHero.vue';
 import EmptyState from '~/components/video/EmptyState.vue';
 import FeaturedVideo from '~/components/video/FeaturedVideo.vue';
 import VideosGrid from '~/components/video/VideosGrid.vue';
+import Pagination from '~/components/shared/Pagination.vue';
 import { useVideos } from '~/composables/useVideos';
+import { usePagination } from '~/composables/usePagination';
 
 const localQuery = ref('');
 const selectedChannel = ref('');
+const sortBy = ref('date-desc');
 
 const {
   videos,
@@ -99,8 +128,40 @@ const filteredVideos = computed(() => {
     result = filterByQuery(localQuery.value);
   }
 
-  return result;
+  // Sort
+  const sorted = [...result];
+  switch (sortBy.value) {
+    case 'date-desc':
+      sorted.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+      break;
+    case 'date-asc':
+      sorted.sort((a, b) => (a.publishedTime || 0) - (b.publishedTime || 0));
+      break;
+    case 'title-asc':
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case 'title-desc':
+      sorted.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    case 'channel-asc':
+      sorted.sort((a, b) => (a.channel || '').localeCompare(b.channel || ''));
+      break;
+  }
+
+  return sorted;
 });
+
+const {
+  currentPage,
+  itemsPerPage,
+  totalPages,
+  paginatedItems: paginatedVideos,
+  setItemsPerPage,
+  nextPage,
+  prevPage,
+  goToPage,
+  visiblePages,
+} = usePagination(filteredVideos);
 
 const filterVideos = () => {
   // Reactive computed property handles filtering
@@ -146,15 +207,82 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
+  gap: 24px;
+}
+
+.counter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 120px;
+}
+
+.counter-label {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.counter-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2f0538;
+}
+
+.counter-spacer {
+  min-width: 120px;
+}
+
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 200px;
+}
+
+.sort-label {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.sort-select:hover {
+  background: #fff;
+  border-color: #2f0538;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #2f0538;
+  background: #fff;
 }
 
 .search-wrapper {
   position: relative;
   width: 100%;
   max-width: 400px;
+  flex-shrink: 0;
 }
 
 .search-input {

@@ -45,7 +45,7 @@
                 ref="searchInput"
                 v-model="searchTerm"
                 type="search"
-                placeholder="Rechercher un article..."
+                placeholder="Rechercher article ou vidéo..."
                 class="search-input"
                 @keydown.esc="closeSearch"
               />
@@ -53,14 +53,14 @@
             </div>
             <div class="search-results">
               <div v-if="loading" class="search-info">Chargement...</div>
-              <div v-else-if="error" class="search-error">{{ error }}</div>
               <div v-else-if="searchTerm.trim().length < 2" class="search-info">Saisissez au moins 2 lettres</div>
               <div v-else-if="results.length === 0" class="search-info">Aucun résultat</div>
               <ul v-else class="results-list">
-                <li v-for="item in results" :key="item.link" class="result-item">
+                <li v-for="(item, index) in results" :key="index" class="result-item">
                   <a :href="item.link" target="_blank" rel="noopener" class="result-link">
+                    <span class="result-type">{{ item.type === 'video' ? '▶ Vidéo' : '📄 Article' }}</span>
                     <span class="result-title">{{ item.title }}</span>
-                    <span class="result-meta">{{ item.source || 'Source inconnue' }}</span>
+                    <span class="result-meta">{{ item.type === 'video' ? (item.channel || 'Chaîne inconnue') : (item.source || 'Source inconnue') }}</span>
                   </a>
                 </li>
               </ul>
@@ -84,23 +84,59 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { nextTick, onBeforeUnmount, ref, computed } from 'vue';
 import { useArticles } from '~/composables/useArticles';
-import type { CleanArticle } from '~/types/CleanArticle';
+import { useVideos } from '~/composables/useVideos';
 
 const isSearchOpen = ref(false);
 const searchTerm = ref('');
 const searchInput = ref<HTMLInputElement | null>(null);
 const searchWrapper = ref<HTMLElement | null>(null);
-const { query, loading, error, all, load } = useArticles({ hours: 72 });
-const results = ref<CleanArticle[]>([]);
 
-let debounceHandle: ReturnType<typeof setTimeout> | null = null;
+// Load articles
+const { all: articles, loading: loadingArticles, load: loadArticles } = useArticles({
+  hours: 0,
+  apiBase: 'http://127.0.0.1:5000',
+});
+
+// Load videos
+const { videos, loading: loadingVideos, fetchVideos } = useVideos();
+
+const loading = computed(() => loadingArticles.value || loadingVideos.value);
+
+const results = computed(() => {
+  const term = searchTerm.value.trim().toLowerCase();
+  if (term.length < 2) return [];
+
+  // Search in articles
+  const articleResults = articles.value
+    .filter(a =>
+      a.title.toLowerCase().includes(term) ||
+      (a.summary ?? '').toLowerCase().includes(term) ||
+      (a.source ?? '').toLowerCase().includes(term)
+    )
+    .slice(0, 4)
+    .map(a => ({ ...a, type: 'article' }));
+
+  // Search in videos
+  const videoResults = videos.value
+    .filter(v =>
+      v.title.toLowerCase().includes(term) ||
+      (v.description ?? '').toLowerCase().includes(term) ||
+      (v.channel ?? '').toLowerCase().includes(term)
+    )
+    .slice(0, 4)
+    .map(v => ({ ...v, type: 'video' }));
+
+  return [...articleResults, ...videoResults];
+});
 
 function toggleSearch() {
   isSearchOpen.value = !isSearchOpen.value;
   if (isSearchOpen.value) {
     nextTick(() => searchInput.value?.focus());
+    if (articles.value.length === 0) void loadArticles();
+    if (videos.value.length === 0) void fetchVideos({ hours: 0, limit: 1000 });
   } else {
     clearSearch();
   }
@@ -108,30 +144,12 @@ function toggleSearch() {
 
 function clearSearch() {
   searchTerm.value = '';
-  results.value = [];
 }
 
 function closeSearch() {
   isSearchOpen.value = false;
   clearSearch();
 }
-
-async function runSearch(term: string) {
-  const cleaned = term.trim();
-  if (cleaned.length < 2) {
-    results.value = [];
-    return;
-  }
-
-  query.value = cleaned;
-  await load();
-  results.value = all.value.slice(0, 8);
-}
-
-watch(searchTerm, (val) => {
-  if (debounceHandle) clearTimeout(debounceHandle);
-  debounceHandle = setTimeout(() => { void runSearch(val); }, 350);
-});
 
 function handleOutside(event: MouseEvent) {
   if (!isSearchOpen.value) return;
@@ -146,7 +164,6 @@ if (typeof window !== 'undefined') {
 }
 
 onBeforeUnmount(() => {
-  if (debounceHandle) clearTimeout(debounceHandle);
   if (typeof window !== 'undefined') {
     window.removeEventListener('click', handleOutside, { capture: true });
   }
@@ -218,34 +235,6 @@ onBeforeUnmount(() => {
   width: calc(100% - 32px);
 }
 
-.nav-account {
-  margin-left: 12px;
-  padding: 0 18px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 999px;
-  font-weight: 700;
-  color: #1c0f2a;
-  background: linear-gradient(135deg, #fefefe 0%, #d6c8ff 100%);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-  text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.nav-account:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #ffffff 0%, #e6dcff 100%);
-}
-
-.nav-account.is-active {
-  background: linear-gradient(135deg, #c5b3ff 0%, #9a7be0 100%);
-  color: #1c0f2a;
-}
-
 .nav-link::after {
   content: '';
   position: absolute;
@@ -259,8 +248,7 @@ onBeforeUnmount(() => {
   margin: 0 auto;
 }
 
-.live-badge,
-.video-badge {
+.live-badge {
   font-size: 12px;
   color: #ff6b6b;
   animation: pulse-red 1.4s ease-in-out infinite;
@@ -268,8 +256,7 @@ onBeforeUnmount(() => {
 }
 
 @keyframes pulse-red {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -356,6 +343,10 @@ onBeforeUnmount(() => {
   outline: none;
 }
 
+.search-input::placeholder {
+  color: #999;
+}
+
 .clear-btn {
   background: none;
   border: none;
@@ -373,12 +364,6 @@ onBeforeUnmount(() => {
 
 .search-info {
   color: #c5b3ff;
-  font-size: 13px;
-  padding: 6px 2px;
-}
-
-.search-error {
-  color: #ff8686;
   font-size: 13px;
   padding: 6px 2px;
 }
@@ -411,6 +396,14 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.result-type {
+  font-size: 11px;
+  color: #7b5ce0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
 .result-title {
@@ -455,7 +448,6 @@ onBeforeUnmount(() => {
   }
 
   .nav-right {
-    border-left: none;
     gap: 6px;
     padding-left: 8px;
   }
