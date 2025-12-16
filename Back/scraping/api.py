@@ -6,7 +6,9 @@ from threading import Lock
 import time
 
 from scraping.core import get_articles
-from scraping.feeds import FR_FEEDS
+from scraping.feeds import FR_FEEDS, FR_VIDEO_FEEDS
+from scraping.video import get_videos
+from scraping.archive import add_articles, add_videos, get_archive_stats, _load_archive
 
 # -----------------------------
 # Initialisation Flask
@@ -21,8 +23,12 @@ CACHE = {}       # key -> {"ts": float, "data": [...]}
 LOCK = Lock()
 scheduler = BackgroundScheduler(daemon=True)
 
-def _cache_key(q: str, hours: int, include_meta: bool) -> str:
-    return f"q={q}|h={hours}|m={1 if include_meta else 0}"
+def _cache_key_articles(q: str, hours: int, include_meta: bool) -> str:
+    return f"articles|q={q}|h={hours}|m={1 if include_meta else 0}"
+
+def _cache_key_videos(channel: str, hours: int, limit: int, stop_after: int | None) -> str:
+    stop_key = stop_after if stop_after is not None else "all"
+    return f"videos|c={channel or 'all'}|h={hours}|l={limit}|s={stop_key}"
 
 def _get_cache(key: str):
     with LOCK:
@@ -41,21 +47,34 @@ def _set_cache(key: str, data):
 def _refresh_combo(q: str, hours: int, include_meta: bool):
     # Scrape et alimente le cache pour 1 combinaison
     data = get_articles(FR_FEEDS, query=q, since_hours=hours, include_meta=include_meta)
-    _set_cache(_cache_key(q, hours, include_meta), data)
+    _set_cache(_cache_key_articles(q, hours, include_meta), data)
 
 def _refresh_all():
     """
-    Liste des combinaisons à rafraîchir. Ajoute ici celles dont tu as besoin.
+    Scraping automatique toutes les 15 minutes : articles + vidéos des dernières 24h.
+    AUCUNE limite artificielle - seuls filtres : keywords + 24h.
     """
-    combos = [
-        ("ukraine",48,True),  # ta page principale
-    ]
-    print("🔄 Refresh scraping (scheduled)…")
-    for q, h, m in combos:
-        try:
-            _refresh_combo(q, h, m)
-        except Exception as e:
-            print("⚠️ refresh error:", q, h, m, e)
+    print("🔄 Refresh scraping (scheduled) - dernières 24h…")
+    
+    # Scrape articles 24h
+    try:
+        articles = get_articles(FR_FEEDS, query="", since_hours=24, include_meta=True)
+        if articles:
+            _set_cache(_cache_key_articles("", 24, True), articles)
+            print(f"✅ {len(articles)} articles scrapés et archivés")
+    except Exception as e:
+        print(f"⚠️ Erreur rafraîchissement articles: {e}")
+    
+    # Scrape vidéos 24h (SANS LIMITE)
+    try:
+        videos = get_videos(FR_VIDEO_FEEDS, since_hours=24)
+        if videos:
+            # Cache sans limite - clé simplifiée
+            _set_cache("videos_24h", videos)
+            print(f"✅ {len(videos)} vidéos scrapées et archivées")
+    except Exception as e:
+        print(f"⚠️ Erreur rafraîchissement vidéos: {e}")
+    
     print("✅ Refresh OK")
 
 # Flask 3 : before_first_request supprimé → on initialise manuellement
@@ -89,11 +108,11 @@ def articles():
     start_scheduler_once()
 
     # paramètres côté client
-    q = request.args.get("q", "ukraine")
-    hours = int(request.args.get("hours", 48))
+    q = request.args.get("q", "")  # Query vide par défaut = utilise uniquement keywords.py
+    hours = int(request.args.get("hours", 24))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
-    key = _cache_key(q, hours, include_meta)
+    key = _cache_key_articles(q, hours, include_meta)
     cached = _get_cache(key)
     if cached is not None:
         return jsonify({"articles": cached})
@@ -106,6 +125,73 @@ def articles():
         return jsonify({"articles": [], "_meta": {"error": str(e)}}), 500
 
 
+@app.get("/videos")
+def videos():
+    """
+    Endpoint pour récupérer les vidéos YouTube des dernières 24h.
+    AUCUNE limite - retourne TOUTES les vidéos matchant les keywords.
+    
+    Paramètres:
+    - hours: nombre d'heures à remonter (défaut: 24)
+    - channel: filtrer par canal YouTube spécifique (optionnel)
+    """
+    start_scheduler_once()
+    
+    hours = int(request.args.get("hours", 24))
+    channel = request.args.get("channel", None)
+
+    # Cache basé sur hours + channel uniquement
+    cache_key = f"videos_{hours}h_{channel or 'all'}"
+    cached = _get_cache(cache_key)
+    if cached is not None:
+        return jsonify({"videos": cached})
+    
+    try:
+        # Récupère TOUTES les vidéos (pas de limite)
+        data = get_videos(
+            FR_VIDEO_FEEDS,
+            since_hours=hours,
+            channel=channel,
+        )
+        if data:
+            _set_cache(cache_key, data)
+        return jsonify({"videos": data})
+    except Exception as e:
+        # fallback archive si dispo
+        try:
+            from scraping.archive import _load_archive
+            archive = _load_archive()
+            fallback = archive.get("videos", [])
+            if fallback:
+                return jsonify({"videos": fallback, "_meta": {"error": str(e), "source": "archive"}}), 206
+        except Exception:
+            pass
+        return jsonify({"videos": [], "_meta": {"error": str(e)}}), 500
+
+
+@app.get("/archive")
+def archive():
+    """Retourne l'archive complète (articles et vidéos)"""
+    try:
+        data = _load_archive()
+        return jsonify({
+            "articles": data.get("articles", []),
+            "videos": data.get("videos", []),
+        })
+    except Exception as e:
+        return jsonify({"articles": [], "videos": [], "error": str(e)}), 500
+
+
+@app.get("/stats")
+def stats():
+    """Retourne les statistiques de l'archive"""
+    try:
+        archive_stats = get_archive_stats()
+        return jsonify(archive_stats)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 # (Optionnel) endpoint manuel d’admin pour forcer un refresh immédiat
 @app.post("/admin/refresh")
 def admin_refresh():
@@ -116,5 +202,18 @@ def admin_refresh():
         return {"ok": False, "error": str(e)}, 500
 
 if __name__ == "__main__":
+    print("🚀 Démarrage du serveur Flask...")
+    
+    # Démarre le scheduler pour les refresh automatiques  # Scraping différé de 5 secondes pour laisser Flask démarrer
+    if not _scheduler_started:
+        from datetime import datetime, timedelta
+        # Démarre dans 5 secondes pour laisser Flask démarrer
+        scheduler.add_job(_refresh_all, 'date', run_date=datetime.now() + timedelta(seconds=5), id="init_refresh", replace_existing=True)
+        # Refresh automatiques toutes les 15 minutes
+        scheduler.add_job(_refresh_all, "interval", minutes=15, id="rss_refresh_15min", replace_existing=True)
+        scheduler.start()
+        print("⏰ Scheduler démarré (premier scraping dans 5s, puis toutes les 15 minutes)")
+    
     # 0.0.0.0 si tu veux tester depuis un autre device sur ton LAN
+    print("🌐 Serveur disponible sur http://127.0.0.1:5000")
     app.run(host="127.0.0.1", port=5000, debug=True)

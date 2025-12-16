@@ -4,9 +4,9 @@
       <div class="title-section">
         <h1 class="feed-title">
           <span class="video-indicator">▶</span>
-          Analyses & Décryptages Vidéo
+          Vidéos
         </h1>
-        <p class="article-count">Toutes les vidéos d'analyse</p>
+        <p class="article-count">Toutes les vidéos filtrées</p>
       </div>
       <div class="search-controls">
         <div class="search-wrapper">

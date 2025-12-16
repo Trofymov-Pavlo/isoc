@@ -149,3 +149,42 @@ if __name__ == "__main__":
 
         except Exception as e:
             print(f"❌ {name} — erreur: {e} → {url}")
+
+
+# ============================================================
+# VIDEO FEEDS (YouTube)
+# ============================================================
+FR_VIDEO_FEEDS = {
+    # --- Français ---
+    "ARTE": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwI-JbGNsojunnHbFAc0M4Q",
+    "Le Monde": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYpRDnhk5H8h16jpS84uqsA",
+    "France 24": "https://www.youtube.com/feeds/videos.xml?channel_id=UCCCPCZNChQdGa9EkATeye4g",
+    "BFM TV": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXwDLMDV86ldKoFVc_g8P0g",
+    "CNews": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXKJrYczY2_fJEZgFPGY0HQ",
+    "France Inter": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJldRgT_D7Am-ErRHQZ90uw",
+    "Mediapart": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdnaDhU-LDQrIEEmSIfq0-Q",
+    "Brut": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSKdvgqdnj72_SLggp7BDTg",
+    "Konbini": "https://www.youtube.com/feeds/videos.xml?channel_id=UCHQda5vLxrH0Ff0I0kMq4zw",
+    
+    # --- International anglophone ---
+    "BBC News": "https://www.youtube.com/feeds/videos.xml?channel_id=UC16niRr50-MSBwiO3YDb3RA",
+    "DW News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCknLrEdhRcp1aegoMqRaCZg",
+    "Euronews": "https://www.youtube.com/feeds/videos.xml?channel_id=UCW2QcKZiU8aUGg4yxCIditg",
+    "CNN": "https://www.youtube.com/feeds/videos.xml?channel_id=UCupvZG-5ko_eiXAupbDfxWw",
+    "ABC News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCBi2mrWuNuyYy4gbM6fU18Q",
+    "CBS News": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8p1vwvWtl6T73JiExfWs1g",
+    "Fox News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXIJgqnII2ZOINSWNOGFThA",
+    "Associated Press": "https://www.youtube.com/feeds/videos.xml?channel_id=UC52X5wxOL_s5yw0dQk7NtgA",
+    "Al Jazeera English": "https://www.youtube.com/feeds/videos.xml?channel_id=UCNye-wNBqNL5ZzHSJj3l8Bg",
+    "Reuters": "https://www.youtube.com/feeds/videos.xml?channel_id=UChqUTb7kYRX8-EiaN3XFrSQ",
+    "Sky News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCoMdktPbSTixAyNGwb-UYkQ",
+    
+    # --- Military/Defense ---
+    "Warthog Defense": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2JaXg63L_VqvXN4SwF4zOQ",
+    "Defense Updates": "https://www.youtube.com/feeds/videos.xml?channel_id=UCKNCbBWiMiXBVXUmUuu_dsQ",
+    
+    # --- Documentary/Nature ---
+    "National Geographic": "https://www.youtube.com/feeds/videos.xml?channel_id=UCpVm7bg6pXKo1Pr6k5kxG9A",
+    "Discovery Channel": "https://www.youtube.com/feeds/videos.xml?channel_id=UCqOoboPm3uhY_YXhvhmL-WA",
+    "Discovery Channel France": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ3uq_dgtGdfScO21KU08wg",
+}

@@ -11,8 +11,12 @@
         target="_blank"
         rel="noopener"
         class="article-image"
+        :class="{ 'video-thumbnail': article.type === 'video' }"
       >
         <img :src="article.image" :alt="article.title" loading="lazy" />
+        <div v-if="article.type === 'video'" class="video-overlay-small">
+          <span class="play-icon-small">▶</span>
+        </div>
         <div class="image-overlay"></div>
       </a>
       <div v-else class="article-image placeholder">
@@ -48,6 +52,7 @@ interface Article {
   image?: string;
   source?: string;
   published?: string;
+  type?: 'article' | 'video';
 }
 
 const props = defineProps<{ articles: Article[] }>();
@@ -120,6 +125,32 @@ const formatTime = (dateString?: string): string => {
   display: block;
 }
 
+.article-image.video-thumbnail .video-overlay-small {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(47, 5, 56, 0.25);
+  transition: all 0.3s ease;
+}
+
+.article-card:hover .video-overlay-small {
+  background: rgba(47, 5, 56, 0.35);
+}
+
+.play-icon-small {
+  font-size: 42px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.article-card:hover .play-icon-small {
+  font-size: 48px;
+  color: #fff;
+}
+
 .article-image img {
   width: 100%;
   height: 100%;
@@ -165,6 +196,19 @@ const formatTime = (dateString?: string): string => {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #ff6b6b;
+}
+
+.video-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .article-title {

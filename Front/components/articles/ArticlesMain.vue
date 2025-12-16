@@ -1,37 +1,46 @@
 <template>
-  <main class="live-feed">
+  <main class="articles-page">
     <PageHero
-      title="En Direct"
-      subtitle="Suivez en temps réel les derniers développements du conflit Ukraine-Russie"
-      badge="Live 24/7"
-      :show-live-dot="true"
+      title="Tous les Articles"
+      subtitle="Consultez l'intégralité de nos articles sur le conflit Ukraine-Russie"
+      badge="Archive complète"
     />
 
-    <div class="live-content">
+    <div class="articles-content">
       <div class="search-bar-container">
         <div class="search-wrapper">
           <input
             v-model="localQuery"
             class="search-input"
-            placeholder="Rechercher..."
-            @keyup.enter="reload"
+            placeholder="Rechercher un article..."
+            @keyup.enter="filterArticles"
           />
           <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
           </svg>
-          <button v-else @click="localQuery = ''; reload()" class="clear-btn">×</button>
+          <button v-else @click="localQuery = ''; filterArticles()" class="clear-btn">×</button>
         </div>
-        <span class="update-time">Mis à jour à {{ updateTime }}</span>
+        <span class="article-count">{{ filteredArticles.length }} article(s)</span>
       </div>
 
-      <LiveAlert v-if="error" :message="error" />
-      <LiveLoading v-else-if="loading" />
-      <LiveEmptyState v-else-if="filtered.length === 0" @reset="resetSearch" />
+      <div v-if="loading" class="loading-state">
+        <p>Chargement des articles...</p>
+      </div>
+
+      <div v-else-if="error" class="error-state">
+        <p>⚠️ {{ error }}</p>
+        <button @click="load" class="retry-btn">Réessayer</button>
+      </div>
+
+      <div v-else-if="filteredArticles.length === 0" class="empty-state">
+        <p>Aucun article trouvé</p>
+        <button @click="resetSearch" class="retry-btn">Réinitialiser la recherche</button>
+      </div>
 
       <section v-else class="articles-container">
-        <FeaturedLive v-if="filtered[0]" :article="filtered[0]" />
-        <LiveArticlesGrid v-if="filtered.length > 1" :articles="filtered.slice(1)" />
+        <FeaturedLive v-if="filteredArticles[0]" :article="filteredArticles[0]" />
+        <LiveArticlesGrid v-if="filteredArticles.length > 1" :articles="filteredArticles.slice(1)" />
       </section>
     </div>
   </main>
@@ -39,70 +48,43 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { useArchiveFeed } from '@/composables/useArchiveFeed';
+import { useArticles } from '@/composables/useArticles';
 import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
-import LiveAlert from '~/components/in-live/LiveAlert.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
-import LiveEmptyState from '~/components/in-live/LiveEmptyState.vue';
-import LiveLoading from '~/components/in-live/LiveLoading.vue';
 
-const { items, loading, error, load } = useArchiveFeed();
+const { all, loading, error, load } = useArticles({
+  apiBase: 'http://127.0.0.1:5000',
+  query: '', // Pas de filtre supplémentaire, le backend filtre déjà avec keywords.py
+  hours: 0, // Tous les articles, sans limite de temps
+  meta: 1,
+});
 
 const localQuery = ref('');
-let refreshInterval: number | null = null;
 
-const updateTime = computed(() => {
-  const now = new Date();
-  return now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-});
-
-const filtered = computed(() => {
-  const now = Date.now();
-  const twentyFourHoursAgo = now - (24 * 60 * 60 * 1000);
-  
-  console.log(`⏰ Filtre 24h: now=${now}, cutoff=${twentyFourHoursAgo}`);
-  console.log(`📦 Items total avant filtre: ${items.value.length}`);
-  
-  // Filtrer par date (dernières 24h)
-  let result = items.value.filter(item => {
-    const publishedTime = item.publishedTime || 0;
-    const isRecent = publishedTime >= twentyFourHoursAgo;
-    if (!isRecent && item.type === 'video') {
-      console.log(`⏭️ Vidéo filtrée (trop ancienne):`, item.title.substring(0, 40), publishedTime, '<', twentyFourHoursAgo);
-    }
-    return isRecent;
-  });
-  
-  const articlesCount = result.filter(r => r.type === 'article').length;
-  const videosCount = result.filter(r => r.type === 'video').length;
-  
-  console.log(`🔍 En direct: ${result.length} items <24h (${articlesCount} articles, ${videosCount} vidéos)`);
-  
-  // Filtrer par recherche si une query existe
+const filteredArticles = computed(() => {
   const query = localQuery.value.trim().toLowerCase();
-  if (query) {
-    result = result.filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      (item.summary ?? '').toLowerCase().includes(query) ||
-      (item.source ?? '').toLowerCase().includes(query)
-    );
-  }
-  
-  return result;
+  if (!query) return all.value;
+  return all.value.filter(a =>
+    a.title.toLowerCase().includes(query) ||
+    (a.summary ?? '').toLowerCase().includes(query) ||
+    (a.source ?? '').toLowerCase().includes(query)
+  );
 });
 
-const reload = () => {
-  load();
+const filterArticles = () => {
+  // Reactive computed property handles filtering
 };
 
 const resetSearch = () => {
   localQuery.value = '';
-  reload();
 };
+
+let refreshInterval: number | null = null;
 
 onMounted(() => {
   load();
+  // Auto-refresh toutes les 5 minutes pour recharger archive.json
   refreshInterval = window.setInterval(load, 5 * 60 * 1000);
 });
 
@@ -112,13 +94,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.live-feed {
+.articles-page {
   min-height: 100vh;
   background: #ffffff;
   padding-bottom: 60px;
 }
 
-.live-content {
+.articles-content {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 calc(2vw);
@@ -196,10 +178,35 @@ onUnmounted(() => {
   color: #333;
 }
 
-.update-time {
+.article-count {
   font-size: 13px;
   color: #666;
   font-weight: 500;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.retry-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #2f0538;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #3a0f4f;
+  transform: translateY(-2px);
 }
 
 .articles-container {
@@ -217,9 +224,8 @@ onUnmounted(() => {
     max-width: 100%;
   }
   
-  .update-time {
+  .article-count {
     text-align: center;
   }
 }
 </style>
-

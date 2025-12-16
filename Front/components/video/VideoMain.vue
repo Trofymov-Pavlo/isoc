@@ -1,8 +1,8 @@
 <template>
   <main class="live-feed">
     <PageHero
-      title="Analyses & Décryptages Vidéo"
-      subtitle="Découvrez nos analyses approfondies et décryptages vidéo du conflit"
+      title="Vidéos"
+      subtitle="Suivez en temps réel les derniers développements du conflit Ukraine-Russie"
       badge="Vidéos"
       badge-icon="▶"
     />
@@ -24,7 +24,39 @@
         </div>
       </div>
 
-      <EmptyState v-if="filteredVideos.length === 0" @reset="resetSearch" />
+      <!-- Channel filter tabs -->
+      <div v-if="channels.length > 0" class="channel-tabs">
+        <button
+          :class="['tab-btn', { active: selectedChannel === '' }]"
+          @click="selectedChannel = ''"
+        >
+          Tous les canaux
+        </button>
+        <button
+          v-for="channel in channels"
+          :key="channel"
+          :class="['tab-btn', { active: selectedChannel === channel }]"
+          @click="selectedChannel = channel"
+        >
+          {{ channel }}
+        </button>
+      </div>
+
+      <!-- Loading state -->
+      <div v-if="loading" class="loading-state">
+        <p>Chargement des vidéos...</p>
+      </div>
+
+      <!-- Error state -->
+      <div v-else-if="error" class="error-state">
+        <p>⚠️ Erreur lors du chargement des vidéos</p>
+        <button @click="loadVideos" class="retry-btn">Réessayer</button>
+      </div>
+
+      <!-- Empty state -->
+      <EmptyState v-else-if="filteredVideos.length === 0" @reset="resetSearch" />
+
+      <!-- Videos content -->
       <section v-else class="articles-container">
         <FeaturedVideo v-if="filteredVideos[0]" :video="filteredVideos[0]" />
         <VideosGrid v-if="filteredVideos.length > 1" :videos="filteredVideos.slice(1)" />
@@ -34,38 +66,68 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import PageHero from '~/components/shared/PageHero.vue';
 import EmptyState from '~/components/video/EmptyState.vue';
 import FeaturedVideo from '~/components/video/FeaturedVideo.vue';
 import VideosGrid from '~/components/video/VideosGrid.vue';
+import { useVideos } from '~/composables/useVideos';
 
 const localQuery = ref('');
+const selectedChannel = ref('');
 
-const videos = ref([
-  { id: 1, title: "La guerre de l'information : Stratégies et manipulation", description: "Analyse approfondie des mécanismes de propagande et de désinformation dans le conflit Ukraine-Russie.", source: 'Médias partenaires', date: 'Il y a 3h', link: '#video-1' },
-  { id: 2, title: "OSINT et fact-checking : Outils d'analyse", description: "Comment les outils open-source permettent de vérifier l'information en temps réel.", source: 'Médias partenaires', date: 'Il y a 5h', link: '#video-2' },
-  { id: 3, title: 'Deepfakes et technologie : Nouveaux défis', description: "L'impact des deepfakes sur la perception du conflit et les méthodes de détection.", source: 'Médias partenaires', date: 'Il y a 8h', link: '#video-3' },
-  { id: 4, title: 'Réseaux sociaux et influence', description: "Le rôle des plateformes sociales dans la diffusion de l'information et de la propagande.", source: 'Médias partenaires', date: 'Hier', link: '#video-4' },
-  { id: 5, title: 'Analyse géopolitique du conflit', description: 'Comprendre les enjeux stratégiques et les implications internationales.', source: 'Médias partenaires', date: 'Il y a 2 jours', link: '#video-5' },
-  { id: 6, title: 'Cybersécurité et cyberguerre', description: "Les opérations de cyberattaques et leur impact sur le conflit.", source: 'Médias partenaires', date: 'Il y a 3 jours', link: '#video-6' }
-]);
+const {
+  videos,
+  loading,
+  error,
+  fetchVideos,
+  getChannels,
+  filterByChannel,
+  filterByQuery,
+} = useVideos();
+
+const channels = computed(() => getChannels);
 
 const filteredVideos = computed(() => {
-  if (!localQuery.value) return videos.value;
-  const q = localQuery.value.toLowerCase();
-  return videos.value.filter(v =>
-    v.title.toLowerCase().includes(q) ||
-    v.description.toLowerCase().includes(q)
-  );
+  let result = videos.value;
+
+  if (selectedChannel.value) {
+    result = filterByChannel(selectedChannel.value);
+  }
+
+  if (localQuery.value) {
+    result = filterByQuery(localQuery.value);
+  }
+
+  return result;
 });
 
-const filterVideos = () => {};
+const filterVideos = () => {
+  // Reactive computed property handles filtering
+};
 
 const resetSearch = () => {
   localQuery.value = '';
-  filterVideos();
+  selectedChannel.value = '';
 };
+
+const loadVideos = async () => {
+  await fetchVideos({ hours: 0, limit: 1000 }); // Toutes les vidéos
+};
+
+onMounted(() => {
+  loadVideos();
+});
+
+let refreshInterval: number | null = null;
+onMounted(() => {
+  // Déjà un premier chargement via loadVideos()
+  refreshInterval = window.setInterval(() => loadVideos(), 5 * 60 * 1000);
+});
+
+onUnmounted(() => {
+  if (refreshInterval) clearInterval(refreshInterval);
+});
 </script>
 
 <style scoped>
@@ -149,6 +211,63 @@ const resetSearch = () => {
 
 .clear-btn:hover {
   color: #333;
+}
+
+.channel-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 32px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #fff;
+  border-color: #2f0538;
+  color: #2f0538;
+}
+
+.tab-btn.active {
+  background: #2f0538;
+  color: white;
+  border-color: #2f0538;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.retry-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #2f0538;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #3a0f4f;
+  transform: translateY(-2px);
 }
 
 .articles-container {

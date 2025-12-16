@@ -10,6 +10,7 @@
         target="_blank"
         rel="noopener"
         class="article-image video-thumbnail"
+        :style="getThumbnailStyle(video)"
       >
         <div class="video-placeholder-small">
           <span class="play-icon-small">▶</span>
@@ -18,19 +19,19 @@
       </a>
 
       <div class="article-content">
-        <p v-if="video.source" class="article-source">{{ video.source }}</p>
+        <p class="article-source">{{ getDisplaySource(video) }}</p>
         <h2 class="article-title">
           <a :href="video.link" target="_blank" rel="noopener">{{ video.title }}</a>
         </h2>
-        <p v-if="video.description" class="article-summary">
-          {{ truncate(video.description, 120) }}
+        <p v-if="getDisplayDescription(video)" class="article-summary">
+          {{ truncate(getDisplayDescription(video), 120) }}
         </p>
         <div class="article-footer">
-          <time v-if="video.date" class="article-time">
-            {{ video.date }}
+          <time class="article-time">
+            {{ getDisplayDate(video) }}
           </time>
           <a :href="video.link" target="_blank" rel="noopener" class="read-link">
-            Regarder →
+            Regarder sur YouTube →
           </a>
         </div>
       </div>
@@ -39,13 +40,18 @@
 </template>
 
 <script setup lang="ts">
-interface VideoItem { 
-  id: number; 
-  title: string; 
-  description: string; 
-  source: string; 
-  date: string; 
+interface VideoItem {
+  id?: number;
+  title: string;
+  description?: string;
+  source?: string;
+  date?: string;
   link: string;
+  channel?: string;
+  published?: string;
+  publishedTime?: number;
+  thumbnail?: string;
+  summary?: string;
 }
 
 const props = defineProps<{ videos: VideoItem[] }>();
@@ -54,6 +60,52 @@ const truncate = (text: string, max: number): string => {
   if (!text) return '';
   if (text.length <= max) return text;
   return text.substring(0, max).trim() + '...';
+};
+
+const getDisplaySource = (video: VideoItem): string => {
+  return video.source || video.channel || 'Source inconnue';
+};
+
+const getDisplayDescription = (video: VideoItem): string => {
+  return video.description || video.summary || '';
+};
+
+const getDisplayDate = (video: VideoItem): string => {
+  const dateStr = video.date || video.published;
+  if (!dateStr) return '';
+
+  try {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffHours < 1) return 'À l\'instant';
+    if (diffHours < 24) return `Il y a ${diffHours}h`;
+    if (diffDays < 7) return `Il y a ${diffDays}j`;
+
+    return date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  } catch {
+    return dateStr.substring(0, 10);
+  }
+};
+
+const getThumbnailStyle = (video: VideoItem) => {
+  if (video.thumbnail) {
+    return {
+      backgroundImage: `url('${video.thumbnail}')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    };
+  }
+  return {
+    background: 'linear-gradient(135deg, #2f0538 0%, #4b2faa 100%)',
+  };
 };
 </script>
 
@@ -86,7 +138,8 @@ const truncate = (text: string, max: number): string => {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #f5f5f5;
+  background-size: cover;
+  background-position: center;
   display: block;
 }
 

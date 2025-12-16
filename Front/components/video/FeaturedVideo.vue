@@ -1,26 +1,32 @@
 <template>
   <article class="featured-article" v-if="video">
-    <div class="featured-image video-player">
+    <a
+      :href="video.link"
+      target="_blank"
+      rel="noopener"
+      class="featured-image video-player"
+      :style="backgroundImage"
+    >
       <div class="video-placeholder">
         <span class="play-icon">▶</span>
       </div>
       <div class="featured-overlay"></div>
-    </div>
+    </a>
 
     <div class="featured-content">
-      <p v-if="video.source" class="featured-source">{{ video.source }}</p>
+      <p class="featured-source">{{ displaySource }}</p>
       <h2 class="featured-title">
         <a :href="video.link" target="_blank" rel="noopener">{{ video.title }}</a>
       </h2>
-      <p v-if="video.description" class="featured-summary">
-        {{ video.description }}
+      <p v-if="displayDescription" class="featured-summary">
+        {{ displayDescription }}
       </p>
       <div class="featured-footer">
-        <time v-if="video.date" class="featured-time">
-          {{ video.date }}
+        <time class="featured-time">
+          {{ displayDate }}
         </time>
         <a :href="video.link" target="_blank" rel="noopener" class="read-link">
-          Regarder la vidéo →
+          Regarder sur YouTube →
         </a>
       </div>
     </div>
@@ -28,16 +34,59 @@
 </template>
 
 <script setup lang="ts">
-interface VideoItem { 
-  id: number; 
-  title: string; 
-  description: string; 
-  source: string; 
-  date: string; 
+import { computed } from 'vue';
+
+interface VideoItem {
+  id?: number;
+  title: string;
+  description?: string;
+  source?: string;
+  date?: string;
   link: string;
+  channel?: string;
+  published?: string;
+  publishedTime?: number;
+  thumbnail?: string;
+  summary?: string;
 }
 
 const props = defineProps<{ video: VideoItem }>();
+
+const formatDate = (iso?: string): string => {
+  if (!iso) return '';
+  try {
+    const date = new Date(iso);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffHours < 1) return "À l'instant";
+    if (diffHours < 24) return `Il y a ${diffHours}h`;
+    if (diffDays < 7) return `Il y a ${diffDays}j`;
+
+    return date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  } catch {
+    return iso.substring(0, 10);
+  }
+};
+
+const displaySource = computed(() => props.video.source || props.video.channel || 'Source inconnue');
+const displayDescription = computed(() => {
+  const desc = props.video.description || props.video.summary || '';
+  return desc.length > 180 ? desc.substring(0, 177) + '...' : desc;
+});
+const displayDate = computed(() => formatDate(props.video.date || props.video.published));
+const backgroundImage = computed(() => {
+  if (props.video.thumbnail) {
+    return { backgroundImage: `url('${props.video.thumbnail}')`, backgroundSize: 'cover', backgroundPosition: 'center' };
+  }
+  return { background: 'linear-gradient(135deg, #2f0538 0%, #4b2faa 100%)' };
+});
 </script>
 
 <style scoped>
@@ -64,7 +113,8 @@ const props = defineProps<{ video: VideoItem }>();
   width: 100%;
   height: 400px;
   overflow: hidden;
-  background: #f5f5f5;
+  background-size: cover;
+  background-position: center;
   display: block;
 }
 
