@@ -57,8 +57,7 @@ function normalize(a: Raw): CleanArticle | null {
 export function useArticles(opts?: {
   apiBase?: string; query?: string; hours?: number; meta?: number;
 }) {
-  const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
-  const query = ref(opts?.query ?? ""); // Pas de filtre par défaut, le backend filtre avec keywords.py
+  const query = ref(opts?.query ?? "");
   const hours = ref(opts?.hours ?? 48);
   const meta = ref(opts?.meta ?? 1);
 
@@ -69,54 +68,32 @@ export function useArticles(opts?: {
   async function load() {
     loading.value = true; error.value = null;
 
-    // 1) Fallback immédiat depuis l'archive (pour afficher quelque chose au démarrage)
+    // Charge directement depuis archive.json local
     try {
-      const resArch = await fetch(`${apiBase}/archive`, { signal: AbortSignal.timeout(8000) });
-      if (resArch.ok) {
-        const dataArch = await resArch.json();
-        const listArch: Raw[] = Array.isArray(dataArch) ? dataArch : (dataArch?.articles ?? []);
-        const seen = new Set<string>();
-        const cleaned: CleanArticle[] = [];
-        for (const it of listArch) {
-          const n = normalize(it);
-          if (!n) continue;
-          if (seen.has(n.link)) continue;
-          seen.add(n.link);
-          cleaned.push(n);
-        }
-        if (cleaned.length) all.value = cleaned;
-      }
-    } catch (e) {
-      console.warn("Archive fallback articles indisponible", e);
-    }
-
-    // 2) Requête live (peut prendre le relais et actualiser)
-    try {
-      const url = new URL(`${apiBase}/articles`);
-      url.searchParams.set("q", query.value);
-      url.searchParams.set("hours", String(hours.value));
-      url.searchParams.set("meta", String(meta.value));
-
-      const res = await fetch(url.toString(), { signal: AbortSignal.timeout(12000) });
-      if (!res.ok) throw new Error(`API ${res.status}`);
-
+      const res = await fetch('/archive.json');
+      if (!res.ok) throw new Error(`Erreur ${res.status}`);
+      
       const data = await res.json();
-      const list: Raw[] = Array.isArray(data) ? data : (data?.articles ?? []);
-
+      const listArch: Raw[] = Array.isArray(data) ? data : (data?.articles ?? []);
+      
       const seen = new Set<string>();
       const cleaned: CleanArticle[] = [];
-      for (const it of list) {
+      
+      for (const it of listArch) {
         const n = normalize(it);
         if (!n) continue;
         if (seen.has(n.link)) continue;
         seen.add(n.link);
         cleaned.push(n);
       }
+      
+      // Tri par date décroissante (plus récent d'abord)
+      cleaned.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+      
       all.value = cleaned;
     } catch (e) {
-      console.error(e);
-      error.value = "Erreur de chargement des actualités.";
-      // on garde ce qui vient de l'archive si dispo
+      console.error('Erreur chargement archive.json:', e);
+      error.value = "Erreur de chargement des articles.";
     } finally {
       loading.value = false;
     }

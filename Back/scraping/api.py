@@ -199,20 +199,16 @@ def admin_refresh():
 
 if __name__ == "__main__":
     print("🚀 Démarrage du serveur Flask...")
-    print("📡 Lancement du scraping initial (articles + vidéos)...")
     
-    # Lance le scraping au démarrage
-    try:
-        _refresh_all()
-        print("✅ Scraping initial terminé")
-    except Exception as e:
-        print(f"⚠️ Erreur scraping initial: {e}")
-    
-    # Démarre le scheduler pour les refresh automatiques
+    # Démarre le scheduler pour les refresh automatiques  # Scraping différé de 5 secondes pour laisser Flask démarrer
     if not _scheduler_started:
+        from datetime import datetime, timedelta
+        # Démarre dans 5 secondes pour laisser Flask démarrer
+        scheduler.add_job(_refresh_all, 'date', run_date=datetime.now() + timedelta(seconds=5), id="init_refresh", replace_existing=True)
+        # Refresh automatiques toutes les 15 minutes
         scheduler.add_job(_refresh_all, "interval", minutes=15, id="rss_refresh_15min", replace_existing=True)
         scheduler.start()
-        print("⏰ Scheduler démarré (refresh toutes les 15 minutes)")
+        print("⏰ Scheduler démarré (premier scraping dans 5s, puis toutes les 15 minutes)")
     
     # 0.0.0.0 si tu veux tester depuis un autre device sur ton LAN
     print("🌐 Serveur disponible sur http://127.0.0.1:5000")

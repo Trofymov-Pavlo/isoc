@@ -53,27 +53,17 @@ const truncate = (text?: string, length = 100) => {
 const fetchVideos = async () => {
   loading.value = true;
   
-  // 1) Fallback archive immédiat
+  // Charge directement depuis archive.json local
   try {
-    const resArch = await fetch('http://localhost:5000/archive', { signal: AbortSignal.timeout(8000) });
-    if (resArch.ok) {
-      const dataArch = await resArch.json();
-      const listArch: Video[] = Array.isArray(dataArch) ? dataArch : (dataArch?.videos ?? []);
-      if (listArch?.length) videos.value = listArch;
-    }
-  } catch (err) {
-    console.warn('Archive fallback vidéos indisponible', err);
-  }
-
-  // 2) Requête live
-  try {
-    const res = await fetch('http://localhost:5000/videos?hours=0&limit=100', { signal: AbortSignal.timeout(12000) });
-    if (!res.ok) throw new Error('API error');
+    const res = await fetch('/archive.json');
+    if (!res.ok) throw new Error(`Erreur ${res.status}`);
     const data = await res.json();
-    if (data?.videos) videos.value = data.videos;
+    const listVideos: Video[] = Array.isArray(data) ? data : (data?.videos ?? []);
+    // Tri par date décroissante et limite à 100 vidéos
+    listVideos.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+    videos.value = listVideos.slice(0, 100);
   } catch (e) {
     console.error('Erreur chargement vidéos:', e);
-    // on garde les vidéos de l'archive si elles ont été chargées
   } finally {
     loading.value = false;
   }

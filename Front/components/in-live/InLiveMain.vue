@@ -63,13 +63,26 @@ const updateTime = computed(() => {
 });
 
 const filtered = computed(() => {
+  const now = Date.now();
+  const twentyFourHoursAgo = now - (24 * 60 * 60 * 1000);
+  
+  // Filtrer par date (dernières 24h)
+  let result = all.value.filter(a => {
+    const articleTime = a.publishedTime || 0;
+    return articleTime >= twentyFourHoursAgo;
+  });
+  
+  // Filtrer par recherche si une query existe
   const query = localQuery.value.trim().toLowerCase();
-  if (!query) return all.value;
-  return all.value.filter(a =>
-    a.title.toLowerCase().includes(query) ||
-    (a.summary ?? '').toLowerCase().includes(query) ||
-    (a.source ?? '').toLowerCase().includes(query)
-  );
+  if (query) {
+    result = result.filter(a =>
+      a.title.toLowerCase().includes(query) ||
+      (a.summary ?? '').toLowerCase().includes(query) ||
+      (a.source ?? '').toLowerCase().includes(query)
+    );
+  }
+  
+  return result;
 });
 
 const reload = () => {
