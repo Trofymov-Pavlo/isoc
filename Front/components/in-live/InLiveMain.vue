@@ -49,7 +49,7 @@ import LiveLoading from '~/components/in-live/LiveLoading.vue';
 
 const { all, loading, error, load } = useArticles({
   apiBase: 'http://127.0.0.1:5000',
-  query: 'ukraine',
+  query: '', // Pas de filtre supplémentaire, le backend filtre déjà avec keywords.py
   hours: 24, // Articles de moins de 24h
   meta: 1,
 });

@@ -20,7 +20,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useArticles } from '~/composables/useArticles';
 
-const { all, load } = useArticles({ query: 'ukraine', hours: 48 });
+const { all, load } = useArticles({ query: '', hours: 48 }); // Backend filtre déjà avec keywords.py
 const now = ref(Date.now());
 let interval: ReturnType<typeof setInterval> | null = null;
 

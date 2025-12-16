@@ -58,7 +58,7 @@ export function useArticles(opts?: {
   apiBase?: string; query?: string; hours?: number; meta?: number;
 }) {
   const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
-  const query = ref(opts?.query ?? "ukraine");
+  const query = ref(opts?.query ?? ""); // Pas de filtre par défaut, le backend filtre avec keywords.py
   const hours = ref(opts?.hours ?? 48);
   const meta = ref(opts?.meta ?? 1);
 

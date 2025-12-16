@@ -27,7 +27,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useArticles } from '~/composables/useArticles';
 
-const { all, load } = useArticles({ query: 'ukraine', hours: 48 });
+const { all, load } = useArticles({ query: '', hours: 48 }); // Backend filtre déjà avec keywords.py
 onMounted(() => { load(); });
 
 const now = Date.now();

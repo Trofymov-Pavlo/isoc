@@ -53,7 +53,7 @@ def _refresh_all():
     Liste des combinaisons à rafraîchir. Ajoute ici celles dont tu as besoin.
     """
     combos = [
-        ("ukraine",24,True),  # ta page principale
+        ("",24,True),  # Query vide = utilise uniquement les filtres keywords.py
     ]
     print("🔄 Refresh scraping (scheduled)…")
     for q, h, m in combos:
@@ -64,9 +64,9 @@ def _refresh_all():
     
     # Scrape et met en cache (archivage maintenant géré dans core/video)
     try:
-        articles = get_articles(FR_FEEDS, query="ukraine", since_hours=24, include_meta=True)
+        articles = get_articles(FR_FEEDS, query="", since_hours=24, include_meta=True)  # Query vide
         if articles:
-            _set_cache(_cache_key_articles("ukraine", 24, True), articles)
+            _set_cache(_cache_key_articles("", 24, True), articles)
     except Exception as e:
         print("⚠️ Erreur rafraîchissement articles:", e)
     
@@ -110,7 +110,7 @@ def articles():
     start_scheduler_once()
 
     # paramètres côté client
-    q = request.args.get("q", "ukraine")
+    q = request.args.get("q", "")  # Query vide par défaut = utilise uniquement keywords.py
     hours = int(request.args.get("hours", 24))
     include_meta = request.args.get("meta", "1") not in ("0", "false", "False")
 
