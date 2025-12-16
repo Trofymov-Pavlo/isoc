@@ -9,7 +9,6 @@
 
     <div class="live-content">
       <div class="search-bar-container">
-        <div class="counter-spacer"></div>
         <div class="search-wrapper">
           <input
             v-model="localQuery"
@@ -137,10 +136,7 @@ onUnmounted(() => {
   margin-bottom: 32px;
 }
 
-.counter-spacer {
-  min-width: 100px;
-  order: -1;
-}
+/* counters removed */
 
 .search-wrapper {
   position: relative;

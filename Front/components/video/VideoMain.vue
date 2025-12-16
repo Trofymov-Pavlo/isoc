@@ -8,10 +8,6 @@
 
     <div class="video-content">
       <div class="search-bar-container">
-        <div class="counter-section">
-          <span class="counter-label">Vidéos</span>
-          <span class="counter-value">{{ filteredVideos.length }}</span>
-        </div>
         <div class="search-wrapper">
           <input
             v-model="localQuery"
@@ -37,23 +33,7 @@
         </div>
       </div>
 
-      <!-- Channel filter tabs -->
-      <div v-if="channels.length > 0" class="channel-tabs">
-        <button
-          :class="['tab-btn', { active: selectedChannel === '' }]"
-          @click="selectedChannel = ''"
-        >
-          Tous les canaux
-        </button>
-        <button
-          v-for="channel in channels"
-          :key="channel"
-          :class="['tab-btn', { active: selectedChannel === channel }]"
-          @click="selectedChannel = channel"
-        >
-          {{ channel }}
-        </button>
-      </div>
+      
 
       <!-- Loading state -->
       <div v-if="loading" class="loading-state">
@@ -116,14 +96,12 @@ const {
   filterByQuery,
 } = useVideos();
 
-const channels = getChannels;
+// Channel tabs removed per request
 
 const filteredVideos = computed(() => {
   let result = videos.value;
 
-  if (selectedChannel.value) {
-    result = filterByChannel(selectedChannel.value);
-  }
+  // Channel filter disabled
 
   if (localQuery.value) {
     result = filterByQuery(localQuery.value);
@@ -164,29 +142,32 @@ const {
   visiblePages,
 } = usePagination(filteredVideos);
 
+const loadVideos = () => {
+  fetchVideos();
+};
+
 const filterVideos = () => {
   // Reactive computed property handles filtering
 };
 
 const resetSearch = () => {
   localQuery.value = '';
-  selectedChannel.value = '';
-};
-
-const loadVideos = async () => {
-  await fetchVideos({ hours: 0, limit: 1000 }); // Toutes les vidéos
 };
 
 let refreshInterval: number | null = null;
 
 onMounted(() => {
   loadVideos();
-  // Auto-refresh toutes les 5 minutes
-  refreshInterval = window.setInterval(() => loadVideos(), 5 * 60 * 1000);
+  // Refresh videos every 2 minutes
+  refreshInterval = window.setInterval(() => {
+    loadVideos();
+  }, 2 * 60 * 1000);
 });
 
 onUnmounted(() => {
-  if (refreshInterval) clearInterval(refreshInterval);
+  if (refreshInterval) {
+    clearInterval(refreshInterval);
+  }
 });
 </script>
 
@@ -211,14 +192,14 @@ onUnmounted(() => {
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
   gap: 24px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .counter-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 100px;
-  order: -1;
+  display: none;
 }
 
 .counter-label {
@@ -282,7 +263,7 @@ onUnmounted(() => {
 .search-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   order: 0;
 }
 

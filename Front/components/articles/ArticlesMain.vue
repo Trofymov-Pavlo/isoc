@@ -8,10 +8,6 @@
 
     <div class="articles-content">
       <div class="search-bar-container">
-        <div class="counter-section">
-          <span class="counter-label">Articles</span>
-          <span class="counter-value">{{ filteredArticles.length }}</span>
-        </div>
         <div class="search-wrapper">
           <input
             v-model="localQuery"
@@ -182,32 +178,14 @@ onUnmounted(() => {
   gap: 24px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .counter-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 100px;
-  order: -1;
-}
-
-.counter-label {
-  font-size: 12px;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.counter-value {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2f0538;
-}
-
-.counter-spacer {
-  min-width: 120px;
+  display: none;
 }
 
 .sort-section {
@@ -253,7 +231,7 @@ onUnmounted(() => {
 .search-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   order: 0;
 }
 
