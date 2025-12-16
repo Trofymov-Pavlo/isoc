@@ -31,8 +31,8 @@ def get_videos(
     """
     print(f"📹 Récupération des vidéos via YouTube API...")
     
-    # Récupère toutes les vidéos via API
-    all_videos = get_all_videos(limit_per_channel=100)
+    # Récupère les vidéos via API (max 5 par channel pour accélérer)
+    all_videos = get_all_videos(limit_per_channel=50, stop_after_match=5)
     
     # Filtre par date si nécessaire
     if since_hours > 0:

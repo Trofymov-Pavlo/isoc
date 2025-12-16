@@ -9,6 +9,10 @@ import requests
 from datetime import datetime, timezone
 from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 
+# Désactiver les warnings SSL
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 API_KEY = os.environ.get("YT_API_KEY", "AIzaSyDnEmmnbH3lsMtNbm-rMITQf-3bO-RQZv4")
 YTB_API = "https://www.googleapis.com/youtube/v3"
 
@@ -59,7 +63,7 @@ def get_uploads_playlist_id(channel_id: str) -> str:
         "part": "contentDetails",
         "id": channel_id,
         "key": API_KEY
-    }, timeout=(5, 10))
+    }, timeout=(5, 10), verify=False)
     r.raise_for_status()
     items = r.json().get("items", [])
     if not items:
@@ -67,10 +71,18 @@ def get_uploads_playlist_id(channel_id: str) -> str:
     return items[0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
 
-def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 50) -> list:
+def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 50, stop_after_match: int = 5) -> list:
     """
-    Récupère toutes les vidéos d'une chaîne qui matchent nos mots-clés.
-    Sans limitation de date (toutes les vidéos).
+    Récupère les vidéos d'une chaîne qui matchent nos mots-clés.
+    
+    Args:
+        channel_name: Nom de la chaîne
+        channel_id: ID YouTube de la chaîne
+        max_results: Nombre max de vidéos à récupérer de l'API par page (50 max)
+        stop_after_match: Arrête après avoir trouvé ce nombre de vidéos matchantes
+    
+    Returns:
+        Liste de vidéos qui matchent les mots-clés
     """
     try:
         uploads_id = get_uploads_playlist_id(channel_id)
@@ -90,7 +102,7 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
     while True:
         try:
             # Timeout tuple: 5s connexion, 10s lecture pour éviter les blocages
-            r = requests.get(f"{YTB_API}/playlistItems", params=params, timeout=(5, 10))
+            r = requests.get(f"{YTB_API}/playlistItems", params=params, timeout=(5, 10), verify=False)
             r.raise_for_status()
             data = r.json()
 
@@ -127,6 +139,10 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
                     "summary": snippet.get("description", "")[:300],
                     "type": "youtube",
                 })
+                
+                # Arrêter si on a assez de vidéos matchantes
+                if len(videos) >= stop_after_match:
+                    return videos
 
             # Pagination
             token = data.get("nextPageToken")
@@ -144,16 +160,22 @@ def fetch_channel_videos(channel_name: str, channel_id: str, max_results: int = 
     return videos
 
 
-def get_all_videos(limit_per_channel: int = 50) -> list:
+def get_all_videos(limit_per_channel: int = 50, stop_after_match: int = 5) -> list:
     """
     Récupère les vidéos de toutes les chaînes configurées.
-    Retourne une liste de dicts avec channel, title, link, published, etc.
+    
+    Args:
+        limit_per_channel: Nombre max de vidéos à récupérer par channel
+        stop_after_match: Arrête après avoir trouvé ce nombre de vidéos matchantes par channel
+    
+    Returns:
+        Liste de dicts avec channel, title, link, published, etc.
     """
     all_videos = []
     
     for channel_name, channel_id in YOUTUBE_CHANNELS.items():
         print(f"🔍 Scraping {channel_name}...")
-        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel)
+        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel, stop_after_match=stop_after_match)
         all_videos.extend(videos)
         print(f"✅ {channel_name}: {len(videos)} vidéos matchent les mots-clés")
         time.sleep(0.2)  # rate limiting entre chaînes
