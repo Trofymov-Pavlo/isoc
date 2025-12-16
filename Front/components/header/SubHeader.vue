@@ -8,9 +8,9 @@
           En Direct
         </NuxtLink>
         <NuxtLink to="/video" class="nav-link" exact-active-class="is-active">
-          <span class="video-badge">●</span>
           Vidéos
         </NuxtLink>
+        <NuxtLink to="/articles" class="nav-link" exact-active-class="is-active">Articles</NuxtLink>
         <div class="nav-divider"></div>
         <NuxtLink to="/article-en-vedette" class="nav-link" exact-active-class="is-active">Article en Vedette</NuxtLink>
         <NuxtLink to="/podcast" class="nav-link" exact-active-class="is-active">Podcast</NuxtLink>

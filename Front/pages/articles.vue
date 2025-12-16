@@ -1,0 +1,3 @@
+<template>
+  <ArticlesMain />
+</template>

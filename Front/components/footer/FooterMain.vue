@@ -33,7 +33,7 @@
           <h4 class="col-title">Ressources</h4>
           <ul class="link-list">
             <li><NuxtLink to="/rss">Flux RSS</NuxtLink></li>
-            <li><NuxtLink to="/archive">Archive</NuxtLink></li>
+            <li><NuxtLink to="/articles">Articles</NuxtLink></li>
             <li><NuxtLink to="/contact">Nous Contacter</NuxtLink></li>
             <li><NuxtLink to="/a-propos">À propos</NuxtLink></li>
           </ul>

@@ -112,7 +112,7 @@ const resetSearch = () => {
 };
 
 const loadVideos = async () => {
-  await fetchVideos({ hours: 24, limit: 50 });
+  await fetchVideos({ hours: 0, limit: 1000 }); // Toutes les vidéos
 };
 
 onMounted(() => {
@@ -201,6 +201,63 @@ onMounted(() => {
 
 .clear-btn:hover {
   color: #333;
+}
+
+.channel-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 32px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #fff;
+  border-color: #2f0538;
+  color: #2f0538;
+}
+
+.tab-btn.active {
+  background: #2f0538;
+  color: white;
+  border-color: #2f0538;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.retry-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #2f0538;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #3a0f4f;
+  transform: translateY(-2px);
 }
 
 .articles-container {
