@@ -1,9 +1,9 @@
 <template>
   <main class="articles-page">
     <PageHero
-      title="Archive article"
+      title="Articles"
       subtitle="Tous les articles sur le conflit Ukraine-Russie"
-      badge="Article"
+      badge="Archive article"
     />
 
     <div class="articles-content">
