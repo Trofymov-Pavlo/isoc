@@ -11,13 +11,14 @@ export interface Video {
   summary?: string;
   type: string;
   archived_at?: string;
+  source?: string; // Add for type consistency with articles
 }
 
-const videos = ref<Video[]>([]);
-const loading = ref(false);
-const error = ref<string | null>(null);
-
 export const useVideos = () => {
+  const videos = ref<Video[]>([]);
+  const loading = ref(false);
+  const error = ref<string | null>(null);
+
   const fetchVideos = async (options?: {
     hours?: number;
     channel?: string;

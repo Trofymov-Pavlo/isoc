@@ -30,9 +30,15 @@
           <time class="article-time">
             {{ getDisplayDate(video) }}
           </time>
-          <a :href="video.link" target="_blank" rel="noopener" class="read-link">
-            Regarder sur YouTube →
-          </a>
+          <div class="footer-actions">
+            <a :href="video.link" target="_blank" rel="noopener" class="read-link">
+              Regarder sur YouTube →
+            </a>
+            <LikeButton 
+              :is-liked="isVideoLiked(video.link)" 
+              @toggle="toggleLike(video.link)"
+            />
+          </div>
         </div>
       </div>
     </article>
@@ -40,6 +46,10 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useLiked } from '~/composables/useLiked';
+import LikeButton from '~/components/shared/LikeButton.vue';
+
 interface VideoItem {
   id?: number;
   title: string;
@@ -55,6 +65,11 @@ interface VideoItem {
 }
 
 const props = defineProps<{ videos: VideoItem[] }>();
+const { likedItems, toggleLike } = useLiked();
+
+const isVideoLiked = (link: string): boolean => {
+  return likedItems.value.has(link);
+};
 
 const truncate = (text: string, max: number): string => {
   if (!text) return '';
@@ -230,6 +245,12 @@ const getThumbnailStyle = (video: VideoItem) => {
   font-size: 12px;
   color: #999;
   font-weight: 500;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .read-link {

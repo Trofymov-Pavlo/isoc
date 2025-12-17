@@ -1,27 +1,38 @@
 <template>
   <main class="articles-page">
     <PageHero
-      title="Tous les Articles"
-      subtitle="Consultez l'intégralité de nos articles sur le conflit Ukraine-Russie"
-      badge="Archive complète"
+      title="Articles"
+      subtitle="Tous les articles sur le conflit Ukraine-Russie"
+      badge="Archive article"
     />
 
     <div class="articles-content">
       <div class="search-bar-container">
-        <div class="search-wrapper">
-          <input
-            v-model="localQuery"
-            class="search-input"
-            placeholder="Rechercher un article..."
-            @keyup.enter="filterArticles"
-          />
-          <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-          <button v-else @click="localQuery = ''; filterArticles()" class="clear-btn">×</button>
+        <div class="search-row">
+          <div class="search-wrapper">
+            <input
+              v-model="localQuery"
+              class="search-input"
+              placeholder="Rechercher un article..."
+              @keyup.enter="filterArticles"
+            />
+            <svg v-if="!localQuery" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <button v-else @click="localQuery = ''; filterArticles()" class="clear-btn">×</button>
+          </div>
         </div>
-        <span class="article-count">{{ filteredArticles.length }} article(s)</span>
+        <div class="sort-section">
+          <label for="sort-articles" class="sort-label">Trier par :</label>
+          <select id="sort-articles" v-model="sortBy" class="sort-select">
+            <option value="date-desc">Plus récent</option>
+            <option value="date-asc">Plus ancien</option>
+            <option value="title-asc">Titre (A-Z)</option>
+            <option value="title-desc">Titre (Z-A)</option>
+            <option value="source-asc">Source (A-Z)</option>
+          </select>
+        </div>
       </div>
 
       <div v-if="loading" class="loading-state">
@@ -38,10 +49,23 @@
         <button @click="resetSearch" class="retry-btn">Réinitialiser la recherche</button>
       </div>
 
-      <section v-else class="articles-container">
-        <FeaturedLive v-if="filteredArticles[0]" :article="filteredArticles[0]" />
-        <LiveArticlesGrid v-if="filteredArticles.length > 1" :articles="filteredArticles.slice(1)" />
-      </section>
+      <template v-else>
+        <section class="articles-container">
+          <FeaturedLive v-if="paginatedArticles[0]" :article="paginatedArticles[0]" />
+          <LiveArticlesGrid v-if="paginatedArticles.length > 1" :articles="paginatedArticles.slice(1)" />
+        </section>
+
+        <Pagination
+          :current-page="currentPage"
+          :total-pages="totalPages"
+          :items-per-page="itemsPerPage"
+          :visible-pages="visiblePages"
+          @update:items-per-page="setItemsPerPage"
+          @next="nextPage"
+          @prev="prevPage"
+          @go-to="goToPage"
+        />
+      </template>
     </div>
   </main>
 </template>
@@ -49,9 +73,12 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
+import { usePagination } from '@/composables/usePagination';
+import { compareAlphabetic } from '@/utils/sortUtils';
 import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
+import Pagination from '~/components/shared/Pagination.vue';
 
 const { all, loading, error, load } = useArticles({
   apiBase: 'http://127.0.0.1:5000',
@@ -61,16 +88,55 @@ const { all, loading, error, load } = useArticles({
 });
 
 const localQuery = ref('');
+const sortBy = ref('date-desc');
 
 const filteredArticles = computed(() => {
   const query = localQuery.value.trim().toLowerCase();
-  if (!query) return all.value;
-  return all.value.filter(a =>
-    a.title.toLowerCase().includes(query) ||
-    (a.summary ?? '').toLowerCase().includes(query) ||
-    (a.source ?? '').toLowerCase().includes(query)
-  );
+  let result = all.value;
+  
+  // Filter
+  if (query) {
+    result = result.filter(a =>
+      a.title.toLowerCase().includes(query) ||
+      (a.summary ?? '').toLowerCase().includes(query) ||
+      (a.source ?? '').toLowerCase().includes(query)
+    );
+  }
+  
+  // Sort
+  const sorted = [...result];
+  switch (sortBy.value) {
+    case 'date-desc':
+      sorted.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
+      break;
+    case 'date-asc':
+      sorted.sort((a, b) => (a.publishedTime || 0) - (b.publishedTime || 0));
+      break;
+    case 'title-asc':
+      sorted.sort((a, b) => compareAlphabetic(a.title, b.title));
+      break;
+    case 'title-desc':
+      sorted.sort((a, b) => compareAlphabetic(b.title, a.title));
+      break;
+    case 'source-asc':
+      sorted.sort((a, b) => compareAlphabetic(a.source || '', b.source || ''));
+      break;
+  }
+  
+  return sorted;
 });
+
+const {
+  currentPage,
+  itemsPerPage,
+  totalPages,
+  paginatedItems: paginatedArticles,
+  setItemsPerPage,
+  nextPage,
+  prevPage,
+  goToPage,
+  visiblePages,
+} = usePagination(filteredArticles);
 
 const filterArticles = () => {
   // Reactive computed property handles filtering
@@ -109,17 +175,67 @@ onUnmounted(() => {
 .search-bar-container {
   padding: 32px 0 24px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   gap: 16px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 32px;
+  width: 100%;
+}
+
+.search-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.counter-section {
+  display: none;
+}
+
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
 }
 
 .search-wrapper {
   position: relative;
-  flex: 1;
+  width: 100%;
   max-width: 400px;
+}
+
+.sort-label {
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.sort-select:hover {
+  background: #fff;
+  border-color: #2f0538;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #2f0538;
+  background: #fff;
 }
 
 .search-input {

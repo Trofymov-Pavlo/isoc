@@ -8,13 +8,8 @@
     />
 
     <section class="liked-wrapper">
-      <div class="liked-content" v-if="items.length">
-        <div class="grid">
-          <article v-for="it in items" :key="it.id" class="item">
-            <h3 class="title">{{ it.title }}</h3>
-            <p class="meta">{{ it.source }} — {{ it.date }}</p>
-          </article>
-        </div>
+      <div class="liked-content" v-if="displayedItems.length">
+        <LiveArticlesGrid :articles="displayedItems" />
       </div>
       <div class="empty-state" v-else>
         <span class="empty-icon">📌</span>
@@ -26,9 +21,30 @@
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted } from 'vue';
 import PageHero from '~/components/shared/PageHero.vue';
+import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
+import { useLiked } from '~/composables/useLiked';
+import { useArticles } from '~/composables/useArticles';
+import { useVideos } from '~/composables/useVideos';
 
-const items: Array<{ id:number; title:string; source:string; date:string; }> = []
+const { likedItems, loadLiked } = useLiked();
+const { all: articles, load: loadArticles } = useArticles({ hours: 0 });
+const { videos, fetchVideos } = useVideos();
+
+const displayedItems = computed(() => {
+  const allItems = [
+    ...articles.value.map(a => ({ ...a, type: 'article' })),
+    ...videos.value.map(v => ({ ...v, type: 'video', source: v.channel, title: v.title, link: v.link, image: v.thumbnail, published: v.published })),
+  ];
+  return allItems.filter(item => likedItems.value.has(item.link));
+});
+
+onMounted(() => {
+  loadLiked();
+  loadArticles();
+  fetchVideos({ hours: 0, limit: 1000 });
+});
 </script>
 
 <style scoped>
@@ -43,39 +59,8 @@ const items: Array<{ id:number; title:string; source:string; date:string; }> = [
   padding: 48px calc(2vw) 60px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.item {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  padding: 24px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: #d0d0d0;
-}
-
-.title {
-  margin: 0 0 12px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.4;
-}
-
-.meta {
-  margin: 0;
-  font-size: 13px;
-  color: #999;
+.liked-content {
+  margin-bottom: 60px;
 }
 
 .empty-state {
@@ -98,14 +83,26 @@ const items: Array<{ id:number; title:string; source:string; date:string; }> = [
 }
 
 .empty-hint {
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   margin: 0;
 }
 
-@media (max-width: 968px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+@media (max-width: 768px) {
+  .liked-wrapper {
+    padding: 32px calc(2vw) 40px;
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+  }
+
+  .empty-text {
+    font-size: 16px;
+  }
+
+  .empty-hint {
+    font-size: 14px;
   }
 }
 </style>
