@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import AuthShell from '~/components/compte/AuthShell.vue';
-import CompteMainSignup from '~/components/compte/CompteMainSignup.vue';
+import CompteMainSignup from '~/components/compte/MainSignup.vue';
 
 definePageMeta({
   layout: false,

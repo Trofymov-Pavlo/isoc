@@ -31,7 +31,15 @@ body {
   padding: 0;
   background: var(--bg-primary);
   color: var(--text-primary);
+  font-family: 'Source Sans 3', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.4;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* Smooth transitions for dark mode */
@@ -50,6 +58,16 @@ textarea {
 
 a {
   color: var(--brand-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
 }
 
 /* Override any component styles that need dark mode support */

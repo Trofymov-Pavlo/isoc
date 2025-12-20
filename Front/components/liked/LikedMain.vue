@@ -8,7 +8,8 @@
     />
 
     <section class="liked-wrapper">
-      <div class="liked-content" v-if="displayedItems.length">
+      <div v-if="loading" class="loading-state">Chargement de vos médias enregistrés…</div>
+      <div class="liked-content" v-else-if="displayedItems.length">
         <LiveArticlesGrid :articles="displayedItems" />
       </div>
       <div class="empty-state" v-else>
@@ -21,29 +22,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import PageHero from '~/components/shared/PageHero.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
-import { useLiked } from '~/composables/useLiked';
-import { useArticles } from '~/composables/useArticles';
-import { useVideos } from '~/composables/useVideos';
+import { useSavedMedia } from '~/composables/useSavedMedia';
 
-const { likedItems, loadLiked } = useLiked();
-const { all: articles, load: loadArticles } = useArticles({ hours: 0 });
-const { videos, fetchVideos } = useVideos();
+const { getSavedItems, loading } = useSavedMedia();
+const displayedItems = ref<any[]>([]);
 
-const displayedItems = computed(() => {
-  const allItems = [
-    ...articles.value.map(a => ({ ...a, type: 'article' })),
-    ...videos.value.map(v => ({ ...v, type: 'video', source: v.channel, title: v.title, link: v.link, image: v.thumbnail, published: v.published })),
-  ];
-  return allItems.filter(item => likedItems.value.has(item.link));
-});
-
-onMounted(() => {
-  loadLiked();
-  loadArticles();
-  fetchVideos({ hours: 0, limit: 1000 });
+onMounted(async () => {
+  const items = await getSavedItems();
+  // Format the items to match the interface expected by LiveArticlesGrid
+  displayedItems.value = items.map(item => ({
+    link: item.link,
+    title: item.title,
+    source: item.source,
+    image: item.thumbnail,
+    summary: '',
+    type: item.media_type === 'article' ? 'article' : 'video',
+    published: item.saved_at,
+  }));
 });
 </script>
 
@@ -61,6 +59,13 @@ onMounted(() => {
 
 .liked-content {
   margin-bottom: 60px;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 16px;
 }
 
 .empty-state {

@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'accounts.django_urls'
+ROOT_URLCONF = 'django_config.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'accounts.wsgi.application'
+WSGI_APPLICATION = 'django_config.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -124,6 +124,3 @@ CSRF_COOKIE_HTTPONLY = False  # JavaScript can read to send it
 CSRF_COOKIE_SAMESITE = 'Strict'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
-# Payments removed
-

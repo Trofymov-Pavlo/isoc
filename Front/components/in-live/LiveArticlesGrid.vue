@@ -40,8 +40,12 @@
               Lire →
             </a>
             <LikeButton 
-              :is-liked="isArticleLiked(article.link)" 
-              @toggle="toggleLike(article.link)"
+              :link="article.link"
+              :title="article.title"
+              :source="article.source || 'En direct'"
+              :media-type="article.type === 'video' ? 'video' : 'live'"
+              :thumbnail="article.image"
+              @toggle="() => {}"
             />
           </div>
         </div>
@@ -52,7 +56,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useLiked } from '~/composables/useLiked';
 import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface Article {
@@ -66,11 +69,6 @@ interface Article {
 }
 
 const props = defineProps<{ articles: Article[] }>();
-const { likedItems, toggleLike } = useLiked();
-
-const isArticleLiked = (link: string): boolean => {
-  return likedItems.value.has(link);
-};
 
 const truncate = (text: string, max: number): string => {
   if (!text) return '';

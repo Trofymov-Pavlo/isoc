@@ -1,6 +1,6 @@
 <template>
-  <div class="auth-shell">
-    <div class="hero-panel">
+  <div class="auth-shell" :class="{ 'no-hero': !showHero }">
+    <div v-if="showHero" class="hero-panel">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="eyebrow">{{ eyebrow }}</p>
@@ -21,6 +21,7 @@ const props = defineProps({
   heroTitle: { type: String, default: 'AXIOME' },
   heroSubtitle: { type: String, default: 'Accès sécurisé à vos services' },
   eyebrow: { type: String, default: 'Espace membre' },
+  showHero: { type: Boolean, default: true },
 });
 </script>
 
@@ -30,7 +31,12 @@ const props = defineProps({
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: linear-gradient(135deg, #1d0c3a 0%, #35105c 35%, #0f1528 100%);
-  color: #fff;
+}
+
+.auth-shell.no-hero {
+  grid-template-columns: 1fr;
+  background: #f7f7fb;
+  color: inherit;
 }
 
 .hero-panel {
@@ -40,6 +46,7 @@ const props = defineProps({
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  color: #fff;
 }
 
 .hero-overlay {

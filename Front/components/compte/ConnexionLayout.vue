@@ -65,7 +65,7 @@
           <div class="form-footer">
             <p class="signup-link">
               Pas encore de compte ?
-              <NuxtLink to="/signup" class="link">Créer un compte</NuxtLink>
+              <NuxtLink to="/signup" class="link" exact>Créer un compte</NuxtLink>
             </p>
             <p class="security-note">🔒 Connexion sécurisée. Vos données restent privées.</p>
           </div>
