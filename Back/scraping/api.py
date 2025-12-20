@@ -5,6 +5,13 @@ Default: scrapes last 24 hours and adds to archive.json
 """
 
 import argparse
+import sys
+import io
+
+# Fix encoding for Windows console
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 from scraping.feeds import FR_FEEDS, FR_VIDEO_FEEDS
 from scraping.core import get_articles

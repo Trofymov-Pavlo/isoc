@@ -56,10 +56,11 @@ python -m scraping.api --help
 
 ## 📝 Comportement
 
-1. **Dédoublonnage automatique** : Le module vérifie les liens existants dans `archive.json` avant d'ajouter de nouvelles entrées
-2. **Ajout, pas remplacement** : Les nouveaux articles/vidéos sont ajoutés à l'archive existante (pas d'écrasement)
-3. **Tri chronologique** : L'archive est automatiquement triée par date de publication (plus récent en premier)
-4. **Timestamps** : Chaque entrée ajoutée reçoit un timestamp `archived_at` avec la date d'archivage
+1. **Filtrage optimisé** : Les filtres (temps + mots-clés) sont appliqués AVANT l'archivage pour éviter les opérations inutiles
+2. **Dédoublonnage automatique** : Le module vérifie les liens existants dans `archive.json` avant d'ajouter de nouvelles entrées
+3. **Ajout, pas remplacement** : Les nouveaux articles/vidéos sont ajoutés à l'archive existante (pas d'écrasement)
+4. **Tri chronologique** : L'archive est automatiquement triée par date de publication (plus récent en premier)
+5. **Timestamps** : Chaque entrée ajoutée reçoit un timestamp `archived_at` avec la date d'archivage
 
 ## 📍 Emplacement de l'archive
 

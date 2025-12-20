@@ -162,25 +162,40 @@ def fetch_channel_videos(
     return videos
 
 
-def get_all_videos(limit_per_channel: int = 50) -> list:
+def get_all_videos(limit_per_channel: int = 50, since_hours: int = 0) -> list:
     """
-    Récupère TOUTES les vidéos de toutes les chaînes configurées.
-    AUCUNE limite artificielle - seul filtre : les mots-clés.
+    Récupère les vidéos de toutes les chaînes configurées filtrées par mots-clés et temps.
     
     Args:
         limit_per_channel: Taille de page API (max 50)
+        since_hours: Filtrer les vidéos publiées dans les N dernières heures (0 = pas de filtre)
     
     Returns:
-        TOUTES les vidéos qui matchent les keywords, tous channels confondus
+        Vidéos qui matchent les keywords dans la période définie
     """
+    # Calculer le timestamp de coupure si nécessaire
+    cutoff_ms = 0
+    if since_hours > 0:
+        from datetime import timedelta
+        cutoff_time = datetime.now(timezone.utc) - timedelta(hours=since_hours)
+        cutoff_ms = int(cutoff_time.timestamp() * 1000)
+    
     all_videos = []
     
     for channel_name, channel_id in YOUTUBE_CHANNELS.items():
         print(f"🔍 Scraping {channel_name}...")
         videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel)
+        
+        # Filtrer par temps AVANT l'archivage
+        if cutoff_ms > 0:
+            videos = [v for v in videos if (v.get("publishedTime") or 0) >= cutoff_ms]
+        
         all_videos.extend(videos)
-        print(f"✅ {channel_name}: {len(videos)} vidéos matchent les mots-clés")
-        # Archivage immédiat par chaîne avant de passer à la suivante
+        
+        if videos:
+            print(f"✅ {channel_name}: {len(videos)} vidéos (filtrées par temps et mots-clés)")
+        
+        # Archivage immédiat des vidéos filtrées uniquement
         if videos:
             try:
                 from scraping.archive import add_videos
