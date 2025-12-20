@@ -53,13 +53,28 @@ class AccountViewSet(viewsets.ModelViewSet):
             password = serializer.validated_data.get('password')
             remember_me = serializer.validated_data.get('remember_me', False)
 
+            # Case-insensitive email search
             try:
-                user = User.objects.get(email=email)
+                user = User.objects.get(email__iexact=email)
             except User.DoesNotExist:
-                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+                return Response({
+                    'error': 'Invalid credentials',
+                    'detail': f'No user found with email: {email}'
+                }, status=status.HTTP_401_UNAUTHORIZED)
 
+            # Verify password
             if not user.check_password(password):
-                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+                return Response({
+                    'error': 'Invalid credentials',
+                    'detail': 'Password is incorrect'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+            # Check if user is active
+            if not user.is_active:
+                return Response({
+                    'error': 'Account disabled',
+                    'detail': 'This account has been deactivated'
+                }, status=status.HTTP_403_FORBIDDEN)
 
             user.remember_me = remember_me
             user.save()

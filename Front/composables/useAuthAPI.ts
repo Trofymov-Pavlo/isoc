@@ -69,7 +69,11 @@ export const useAuthAPI = () => {
         body: JSON.stringify({ email, password, remember_me: rememberMe }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Login failed');
+      if (!response.ok) {
+        // Show detailed error message if available
+        const errorMsg = data.detail || data.error || 'Login failed';
+        throw new Error(errorMsg);
+      }
       setTokens(data.access, data.refresh);
       user.value = data.user;
       if (process.client) {
