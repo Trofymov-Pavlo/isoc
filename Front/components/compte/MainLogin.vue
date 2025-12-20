@@ -46,6 +46,7 @@ import { ref } from 'vue';
 import { useRouter } from '#imports';
 import { useAuthState } from '~/composables/useAuthState';
 import { useAuthAPI } from '~/composables/useAuthAPI';
+import { useRateLimit } from '~/composables/useRateLimit';
 
 const email = ref('');
 const password = ref('');
