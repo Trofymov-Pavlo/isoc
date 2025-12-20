@@ -108,16 +108,18 @@ export const useAuthAPI = () => {
   };
 
   const logout = async () => {
+    if (!accessToken.value || !refreshToken.value) loadTokensFromStorage();
     loading.value = true;
     try {
+      // Even if refresh is missing/invalid, clear locally to avoid blocking logout.
       await fetch(`${API_BASE}/logout/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken.value}`,
+          ...(accessToken.value ? { 'Authorization': `Bearer ${accessToken.value}` } : {}),
         },
-        body: JSON.stringify({ refresh: refreshToken.value }),
-      });
+        body: JSON.stringify({ refresh: refreshToken.value || null }),
+      }).catch(() => {});
     } finally {
       clearTokens();
       loading.value = false;
