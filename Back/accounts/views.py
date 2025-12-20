@@ -1,11 +1,20 @@
+"""
+Authentication and User Management Views.
+
+This module contains all API endpoints for:
+- User registration (signup)
+- Authentication (login/logout)
+- Password management (reset, change)
+- Profile management (view, update)
+"""
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
-from django.views.decorators.cache import cache_page
+
 from .serializers import (
     UserSerializer, SignUpSerializer, LoginSerializer,
     PasswordResetSerializer, PasswordResetConfirmSerializer,

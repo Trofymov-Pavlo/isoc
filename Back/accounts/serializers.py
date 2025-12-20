@@ -1,3 +1,9 @@
+"""
+API Serializers.
+
+Serializers for user data validation and transformation.
+Handles authentication, profile updates, and password management.
+"""
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password

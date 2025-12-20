@@ -1,10 +1,14 @@
 """
-URL configuration for isoc_auth project.
+Accounts app URL configuration.
+API routes for user authentication and profile management.
 """
-from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import AccountViewSet
+
+router = DefaultRouter()
+router.register(r'', AccountViewSet, basename='account')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/accounts/', include('accounts.api_urls')),
+    path('', include(router.urls)),
 ]
