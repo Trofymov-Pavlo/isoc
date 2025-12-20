@@ -106,7 +106,8 @@ def fetch_channel_videos(
     }
 
     page = 0
-    videos_too_old = False  # Flag pour arrêter si on trouve des vidéos hors période
+    consecutive_old = 0  # Compteur de vidéos anciennes consécutives
+    MAX_CONSECUTIVE_OLD = 10  # Arrêter après 10 vidéos anciennes consécutives
 
     while True:
         try:
@@ -133,10 +134,16 @@ def fetch_channel_videos(
                     except:
                         pass
                 
-                # Si cutoff défini et vidéo trop ancienne, arrêter la pagination
+                # Vérifier si vidéo trop ancienne
                 if cutoff_ms > 0 and published_time and published_time < cutoff_ms:
-                    videos_too_old = True
-                    break
+                    consecutive_old += 1
+                    # Arrêter si trop de vidéos anciennes consécutives
+                    if consecutive_old >= MAX_CONSECUTIVE_OLD:
+                        break
+                    continue  # Passer à la vidéo suivante
+                
+                # Réinitialiser le compteur si on trouve une vidéo récente
+                consecutive_old = 0
                 
                 # Filtrer par mots-clés
                 if not match_keywords(title):
@@ -156,8 +163,8 @@ def fetch_channel_videos(
                     "type": "youtube",
                 })
 
-            # Arrêter si des vidéos sont trop anciennes
-            if videos_too_old:
+            # Arrêter si trop de vidéos anciennes consécutives
+            if consecutive_old >= MAX_CONSECUTIVE_OLD:
                 break
             
             # Pagination
@@ -206,6 +213,8 @@ def get_all_videos(limit_per_channel: int = 50, since_hours: int = 0) -> list:
         
         if videos:
             print(f"✅ {channel_name}: {len(videos)} vidéos (filtrées par temps et mots-clés)")
+        else:
+            print(f"⚪ {channel_name}: 0 vidéos (aucune correspondance)")
         
         # Archivage immédiat des vidéos filtrées uniquement
         if videos:
