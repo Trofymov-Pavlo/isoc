@@ -8,7 +8,7 @@ Utilise YouTube Data API v3
 from typing import List, Dict, Optional
 from datetime import datetime, timezone, timedelta
 
-from .api import get_all_videos
+from .scraper import get_all_videos
 
 
 def get_videos(

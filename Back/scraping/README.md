@@ -15,25 +15,32 @@ Module unifié de scraping pour AXIOME - Média indépendant du conflit Ukraine-
 ```
 scraping/
 ├── api.py              # Script CLI principal
-├── archive.py          # Gestion de la persistence (archive.json)
-├── keywords.py         # Mots-clés de filtrage (partagés)
-├── filters.py          # Logique de filtrage (partagée)
-├── textops.py          # Opérations sur le texte (partagées)
-├── media_extract.py    # Extraction des médias (partagée)
-├── http_state.py       # Gestion des sessions HTTP
+├── archive.py          # Gestion de la persistence (archive.json partagée)
+├── __init__.py         # Module principal
 ├── requirements.txt    # Dépendances Python
-├── articles/           # Module de scraping d'articles RSS
+│
+├── articles/           # 📰 Module complet de scraping RSS
 │   ├── __init__.py
 │   ├── core.py         # Logique de scraping RSS
-│   ├── feeds.py        # Configuration des flux RSS
+│   ├── feeds.py        # Configuration des flux RSS (112 sources)
+│   ├── filters.py      # Filtrage des articles
+│   ├── keywords.py     # Mots-clés de filtrage
+│   ├── textops.py      # Opérations sur le texte
+│   ├── media_extract.py # Extraction des métadonnées
+│   ├── http_state.py   # Gestion des sessions HTTP
 │   └── README.md
-└── videos/             # Module de scraping de vidéos YouTube
+│
+└── videos/             # 🎥 Module complet de scraping YouTube
     ├── __init__.py
     ├── core.py         # Interface de scraping vidéo
-    ├── api.py          # Implémentation YouTube Data API v3
-    ├── feeds.py        # Configuration des chaînes YouTube
+    ├── scraper.py      # Implémentation YouTube Data API v3
+    ├── feeds.py        # Configuration des chaînes (36 chaînes)
+    ├── keywords.py     # Mots-clés de filtrage
     └── README.md
 ```
+
+**Principe** : Chaque module (articles/, videos/) est autonome avec ses propres dépendances.
+Seul `archive.py` est partagé pour la persistence commune.
 
 ## 🚀 Usage
 

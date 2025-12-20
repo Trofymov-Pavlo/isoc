@@ -9,9 +9,15 @@ articles/
 ├── __init__.py         # Exports principaux
 ├── core.py             # Logique de scraping RSS
 ├── feeds.py            # Configuration des flux RSS
-├── textops.py          # Opérations sur le texte (copie partagée)
-└── media_extract.py    # Extraction des métadonnées (copie partagée)
+├── filters.py          # Filtrage par mots-clés
+├── keywords.py         # Liste des mots-clés
+├── textops.py          # Opérations sur le texte
+├── media_extract.py    # Extraction des métadonnées
+├── http_state.py       # Sessions HTTP avec headers
+└── README.md
 ```
+
+**Module autonome** : Tout le nécessaire pour le scraping RSS est contenu dans ce dossier.
 
 ## 🎯 Utilisation
 

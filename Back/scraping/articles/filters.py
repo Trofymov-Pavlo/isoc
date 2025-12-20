@@ -1,4 +1,4 @@
-# scraping/filters.py
+# scraping/articles/filters.py
 # -*- coding: utf-8 -*-
 from typing import List, Dict, Tuple
 from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS

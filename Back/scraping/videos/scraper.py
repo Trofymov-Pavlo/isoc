@@ -1,4 +1,4 @@
-# scraping/videos/api.py
+# scraping/videos/scraper.py
 # -*- coding: utf-8 -*-
 """
 Système de scraping vidéo utilisant YouTube Data API v3
@@ -8,7 +8,7 @@ import time
 import requests
 from datetime import datetime, timezone
 from typing import Optional
-from ..keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 from .feeds import YOUTUBE_CHANNELS
 
 # Désactiver les warnings SSL

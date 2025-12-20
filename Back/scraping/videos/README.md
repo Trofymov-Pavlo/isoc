@@ -8,9 +8,13 @@ Module de scraping de vidéos depuis YouTube via l'API YouTube Data v3.
 videos/
 ├── __init__.py     # Exports principaux
 ├── core.py         # Interface de scraping vidéo
-├── api.py          # Implémentation YouTube Data API v3
-└── feeds.py        # Configuration des chaînes YouTube
+├── scraper.py      # Implémentation YouTube Data API v3
+├── feeds.py        # Configuration des chaînes YouTube
+├── keywords.py     # Liste des mots-clés
+└── README.md
 ```
+
+**Module autonome** : Tout le nécessaire pour le scraping YouTube est contenu dans ce dossier.
 
 ## 🎯 Utilisation
 

@@ -6,11 +6,11 @@ from datetime import datetime, timezone
 
 import feedparser
 
-from ..http_state import fetch_rss_once
+from .http_state import fetch_rss_once
 from .textops import to_iso, norm_text
 from .media_extract import extract_author, extract_media_block
-from ..filters import strict_filter
-from ..keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+from .filters import strict_filter
+from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 
 
 
