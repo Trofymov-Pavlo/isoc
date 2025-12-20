@@ -13,9 +13,8 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-from scraping.feeds import FR_FEEDS, FR_VIDEO_FEEDS
-from scraping.core import get_articles
-from scraping.video import get_videos
+from scraping.articles import get_articles, FR_FEEDS
+from scraping.videos import get_videos, FR_VIDEO_FEEDS
 from scraping.archive import _load_archive
 
 

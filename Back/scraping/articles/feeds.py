@@ -1,14 +1,8 @@
-# scraping/feeds.py
+# scraping/articles/feeds.py
 # -*- coding: utf-8 -*-
-
-# ----------------- Flux RSS (France uniquement) -----------------
-
-
-
-# python -m scraping.feeds
-
-
-
+"""
+Configuration des flux RSS pour le scraping d'articles
+"""
 
 FR_FEEDS = {
     # --- Généralistes nationaux ---
@@ -16,7 +10,7 @@ FR_FEEDS = {
     "Le Figaro (actualités)": "https://www.lefigaro.fr/rss/figaro_actualites.xml",
     "Franceinfo (fil)": "https://www.franceinfo.fr/titres.rss",
     "Libération (à la une)": "https://www.liberation.fr/arc/outboundfeeds/rss-all/",
-    "Les Echos (monde)": "https://services.lesechos.fr/rss/les-echos-monde.xml",  # gardé comme demandé
+    "Les Echos (monde)": "https://services.lesechos.fr/rss/les-echos-monde.xml",
     "Le Parisien (à la une)": "https://feeds.leparisien.fr/leparisien/rss/une",
     "Ouest-France (à la une)": "https://www.ouest-france.fr/rss/une",
     "TF1 News (actualité)": "http://www.metronews.fr/rss.xml",
@@ -60,7 +54,7 @@ FR_FEEDS = {
     "01Net": "https://www.01net.com/feed/",
     "Futura Sciences": "https://www.futura-sciences.com/rss/actualites.xml",
 
-    # --- Think tank OK ---
+    # --- Think tank ---
     "Fondation Jean Jaurès": "https://www.jean-jaures.org/feed/",
 
     # --- Régionaux ---
@@ -79,17 +73,17 @@ FR_FEEDS = {
     "Courrier des Balkans": "https://www.courrierdesbalkans.fr/spip.php?page=backend",
     "BBC Afrique (FR)": "https://feeds.bbci.co.uk/afrique/rss.xml",
 
-    # --- AFRICA / AFP / ARTÉ (OK) ---
+    # --- Africa / AFP / ARTE ---
     "Africanews (FR) – Actualités": "https://fr.africanews.com/feed/rss?themes=news",
     "Africanews (FR) – Sahara occidental": "https://fr.africanews.com/feed/rss?tag=sahara-occidental",
-    "AFP – Au fil de l’AFP": "https://www.afp.com/fr/actus/afp_actualite/792,31,9,7,33/feed",
+    "AFP – Au fil de l'AFP": "https://www.afp.com/fr/actus/afp_actualite/792,31,9,7,33/feed",
     "AFP – Communiqués": "https://www.afp.com/fr/actus/afp_communique/all/feed",
     "AFP – Sur le fil": "https://feeds.acast.com/public/shows/64c3a6a885617f0011e3d14f",
     "Arte – Ukraine (YT)": "https://www.youtube.com/feeds/videos.xml?playlist_id=PLCwXWOyIR22uIyapIsBAk5uARuWHqtVM1",
     "Arte – Chaine YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL_cZf5sHKQHMRIEax5o3sg",
     "Arte – 28 minutes": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8EzKGkEiusTm7g0mTfkWkg",
 
-    # --- Europe / Suisse / Belgique (fonctionnent) ---
+    # --- Europe / Suisse / Belgique ---
     "Le Temps (Monde)": "https://partner-feeds.publishing.tamedia.ch/rss/24heures/monde",
     "24heures – Monde": "https://partner-feeds.publishing.tamedia.ch/rss/24heures/monde",
     "7sur7 – Monde": "https://www.7sur7.be/monde/rss.xml",
@@ -101,90 +95,10 @@ FR_FEEDS = {
     "Algérie 360": "https://www.algerie360.com/feed/",
     "AllAfrica – Derniers titres": "https://fr.allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
 
-    # --- BBC / France24 / BFMTV internat ---
+    # --- BBC / France24 / BFMTV international ---
     "BBC Afrique": "https://feeds.bbci.co.uk/afrique/rss.xml",
     "BFMTV – International Afrique": "https://www.bfmtv.com/rss/international/afrique/",
     "BFMTV – International Europe (Allemagne)": "https://www.bfmtv.com/rss/international/europe/allemagne/",
     "BFMTV – International États-Unis": "https://www.bfmtv.com/rss/international/amerique-nord/etats-unis/",
     "24matins (international)": "https://www.24matins.fr/feed",
-}
-
-
-
-
-# ---------------------------------------------------
-# Vérification automatique des flux RSS (diagnostic)
-# ---------------------------------------------------
-if __name__ == "__main__":
-    from .http_state import new_session  # <-- réutilise les mêmes headers !
-    import feedparser
-
-    s = new_session()
-    print("\n--- Vérification des flux RSS (avec headers du scraper) ---\n")
-
-    for name, url in FR_FEEDS.items():
-        try:
-            r = s.get(url, timeout=10, allow_redirects=True)
-            final = r.url
-
-            if r.status_code != 200:
-                print(f"❌ {name} — HTTP {r.status_code} → {url} (final: {final})")
-                continue
-
-            content = r.content or b""
-            if len(content) < 80:
-                print(f"⚠️ {name} — contenu très court (possible flux vide) → {final}")
-                continue
-
-            # Laisse feedparser juger la validité du flux
-            parsed = feedparser.parse(content)
-            if parsed.bozo:
-                print(f"⚠️ {name} — XML atypique/bozo=True → {final}")
-                continue
-            if not parsed.entries:
-                print(f"⚠️ {name} — flux OK mais aucune entrée → {final}")
-                continue
-
-            print(f"✅ {name} → {final}")
-
-        except Exception as e:
-            print(f"❌ {name} — erreur: {e} → {url}")
-
-
-# ============================================================
-# VIDEO FEEDS (YouTube)
-# ============================================================
-FR_VIDEO_FEEDS = {
-    # --- Français ---
-    "ARTE": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwI-JbGNsojunnHbFAc0M4Q",
-    "Le Monde": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYpRDnhk5H8h16jpS84uqsA",
-    "France 24": "https://www.youtube.com/feeds/videos.xml?channel_id=UCCCPCZNChQdGa9EkATeye4g",
-    "BFM TV": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXwDLMDV86ldKoFVc_g8P0g",
-    "CNews": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXKJrYczY2_fJEZgFPGY0HQ",
-    "France Inter": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJldRgT_D7Am-ErRHQZ90uw",
-    "Mediapart": "https://www.youtube.com/feeds/videos.xml?channel_id=UCdnaDhU-LDQrIEEmSIfq0-Q",
-    "Brut": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSKdvgqdnj72_SLggp7BDTg",
-    "Konbini": "https://www.youtube.com/feeds/videos.xml?channel_id=UCHQda5vLxrH0Ff0I0kMq4zw",
-    
-    # --- International anglophone ---
-    "BBC News": "https://www.youtube.com/feeds/videos.xml?channel_id=UC16niRr50-MSBwiO3YDb3RA",
-    "DW News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCknLrEdhRcp1aegoMqRaCZg",
-    "Euronews": "https://www.youtube.com/feeds/videos.xml?channel_id=UCW2QcKZiU8aUGg4yxCIditg",
-    "CNN": "https://www.youtube.com/feeds/videos.xml?channel_id=UCupvZG-5ko_eiXAupbDfxWw",
-    "ABC News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCBi2mrWuNuyYy4gbM6fU18Q",
-    "CBS News": "https://www.youtube.com/feeds/videos.xml?channel_id=UC8p1vwvWtl6T73JiExfWs1g",
-    "Fox News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXIJgqnII2ZOINSWNOGFThA",
-    "Associated Press": "https://www.youtube.com/feeds/videos.xml?channel_id=UC52X5wxOL_s5yw0dQk7NtgA",
-    "Al Jazeera English": "https://www.youtube.com/feeds/videos.xml?channel_id=UCNye-wNBqNL5ZzHSJj3l8Bg",
-    "Reuters": "https://www.youtube.com/feeds/videos.xml?channel_id=UChqUTb7kYRX8-EiaN3XFrSQ",
-    "Sky News": "https://www.youtube.com/feeds/videos.xml?channel_id=UCoMdktPbSTixAyNGwb-UYkQ",
-    
-    # --- Military/Defense ---
-    "Warthog Defense": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2JaXg63L_VqvXN4SwF4zOQ",
-    "Defense Updates": "https://www.youtube.com/feeds/videos.xml?channel_id=UCKNCbBWiMiXBVXUmUuu_dsQ",
-    
-    # --- Documentary/Nature ---
-    "National Geographic": "https://www.youtube.com/feeds/videos.xml?channel_id=UCpVm7bg6pXKo1Pr6k5kxG9A",
-    "Discovery Channel": "https://www.youtube.com/feeds/videos.xml?channel_id=UCqOoboPm3uhY_YXhvhmL-WA",
-    "Discovery Channel France": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ3uq_dgtGdfScO21KU08wg",
 }

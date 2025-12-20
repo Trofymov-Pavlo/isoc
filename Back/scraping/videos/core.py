@@ -1,14 +1,14 @@
-# scraping/video.py
+# scraping/videos/core.py
 # -*- coding: utf-8 -*-
 """
 Video scraping module
-Utilise maintenant YouTube Data API v3 au lieu du parsing RSS
+Utilise YouTube Data API v3
 """
 
 from typing import List, Dict, Optional
 from datetime import datetime, timezone, timedelta
 
-from .video_api import get_all_videos
+from .api import get_all_videos
 
 
 def get_videos(

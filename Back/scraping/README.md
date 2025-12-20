@@ -16,14 +16,23 @@ Module unifié de scraping pour AXIOME - Média indépendant du conflit Ukraine-
 scraping/
 ├── api.py              # Script CLI principal
 ├── archive.py          # Gestion de la persistence (archive.json)
-├── core.py             # Scraping des articles RSS
-├── feeds.py            # Configuration des flux RSS et YouTube
-├── video.py            # Scraping des vidéos YouTube
-├── keywords.py         # Mots-clés de filtrage
-├── filters.py          # Logique de filtrage
-├── textops.py          # Opérations sur le texte
-├── media_extract.py    # Extraction des médias
-└── requirements.txt    # Dépendances Python
+├── keywords.py         # Mots-clés de filtrage (partagés)
+├── filters.py          # Logique de filtrage (partagée)
+├── textops.py          # Opérations sur le texte (partagées)
+├── media_extract.py    # Extraction des médias (partagée)
+├── http_state.py       # Gestion des sessions HTTP
+├── requirements.txt    # Dépendances Python
+├── articles/           # Module de scraping d'articles RSS
+│   ├── __init__.py
+│   ├── core.py         # Logique de scraping RSS
+│   ├── feeds.py        # Configuration des flux RSS
+│   └── README.md
+└── videos/             # Module de scraping de vidéos YouTube
+    ├── __init__.py
+    ├── core.py         # Interface de scraping vidéo
+    ├── api.py          # Implémentation YouTube Data API v3
+    ├── feeds.py        # Configuration des chaînes YouTube
+    └── README.md
 ```
 
 ## 🚀 Usage
