@@ -1,6 +1,75 @@
 {
   "articles": [
     {
+      "source": "Ouest-France (à la une)",
+      "title": "CARTE. Guerre en Ukraine : frappes russes, partenariat de drones sous-marins, rencontre à Miami… Le point du jour",
+      "link": "https://www.ouest-france.fr/europe/ukraine/carte-guerre-en-ukraine-frappes-russes-partenariat-de-drones-sous-marins-rencontre-a-miami-le-point-du-jour-112e42e0-ddbe-11f0-84e2-922db77b2982?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "published": "2025-12-20T17:01:15+00:00",
+      "media": {
+        "url": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2YxMjUzOTNjYmE4NTYwMWVlMDlhNjljOTJhYTJlMDk?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=ae28d6560c4e16446a1ce0783c3c043f3e4b949978485b0271b9758ad966d5a1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2YxMjUzOTNjYmE4NTYwMWVlMDlhNjljOTJhYTJlMDk?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=ae28d6560c4e16446a1ce0783c3c043f3e4b949978485b0271b9758ad966d5a1",
+      "thumb": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2YxMjUzOTNjYmE4NTYwMWVlMDlhNjljOTJhYTJlMDk?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=ae28d6560c4e16446a1ce0783c3c043f3e4b949978485b0271b9758ad966d5a1",
+      "summary": "Partenariat avec le Portugal, suite des pourparlers, des entrepôts en feu après les frappes russes meurtrières, pression sur Moscou… Voici ce qu’il faut retenir de l’actualité liée à la guerre en Ukraine de ce samedi 20 décembre.",
+      "publishedTime": 1766250075000,
+      "archived_at": "2025-12-20T18:04:02.394874+00:00"
+    },
+    {
+      "source": "Est Républicain",
+      "title": "Reportage. Sous terre, les enfants de Kharkiv tentent d’oublier la guerre en Ukraine",
+      "link": "https://www.estrepublicain.fr/defense-guerre-conflit/2025/12/20/sous-terre-les-enfants-de-kharkiv-tentent-d-oublier-la-guerre-en-ukraine",
+      "published": "2025-12-20T17:00:00+00:00",
+      "media": null,
+      "summary": "Malgré la guerre qui fait rage depuis bientôt quatre ans en Ukraine, les enfants continuent d’apprendre en s’adaptant aux attaques russes. À Kharkiv, des écoles souterraines ont vu le jour afin de permettre aux enfants de garder un lien social et de se retrouver en toute sécurité.",
+      "publishedTime": 1766250000000,
+      "archived_at": "2025-12-20T18:04:02.394992+00:00"
+    },
+    {
+      "source": "L'Alsace",
+      "title": "Reportage. Sous terre, les enfants de Kharkiv tentent d’oublier la guerre en Ukraine",
+      "link": "https://www.lalsace.fr/defense-guerre-conflit/2025/12/20/sous-terre-les-enfants-de-kharkiv-tentent-d-oublier-la-guerre-en-ukraine",
+      "published": "2025-12-20T17:00:00+00:00",
+      "media": null,
+      "summary": "Malgré la guerre qui fait rage depuis bientôt quatre ans en Ukraine, les enfants continuent d’apprendre en s’adaptant aux attaques russes. À Kharkiv, des écoles souterraines ont vu le jour afin de permettre aux enfants de garder un lien social et de se retrouver en toute sécurité.",
+      "publishedTime": 1766250000000,
+      "archived_at": "2025-12-20T18:04:02.395040+00:00"
+    },
+    {
+      "source": "Le Dauphiné",
+      "title": "Reportage. Sous terre, les enfants de Kharkiv tentent d’oublier la guerre en Ukraine",
+      "link": "https://www.ledauphine.com/defense-guerre-conflit/2025/12/20/sous-terre-les-enfants-de-kharkiv-tentent-d-oublier-la-guerre-en-ukraine",
+      "published": "2025-12-20T17:00:00+00:00",
+      "media": null,
+      "summary": "Malgré la guerre qui fait rage depuis bientôt quatre ans en Ukraine, les enfants continuent d’apprendre en s’adaptant aux attaques russes. À Kharkiv, des écoles souterraines ont vu le jour afin de permettre aux enfants de garder un lien social et de se retrouver en toute sécurité.",
+      "publishedTime": 1766250000000,
+      "archived_at": "2025-12-20T18:04:02.395081+00:00"
+    },
+    {
+      "source": "7sur7 – Monde",
+      "title": "Pour Zelensky, ce pays est le seul à pouvoir persuader la Russie de mettre fin à la guerre",
+      "link": "https://www.7sur7.be/monde/pour-zelensky-ce-pays-est-le-seul-a-pouvoir-persuader-la-russie-de-mettre-fin-a-la-guerre~a6d96b6e/",
+      "published": "2025-12-20T16:42:54+00:00",
+      "media": {
+        "url": "https://images.7sur7.be/NTg4MjJiOTljN2M1MzEwOWYyNTQvZGlvLzI2NzkzMjc2Ny9maXQtd2lkdGgvNDAw/epa12605159-ukrainian-president-volodymyr-zelensky-speaks-during-a-joint-press-conference-with-portuguese-prime-minister-montenegro-following-their-meeting-in-kyiv-ukraine-20-december-2025-the-portuguese-prime-minister-arrived-in-kyiv-to-meet-with-top-ukrainian-officials-amid-the-russian-invasion-epa-sergey-dolzhenko",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.7sur7.be/NTg4MjJiOTljN2M1MzEwOWYyNTQvZGlvLzI2NzkzMjc2Ny9maXQtd2lkdGgvNDAw/epa12605159-ukrainian-president-volodymyr-zelensky-speaks-during-a-joint-press-conference-with-portuguese-prime-minister-montenegro-following-their-meeting-in-kyiv-ukraine-20-december-2025-the-portuguese-prime-minister-arrived-in-kyiv-to-meet-with-top-ukrainian-officials-amid-the-russian-invasion-epa-sergey-dolzhenko",
+      "thumb": "https://images.7sur7.be/NTg4MjJiOTljN2M1MzEwOWYyNTQvZGlvLzI2NzkzMjc2Ny9maXQtd2lkdGgvNDAw/epa12605159-ukrainian-president-volodymyr-zelensky-speaks-during-a-joint-press-conference-with-portuguese-prime-minister-montenegro-following-their-meeting-in-kyiv-ukraine-20-december-2025-the-portuguese-prime-minister-arrived-in-kyiv-to-meet-with-top-ukrainian-officials-amid-the-russian-invasion-epa-sergey-dolzhenko",
+      "author": "E.L",
+      "summary": "Le président ukrainien Volodymyr Zelensky a estimé samedi que seuls les États-Unis étaient capables de persuader la Russie de mettre fin à la guerre en Ukraine, au moment où des envoyés de Kiev et de Moscou se sont rendus à Miami pour de nouvelles discussions.",
+      "publishedTime": 1766248974000,
+      "archived_at": "2025-12-20T17:53:41.238623+00:00"
+    },
+    {
       "source": "Franceinfo (fil)",
       "title": "Guerre en Ukraine : Volodymyr Zelensky affirme que les Etats-Unis ont proposé une rencontre trilatérale avec la Russie à Miami",
       "link": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/guerre-en-ukraine-volodymyr-zelensky-affirme-que-les-etats-unis-ont-propose-une-rencontre-trilaterale-avec-la-russie-a-miami_7692313.html#xtor=RSS-3-[lestitres]",
@@ -214,6 +283,26 @@
       "summary": "Suivez l’actualité de la guerre en Ukraine, en direct toute la journée, ce samedi 20 décembre 2025 sur ladepeche.fr.",
       "publishedTime": 1766239763000,
       "archived_at": "2025-12-20T17:29:25.600413+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine, jour 1396 : rencontre proposée aux États-Unis, émissaire russe en route pour Miami",
+      "link": "https://www.la-croix.com/international/ukraine-russie-jour-1396-point-conflit-ukrainien-poutine-aujourdhui-20251220",
+      "published": "2025-12-20T13:26:51+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/20/2290829-des-ambulanciers-ukrainiens-et-des-psychologues-de.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/20/2290829-des-ambulanciers-ukrainiens-et-des-psychologues-de.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/20/2290829-des-ambulanciers-ukrainiens-et-des-psychologues-de.jpg",
+      "author": "La Croix (avec AFP)",
+      "summary": "Volodymyr Zelensky a déclaré samedi 20 décembre que les États-Unis avaient proposé une rencontre avec les négociateurs ukrainiens et russes à Miami. L’émissaire russe pour les questions économiques, Kirill Dmitriev, a annoncé qu’il était en route vers la ville américaine.",
+      "publishedTime": 1766237211000,
+      "archived_at": "2025-12-20T17:53:41.238734+00:00"
     },
     {
       "source": "BFM TV (monde)",
@@ -989,6 +1078,26 @@
       "archived_at": "2025-12-20T17:29:25.601576+00:00"
     },
     {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine, jour 1395 : ce qu’il faut retenir de la situation du vendredi 19 décembre",
+      "link": "https://www.la-croix.com/international/ukraine-russie-jour-1395-point-conflit-ukrainien-poutine-aujourdhui-20251219",
+      "published": "2025-12-19T19:34:08+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/19/2289617-les-destructions-a-kostyantynivka-dans-la-region-d.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/19/2289617-les-destructions-a-kostyantynivka-dans-la-region-d.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/19/2289617-les-destructions-a-kostyantynivka-dans-la-region-d.jpg",
+      "author": "La Croix (avec AFP)",
+      "summary": "Ukrainiens, Américains et Européens entament ce vendredi 19 décembre aux États-Unis de nouvelles « consultations » sur le plan de Washington visant à mettre fin à la guerre avec la Russie. Le président russe Vladimir Poutine s’est exprimé pour sa grande conférence de presse annuelle.",
+      "publishedTime": 1766172848000,
+      "archived_at": "2025-12-20T17:59:27.966452+00:00"
+    },
+    {
       "source": "7sur7 – Monde",
       "title": "“Une discussion ferme et honnête”: devant Zelensky, le président polonais reproche aux Ukrainiens leur ingratitude",
       "link": "https://www.7sur7.be/monde/une-discussion-ferme-et-honnete-devant-zelensky-le-president-polonais-reproche-aux-ukrainiens-leur-ingratitude~a8a9b37c/",
@@ -1146,6 +1255,26 @@
       "summary": "C’est une opération inédite depuis le début de l’invasion russe de l’Ukraine. Les services de sécurité ukrainiens (SBU) affirment avoir mené une frappe contre un pétrolier de la «flotte fantôme» russe, en Méditerranée. Selon les autorités ukrainiennes, le navire a été visé par des drones aériens à plus de 2 000 km des frontières de l'Ukraine.",
       "publishedTime": 1766164124000,
       "archived_at": "2025-12-20T17:29:25.601822+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "« Porcelets » européens, Ukraine, déboires sociaux… Que retenir de la conférence de presse de Vladimir Poutine ?",
+      "link": "https://www.la-croix.com/international/porcelets-europeens-ukraine-deboires-sociaux-que-retenir-de-la-conference-de-presse-de-vladimir-poutine-20251219",
+      "published": "2025-12-19T16:17:05+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/19/2290282-vladimir-poutine-lors-de-sa-conference-de-presse-d.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/19/2290282-vladimir-poutine-lors-de-sa-conference-de-presse-d.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/19/2290282-vladimir-poutine-lors-de-sa-conference-de-presse-d.jpg",
+      "author": "Pierre Sautreuil",
+      "summary": "Lors de sa traditionnelle conférence de presse de fin d’année, vendredi 19 décembre 2025, le président russe a démontré qu’il ne déviait pas de ses objectifs en Ukraine et a accusé les Européens de jeter de l’huile sur le feu. Mais une part conséquente des questions tournaient autour des difficultés sociales et économiques du pays.",
+      "publishedTime": 1766161025000,
+      "archived_at": "2025-12-20T17:59:27.966585+00:00"
     },
     {
       "source": "Kyiv Post",
@@ -1993,6 +2122,26 @@
       "archived_at": "2025-12-20T17:29:25.603354+00:00"
     },
     {
+      "source": "La Croix (Monde)",
+      "title": "« La Russie est un pays vaste qu’il faut peupler » : comment Moscou tente de relancer la natalité dans le pays",
+      "link": "https://www.la-croix.com/international/la-russie-est-un-pays-vaste-qu-il-faut-peupler-comment-moscou-tente-de-relancer-la-natalite-dans-le-pays-20251219",
+      "published": "2025-12-19T07:00:11+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/18/2287487-l-age-moyen-des-meres-a-la-naissance-du-premier-en.jpeg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/18/2287487-l-age-moyen-des-meres-a-la-naissance-du-premier-en.jpeg",
+      "thumb": "https://i.la-croix.com/x/2025/12/18/2287487-l-age-moyen-des-meres-a-la-naissance-du-premier-en.jpeg",
+      "author": "Apolline Vilbois",
+      "summary": "À coups d’aides sociales et d’exhortations morales, les responsables russes tentent de relancer la natalité dans un pays où elle est en baisse constante depuis 1991. Mais pour les jeunes en Russie, le contexte économique et la guerre en Ukraine sont de réels obstacles à la fondation d’une famille.",
+      "publishedTime": 1766127611000,
+      "archived_at": "2025-12-20T17:59:27.966968+00:00"
+    },
+    {
       "source": "Challenges (monde)",
       "title": "Aide à l’Ukraine : l’UE s’accorde sur un prêt de 90 milliards d’euros, faute d’entente sur les avoirs russes gelés",
       "link": "https://www.challenges.fr/monde/aide-a-lukraine-lue-saccorde-sur-un-pret-de-90-milliards-deuros-faute-dentente-sur-les-avoirs-russes-geles_634491",
@@ -2110,6 +2259,26 @@
       "archived_at": "2025-12-20T17:29:25.603562+00:00"
     },
     {
+      "source": "La Croix (Monde)",
+      "title": "Aide à l’Ukraine, les Européens s’accordent sur un emprunt en commun, pas sur les avoirs russes",
+      "link": "https://www.la-croix.com/international/aide-a-l-ukraine-les-europeens-saccordent-sur-un-emprunt-en-commun-20251219",
+      "published": "2025-12-19T04:34:02+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/19/2289321-le-president-du-conseil-europeen-antonio-costa-deu.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/19/2289321-le-president-du-conseil-europeen-antonio-costa-deu.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/19/2289321-le-president-du-conseil-europeen-antonio-costa-deu.jpg",
+      "author": "Alain Guillemoles (envoyé spécial à Bruxelles)",
+      "summary": "Les dirigeants européens, réunis jeudi 18 décembre à Bruxelles, ont renoncé à saisir les avoirs russes. Ils ont toutefois trouvé un accord pour garantir un financement de 90 milliards à l’Ukraine pour les deux prochaines années. Il sera réalisé grâce à de la dette commune.",
+      "publishedTime": 1766118842000,
+      "archived_at": "2025-12-20T17:59:27.967093+00:00"
+    },
+    {
       "source": "Kyiv Post",
       "title": "High-Stakes Sunshine: Trump Team Launches Miami Blitz to End Russia’s War in Ukraine",
       "link": "https://www.kyivpost.com/post/66544",
@@ -2207,6 +2376,26 @@
       "summary": "Alors qu'une nouvelle rencontre entre émissaires russes et américains est prévu ce week-end aux États-Unis, le président américain a exhorté Kiev à \"bouger rapidement\" sur les négociations. \"À chaque fois qu'ils prennent trop de temps, alors la Russie change d'avis\", a-t-il déclaré.<br /><br /><img src=\"https://images.bfmtv.com/hUoelnCcuHm74LA6NLgHEntxkrA=/0x106:2048x1258/800x0/images/Donald-Trump-2201685.jpg\" />",
       "publishedTime": 1766087500000,
       "archived_at": "2025-12-20T17:29:25.603734+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine, jour 1394 : ce qu’il faut retenir de la situation du jeudi 18 décembre",
+      "link": "https://www.la-croix.com/international/ukraine-russie-jour-1394-point-conflit-ukrainien-poutine-aujourdhui-20251218",
+      "published": "2025-12-18T19:39:23+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/18/2288432-un-policier-inspecte-les-degats-causes-par-une-fra.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/18/2288432-un-policier-inspecte-les-degats-causes-par-une-fra.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/18/2288432-un-policier-inspecte-les-degats-causes-par-une-fra.jpg",
+      "author": "La Croix (avec AFP)",
+      "summary": "L’Union européenne joue une part de sa crédibilité jeudi 18 décembre lors d’un sommet de ses dirigeants jeudi à Bruxelles, où des décisions sont attendues sur l’utilisation des avoirs russes gelés. Une attaque de drones en Russie, sur un port de la mer d’Azov a fait trois morts.",
+      "publishedTime": 1766086763000,
+      "archived_at": "2025-12-20T17:59:27.967176+00:00"
     },
     {
       "source": "Kyiv Post",
@@ -2495,6 +2684,26 @@
       "archived_at": "2025-12-20T17:29:25.604263+00:00"
     },
     {
+      "source": "La Croix (Monde)",
+      "title": "« HugoDécrypte en Russie » retrace un millénaire d’histoire en BD avec humour et rigueur",
+      "link": "https://www.la-croix.com/international/hugodecrypte-en-russie-retrace-un-millenaire-d-histoire-en-bd-avec-humour-et-rigueur-20251218",
+      "published": "2025-12-18T12:13:29+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/18/2288873-la-premiere-bande-dessinee-d-hugodecrypte-offre-un.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/18/2288873-la-premiere-bande-dessinee-d-hugodecrypte-offre-un.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/18/2288873-la-premiere-bande-dessinee-d-hugodecrypte-offre-un.jpg",
+      "author": "Pierre Sautreuil",
+      "summary": "Pour sa première bande dessinée, le journaliste star des jeunes Hugo Travers se lance dans une épopée à travers un millénaire d’histoire russe. Le résultat est une réussite, qui met en lumière avec humour et rigueur la manière dont le passé ne cesse d’être mobilisé par le politique.",
+      "publishedTime": 1766060009000,
+      "archived_at": "2025-12-20T17:59:27.967370+00:00"
+    },
+    {
       "source": "L'Express (a la une)",
       "title": "Avoirs russes gelés : la Belgique visée par des intimidations de Moscou",
       "link": "https://www.lexpress.fr/monde/europe/avoirs-russes-geles-la-belgique-visee-par-des-intimidations-de-moscou-734KSN2P3JHO7IIBI5DMUX2DGI/",
@@ -2680,6 +2889,26 @@
       "summary": "The EU estimates Ukraine needs an extra 135 billion euros ($159 billion) to stay afloat over the next two years - with the cash crunch set to start in April.",
       "publishedTime": 1766038763000,
       "archived_at": "2025-12-20T17:29:25.604628+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Au Conseil européen, vers un accord à tout prix sur un prêt à l’Ukraine",
+      "link": "https://www.la-croix.com/international/au-conseil-europeen-vers-un-accord-a-tout-prix-sur-un-pret-a-l-ukraine-20251217",
+      "published": "2025-12-18T04:15:20+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/17/2288016-lors-d-une-reunion-des-ministres-des-affaires-etra.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/17/2288016-lors-d-une-reunion-des-ministres-des-affaires-etra.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/17/2288016-lors-d-une-reunion-des-ministres-des-affaires-etra.jpg",
+      "author": "Céline Schoen Crochet, correspondante à Bruxelles",
+      "summary": "Les négociateurs européens travaillent « nuit et jour » pour débloquer 90 milliards d’euros d’aide à l’Ukraine via les avoirs russes immobilisés, lors du Conseil européen de jeudi 18 décembre. Mais la Hongrie et la Belgique, qui héberge l’institution financière Euroclear, résistent au projet de prêt.",
+      "publishedTime": 1766031320000,
+      "archived_at": "2025-12-20T17:59:27.967561+00:00"
     },
     {
       "source": "L'Express (a la une)",
@@ -9693,6 +9922,17 @@
     }
   ],
   "videos": [
+    {
+      "channel": "France 24",
+      "title": "À Odessa, ciblée des frappes russes, les générateurs devenus indispensables • FRANCE 24",
+      "link": "https://www.youtube.com/watch?v=LxyW2AOIxfM",
+      "published": "2025-12-20T17:46:56Z",
+      "publishedTime": 1766252816000,
+      "thumbnail": "https://i.ytimg.com/vi/LxyW2AOIxfM/hqdefault.jpg",
+      "summary": "Dans cette ville portuaire ukrainienne, les Ukrainiens tentent de trouver des solutions pour pallier les coupures d'électricité, dues aux frappes russes.\n\n\n🔔 Abonnez-vous à notre chaîne sur YouTube : https://f24.my/YTfr\n🔴 En DIRECT - Suivez FRANCE 24 ici : https://f24.my/YTliveFR\n\n🌍 Retrouvez toute ",
+      "type": "youtube",
+      "archived_at": "2025-12-20T17:57:49.677912+00:00"
+    },
     {
       "channel": "Associated Press",
       "title": "Ukrainian President Zelenskyy meets with Portuguese Prime Minister Montenegro in Kyiv",
