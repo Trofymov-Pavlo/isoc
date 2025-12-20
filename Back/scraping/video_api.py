@@ -76,18 +76,20 @@ def fetch_channel_videos(
     channel_name: str,
     channel_id: str,
     max_results: int = 50,
+    cutoff_ms: int = 0,
 ) -> list:
     """
-    Récupère TOUTES les vidéos d'une chaîne qui matchent nos mots-clés.
-    AUCUNE limite artificielle - scrape jusqu'à épuisement des vidéos matchantes.
+    Récupère les vidéos d'une chaîne qui matchent nos mots-clés et la fenêtre temporelle.
+    Arrête la pagination dès que les vidéos sont trop anciennes pour optimiser les performances.
     
     Args:
         channel_name: Nom de la chaîne
         channel_id: ID YouTube de la chaîne
         max_results: Nombre max de vidéos à récupérer de l'API par page (50 max)
+        cutoff_ms: Timestamp en millisecondes - arrête si vidéos plus anciennes (0 = pas de limite)
     
     Returns:
-        TOUTES les vidéos qui matchent les mots-clés
+        Vidéos qui matchent les mots-clés et la période
     """
     try:
         uploads_id = get_uploads_playlist_id(channel_id)
@@ -104,6 +106,7 @@ def fetch_channel_videos(
     }
 
     page = 0
+    videos_too_old = False  # Flag pour arrêter si on trouve des vidéos hors période
 
     while True:
         try:
@@ -119,12 +122,7 @@ def fetch_channel_videos(
                 title = snippet.get("title", "")
                 video_id = content.get("videoId", "")
                 
-                if not match_keywords(title):
-                    continue
-
                 published = content.get("videoPublishedAt") or snippet.get("publishedAt")
-                thumbnail = snippet.get("thumbnails", {})
-                thumb_url = (thumbnail.get("high") or thumbnail.get("default") or {}).get("url")
                 
                 # Convertir date ISO en timestamp
                 published_time = None
@@ -134,6 +132,18 @@ def fetch_channel_videos(
                         published_time = int(dt.timestamp() * 1000)
                     except:
                         pass
+                
+                # Si cutoff défini et vidéo trop ancienne, arrêter la pagination
+                if cutoff_ms > 0 and published_time and published_time < cutoff_ms:
+                    videos_too_old = True
+                    break
+                
+                # Filtrer par mots-clés
+                if not match_keywords(title):
+                    continue
+
+                thumbnail = snippet.get("thumbnails", {})
+                thumb_url = (thumbnail.get("high") or thumbnail.get("default") or {}).get("url")
 
                 videos.append({
                     "channel": channel_name,
@@ -146,6 +156,10 @@ def fetch_channel_videos(
                     "type": "youtube",
                 })
 
+            # Arrêter si des vidéos sont trop anciennes
+            if videos_too_old:
+                break
+            
             # Pagination
             token = data.get("nextPageToken")
             if not token:
@@ -184,12 +198,10 @@ def get_all_videos(limit_per_channel: int = 50, since_hours: int = 0) -> list:
     
     for channel_name, channel_id in YOUTUBE_CHANNELS.items():
         print(f"🔍 Scraping {channel_name}...")
-        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel)
+        # Passer cutoff_ms pour arrêter la pagination sur les vidéos anciennes
+        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel, cutoff_ms=cutoff_ms)
         
-        # Filtrer par temps AVANT l'archivage
-        if cutoff_ms > 0:
-            videos = [v for v in videos if (v.get("publishedTime") or 0) >= cutoff_ms]
-        
+        # Plus besoin de filtrer ici, c'est déjà fait dans fetch_channel_videos
         all_videos.extend(videos)
         
         if videos:
