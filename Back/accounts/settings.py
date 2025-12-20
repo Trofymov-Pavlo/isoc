@@ -18,7 +18,7 @@ if not os.environ.get('DJANGO_SECRET_KEY') and not os.environ.get('DEBUG'):
     print("⚠️  WARNING: DJANGO_SECRET_KEY not set! Using unsafe default key.")
 
 # DEBUG from environment
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'true').lower() == 'true'
 
 # ALLOWED_HOSTS from environment or default
 ALLOWED_HOSTS_STR = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,127.0.0.1:3000')
@@ -88,6 +88,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
