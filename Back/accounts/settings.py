@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'isoc_auth.urls'
+ROOT_URLCONF = 'accounts.urls'
 
 TEMPLATES = [
     {
@@ -66,7 +66,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'isoc_auth.wsgi.application'
+WSGI_APPLICATION = 'accounts.wsgi.application'
 
 DATABASES = {
     'default': {
