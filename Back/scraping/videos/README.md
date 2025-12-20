@@ -40,4 +40,9 @@ L'API nécessite une clé YouTube Data API v3 :
 export YT_API_KEY="votre_cle_api"
 ```
 
-Ou utilise la clé par défaut définie dans `api.py`.
+Vous pouvez aussi créer un fichier `.env` (chargé automatiquement) à la racine du projet Back/ pour le développement local :
+```
+YT_API_KEY=votre_cle_api
+```
+
+La clé n'est jamais hardcodée dans le code source. Si `YT_API_KEY` est absente, le scraping vidéo est désactivé.

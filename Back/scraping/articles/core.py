@@ -251,7 +251,6 @@ def get_articles(
     filtered = strict_filter(entries, hay_min)
 
     # 3) Filtre mots-clés additionnels (keywords.py) + query libre (OR logique)
-    from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
     KEYWORDS = UA_ANCHORS + RU_ANCHORS + NATO_TERMS
     qn = norm_text(query) if query else ""
 

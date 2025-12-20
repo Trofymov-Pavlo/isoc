@@ -3,20 +3,19 @@
 """
 Système de scraping vidéo utilisant YouTube Data API v3
 """
-import os
 import time
 import requests
 from datetime import datetime, timezone
 from typing import Optional
 from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 from .feeds import YOUTUBE_CHANNELS
+from .config import API_KEY, YTB_API, has_api_key
 
 # Désactiver les warnings SSL
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-API_KEY = os.environ.get("YT_API_KEY", "AIzaSyDnEmmnbH3lsMtNbm-rMITQf-3bO-RQZv4")
-YTB_API = "https://www.googleapis.com/youtube/v3"
+# Clé API et endpoint sont fournis par videos/config.py
 
 
 def match_keywords(title: str) -> bool:
@@ -162,6 +161,11 @@ def get_all_videos(limit_per_channel: int = 50, since_hours: int = 0) -> list:
     Returns:
         Vidéos qui matchent les keywords dans la période définie
     """
+    # Vérifier la présence de la clé API
+    if not has_api_key():
+        print("⚠️ Clé API YouTube manquante (YT_API_KEY). Scraping vidéos désactivé.")
+        return []
+
     # Calculer le timestamp de coupure si nécessaire
     cutoff_ms = 0
     if since_hours > 0:
