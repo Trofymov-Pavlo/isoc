@@ -1,3 +1,3 @@
 <template>
-  <CompteProfilMain />
+  <ProfilMain />
 </template>

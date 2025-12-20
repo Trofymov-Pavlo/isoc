@@ -57,21 +57,27 @@ const router = useRouter();
 const { setAuth } = useAuthState();
 const { login, loading } = useAuthAPI();
 const { checkLimit, isLockedOut, lockoutRemainingSeconds, getAttemptsRemaining } = useRateLimit({
-  maxAttempts: 5,
+  maxAttempts: 20,  // Plus permissif pour développement
   windowMs: 60000, // 1 minute
-  lockoutMs: 300000, // 5 minutes de blocage
+  lockoutMs: 60000, // 1 minute de blocage (au lieu de 5)
 });
 
 const handleSubmit = async () => {
+  console.log('🎬 handleSubmit called!');
   error.value = '';
   
   // Vérifier le rate limit
-  if (!checkLimit()) {
+  console.log('🔒 About to check rate limit');
+  const limitOk = checkLimit();
+  console.log('🔒 Rate limit check:', { limitOk, isLockedOut: isLockedOut.value, remaining: getAttemptsRemaining() });
+  
+  if (!limitOk) {
     if (isLockedOut.value) {
       error.value = `Trop de tentatives. Veuillez attendre ${lockoutRemainingSeconds.value}s`;
     } else {
       error.value = `Limite atteinte. Tentatives restantes: ${getAttemptsRemaining()}`;
     }
+    console.error('🔒 Login blocked by rate limit:', error.value);
     return;
   }
   
@@ -81,10 +87,15 @@ const handleSubmit = async () => {
   }
 
   try {
+    console.log('🚀 About to call login()');
     await login(email.value, password.value, remember.value);
+    console.log('✅ Login returned successfully');
     setAuth(true, remember.value);
+    console.log('✅ setAuth called');
     await router.push('/mon-compte');
+    console.log('✅ Navigated to mon-compte');
   } catch (err) {
+    console.error('❌ handleSubmit caught error:', err);
     error.value = err instanceof Error ? err.message : 'Erreur de connexion';
   }
 };

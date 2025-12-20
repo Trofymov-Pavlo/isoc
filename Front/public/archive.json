@@ -1,6 +1,63 @@
 {
   "articles": [
     {
+      "source": "Le Figaro (actualités)",
+      "title": "DIRECT - Rencontre entre Américains, Ukrainiens et Russes à Miami ? Volodymyr Zelensky doute qu’elle donnerait des résultats «nouveaux»",
+      "link": "https://www.lefigaro.fr/international/en-direct-guerre-en-ukraine-les-negociations-continuent-a-miami-cette-fois-entre-americains-et-russes-20251220",
+      "published": "2025-12-20T18:21:02+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/3000x2000_crop/2025/12/20/dc734cc76f5c2797259853e54b615209c7093818d1bf03db53f25c00090bc16b.jpg",
+        "width": 3000,
+        "height": 2000,
+        "type": null,
+        "description": null,
+        "credit": "Robin van Lonkhuijsen / REUTERS"
+      },
+      "image": "https://i.f1g.fr/media/cms/3000x2000_crop/2025/12/20/dc734cc76f5c2797259853e54b615209c7093818d1bf03db53f25c00090bc16b.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/3000x2000_crop/2025/12/20/dc734cc76f5c2797259853e54b615209c7093818d1bf03db53f25c00090bc16b.jpg",
+      "summary": "Kirill Dimitriev est arrivé ce samedi dans la ville de Floride où il doit rencontrer Steve Witkoff et Jared Kushner. Selon Volodymyr Zelensky, Washington a proposé une réunion tripartite, mais le président ukrainien souhaite surtout que les Américains «exercent un peu plus de pression sur la Russie».",
+      "publishedTime": 1766254862000,
+      "archived_at": "2025-12-20T19:50:13.122995+00:00"
+    },
+    {
+      "source": "Le Télégramme (monde)",
+      "title": "Les États-Unis proposent des négociations directes Ukraine-Russie, selon Zelensky",
+      "link": "https://www.letelegramme.fr/monde/guerre-ukraine-russie/les-etats-unis-proposent-des-negociations-directes-ukraine-russie-selon-zelensky-6951978.php",
+      "published": "2025-12-20T17:32:00+00:00",
+      "media": {
+        "url": "https://media.letelegramme.fr/api/v1/files/6946ebc091faf6656300dbc1?alt=file&v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.letelegramme.fr/api/v1/files/6946ebc091faf6656300dbc1?alt=file&v=1",
+      "thumb": "https://media.letelegramme.fr/api/v1/files/6946ebc091faf6656300dbc1?alt=file&v=1",
+      "summary": "Le président ukrainien Volodymyr Zelensky a déclaré samedi que les États-Unis avaient proposé une rencontre avec les négociateurs ukrainiens et russes à Miami, où ces derniers se sont rendus pour des discussions avec les Américains sur leur plan pour l’Ukraine.",
+      "publishedTime": 1766251920000,
+      "archived_at": "2025-12-20T19:50:13.123054+00:00"
+    },
+    {
+      "source": "RTL (La Une)",
+      "title": "Conflit: Washington propose des négociations directes Ukraine-Russie, selon Zelensky",
+      "link": "https://infos.rtl.lu/news/monde/washington-propose-des-negociations-directes-ukraine-russie-selon-zelensky-113041983",
+      "published": "2025-12-20T17:18:21+00:00",
+      "media": {
+        "url": "https://static-prod.rtl.lu/d7/19/367ffe28ee4ae427df792817fcc0/b3925605155359bff777381d3378d67c.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static-prod.rtl.lu/d7/19/367ffe28ee4ae427df792817fcc0/b3925605155359bff777381d3378d67c.jpg",
+      "thumb": "https://static-prod.rtl.lu/d7/19/367ffe28ee4ae427df792817fcc0/b3925605155359bff777381d3378d67c.jpg",
+      "summary": "Les Etats-Unis ont proposé d'organiser les premières négociations en face-à-face entre l'Ukraine et la Russie depuis six mois, à Miami, où de nouvelles discussions en vue de mettre fin à la guerre doivent se dérouler, a assuré samedi Volodymyr Zelensky.",
+      "publishedTime": 1766251101000,
+      "archived_at": "2025-12-20T19:50:13.123098+00:00"
+    },
+    {
       "source": "Ouest-France (à la une)",
       "title": "CARTE. Guerre en Ukraine : frappes russes, partenariat de drones sous-marins, rencontre à Miami… Le point du jour",
       "link": "https://www.ouest-france.fr/europe/ukraine/carte-guerre-en-ukraine-frappes-russes-partenariat-de-drones-sous-marins-rencontre-a-miami-le-point-du-jour-112e42e0-ddbe-11f0-84e2-922db77b2982?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
@@ -18,6 +75,26 @@
       "summary": "Partenariat avec le Portugal, suite des pourparlers, des entrepôts en feu après les frappes russes meurtrières, pression sur Moscou… Voici ce qu’il faut retenir de l’actualité liée à la guerre en Ukraine de ce samedi 20 décembre.",
       "publishedTime": 1766250075000,
       "archived_at": "2025-12-20T18:04:02.394874+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "Guerre en Ukraine : Russes et Ukrainiens se retrouvent à Miami pour parler de paix",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192571-20251220-guerre-ukraine-russes-ukrainiens-retrouvent-miami-parler-paix?at_medium=display&at_campaign=149",
+      "published": "2025-12-20T17:00:19+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/XZQi0ZSaQ7qHJbAWWqB9vCk/1200x768_president-of-ukraine-volodimir-zelenski-during-meeting-president-of-the-government-pedro-sanchez-el-at-the-moncloa-palace-on-november-18-2025-in-madrid-spain-photo-by-oscar-gonzalez-sipa-usa-65586442-2511182237",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/XZQi0ZSaQ7qHJbAWWqB9vCk/1200x768_president-of-ukraine-volodimir-zelenski-during-meeting-president-of-the-government-pedro-sanchez-el-at-the-moncloa-palace-on-november-18-2025-in-madrid-spain-photo-by-oscar-gonzalez-sipa-usa-65586442-2511182237",
+      "thumb": "https://img.20mn.fr/XZQi0ZSaQ7qHJbAWWqB9vCk/1200x768_president-of-ukraine-volodimir-zelenski-during-meeting-president-of-the-government-pedro-sanchez-el-at-the-moncloa-palace-on-november-18-2025-in-madrid-spain-photo-by-oscar-gonzalez-sipa-usa-65586442-2511182237",
+      "author": "B.Ch. avec AFP",
+      "summary": "« 20 Minutes » fait le point pour vous tous les soirs sur le conflit en Ukraine. Ce samedi, alors que la Russie a bombardé Odessa, la paix se joue peut-être à Miami où Russes et Ukrainiens sont conviés par Donald Trump",
+      "publishedTime": 1766250019000,
+      "archived_at": "2025-12-20T19:50:13.123141+00:00"
     },
     {
       "source": "Est Républicain",
@@ -283,6 +360,26 @@
       "summary": "Suivez l’actualité de la guerre en Ukraine, en direct toute la journée, ce samedi 20 décembre 2025 sur ladepeche.fr.",
       "publishedTime": 1766239763000,
       "archived_at": "2025-12-20T17:29:25.600413+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "Guerre en Ukraine : Un nouveau drone retrouvé écrasé dans le nord-ouest de la Turquie",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192562-20251220-guerre-ukraine-nouveau-drone-retrouve-ecrase-nord-ouest-turquie?at_medium=display&at_campaign=149",
+      "published": "2025-12-20T13:27:28+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/AliL3mihQuezBF7_ENpj_ik/1200x768_mandatory-credit-photo-by-zakariya-yahya-imageslive-via-zuma-press-wire-15026629d-gaziantep-turkiye-21-december-2024-a-dji-mini-3-camera-drone-flying-on-the-campus-of-the-islam-science-and-technology-university-gibtu-in-gaziantep-southern-turkiye-dji-mini-3-is-a-foldable-and-ultra-lightweight-camera-drone-drone-on-university-campus-in-gaziantep-turkiye-21-dec-2024-shutterstock-editorial-drone-on-university-campus-in-15026629d-2412221350",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/AliL3mihQuezBF7_ENpj_ik/1200x768_mandatory-credit-photo-by-zakariya-yahya-imageslive-via-zuma-press-wire-15026629d-gaziantep-turkiye-21-december-2024-a-dji-mini-3-camera-drone-flying-on-the-campus-of-the-islam-science-and-technology-university-gibtu-in-gaziantep-southern-turkiye-dji-mini-3-is-a-foldable-and-ultra-lightweight-camera-drone-drone-on-university-campus-in-gaziantep-turkiye-21-dec-2024-shutterstock-editorial-drone-on-university-campus-in-15026629d-2412221350",
+      "thumb": "https://img.20mn.fr/AliL3mihQuezBF7_ENpj_ik/1200x768_mandatory-credit-photo-by-zakariya-yahya-imageslive-via-zuma-press-wire-15026629d-gaziantep-turkiye-21-december-2024-a-dji-mini-3-camera-drone-flying-on-the-campus-of-the-islam-science-and-technology-university-gibtu-in-gaziantep-southern-turkiye-dji-mini-3-is-a-foldable-and-ultra-lightweight-camera-drone-drone-on-university-campus-in-gaziantep-turkiye-21-dec-2024-shutterstock-editorial-drone-on-university-campus-in-15026629d-2412221350",
+      "author": "20 Minutes avec AFP",
+      "summary": "Un nouveau drone d’origine inconnue a été retrouvé écrasé dans un champ du nord-ouest de la Turquie. C’est le troisième depuis lundi",
+      "publishedTime": 1766237248000,
+      "archived_at": "2025-12-20T19:50:13.123193+00:00"
     },
     {
       "source": "La Croix (Monde)",
@@ -578,6 +675,25 @@
       "summary": "D’après des documents de l’armée russe qui auraient fuité, le Kremlin travaillerait sur une nouvelle version du missile balistique 9M723 : le « Iskander 1000 ». La Russie aurait commencé sa production en série.",
       "publishedTime": 1766226298000,
       "archived_at": "2025-12-20T17:29:25.600803+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "Anciens militaires français et suisse, pro-Poutine, anti-Occident... Xavier Moreau et Jacques Baud, ces «relais de la propagande du Kremlin» sanctionnés par l’UE",
+      "link": "https://www.lefigaro.fr/international/anciens-militaires-francais-et-suisse-pro-poutine-anti-occident-xavier-moreau-et-jacques-baud-ces-relais-de-la-propagande-du-kremlin-sanctionnes-par-l-ue-20251220",
+      "published": "2025-12-20T10:10:57+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/1920x1080_crop/2025/12/18/5ebe8e3baf6c4b34474c280d31bf11d861ea8b8545d189f0bd29189bc6724a5d.jpg",
+        "width": 1920,
+        "height": 1080,
+        "type": null,
+        "description": null,
+        "credit": "Captures d'écran réseaux sociaux"
+      },
+      "image": "https://i.f1g.fr/media/cms/1920x1080_crop/2025/12/18/5ebe8e3baf6c4b34474c280d31bf11d861ea8b8545d189f0bd29189bc6724a5d.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/1920x1080_crop/2025/12/18/5ebe8e3baf6c4b34474c280d31bf11d861ea8b8545d189f0bd29189bc6724a5d.jpg",
+      "summary": "PORTRAITS - Les deux Européens, influents sur les réseaux sociaux, font partie des douze «agents de déstabilisation russe en Europe» placés sur liste noire par le Conseil de l’Union européenne, lundi 15 décembre.",
+      "publishedTime": 1766225457000,
+      "archived_at": "2025-12-20T19:50:13.123258+00:00"
     },
     {
       "source": "France 24 (Europe)",
