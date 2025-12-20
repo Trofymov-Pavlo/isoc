@@ -1,4 +1,4 @@
-# scraping/core.py
+# scraping/articles/core.py
 # -*- coding: utf-8 -*-
 import json
 from typing import List, Dict, Tuple, Optional
@@ -10,7 +10,7 @@ from .http_state import fetch_rss_once
 from .textops import to_iso, norm_text
 from .media_extract import extract_author, extract_media_block
 from .filters import strict_filter
-from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
 
 
 
@@ -251,7 +251,6 @@ def get_articles(
     filtered = strict_filter(entries, hay_min)
 
     # 3) Filtre mots-clés additionnels (keywords.py) + query libre (OR logique)
-    from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
     KEYWORDS = UA_ANCHORS + RU_ANCHORS + NATO_TERMS
     qn = norm_text(query) if query else ""
 

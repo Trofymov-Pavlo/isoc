@@ -1,54 +1,21 @@
+# scraping/videos/scraper.py
 # -*- coding: utf-8 -*-
 """
-Nouveau système de scraping vidéo utilisant YouTube Data API v3
-au lieu du parsing RSS.
+Système de scraping vidéo utilisant YouTube Data API v3
 """
-import os
 import time
 import requests
 from datetime import datetime, timezone
 from typing import Optional
-from scraping.keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+from .keywords import UA_ANCHORS, RU_ANCHORS, NATO_TERMS
+from .feeds import YOUTUBE_CHANNELS
+from .config import API_KEY, YTB_API, has_api_key
 
 # Désactiver les warnings SSL
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-API_KEY = os.environ.get("YT_API_KEY", "AIzaSyDnEmmnbH3lsMtNbm-rMITQf-3bO-RQZv4")
-YTB_API = "https://www.googleapis.com/youtube/v3"
-
-# Liste des channel IDs à scraper
-YOUTUBE_CHANNELS = {
-    # Français
-    "ARTE": "UCwI-JbGNsojunnHbFAc0M4Q",
-    "Le Monde": "UCYpRDnhk5H8h16jpS84uqsA",
-    "France 24": "UCCCPCZNChQdGa9EkATeye4g",
-    "BFM TV": "UCXwDLMDV86ldKoFVc_g8P0g",
-    "CNews": "UCXKJrYczY2_fJEZgFPGY0HQ",
-    "France Inter": "UCJldRgT_D7Am-ErRHQZ90uw",
-    "Mediapart": "UCdnaDhU-LDQrIEEmSIfq0-Q",
-    "Brut": "UCSKdvgqdnj72_SLggp7BDTg",
-    "Konbini": "UCHQda5vLxrH0Ff0I0kMq4zw",
-    # International anglophone
-    "BBC News": "UC16niRr50-MSBwiO3YDb3RA",
-    "DW News": "UCknLrEdhRcp1aegoMqRaCZg",
-    "Euronews": "UCW2QcKZiU8aUGg4yxCIditg",
-    "CNN": "UCupvZG-5ko_eiXAupbDfxWw",
-    "ABC News": "UCBi2mrWuNuyYy4gbM6fU18Q",
-    "CBS News": "UC8p1vwvWtl6T73JiExfWs1g",
-    "Fox News": "UCXIJgqnII2ZOINSWNOGFThA",
-    "Associated Press": "UC52X5wxOL_s5yw0dQk7NtgA",
-    "Al Jazeera English": "UCNye-wNBqNL5ZzHSJj3l8Bg",
-    "Reuters": "UChqUTb7kYRX8-EiaN3XFrSQ",
-    "Sky News": "UCoMdktPbSTixAyNGwb-UYkQ",
-    # Military/Defense
-    "Warthog Defense": "UC2JaXg63L_VqvXN4SwF4zOQ",
-    "Defense Updates": "UCKNCbBWiMiXBVXUmUuu_dsQ",
-    # Documentary
-    "National Geographic": "UCpVm7bg6pXKo1Pr6k5kxG9A",
-    "Discovery Channel": "UCqOoboPm3uhY_YXhvhmL-WA",
-    "Discovery Channel France": "UCJ3uq_dgtGdfScO21KU08wg",
-}
+# Clé API et endpoint sont fournis par videos/config.py
 
 
 def match_keywords(title: str) -> bool:
@@ -76,18 +43,20 @@ def fetch_channel_videos(
     channel_name: str,
     channel_id: str,
     max_results: int = 50,
+    cutoff_ms: int = 0,
 ) -> list:
     """
-    Récupère TOUTES les vidéos d'une chaîne qui matchent nos mots-clés.
-    AUCUNE limite artificielle - scrape jusqu'à épuisement des vidéos matchantes.
+    Récupère les vidéos d'une chaîne qui matchent nos mots-clés et la fenêtre temporelle.
+    Arrête la pagination dès que les vidéos sont trop anciennes pour optimiser les performances.
     
     Args:
         channel_name: Nom de la chaîne
         channel_id: ID YouTube de la chaîne
         max_results: Nombre max de vidéos à récupérer de l'API par page (50 max)
+        cutoff_ms: Timestamp en millisecondes - arrête si vidéos plus anciennes (0 = pas de limite)
     
     Returns:
-        TOUTES les vidéos qui matchent les mots-clés
+        Vidéos qui matchent les mots-clés et la période
     """
     try:
         uploads_id = get_uploads_playlist_id(channel_id)
@@ -104,6 +73,8 @@ def fetch_channel_videos(
     }
 
     page = 0
+    consecutive_old = 0  # Compteur de vidéos anciennes consécutives
+    MAX_CONSECUTIVE_OLD = 10  # Arrêter après 10 vidéos anciennes consécutives
 
     while True:
         try:
@@ -119,12 +90,7 @@ def fetch_channel_videos(
                 title = snippet.get("title", "")
                 video_id = content.get("videoId", "")
                 
-                if not match_keywords(title):
-                    continue
-
                 published = content.get("videoPublishedAt") or snippet.get("publishedAt")
-                thumbnail = snippet.get("thumbnails", {})
-                thumb_url = (thumbnail.get("high") or thumbnail.get("default") or {}).get("url")
                 
                 # Convertir date ISO en timestamp
                 published_time = None
@@ -134,6 +100,24 @@ def fetch_channel_videos(
                         published_time = int(dt.timestamp() * 1000)
                     except:
                         pass
+                
+                # Vérifier si vidéo trop ancienne
+                if cutoff_ms > 0 and published_time and published_time < cutoff_ms:
+                    consecutive_old += 1
+                    # Arrêter si trop de vidéos anciennes consécutives
+                    if consecutive_old >= MAX_CONSECUTIVE_OLD:
+                        break
+                    continue  # Passer à la vidéo suivante
+                
+                # Réinitialiser le compteur si on trouve une vidéo récente
+                consecutive_old = 0
+                
+                # Filtrer par mots-clés
+                if not match_keywords(title):
+                    continue
+
+                thumbnail = snippet.get("thumbnails", {})
+                thumb_url = (thumbnail.get("high") or thumbnail.get("default") or {}).get("url")
 
                 videos.append({
                     "channel": channel_name,
@@ -146,6 +130,10 @@ def fetch_channel_videos(
                     "type": "youtube",
                 })
 
+            # Arrêter si trop de vidéos anciennes consécutives
+            if consecutive_old >= MAX_CONSECUTIVE_OLD:
+                break
+            
             # Pagination
             token = data.get("nextPageToken")
             if not token:
@@ -162,25 +150,45 @@ def fetch_channel_videos(
     return videos
 
 
-def get_all_videos(limit_per_channel: int = 50) -> list:
+def get_all_videos(limit_per_channel: int = 50, since_hours: int = 0) -> list:
     """
-    Récupère TOUTES les vidéos de toutes les chaînes configurées.
-    AUCUNE limite artificielle - seul filtre : les mots-clés.
+    Récupère les vidéos de toutes les chaînes configurées filtrées par mots-clés et temps.
     
     Args:
         limit_per_channel: Taille de page API (max 50)
+        since_hours: Filtrer les vidéos publiées dans les N dernières heures (0 = pas de filtre)
     
     Returns:
-        TOUTES les vidéos qui matchent les keywords, tous channels confondus
+        Vidéos qui matchent les keywords dans la période définie
     """
+    # Vérifier la présence de la clé API
+    if not has_api_key():
+        print("⚠️ Clé API YouTube manquante (YT_API_KEY). Scraping vidéos désactivé.")
+        return []
+
+    # Calculer le timestamp de coupure si nécessaire
+    cutoff_ms = 0
+    if since_hours > 0:
+        from datetime import timedelta
+        cutoff_time = datetime.now(timezone.utc) - timedelta(hours=since_hours)
+        cutoff_ms = int(cutoff_time.timestamp() * 1000)
+    
     all_videos = []
     
     for channel_name, channel_id in YOUTUBE_CHANNELS.items():
         print(f"🔍 Scraping {channel_name}...")
-        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel)
+        # Passer cutoff_ms pour arrêter la pagination sur les vidéos anciennes
+        videos = fetch_channel_videos(channel_name, channel_id, max_results=limit_per_channel, cutoff_ms=cutoff_ms)
+        
+        # Plus besoin de filtrer ici, c'est déjà fait dans fetch_channel_videos
         all_videos.extend(videos)
-        print(f"✅ {channel_name}: {len(videos)} vidéos matchent les mots-clés")
-        # Archivage immédiat par chaîne avant de passer à la suivante
+        
+        if videos:
+            print(f"✅ {channel_name}: {len(videos)} vidéos (filtrées par temps et mots-clés)")
+        else:
+            print(f"⚪ {channel_name}: 0 vidéos (aucune correspondance)")
+        
+        # Archivage immédiat des vidéos filtrées uniquement
         if videos:
             try:
                 from scraping.archive import add_videos

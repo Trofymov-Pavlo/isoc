@@ -1,14 +1,14 @@
-# scraping/video.py
+# scraping/videos/core.py
 # -*- coding: utf-8 -*-
 """
 Video scraping module
-Utilise maintenant YouTube Data API v3 au lieu du parsing RSS
+Utilise YouTube Data API v3
 """
 
 from typing import List, Dict, Optional
 from datetime import datetime, timezone, timedelta
 
-from .video_api import get_all_videos
+from .scraper import get_all_videos
 
 
 def get_videos(
@@ -30,15 +30,8 @@ def get_videos(
     """
     print(f"📹 Récupération des vidéos via YouTube API (dernières {since_hours}h)...")
     
-    # Récupère TOUTES les vidéos qui matchent les keywords (pas de limite)
-    all_videos = get_all_videos(limit_per_channel=50)
-    
-    # Filtre par date
-    if since_hours > 0:
-        cutoff_time = datetime.now(timezone.utc) - timedelta(hours=since_hours)
-        cutoff_ms = int(cutoff_time.timestamp() * 1000)
-        all_videos = [v for v in all_videos if (v.get("publishedTime") or 0) >= cutoff_ms]
-        print(f"✅ Après filtre {since_hours}h: {len(all_videos)} vidéos")
+    # Récupère les vidéos déjà filtrées par temps et mots-clés
+    all_videos = get_all_videos(limit_per_channel=50, since_hours=since_hours)
     
     # Filtre par chaîne si spécifié
     if channel:
