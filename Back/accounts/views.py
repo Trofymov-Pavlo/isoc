@@ -14,6 +14,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
+from django.shortcuts import redirect
 import logging
 
 logger = logging.getLogger(__name__)
@@ -30,19 +31,8 @@ User = get_user_model()
 
 @api_view(['GET'])
 def home(request):
-    """API home page with available endpoints"""
-    return Response({
-        'message': 'AXIOME Authentication API',
-        'version': '1.0.0',
-        'endpoints': {
-            'signup': '/api/accounts/signup/',
-            'login': '/api/accounts/login/',
-            'logout': '/api/accounts/logout/',
-            'profile': '/api/accounts/me/',
-            'update_profile': '/api/accounts/update_profile/',
-            'change_password': '/api/accounts/change_password/',
-        }
-    })
+    """Redirect to Django admin panel"""
+    return redirect('/admin/')
 
 
 class AccountViewSet(viewsets.ModelViewSet):
