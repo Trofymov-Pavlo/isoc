@@ -27,8 +27,7 @@ scraping/
 │   ├── keywords.py     # Mots-clés de filtrage
 │   ├── textops.py      # Opérations sur le texte
 │   ├── media_extract.py # Extraction des métadonnées
-│   ├── http_state.py   # Gestion des sessions HTTP
-│   └── README.md
+│   └── http_state.py   # Gestion des sessions HTTP + cache .rss_multi_fr_state.json
 │
 └── videos/             # 🎥 Module complet de scraping YouTube
     ├── __init__.py
@@ -36,7 +35,8 @@ scraping/
     ├── scraper.py      # Implémentation YouTube Data API v3
     ├── feeds.py        # Configuration des chaînes (36 chaînes)
     ├── keywords.py     # Mots-clés de filtrage
-    └── README.md
+    ├── config.py       # Configuration (charge clé API depuis yt_api_key.txt)
+    └── yt_api_key.txt  # Clé YouTube Data API v3 (git-ignored)
 ```
 
 **Principe** : Chaque module (articles/, videos/) est autonome avec ses propres dépendances.
@@ -86,8 +86,17 @@ Cela permet au frontend Nuxt d'accéder directement au fichier statique.
 
 ## ⚙️ Configuration
 
-Les flux RSS et chaînes YouTube sont configurés dans [feeds.py](feeds.py).
-Les mots-clés de filtrage sont définis dans [keywords.py](keywords.py).
+### Flux et mots-clés
+- **Flux RSS** : configurés dans [articles/feeds.py](articles/feeds.py) (112 sources)
+- **Chaînes YouTube** : configurées dans [videos/feeds.py](videos/feeds.py) (36 chaînes)
+- **Mots-clés** : définis dans [articles/keywords.py](articles/keywords.py) et [videos/keywords.py](videos/keywords.py)
+
+### Clé API YouTube
+La clé YouTube Data API v3 est stockée dans `videos/yt_api_key.txt` (fichier git-ignoré).
+Si ce fichier n'existe pas, la variable d'environnement `YT_API_KEY` est utilisée comme fallback.
+
+### Cache HTTP
+Le fichier `.rss_multi_fr_state.json` (à la racine de Back/) stocke les en-têtes ETag et Last-Modified pour optimiser les requêtes RSS (évite de retélécharger les flux non modifiés).
 
 ## 🔧 Dépendances
 
