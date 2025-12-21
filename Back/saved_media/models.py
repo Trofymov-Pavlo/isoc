@@ -62,11 +62,13 @@ class UserCategory(models.Model):
         user: FK to User
         name: Category name (e.g., "À lire demain", "Podcast favoris")
         color: Hex color for UI
+        icon: Emoji/symbol for the category (e.g., "❤️", "📚", "⏰")
         created_at: Timestamp
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='custom_categories')
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=7, default='#2f0538')
+    icon = models.CharField(max_length=10, default='❤️')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

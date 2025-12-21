@@ -1,6 +1,6 @@
 /**
  * Composable for managing saved media (liked, watch later, custom categories)
- * Syncs with backend API instead of localStorage
+ * Syncs with backend API with global reactive state
  */
 
 import { ref, computed } from 'vue';
@@ -21,21 +21,21 @@ export interface UserCategory {
   id: number;
   name: string;
   color: string;
+  icon: string;
   created_at: string;
 }
 
-export const useSavedMedia = () => {
-  // Auth state is used only for “logged-in” semantics; tokens are stored in localStorage.
-  // IMPORTANT: this composable can be imported during SSR, so never touch localStorage on server.
-  useAuthState();
+// Global state shared across all instances
+const savedItems = ref<SavedMediaItem[]>([]);
+const userCategories = ref<UserCategory[]>([]);
+const loading = ref(false);
+const error = ref<string | null>(null);
+const isInitialized = ref(false);
 
+export const useSavedMedia = () => {
+  const { isAuthenticated } = useAuthState();
   const isServer = typeof window === 'undefined';
   
-  const savedItems = ref<SavedMediaItem[]>([]);
-  const userCategories = ref<UserCategory[]>([]);
-  const loading = ref(false);
-  const error = ref<string | null>(null);
-
   const API_BASE = 'http://localhost:8000/api/saved-media';
 
   const getToken = (): string | null => {
@@ -97,6 +97,24 @@ export const useSavedMedia = () => {
   };
 
   /**
+   * Initialize: load saved items and categories
+   */
+  const initialize = async () => {
+    if (isInitialized.value || !isAuthenticated.value || !getToken()) return;
+    
+    try {
+      isInitialized.value = true;
+      await Promise.all([
+        getSavedItems(),
+        getUserCategories(),
+      ]);
+    } catch (err) {
+      console.error('Failed to initialize saved media:', err);
+      isInitialized.value = false;
+    }
+  };
+
+  /**
    * Toggle save status for a media item
    */
   const toggleSave = async (payload: {
@@ -107,20 +125,29 @@ export const useSavedMedia = () => {
     category?: string;
     thumbnail?: string;
   }) => {
-    if (!getToken()) return false;
+    if (!getToken()) return { saved: false };
     
     try {
       loading.value = true;
       error.value = null;
       const response = await apiCall('/toggle/', 'POST', payload);
-      // Refresh saved items after toggle
-      if (response) {
+      
+      // Update local state immediately for instant UI feedback
+      if (response.saved) {
+        // Item was added - refresh to get the full item with ID
         await getSavedItems();
+      } else {
+        // Item was removed - remove from local state
+        const category = payload.category || 'liked';
+        savedItems.value = savedItems.value.filter(
+          item => !(item.link === payload.link && item.category === category)
+        );
       }
+      
       return response;
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Failed to toggle save';
-      return null;
+      return { saved: false };
     } finally {
       loading.value = false;
     }
@@ -167,11 +194,11 @@ export const useSavedMedia = () => {
   /**
    * Get top N saved items (for dashboard)
    */
-  const getTopSaved = async (limit = 3) => {
+  const getTopSaved = async (limit = 3, category = 'liked') => {
     if (!getToken()) return [];
     
     try {
-      const response = await apiCall(`/top/?limit=${limit}`);
+      const response = await apiCall(`/top/?limit=${limit}&category=${category}`);
       return Array.isArray(response) ? response : [];
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Failed to fetch top items';
@@ -180,17 +207,10 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * Check if a specific media is saved
+   * Check if a specific media is saved (uses local cache)
    */
-  const checkSaved = async (link: string) => {
-    if (!getToken()) return false;
-    
-    try {
-      const response = await apiCall(`/is_saved/?link=${encodeURIComponent(link)}`);
-      return response?.saved || false;
-    } catch (err) {
-      return false;
-    }
+  const isSaved = (link: string, category = 'liked') => {
+    return savedItems.value.some(item => item.link === link && item.category === category);
   };
 
   /**
@@ -215,13 +235,14 @@ export const useSavedMedia = () => {
   /**
    * Create a new custom category
    */
-  const createCategory = async (name: string, color = '#FF69B4') => {
+  const createCategory = async (name: string, color = '#2f0538', icon = '❤️') => {
     if (!getToken()) return null;
     
     try {
       const response = await apiCall('/categories/', 'POST', {
         name,
         color,
+        icon,
       });
       if (response) {
         await getUserCategories();
@@ -242,18 +263,13 @@ export const useSavedMedia = () => {
     try {
       await apiCall(`/categories/${categoryId}/`, 'DELETE');
       await getUserCategories();
+      // Also refresh saved items as items in deleted category may have been removed
+      await getSavedItems();
       return true;
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Failed to delete category';
       return false;
     }
-  };
-
-  /**
-   * Computed property to check if a link is saved
-   */
-  const isSaved = (link: string) => {
-    return savedItems.value.some(item => item.link === link);
   };
 
   /**
@@ -270,26 +286,35 @@ export const useSavedMedia = () => {
     return savedItems.value.filter(item => item.category === 'watch_later');
   });
 
+  /**
+   * Get items for a specific custom category
+   */
+  const getCategoryItems = (category: string) => {
+    return savedItems.value.filter(item => item.category === category);
+  };
+
   return {
     // State
     savedItems,
     userCategories,
     loading,
     error,
+    isInitialized,
     
     // Methods
+    initialize,
     toggleSave,
     getSavedItems,
     getSavedByCategory,
     getTopSaved,
-    checkSaved,
     getUserCategories,
     createCategory,
     deleteCategory,
     
-    // Computed
+    // Computed/helpers
     isSaved,
     likedItems,
     watchLaterItems,
+    getCategoryItems,
   };
 };

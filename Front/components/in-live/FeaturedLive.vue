@@ -30,15 +30,27 @@
         <time v-if="article.published" class="featured-time">
           {{ formatTime(article.published) }}
         </time>
-        <a :href="article.link" target="_blank" rel="noopener" class="read-link">
-          Lire l'article complet →
-        </a>
+        <div class="footer-actions">
+          <a :href="article.link" target="_blank" rel="noopener" class="read-link">
+            Lire l'article complet →
+          </a>
+          <LikeButton 
+            :link="article.link"
+            :title="article.title"
+            :source="article.source || 'En direct'"
+            :media-type="article.type === 'video' ? 'video' : 'live'"
+            :thumbnail="article.image"
+            @toggle="() => {}"
+          />
+        </div>
       </div>
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
+import LikeButton from '~/components/shared/LikeButton.vue';
+
 interface Article {
   title: string;
   link: string;
@@ -214,6 +226,12 @@ const formatTime = (dateString?: string): string => {
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid #f0f0f0;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .featured-time {
