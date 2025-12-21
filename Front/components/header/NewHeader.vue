@@ -72,12 +72,10 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import { useRouter } from 'vue-router';
 import logoIsoc from '@/assets/logoIsoc.png';
 import { useAuthState } from '~/composables/useAuthState';
 
 const logo = logoIsoc;
-const router = useRouter();
 const { isAuthenticated } = useAuthState();
 const isSearchOpen = ref(false);
 const searchTerm = ref('');
@@ -92,7 +90,7 @@ const accountLink = computed(() =>
 );
 
 function goIndex() {
-  router.push('/');
+  navigateTo('/');
 }
 
 function toggleSearch() {
@@ -108,7 +106,7 @@ function closeSearch() {
 
 function performSearch() {
   if (searchTerm.value.trim()) {
-    router.push(`/articles?q=${encodeURIComponent(searchTerm.value)}`);
+    navigateTo(`/explorer?q=${encodeURIComponent(searchTerm.value)}`);
     closeSearch();
   }
 }

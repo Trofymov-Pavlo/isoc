@@ -357,6 +357,13 @@ function formatDate(dateStr: string): string {
 // Load data on mount
 onMounted(() => {
   loadData();
+  
+  // Check for URL query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const qParam = urlParams.get('q');
+  if (qParam) {
+    searchQuery.value = qParam;
+  }
 });
 </script>
 
