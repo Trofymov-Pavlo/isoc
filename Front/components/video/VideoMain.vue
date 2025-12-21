@@ -82,10 +82,10 @@ const selectedChannel = ref('');
 const sortBy = ref('date-desc');
 
 const {
-  videos,
+  all: videos,
   loading,
   error,
-  fetchVideos,
+  load: loadVideosData,
   getChannels,
   filterByChannel,
   filterByQuery,
@@ -138,7 +138,7 @@ const {
 } = usePagination(filteredVideos);
 
 const loadVideos = () => {
-  fetchVideos();
+  loadVideosData();
 };
 
 const filterVideos = () => {

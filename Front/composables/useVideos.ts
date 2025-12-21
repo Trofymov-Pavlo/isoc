@@ -14,16 +14,16 @@ export interface Video {
   source?: string; // Add for type consistency with articles
 }
 
-export const useVideos = () => {
-  const videos = ref<Video[]>([]);
+export const useVideos = (opts?: {
+  apiBase?: string;
+  query?: string;
+  meta?: number;
+}) => {
+  const all = ref<Video[]>([]);
   const loading = ref(false);
   const error = ref<string | null>(null);
 
-  const fetchVideos = async (options?: {
-    hours?: number;
-    channel?: string;
-    limit?: number;
-  }) => {
+  const load = async () => {
     loading.value = true;
     error.value = null;
 
@@ -38,7 +38,7 @@ export const useVideos = () => {
       // Tri par date décroissante (plus récent d'abord)
       listVideos.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
       
-      videos.value = listVideos;
+      all.value = listVideos;
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Erreur chargement vidéos';
       console.error('Erreur chargement archive.json:', err);
@@ -48,17 +48,17 @@ export const useVideos = () => {
   };
 
   const getChannels = computed(() => {
-    const channels = new Set(videos.value.map(v => v.channel));
+    const channels = new Set(all.value.map(v => v.channel));
     return Array.from(channels).sort();
   });
 
   const filterByChannel = (channel: string) => {
-    return videos.value.filter(v => v.channel === channel);
+    return all.value.filter(v => v.channel === channel);
   };
 
   const filterByQuery = (query: string) => {
     const q = query.toLowerCase();
-    return videos.value.filter(v =>
+    return all.value.filter(v =>
       v.title.toLowerCase().includes(q) ||
       (v.summary && v.summary.toLowerCase().includes(q)) ||
       v.channel.toLowerCase().includes(q)
@@ -104,10 +104,10 @@ export const useVideos = () => {
   };
 
   return {
-    videos,
+    all,
     loading,
     error,
-    fetchVideos,
+    load,
     getChannels,
     filterByChannel,
     filterByQuery,

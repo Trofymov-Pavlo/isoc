@@ -122,7 +122,7 @@ const { all: articles, loading: loadingArticles, load: loadArticles } = useArtic
 });
 
 // Load videos
-const { videos, loading: loadingVideos, fetchVideos } = useVideos();
+const { all: videos, loading: loadingVideos, load: loadVideos } = useVideos();
 
 const loading = computed(() => loadingArticles.value || loadingVideos.value);
 
@@ -158,7 +158,7 @@ function toggleSearch() {
   if (isSearchOpen.value) {
     nextTick(() => searchInput.value?.focus());
     if (articles.value.length === 0) void loadArticles();
-    if (videos.value.length === 0) void fetchVideos({ hours: 0, limit: 1000 });
+    if (videos.value.length === 0) void loadVideos();
   } else {
     clearSearch();
   }
