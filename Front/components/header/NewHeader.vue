@@ -170,9 +170,13 @@ function performSearch() {
 }
 
 .tagline {
-  color: #495057;
-  font-weight: 500;
+  background: linear-gradient(135deg, #7b5ce0, #c5b3ff);
+  color: white;
+  font-weight: 600;
   letter-spacing: 0.3px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 .top-right {

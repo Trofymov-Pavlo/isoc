@@ -119,7 +119,7 @@
         <h4 class="filter-label">Affichage</h4>
         <div class="items-per-page">
           <button 
-            v-for="count in [12, 24, 48]" 
+            v-for="count in [10, 20, 50, 100]" 
             :key="count"
             @click="itemsPerPage = count; applyFilters();"
             :class="{ active: itemsPerPage === count }"
@@ -238,6 +238,10 @@
           >
             ← Précédent
           </button>
+
+          <div class="pagination-logo">
+            <img src="/logo.svg" alt="ISOC AXIOM" class="pagination-logo-img" />
+          </div>
 
           <div class="pagination-info">
             Page <strong>{{ currentPage }}</strong> sur <strong>{{ totalPages }}</strong>
@@ -665,6 +669,7 @@ onMounted(() => {
   border: none;
   padding: 0;
   cursor: default;
+  word-spacing: 0.3em;
 }
 
 .filter-label.expandable {
@@ -759,7 +764,7 @@ onMounted(() => {
 /* Items per page buttons */
 .items-per-page {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
@@ -1149,6 +1154,20 @@ onMounted(() => {
 .pagination-info strong {
   color: #212529;
   font-weight: 600;
+}
+
+.pagination-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 120px;
+}
+
+.pagination-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Responsive */
