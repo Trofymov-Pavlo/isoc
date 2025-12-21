@@ -127,9 +127,9 @@ function performSearch() {
 
 /* Top bar */
 .header-top-bar {
-  background: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
-  padding: 10px 0;
+  background: linear-gradient(135deg, #7b5ce0, #c5b3ff);
+  border-bottom: 1px solid #7b5ce0;
+  padding: 12px 0;
   font-size: 12px;
 }
 
@@ -170,12 +170,11 @@ function performSearch() {
 }
 
 .tagline {
-  background: linear-gradient(135deg, #7b5ce0, #c5b3ff);
   color: white;
   font-weight: 600;
   letter-spacing: 0.3px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 0;
+  border-radius: 0;
   font-size: 12px;
 }
 
@@ -191,14 +190,14 @@ function performSearch() {
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: #6c757d;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .top-link:hover {
-  color: #212529;
+  color: white;
 }
 
 .top-link svg {
@@ -208,15 +207,20 @@ function performSearch() {
 
 .account-btn {
   padding: 6px 16px;
-  background: #ffffff;
-  border: 1.5px solid #dee2e6;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
   border-radius: 6px;
-  color: #212529;
+  color: #7b5ce0;
   text-decoration: none;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.25s ease;
   cursor: pointer;
+}
+
+.account-btn:hover {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .account-btn:hover {
