@@ -1,6 +1,276 @@
 {
   "articles": [
     {
+      "source": "Kyiv Post",
+      "title": "Ukraine After the War: Scenarios, Risks, and Europe",
+      "link": "https://www.kyivpost.com/opinion/66578",
+      "published": "2025-12-21T09:49:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/19/99f8e010610b70a313119916051d2312.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/19/99f8e010610b70a313119916051d2312.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/19/99f8e010610b70a313119916051d2312.jpg?w=640&q=90&f=jpg",
+      "author": "Michał Kujawski",
+      "summary": "Peace talks include Ukraine’s future in Western structures. EU membership seems distant, yet political shifts could open a path – if Kyiv continues reforms and avoids strategic isolation.",
+      "publishedTime": 1766310540000,
+      "archived_at": "2025-12-21T11:00:14.879428+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Kremlin Denies Three-way US-Ukraine-Russia Talks in Preparation",
+      "link": "https://www.kyivpost.com/post/66688",
+      "published": "2025-12-21T09:47:45+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/21/458a3b8dcde9a7c688007bbe580f715d.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/21/458a3b8dcde9a7c688007bbe580f715d.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/21/458a3b8dcde9a7c688007bbe580f715d.jpg?w=640&q=90&f=jpg",
+      "author": "AFP",
+      "summary": "Moscow distances itself from US-Ukrainian peace settlement talks.",
+      "publishedTime": 1766310465000,
+      "archived_at": "2025-12-21T11:00:14.879648+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "Guerre en Ukraine : Pas de rencontre trilatérale au programme pour l’instant, selon le Kremlin",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192614-20251221-guerre-ukraine-rencontre-trilaterale-programme-instant-selon-kremlin?at_medium=display&at_campaign=149",
+      "published": "2025-12-21T09:46:45+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/wwHB_J9XSceHdl3-QatsGyk/1200x768_russia-moscow-december-8-2025-russia-s-special-presidential-a-representative-for-investment-and-a-economic-cooperation-a-with-foreign-countries-russian-direct-investment-fund-rdif-ceo-kirill-dmitriev-during-a-meeting-of-russia-s-presidential-council-for-strategic-development-and-national-projects-at-the-grand-kremlin-palace-credit-image-sergei-bulkin-tass-via-zuma-press-20251208-zaa-t113-307-zeus-2512081818",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/wwHB_J9XSceHdl3-QatsGyk/1200x768_russia-moscow-december-8-2025-russia-s-special-presidential-a-representative-for-investment-and-a-economic-cooperation-a-with-foreign-countries-russian-direct-investment-fund-rdif-ceo-kirill-dmitriev-during-a-meeting-of-russia-s-presidential-council-for-strategic-development-and-national-projects-at-the-grand-kremlin-palace-credit-image-sergei-bulkin-tass-via-zuma-press-20251208-zaa-t113-307-zeus-2512081818",
+      "thumb": "https://img.20mn.fr/wwHB_J9XSceHdl3-QatsGyk/1200x768_russia-moscow-december-8-2025-russia-s-special-presidential-a-representative-for-investment-and-a-economic-cooperation-a-with-foreign-countries-russian-direct-investment-fund-rdif-ceo-kirill-dmitriev-during-a-meeting-of-russia-s-presidential-council-for-strategic-development-and-national-projects-at-the-grand-kremlin-palace-credit-image-sergei-bulkin-tass-via-zuma-press-20251208-zaa-t113-307-zeus-2512081818",
+      "author": "20 Minutes avec AFP",
+      "summary": "Alors que des discussions séparées ont lieu depuis vendredi entre les différentes parties, pas de rencontre entre l’Ukraine, la Russie et les Etats-Unis n’est prévue à ce stade",
+      "publishedTime": 1766310405000,
+      "archived_at": "2025-12-21T11:00:14.879759+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Kremlin Denies Trilateral Talks With U.S. and Ukraine Under Discussion",
+      "link": "https://www.themoscowtimes.com/2025/12/21/kremlin-denies-trilateral-talks-with-us-and-ukraine-under-discussion-a91499",
+      "published": "2025-12-21T09:45:06+00:00",
+      "media": null,
+      "summary": "Zelensky said earlier that the White House had floated the idea, but he expressed skepticism that direct talks would yield progress.",
+      "publishedTime": 1766310306000,
+      "archived_at": "2025-12-21T11:00:14.880494+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "EN DIRECT - Guerre en Ukraine : l’Élysée juge «bienvenu» que Vladimir Poutine soit prêt à parler à Emmanuel Macron",
+      "link": "https://www.lefigaro.fr/international/en-direct-guerre-en-ukraine-aucune-rencontre-trilaterale-en-preparation-entre-russes-americains-et-ukrainiens-selon-le-kremlin-20251221",
+      "published": "2025-12-21T09:23:02+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/3000x2001_crop/2025/12/21/a4e46604e88e0926c66a0ead07be09296b1cc473f780e36d6eb63f98c4618e75.jpg",
+        "width": 3000,
+        "height": 2001,
+        "type": null,
+        "description": null,
+        "credit": "Stephanie Lecocq / REUTERS"
+      },
+      "image": "https://i.f1g.fr/media/cms/3000x2001_crop/2025/12/21/a4e46604e88e0926c66a0ead07be09296b1cc473f780e36d6eb63f98c4618e75.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/3000x2001_crop/2025/12/21/a4e46604e88e0926c66a0ead07be09296b1cc473f780e36d6eb63f98c4618e75.jpg",
+      "summary": "Les pourparlers se poursuivent ce dimanche à Miami entre Ukrainiens, Européens et Américains. Concernant une éventuelle reprise du dialogue franco-russe, Paris prépare ses modalités «dans les prochains jours» .",
+      "publishedTime": 1766308982000,
+      "archived_at": "2025-12-21T11:00:14.881559+00:00"
+    },
+    {
+      "source": "Ouest-France (à la une)",
+      "title": "L’Élysée juge « bienvenu » que Vladimir Poutine soit prêt à parler à Emmanuel Macron sur l’Ukraine",
+      "link": "https://www.ouest-france.fr/europe/ukraine/lelysee-juge-bienvenu-que-vladimir-poutine-soit-pret-a-parler-a-emmanuel-macron-sur-lukraine-43bc997a-de52-11f0-ae25-7dba037201f1?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "published": "2025-12-21T09:15:07+00:00",
+      "media": {
+        "url": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyZDQyMTE2MWE0OGQzYjcyZjlkZTAxMDMzOWJjMzk5Y2M?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=46defc3f9bb129483ab5ef237926d4e9c9d82af238fcd6d274d16bd76ca4bef7",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyZDQyMTE2MWE0OGQzYjcyZjlkZTAxMDMzOWJjMzk5Y2M?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=46defc3f9bb129483ab5ef237926d4e9c9d82af238fcd6d274d16bd76ca4bef7",
+      "thumb": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyZDQyMTE2MWE0OGQzYjcyZjlkZTAxMDMzOWJjMzk5Y2M?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=46defc3f9bb129483ab5ef237926d4e9c9d82af238fcd6d274d16bd76ca4bef7",
+      "summary": "Dimanche 21 décembre, la présidence française a jugé « bienvenu » que le président russe Vladimir Poutine se dise « prêt » à parler avec Emmanuel Macron. Elle a jouté qu’elle aviserait « dans les prochains jours » selon quelles modalités cela pourrait se faire.",
+      "publishedTime": 1766308507000,
+      "archived_at": "2025-12-21T11:00:14.881929+00:00"
+    },
+    {
+      "source": "Franceinfo (fil)",
+      "title": "\"Les enfants ne devraient pas savoir ce que c'est que la guerre\" : dans le Donbass, les Ukrainiens tentent d'entretenir l'esprit de Noël",
+      "link": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/reportage-les-enfants-ne-devraient-pas-savoir-ce-que-c-est-que-la-guerre-dans-le-donbass-les-ukrainiens-tentent-d-entretenir-l-esprit-de-noel_7693774.html#xtor=RSS-3-[lestitres]",
+      "published": "2025-12-21T09:05:39+00:00",
+      "media": {
+        "url": "https://www.franceinfo.fr/pictures/Iodt3ApHdylz_NfU3kiX2MdJ_fI/0x52:1024x628/432x243/filters:format(jpg)/2025/12/21/000-par8085768-6947bc44a5738271973157.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.franceinfo.fr/pictures/Iodt3ApHdylz_NfU3kiX2MdJ_fI/0x52:1024x628/432x243/filters:format(jpg)/2025/12/21/000-par8085768-6947bc44a5738271973157.jpg",
+      "thumb": "https://www.franceinfo.fr/pictures/Iodt3ApHdylz_NfU3kiX2MdJ_fI/0x52:1024x628/432x243/filters:format(jpg)/2025/12/21/000-par8085768-6947bc44a5738271973157.jpg",
+      "summary": "Dans la partie du Donbass encore sous contrôle de l’armée ukrainienne, on s’accroche aux fêtes de fin d’année, en tâchant de ne pas penser aux négociations qui en scellent le sort. Des discussions ont lieu depuis vendredi aux États-Unis mais le Kremlin annonce d’ores et déjà qu’aucune rencontre trilatérale n’est en préparation.",
+      "publishedTime": 1766307939000,
+      "archived_at": "2025-12-21T11:00:14.882173+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Russian Attacks Kill Police Officer in Izium, Damage Civilian Infrastructure in Rivne Region",
+      "link": "https://www.kyivpost.com/post/66685",
+      "published": "2025-12-21T08:58:59+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/21/c399cd8b085a1ad033d04dbb138717cd.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/21/c399cd8b085a1ad033d04dbb138717cd.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/21/c399cd8b085a1ad033d04dbb138717cd.jpeg?w=640&q=90&f=jpg",
+      "author": "UkrInform",
+      "summary": "Russian aerial attack kills police in Isium, while other attacks hit Rivne, leaving one person wounded.",
+      "publishedTime": 1766307539000,
+      "archived_at": "2025-12-21T11:00:14.882308+00:00"
+    },
+    {
+      "source": "BFM TV (monde)",
+      "title": "Guerre en Ukraine: l'Élysée juge \"bienvenu\" que Vladimir Poutine soit prêt à parler à Emmanuel Macron et avisera \"dans les prochains jours\" selon quelles modalités",
+      "link": "https://www.bfmtv.com/politique/elysee/guerre-en-ukraine-l-elysee-juge-bienvenu-que-vladimir-poutine-soit-pret-a-parler-a-emmanuel-macron-et-avisera-dans-les-prochains-jours-selon-quelles-modalites_AD-202512210134.html",
+      "published": "2025-12-21T08:42:54+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/UVBN2qleG_J4XIeimhL9Ik0xWUg=/0x142:2048x1294/800x0/images/Vladimir-Poutine-et-Emmanuel-Macron-1474562.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/UVBN2qleG_J4XIeimhL9Ik0xWUg=/0x142:2048x1294/800x0/images/Vladimir-Poutine-et-Emmanuel-Macron-1474562.jpg",
+      "thumb": "https://images.bfmtv.com/UVBN2qleG_J4XIeimhL9Ik0xWUg=/0x142:2048x1294/800x0/images/Vladimir-Poutine-et-Emmanuel-Macron-1474562.jpg",
+      "summary": "Le porte-parole du Kremlin, Dmitri Peskov, a déclaré, dans la nuit du samedi 20 au dimanche 21 décembre, que Vladimir Poutine était \"prêt au dialogue\" avec Emmanuel Macron. L'Élysée a jugé \"bienvenue\" cette posture du président Russe.<br /><br /><img src=\"https://images.bfmtv.com/UVBN2qleG_J4XIeimhL9Ik0xWUg=/0x142:2048x1294/800x0/images/Vladimir-Poutine-et-Emmanuel-Macron-1474562.jpg\" />",
+      "publishedTime": 1766306574000,
+      "archived_at": "2025-12-21T11:00:14.882425+00:00"
+    },
+    {
+      "source": "France 24 (France)",
+      "title": "Ongoing Ukraine peace talks in Miami 'constructive', Kremlin envoy says",
+      "link": "https://www.france24.com/en/americas/20251221-ongoing-ukraine-peace-talks-miami-constructive-kremlin-envoy-says",
+      "published": "2025-12-21T08:30:37+00:00",
+      "media": {
+        "url": "https://s.france24.com/media/display/b4bbed6c-de4b-11f0-8985-005056a97e36/w:1024/p:16x9/AP25338510718407.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.france24.com/media/display/b4bbed6c-de4b-11f0-8985-005056a97e36/w:1024/p:16x9/AP25338510718407.jpg",
+      "thumb": "https://s.france24.com/media/display/b4bbed6c-de4b-11f0-8985-005056a97e36/w:1024/p:16x9/AP25338510718407.jpg",
+      "author": "FRANCE 24",
+      "summary": "A Kremlin envoy reported that peace talks in Florida on a US-proposed plan to end the nearly four-year war in Ukraine are progressing \"constructively\" as part of the Trump administration’s ongoing diplomatic efforts. The talks, involving both Ukrainian and European officials, come amid sharply divergent demands from Moscow and Kyiv.",
+      "publishedTime": 1766305837000,
+      "archived_at": "2025-12-21T11:00:14.882531+00:00"
+    },
+    {
+      "source": "Atlantico – Général",
+      "title": "Cette guerre psychologique que Vladimir Poutine mène contre l’Europe",
+      "link": "https://atlantico.fr/article/decryptage/guerre-psychologique-que-vladimir-poutine-mene-contre-europe-Ukraine-strategie-otan-pologne-france-allemagne-trump-zelensky-etats-unis-Kremlin-Helene-Blanc-Francoise-Thom",
+      "published": "2025-12-21T08:26:00+00:00",
+      "media": {
+        "url": "https://atlantico.codexcdn.net/assets/asvyiyPAp9uk6nJst.jpg",
+        "width": null,
+        "height": null,
+        "type": "image",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://atlantico.codexcdn.net/assets/asvyiyPAp9uk6nJst.jpg",
+      "thumb": "https://atlantico.codexcdn.net/assets/asvyiyPAp9uk6nJst.jpg",
+      "publishedTime": 1766305560000,
+      "archived_at": "2025-12-21T11:00:14.882634+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "Guerre en Ukraine : approuvez-vous le souhait d'Emmanuel Macron de reprendre le dialogue avec Vladimir Poutine ?",
+      "link": "https://www.lefigaro.fr/international/guerre-en-ukraine-approuvez-vous-le-souhait-d-emmanuel-macron-de-reprendre-le-dialogue-avec-vladimir-poutine-20251221",
+      "published": "2025-12-21T08:20:59+00:00",
+      "media": null,
+      "publishedTime": 1766305259000,
+      "archived_at": "2025-12-21T11:00:14.882765+00:00"
+    },
+    {
+      "source": "BFM TV (monde)",
+      "title": "\"Même si nous devions manger des pierres, nous suspendrions l’envoi de pétrole aux États-Unis !\": comment le Venezuela a pactisé avec Pékin (pour l'argent) et Moscou (pour les armes) pour contourner Washington",
+      "link": "https://www.bfmtv.com/economie/international/meme-si-nous-devions-manger-des-pierres-nous-suspendrions-l-envoi-de-petrole-aux-etats-unis-comment-le-venezuela-a-pactise-avec-pekin-pour-l-argent-et-moscou-pour-les-armes-pour-contourner-washington_AV-202512210116.html",
+      "published": "2025-12-21T07:56:34+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/gNlwPCUlD5g5VMKPuZznxEXJwtk=/13x0:1949x1089/800x0/images/Les-presidents-Trump-et-Maduro-1987340.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/gNlwPCUlD5g5VMKPuZznxEXJwtk=/13x0:1949x1089/800x0/images/Les-presidents-Trump-et-Maduro-1987340.jpg",
+      "thumb": "https://images.bfmtv.com/gNlwPCUlD5g5VMKPuZznxEXJwtk=/13x0:1949x1089/800x0/images/Les-presidents-Trump-et-Maduro-1987340.jpg",
+      "summary": "Ces dernières années, le rapprochement opéré par le Venezuela avec la Chine et la Russie doit notamment permettre au pays sud-américain de contourner les sanctions instaurées par Washington.<br /><br /><img src=\"https://images.bfmtv.com/gNlwPCUlD5g5VMKPuZznxEXJwtk=/13x0:1949x1089/800x0/images/Les-presidents-Trump-et-Maduro-1987340.jpg\" />",
+      "publishedTime": 1766303794000,
+      "archived_at": "2025-12-21T11:00:14.882875+00:00"
+    },
+    {
+      "source": "BFM TV (monde)",
+      "title": "La Russie assure qu'une rencontre trilatérale avec les États-Unis et l'Ukraine n'est \"pas en cours de préparation\"",
+      "link": "https://www.bfmtv.com/international/asie/russie/la-russie-assure-qu-une-rencontre-trilaterale-avec-les-etats-unis-et-l-ukraine-n-est-pas-en-cours-de-preparation_AN-202512210114.html",
+      "published": "2025-12-21T07:47:50+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/NtGdQNNui0bAZftm-3lTOX_NZno=/0x106:2048x1258/800x0/images/Le-diplomate-russe-Iouri-Ouchakov-a-Moscou-le-7-aout-2025-2189733.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/NtGdQNNui0bAZftm-3lTOX_NZno=/0x106:2048x1258/800x0/images/Le-diplomate-russe-Iouri-Ouchakov-a-Moscou-le-7-aout-2025-2189733.jpg",
+      "thumb": "https://images.bfmtv.com/NtGdQNNui0bAZftm-3lTOX_NZno=/0x106:2048x1258/800x0/images/Le-diplomate-russe-Iouri-Ouchakov-a-Moscou-le-7-aout-2025-2189733.jpg",
+      "summary": "Des discussions ont lieu depuis vendredi à Miami (États-Unis) sur une possible sortie du conflit en Ukraine.<br /><br /><img src=\"https://images.bfmtv.com/NtGdQNNui0bAZftm-3lTOX_NZno=/0x106:2048x1258/800x0/images/Le-diplomate-russe-Iouri-Ouchakov-a-Moscou-le-7-aout-2025-2189733.jpg\" />",
+      "publishedTime": 1766303270000,
+      "archived_at": "2025-12-21T11:00:14.882973+00:00"
+    },
+    {
+      "source": "Le Monde (en continu)",
+      "title": "EN DIRECT, guerre en Ukraine : Vladimir Poutine se dit « prêt au dialogue » avec Emmanuel Macron, qui avisera « dans les prochains jours » selon quelles modalités cela pourrait se faire",
+      "link": "https://www.lemonde.fr/international/live/2025/12/21/en-direct-guerre-en-ukraine-la-russie-a-attaque-l-ukraine-avec-pres-de-100-drones-dans-la-nuit-de-samedi-a-dimanche_6658995_3210.html",
+      "published": "2025-12-21T07:43:16+00:00",
+      "media": {
+        "url": "https://img.lemde.fr/2025/12/19/0/0/4973/2486/644/322/60/0/839e738_ftp-1-x8lvmgrqwyf4-2025-12-19t155938z-1755787849-rc2qjiabebeh-rtrmadp-3-russia-putin.JPG",
+        "width": 644,
+        "height": 322,
+        "type": null,
+        "description": null,
+        "credit": "Alexander Kazakov / via REUTERS"
+      },
+      "image": "https://img.lemde.fr/2025/12/19/0/0/4973/2486/644/322/60/0/839e738_ftp-1-x8lvmgrqwyf4-2025-12-19t155938z-1755787849-rc2qjiabebeh-rtrmadp-3-russia-putin.JPG",
+      "thumb": "https://img.lemde.fr/2025/12/19/0/0/4973/2486/644/322/60/0/839e738_ftp-1-x8lvmgrqwyf4-2025-12-19t155938z-1755787849-rc2qjiabebeh-rtrmadp-3-russia-putin.JPG",
+      "summary": "Cette réponse de l’Elysée intervient après que le porte-parole du Kremlin, Dmitri Peskov, a fait savoir dans la nuit de samedi à dimanche que Vladimir Poutine, est « prêt au dialogue » avec son homologue français.",
+      "publishedTime": 1766302996000,
+      "archived_at": "2025-12-21T11:00:14.883070+00:00"
+    },
+    {
       "source": "La Dépêche (monde)",
       "title": "DIRECT. Guerre en Ukraine : Vladimir Poutine \"prêt au dialogue\" avec Emmanuel Macron, selon son porte-parole",
       "link": "https://www.ladepeche.fr/2025/12/21/direct-guerre-en-ukraine-vladimir-poutine-pret-au-dialogue-avec-emmanuel-macron-selon-son-porte-parole-13123157.php",
@@ -10545,6 +10815,17 @@
     }
   ],
   "videos": [
+    {
+      "channel": "Fox News",
+      "title": "'First thing' the Left wants to do is 'blame': GOP senator",
+      "link": "https://www.youtube.com/watch?v=muZLLYf-Gp4",
+      "published": "2025-12-21T09:30:25Z",
+      "publishedTime": 1766309425000,
+      "thumbnail": "https://i.ytimg.com/vi/muZLLYf-Gp4/hqdefault.jpg",
+      "summary": "Sen. Markwayne Mullin, R-Okla., discusses gun violence, what citizens can do to protect themselves, Venezuelan boat strikes and more on 'My View with Lara Trump.' #fox #media #breakingnews #us #usa #new #news #breaking #foxnews #myviewwithlaratrump #markwaynemullin #senatormullin #laratrump #gunviol",
+      "type": "youtube",
+      "archived_at": "2025-12-21T11:00:39.850241+00:00"
+    },
     {
       "channel": "Fox News",
       "title": "Elise Stefanik DROPS OUT of NY gubernatorial race, won't seek re-election #shorts",

@@ -121,16 +121,17 @@ function performSearch() {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: #f7f8fa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Top bar */
 .header-top-bar {
-  background: linear-gradient(135deg, #7b5ce0, #c5b3ff);
-  border-bottom: 1px solid #7b5ce0;
-  padding: 12px 0;
+  background: #f1f3f5;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 0;
   font-size: 12px;
+  position: relative;
 }
 
 .container {
@@ -142,11 +143,16 @@ function performSearch() {
   align-items: center;
 }
 
+.header-top-bar .container {
+  position: relative; /* anchor the centered logo */
+}
+
 .top-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #495057;
+  color: #343a40;
+}
 .top-logo {
   position: absolute;
   left: 50%;
@@ -156,11 +162,9 @@ function performSearch() {
 }
 
 .top-logo-img {
-  height: 28px;
+  height: 70px;
   width: auto;
   opacity: 0.95;
-}
-
 }
 
 .pulse-indicator {
@@ -184,7 +188,7 @@ function performSearch() {
 }
 
 .tagline {
-  color: white;
+  color: #2d2f33;
   font-weight: 600;
   letter-spacing: 0.3px;
   padding: 0;
@@ -204,14 +208,14 @@ function performSearch() {
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #5c606a;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .top-link:hover {
-  color: white;
+  color: #111827;
 }
 
 .top-link svg {
@@ -220,11 +224,11 @@ function performSearch() {
 }
 
 .account-btn {
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 6px;
-  color: #7b5ce0;
+  color: #374151;
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
@@ -233,20 +237,15 @@ function performSearch() {
 }
 
 .account-btn:hover {
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.account-btn:hover {
-  border-color: #7b5ce0;
-  background: #f8f9ff;
-  color: #7b5ce0;
+  background: #f8fafc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Main navigation */
 .header-nav {
   padding: 12px 0;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #e6e8ec;
+  background: #ffffff;
 }
 
 .nav-content {
@@ -284,7 +283,7 @@ function performSearch() {
 
 .nav-links a {
   position: relative;
-  color: #495057;
+  color: #3b4048;
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;

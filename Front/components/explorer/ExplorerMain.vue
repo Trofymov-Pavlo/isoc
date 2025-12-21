@@ -223,7 +223,7 @@
               <p v-if="item.summary" class="item-summary">{{ truncateSummary(item.summary) }}</p>
               <div class="item-meta">
                 <span v-if="item.source" class="meta-item source">{{ item.source }}</span>
-                <span class="meta-item date">{{ formatDate(item.published) }}</span>
+                <span class="meta-item date">{{ formatExactDate(item) }}</span>
               </div>
             </div>
           </a>
@@ -518,19 +518,29 @@ function truncateText(text: string, maxLength: number = 30): string {
   return text.slice(0, maxLength) + '...';
 }
 
-function formatDate(dateStr: string | undefined): string {
-  if (!dateStr) return '';
-  try {
-    const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return '';
-    return new Intl.DateTimeFormat('fr-FR', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(date);
-  } catch {
-    return '';
-  }
+function formatExactDate(item: { published?: string | number; publishedTime?: string | number }): string {
+  const raw = item.published ?? item.publishedTime;
+  if (!raw) return '';
+
+  const asNumber = typeof raw === 'number' ? raw : Number.NaN;
+  const date = Number.isFinite(asNumber)
+    ? new Date(asNumber < 1e12 ? asNumber * 1000 : asNumber)
+    : new Date(raw as string);
+
+  if (Number.isNaN(date.getTime())) return '';
+
+  const datePart = new Intl.DateTimeFormat('fr-FR', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }).format(date);
+
+  const timePart = new Intl.DateTimeFormat('fr-FR', {
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date);
+
+  return `${datePart} · ${timePart}`;
 }
 
 // Load data on mount
@@ -543,6 +553,17 @@ onMounted(() => {
   if (qParam) {
     searchQuery.value = qParam;
   }
+  const typeParam = urlParams.get('type') || urlParams.get('types');
+  if (typeParam) {
+    if (typeParam === 'all') filters.value.types = ['articles', 'videos'];
+    else if (typeParam === 'articles' || typeParam === 'videos') filters.value.types = [typeParam];
+  }
+  const dateParam = urlParams.get('date') || urlParams.get('dateRange');
+  const allowedDates = ['all','today','week','month','3months','6months','year'];
+  if (dateParam && allowedDates.includes(dateParam)) {
+    filters.value.dateRange = dateParam;
+  }
+  applyFilters();
 });
 </script>
 
