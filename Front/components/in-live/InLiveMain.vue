@@ -1,12 +1,5 @@
 <template>
   <main class="live-feed">
-    <PageHero
-      title="En Direct"
-      subtitle="Suivez en temps réel les derniers développements du conflit Ukraine-Russie"
-      badge="Live 24/7"
-      :show-live-dot="true"
-    />
-
     <div class="live-content">
       <div class="search-bar-container">
         <div class="search-row">
@@ -44,7 +37,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArchiveFeed } from '@/composables/useArchiveFeed';
-import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
 import LiveAlert from '~/components/in-live/LiveAlert.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';

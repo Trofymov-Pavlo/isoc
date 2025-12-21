@@ -7,7 +7,6 @@
     <PodcastSection />
     <LiveUpdates />
     <VideoSection />
-    <NewsletterSection />
   </div>
 </template>
 
@@ -19,7 +18,6 @@ import HighlightedArticles from './HighlightedArticles.vue';
 import PodcastSection from './PodcastSection.vue';
 import LiveUpdates from './LiveUpdates.vue';
 import VideoSection from './VideoSection.vue';
-import NewsletterSection from './NewsletterSection.vue';
 </script>
 
 <style scoped>

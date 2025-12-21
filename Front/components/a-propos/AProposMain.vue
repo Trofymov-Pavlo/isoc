@@ -1,12 +1,5 @@
 <template>
   <main class="apropos-page">
-    <PageHero
-      title="À Propos"
-      subtitle="Découvrez ISOC501 AXIOM, votre source d'information sur le conflit Ukraine-Russie"
-      badge="Notre mission"
-      badge-icon="📌"
-    />
-
     <section class="apropos">
       <div class="content-wrapper">
         <div class="intro-section">
@@ -52,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import PageHero from '~/components/shared/PageHero.vue';
+
 </script>
 
 <style scoped>

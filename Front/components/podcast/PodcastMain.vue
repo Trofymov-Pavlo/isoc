@@ -1,12 +1,5 @@
 <template>
   <main class="podcast-page">
-    <PageHero
-      title="La Guerre de l'information"
-      subtitle="Analyse approfondie des enjeux informationnels du conflit Ukraine-Russie"
-      badge="Podcast AXIOM"
-      badge-icon="🎙️"
-    />
-
     <div class="podcast-wrapper">
       <div class="podcast-meta-bar">
         <div class="hosts-info">
@@ -51,20 +44,17 @@
       </section>
 
       <CtaSection :title="cta.title" :description="cta.description" :cta-text="cta.button" />
-      <NewsletterSection />
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import PageHero from '~/components/shared/PageHero.vue';
 import AuthorArticles from '~/components/podcast/AuthorArticles.vue';
 import CtaSection from '~/components/podcast/CtaSection.vue';
 import EpisodeSummary from '~/components/podcast/EpisodeSummary.vue';
 import HostsSection from '~/components/podcast/HostsSection.vue';
 import KeyPointsSection from '~/components/podcast/KeyPointsSection.vue';
-import NewsletterSection from '~/components/podcast/NewsletterSection.vue';
 import ResourcesSection from '~/components/podcast/ResourcesSection.vue';
 import ShareSection from '~/components/podcast/ShareSection.vue';
 import SimilarEpisodes from '~/components/podcast/SimilarEpisodes.vue';

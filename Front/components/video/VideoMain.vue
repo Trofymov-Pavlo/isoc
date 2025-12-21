@@ -1,11 +1,5 @@
 <template>
   <main class="live-feed">
-    <PageHero
-      title="▶ Vidéos"
-      subtitle="Toutes les vidéos sur le conflit Ukraine-Russie"
-      badge="Archive vidéo"
-    />
-
     <div class="video-content">
       <div class="search-bar-container">
         <div class="search-row">
@@ -75,7 +69,6 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import PageHero from '~/components/shared/PageHero.vue';
 import EmptyState from '~/components/video/EmptyState.vue';
 import FeaturedVideo from '~/components/video/FeaturedVideo.vue';
 import VideosGrid from '~/components/video/VideosGrid.vue';

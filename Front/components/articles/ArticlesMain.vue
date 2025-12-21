@@ -1,11 +1,5 @@
 <template>
   <main class="articles-page">
-    <PageHero
-      title="Articles"
-      subtitle="Tous les articles sur le conflit Ukraine-Russie"
-      badge="Archive article"
-    />
-
     <div class="articles-content">
       <div class="search-bar-container">
         <div class="search-row">
@@ -74,8 +68,6 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { usePagination } from '@/composables/usePagination';
-import { compareAlphabetic } from '@/utils/sortUtils';
-import PageHero from '~/components/shared/PageHero.vue';
 import FeaturedLive from '~/components/in-live/FeaturedLive.vue';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
 import Pagination from '~/components/shared/Pagination.vue';
