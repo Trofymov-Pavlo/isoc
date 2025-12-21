@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useAuthState } from '~/composables/useAuthState';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 
@@ -37,37 +37,28 @@ const emit = defineEmits<{
 }>();
 
 const { isAuthenticated } = useAuthState();
-const { toggleSave, isSaved, loading } = useSavedMedia();
+const { toggleSave, isSaved } = useSavedMedia();
 
-const localSaved = ref(false);
 const isLoading = ref(false);
 
-// Keep SSR safe: default to “not liked” until mounted on client.
-const mounted = ref(false);
-onMounted(() => {
-  mounted.value = true;
-});
-
-// On mount, check if item is already saved
+// Check if item is saved using the global cache
 const isLiked = computed(() => {
-  if (!mounted.value) return false;
-  if (!isAuthenticated.value) {
-    return localSaved.value;
-  }
-  return isSaved(props.link);
+  if (!isAuthenticated.value) return false;
+  return isSaved(props.link, props.category);
 });
 
 const onClick = async () => {
   if (!isAuthenticated.value) {
-    // Fallback to localStorage for non-authenticated users
-    localSaved.value = !localSaved.value;
-    emit('toggle', localSaved.value);
+    // Redirect to login if not authenticated
+    if (typeof window !== 'undefined') {
+      window.location.href = '/connexion';
+    }
     return;
   }
 
   isLoading.value = true;
   try {
-    await toggleSave({
+    const result = await toggleSave({
       link: props.link,
       title: props.title || 'Sans titre',
       source: props.source,
@@ -75,7 +66,7 @@ const onClick = async () => {
       thumbnail: props.thumbnail,
       category: props.category,
     });
-    emit('toggle', !isLiked.value);
+    emit('toggle', result.saved);
   } finally {
     isLoading.value = false;
   }
