@@ -181,7 +181,7 @@ const { all: videos, loading: videosLoading, error: videosError, load: loadVideo
   meta: 1,
 });
 
-const { isSaved, toggleSave } = useSavedMedia();
+const { isSaved, toggleSave: saveMedia } = useSavedMedia();
 
 // UI State
 const searchQuery = ref('');
@@ -318,11 +318,21 @@ function prevPage() {
 }
 
 function isSavedItem(link: string): boolean {
-  return isSaved(link);
+  return isSaved(link, 'liked');
 }
 
-function toggleLike(link: string) {
-  toggleSave(link);
+async function toggleLike(link: string) {
+  // Find the item to get its metadata
+  const item = allItems.value.find(i => i.link === link);
+  if (!item) return;
+
+  await saveMedia({
+    link,
+    title: item.title,
+    source: item.source || '',
+    media_type: item.type === 'article' ? 'article' : 'video',
+    category: 'liked',
+  });
 }
 
 function truncateSummary(text: string, maxLength: number = 150): string {
