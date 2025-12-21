@@ -15,5 +15,5 @@ class SavedMediaSerializer(serializers.ModelSerializer):
 class UserCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCategory
-        fields = ('id', 'name', 'color', 'created_at')
+        fields = ('id', 'name', 'color', 'icon', 'created_at')
         read_only_fields = ('id', 'created_at')

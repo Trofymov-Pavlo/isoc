@@ -25,9 +25,19 @@
         <time class="featured-time">
           {{ displayDate }}
         </time>
-        <a :href="video.link" target="_blank" rel="noopener" class="read-link">
-          Regarder sur YouTube →
-        </a>
+        <div class="footer-actions">
+          <a :href="video.link" target="_blank" rel="noopener" class="read-link">
+            Regarder sur YouTube →
+          </a>
+          <LikeButton 
+            :link="video.link"
+            :title="video.title"
+            :source="video.source || video.channel || 'YouTube'"
+            media-type="video"
+            :thumbnail="video.thumbnail"
+            @toggle="() => {}"
+          />
+        </div>
       </div>
     </div>
   </article>
@@ -35,6 +45,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface VideoItem {
   id?: number;
@@ -203,7 +214,11 @@ const backgroundImage = computed(() => {
   padding-top: 8px;
   border-top: 1px solid #f0f0f0;
 }
-
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .featured-time {
   font-size: 13px;
   color: #999;
