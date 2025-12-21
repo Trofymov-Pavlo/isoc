@@ -4,63 +4,41 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <h3>Filtres</h3>
-        <button v-if="hasActiveFilters" @click="resetFilters" class="reset-btn" title="Réinitialiser">
-          ✕
+        <button v-if="hasActiveFilters" @click="resetFilters" class="reset-btn" title="Réinitialiser tous les filtres">
+          ↻
         </button>
       </div>
 
-      <!-- Media type filter -->
+      <!-- 1. Media type filter (always visible) -->
       <div class="filter-group">
-        <h4 class="filter-title">Type de média</h4>
-        <div class="filter-options">
-          <label class="checkbox-label">
-            <input
-              v-model="filters.types"
-              type="checkbox"
-              value="articles"
-              @change="applyFilters"
-            />
-            <span class="checkbox-text">Articles</span>
-            <span class="count">({{ articleCount }})</span>
-          </label>
-          <label class="checkbox-label">
-            <input
-              v-model="filters.types"
-              type="checkbox"
-              value="videos"
-              @change="applyFilters"
-            />
-            <span class="checkbox-text">Vidéos</span>
-            <span class="count">({{ videoCount }})</span>
-          </label>
-        </div>
+        <label class="filter-checkbox">
+          <input
+            v-model="filters.types"
+            type="checkbox"
+            value="articles"
+            @change="applyFilters"
+          />
+          <span class="checkbox-label-text">Articles</span>
+          <span class="count">{{ articleCount }}</span>
+        </label>
+        <label class="filter-checkbox">
+          <input
+            v-model="filters.types"
+            type="checkbox"
+            value="videos"
+            @change="applyFilters"
+          />
+          <span class="checkbox-label-text">Vidéos</span>
+          <span class="count">{{ videoCount }}</span>
+        </label>
       </div>
 
-      <!-- Sorting -->
-      <div class="filter-group">
-        <h4 class="filter-title">Trier par</h4>
-        <select v-model="sortBy" @change="applyFilters" class="sort-select">
-          <option value="date-desc">Plus récent</option>
-          <option value="date-asc">Plus ancien</option>
-          <option value="title-asc">Titre (A-Z)</option>
-          <option value="title-desc">Titre (Z-A)</option>
-        </select>
-      </div>
+      <div class="filter-divider"></div>
 
-      <!-- Items per page -->
+      <!-- 2. Date range filter -->
       <div class="filter-group">
-        <h4 class="filter-title">Par page</h4>
-        <select v-model.number="itemsPerPage" @change="applyFilters" class="sort-select">
-          <option :value="12">12 items</option>
-          <option :value="24">24 items</option>
-          <option :value="48">48 items</option>
-        </select>
-      </div>
-
-      <!-- Date range filter -->
-      <div class="filter-group">
-        <h4 class="filter-title">Période</h4>
-        <select v-model="filters.dateRange" @change="applyFilters" class="sort-select">
+        <h4 class="filter-label">Période</h4>
+        <select v-model="filters.dateRange" @change="applyFilters" class="filter-select">
           <option value="all">Toutes les dates</option>
           <option value="today">Aujourd'hui</option>
           <option value="week">Cette semaine</option>
@@ -71,41 +49,84 @@
         </select>
       </div>
 
-      <!-- Sources filter (Articles) -->
-      <div v-if="filters.types.includes('articles') && availableSources.length > 0" class="filter-group">
-        <button class="filter-title expandable" @click="showSourcesFilter = !showSourcesFilter">
-          <span>Sources ({{ filters.sources.length }})</span>
-          <span class="expand-icon">{{ showSourcesFilter ? '▼' : '▶' }}</span>
-        </button>
-        <div v-show="showSourcesFilter" class="filter-options scrollable">
-          <label v-for="source in availableSources" :key="source" class="checkbox-label">
-            <input
-              v-model="filters.sources"
-              type="checkbox"
-              :value="source"
-              @change="applyFilters"
-            />
-            <span class="checkbox-text">{{ source }}</span>
-          </label>
-        </div>
+      <!-- 3. Sorting -->
+      <div class="filter-group">
+        <h4 class="filter-label">Tri</h4>
+        <select v-model="sortBy" @change="applyFilters" class="filter-select">
+          <option value="date-desc">Plus récent</option>
+          <option value="date-asc">Plus ancien</option>
+          <option value="title-asc">Titre (A-Z)</option>
+          <option value="title-desc">Titre (Z-A)</option>
+        </select>
       </div>
 
-      <!-- Channels filter (Videos) -->
-      <div v-if="filters.types.includes('videos') && availableChannels.length > 0" class="filter-group">
-        <button class="filter-title expandable" @click="showChannelsFilter = !showChannelsFilter">
-          <span>Chaînes ({{ filters.channels.length }})</span>
-          <span class="expand-icon">{{ showChannelsFilter ? '▼' : '▶' }}</span>
+      <div class="filter-divider"></div>
+
+      <!-- 4. Sources filter (Articles only) -->
+      <div v-if="filters.types.includes('articles') && availableSources.length > 0" class="filter-group">
+        <button 
+          class="filter-label expandable" 
+          @click="ui.sourcesExpanded = !ui.sourcesExpanded"
+          :class="{ expanded: ui.sourcesExpanded }"
+        >
+          <span class="label-text">Sources <span v-if="filters.sources.length" class="active-count">({{ filters.sources.length }})</span></span>
+          <span class="expand-icon">⋮</span>
         </button>
-        <div v-show="showChannelsFilter" class="filter-options scrollable">
-          <label v-for="channel in availableChannels" :key="channel" class="checkbox-label">
-            <input
-              v-model="filters.channels"
-              type="checkbox"
-              :value="channel"
-              @change="applyFilters"
-            />
-            <span class="checkbox-text">{{ channel }}</span>
-          </label>
+        <transition name="filter-expand">
+          <div v-show="ui.sourcesExpanded" class="filter-options-scrollable">
+            <label v-for="source in availableSources" :key="source" class="filter-checkbox">
+              <input
+                v-model="filters.sources"
+                type="checkbox"
+                :value="source"
+                @change="applyFilters"
+              />
+              <span class="checkbox-label-text">{{ truncateText(source, 25) }}</span>
+            </label>
+          </div>
+        </transition>
+      </div>
+
+      <!-- 5. Channels filter (Videos only) -->
+      <div v-if="filters.types.includes('videos') && availableChannels.length > 0" class="filter-group">
+        <button 
+          class="filter-label expandable" 
+          @click="ui.channelsExpanded = !ui.channelsExpanded"
+          :class="{ expanded: ui.channelsExpanded }"
+        >
+          <span class="label-text">Chaînes <span v-if="filters.channels.length" class="active-count">({{ filters.channels.length }})</span></span>
+          <span class="expand-icon">⋮</span>
+        </button>
+        <transition name="filter-expand">
+          <div v-show="ui.channelsExpanded" class="filter-options-scrollable">
+            <label v-for="channel in availableChannels" :key="channel" class="filter-checkbox">
+              <input
+                v-model="filters.channels"
+                type="checkbox"
+                :value="channel"
+                @change="applyFilters"
+              />
+              <span class="checkbox-label-text">{{ truncateText(channel, 25) }}</span>
+            </label>
+          </div>
+        </transition>
+      </div>
+
+      <div v-if="filters.types.includes('articles') || filters.types.includes('videos')" class="filter-divider"></div>
+
+      <!-- 6. Items per page -->
+      <div class="filter-group">
+        <h4 class="filter-label">Affichage</h4>
+        <div class="items-per-page">
+          <button 
+            v-for="count in [12, 24, 48]" 
+            :key="count"
+            @click="itemsPerPage = count; applyFilters();"
+            :class="{ active: itemsPerPage === count }"
+            class="items-btn"
+          >
+            {{ count }}
+          </button>
         </div>
       </div>
     </aside>
@@ -263,15 +284,19 @@ const sortBy = ref('date-desc');
 const itemsPerPage = ref(24);
 const currentPage = ref(1);
 
+// UI expanded/collapsed state
+const ui = ref({
+  sourcesExpanded: false,
+  channelsExpanded: false,
+});
+
+// Filters state - simplified structure
 const filters = ref({
-  types: ['articles', 'videos'],
-  dateRange: 'all',
+  types: ['articles', 'videos'] as string[],
+  dateRange: 'all' as string,
   sources: [] as string[],
   channels: [] as string[],
 });
-
-const showSourcesFilter = ref(false);
-const showChannelsFilter = ref(false);
 
 // Combined data
 const allItems = computed(() => {
@@ -483,6 +508,12 @@ function handleImageError(event: Event) {
   img.style.display = 'none';
 }
 
+function truncateText(text: string, maxLength: number = 30): string {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + '...';
+}
+
 function formatDate(dateStr: string | undefined): string {
   if (!dateStr) return '';
   try {
@@ -528,29 +559,28 @@ onMounted(() => {
 
 /* Sidebar */
 .sidebar {
-  position: sticky;
-  top: 140px;
-  height: fit-content;
   background: #f8f9fa;
   border: 1px solid #e9ecef;
   border-radius: 8px;
-  padding: 20px;
+  padding: 24px;
+  height: fit-content;
 }
 
 .sidebar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
   border-bottom: 2px solid #e9ecef;
 }
 
 .sidebar-header h3 {
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   color: #212529;
+  letter-spacing: -0.3px;
 }
 
 .reset-btn {
@@ -558,135 +588,215 @@ onMounted(() => {
   border: none;
   color: #6c757d;
   cursor: pointer;
-  font-size: 20px;
-  padding: 0;
-  width: 24px;
-  height: 24px;
+  font-size: 18px;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
+  border-radius: 6px;
 }
 
 .reset-btn:hover {
+  background: #e9ecef;
   color: #dc3545;
 }
 
 /* Filter groups */
 .filter-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.filter-title {
-  margin: 0 0 12px 0;
+.filter-divider {
+  height: 1px;
+  background: #e9ecef;
+  margin: 20px 0;
+}
+
+/* Filter checkboxes (type) */
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  margin-bottom: 6px;
+}
+
+.filter-checkbox:hover {
+  background: #e9ecef;
+}
+
+.filter-checkbox input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #7b5ce0;
+  border-radius: 3px;
+}
+
+.checkbox-label-text {
+  flex: 1;
   font-size: 13px;
-  font-weight: 600;
   color: #212529;
+  font-weight: 500;
+}
+
+.count {
+  font-size: 12px;
+  color: #adb5bd;
+  font-weight: 600;
+}
+
+/* Filter labels and selects */
+.filter-label {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #495057;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
-  width: 100%;
+  letter-spacing: 0.4px;
+  display: block;
   background: none;
   border: none;
-  text-align: left;
-  cursor: default;
   padding: 0;
+  cursor: default;
 }
 
-.filter-title.expandable {
+.filter-label.expandable {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  padding: 10px 0;
   transition: color 0.2s ease;
 }
 
-.filter-title.expandable:hover {
+.filter-label.expandable:hover {
   color: #7b5ce0;
 }
 
-.expand-icon {
-  font-size: 10px;
-  color: #6c757d;
+.filter-label.expandable.expanded {
+  color: #7b5ce0;
 }
 
-.filter-options {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.filter-options.scrollable {
-  max-height: 200px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.filter-options.scrollable::-webkit-scrollbar {
-  width: 6px;
-}
-
-.filter-options.scrollable::-webkit-scrollbar-track {
-  background: #f1f3f5;
-  border-radius: 3px;
-}
-
-.filter-options.scrollable::-webkit-scrollbar-thumb {
-  background: #ced4da;
-  border-radius: 3px;
-}
-
-.filter-options.scrollable::-webkit-scrollbar-thumb:hover {
-  background: #adb5bd;
-}
-
-.checkbox-label {
+.label-text {
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
-  font-size: 13px;
-  color: #495057;
+}
+
+.active-count {
+  color: #7b5ce0;
+  font-weight: 700;
+}
+
+.expand-icon {
+  font-size: 14px;
+  color: #ced4da;
   transition: color 0.2s ease;
 }
 
-.checkbox-label:hover {
-  color: #212529;
-}
-
-.checkbox-label input[type="checkbox"] {
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  accent-color: #7b5ce0;
-}
-
-.checkbox-text {
-  flex: 1;
-}
-
-.count {
-  color: #adb5bd;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.sort-select {
+.filter-select {
   width: 100%;
   padding: 8px 12px;
   border: 1px solid #dee2e6;
   border-radius: 6px;
-  font-size: 13px;
-  color: #212529;
   background: white;
+  color: #212529;
+  font-size: 13px;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.sort-select:hover,
-.sort-select:focus {
+.filter-select:hover {
   border-color: #7b5ce0;
+}
+
+.filter-select:focus {
   outline: none;
+  border-color: #7b5ce0;
+  box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.1);
+}
+
+/* Expandable filter options */
+.filter-options-scrollable {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 8px 0;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 3px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
+}
+
+.filter-options-scrollable .filter-checkbox {
+  margin-bottom: 4px;
+  padding: 8px 12px;
+}
+
+/* Items per page buttons */
+.items-per-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.items-btn {
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  background: white;
+  color: #495057;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.items-btn:hover {
+  border-color: #7b5ce0;
+  color: #7b5ce0;
+}
+
+.items-btn.active {
+  background: #7b5ce0;
+  border-color: #7b5ce0;
+  color: white;
+}
+
+/* Transitions */
+.filter-expand-enter-active,
+.filter-expand-leave-active {
+  transition: all 0.3s ease;
+}
+
+.filter-expand-enter-from,
+.filter-expand-leave-to {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
 }
 
 /* Main content */
