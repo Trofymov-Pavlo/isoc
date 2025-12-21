@@ -56,6 +56,58 @@
           <option :value="48">48 items</option>
         </select>
       </div>
+
+      <!-- Date range filter -->
+      <div class="filter-group">
+        <h4 class="filter-title">Période</h4>
+        <select v-model="filters.dateRange" @change="applyFilters" class="sort-select">
+          <option value="all">Toutes les dates</option>
+          <option value="today">Aujourd'hui</option>
+          <option value="week">Cette semaine</option>
+          <option value="month">Ce mois-ci</option>
+          <option value="3months">3 derniers mois</option>
+          <option value="6months">6 derniers mois</option>
+          <option value="year">Cette année</option>
+        </select>
+      </div>
+
+      <!-- Sources filter (Articles) -->
+      <div v-if="filters.types.includes('articles') && availableSources.length > 0" class="filter-group">
+        <button class="filter-title expandable" @click="showSourcesFilter = !showSourcesFilter">
+          <span>Sources ({{ filters.sources.length }})</span>
+          <span class="expand-icon">{{ showSourcesFilter ? '▼' : '▶' }}</span>
+        </button>
+        <div v-show="showSourcesFilter" class="filter-options scrollable">
+          <label v-for="source in availableSources" :key="source" class="checkbox-label">
+            <input
+              v-model="filters.sources"
+              type="checkbox"
+              :value="source"
+              @change="applyFilters"
+            />
+            <span class="checkbox-text">{{ source }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Channels filter (Videos) -->
+      <div v-if="filters.types.includes('videos') && availableChannels.length > 0" class="filter-group">
+        <button class="filter-title expandable" @click="showChannelsFilter = !showChannelsFilter">
+          <span>Chaînes ({{ filters.channels.length }})</span>
+          <span class="expand-icon">{{ showChannelsFilter ? '▼' : '▶' }}</span>
+        </button>
+        <div v-show="showChannelsFilter" class="filter-options scrollable">
+          <label v-for="channel in availableChannels" :key="channel" class="checkbox-label">
+            <input
+              v-model="filters.channels"
+              type="checkbox"
+              :value="channel"
+              @change="applyFilters"
+            />
+            <span class="checkbox-text">{{ channel }}</span>
+          </label>
+        </div>
+      </div>
     </aside>
 
     <!-- Main content -->
@@ -110,11 +162,36 @@
       <!-- Grid of items -->
       <template v-else>
         <div class="items-grid">
-          <article v-for="item in paginatedItems" :key="item.link" class="item-card">
-            <div class="item-header">
+          <a 
+            v-for="item in paginatedItems" 
+            :key="item.link" 
+            :href="item.link" 
+            target="_blank" 
+            class="item-card"
+          >
+            <div class="item-image-container">
+              <img 
+                v-if="item.image" 
+                :src="item.image" 
+                :alt="item.title"
+                class="item-image"
+                loading="lazy"
+                @error="handleImageError"
+              />
+              <div v-else class="item-image-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
               <span v-if="item.type === 'article'" class="media-badge article-badge">Article</span>
               <span v-else class="media-badge video-badge">Vidéo</span>
-              <button class="like-btn" @click="toggleLike(item.link)">
+              <button 
+                class="like-btn" 
+                @click.prevent.stop="toggleLike(item.link)"
+                :title="isSavedItem(item.link) ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+              >
                 <svg :class="{ liked: isSavedItem(item.link) }" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
@@ -128,10 +205,7 @@
                 <span class="meta-item date">{{ formatDate(item.published) }}</span>
               </div>
             </div>
-            <a :href="item.link" target="_blank" class="item-link">
-              Lire la suite →
-            </a>
-          </article>
+          </a>
         </div>
 
         <!-- Pagination -->
@@ -191,7 +265,13 @@ const currentPage = ref(1);
 
 const filters = ref({
   types: ['articles', 'videos'],
+  dateRange: 'all',
+  sources: [] as string[],
+  channels: [] as string[],
 });
+
+const showSourcesFilter = ref(false);
+const showChannelsFilter = ref(false);
 
 // Combined data
 const allItems = computed(() => {
@@ -207,6 +287,7 @@ const allItems = computed(() => {
       published: a.published,
       publishedTime: a.publishedTime,
       link: a.link,
+      image: a.image,
     })));
   }
 
@@ -220,6 +301,7 @@ const allItems = computed(() => {
       published: v.published,
       publishedTime: v.publishedTime,
       link: v.link,
+      image: v.thumbnail,
     })));
   }
 
@@ -229,6 +311,35 @@ const allItems = computed(() => {
 // Filtering and sorting
 const filteredItems = computed(() => {
   let result = [...allItems.value];
+
+  // Date range filter
+  if (filters.value.dateRange !== 'all') {
+    const now = Date.now();
+    const ranges: Record<string, number> = {
+      today: 24 * 60 * 60 * 1000,
+      week: 7 * 24 * 60 * 60 * 1000,
+      month: 30 * 24 * 60 * 60 * 1000,
+      '3months': 90 * 24 * 60 * 60 * 1000,
+      '6months': 180 * 24 * 60 * 60 * 1000,
+      year: 365 * 24 * 60 * 60 * 1000,
+    };
+    const cutoff = now - (ranges[filters.value.dateRange] || 0);
+    result = result.filter(item => (item.publishedTime || 0) >= cutoff);
+  }
+
+  // Sources filter (Articles)
+  if (filters.value.sources.length > 0) {
+    result = result.filter(item => 
+      item.type === 'video' || filters.value.sources.includes(item.source)
+    );
+  }
+
+  // Channels filter (Videos)
+  if (filters.value.channels.length > 0) {
+    result = result.filter(item => 
+      item.type === 'article' || filters.value.channels.includes(item.source)
+    );
+  }
 
   // Search filter
   if (searchQuery.value.trim()) {
@@ -260,6 +371,23 @@ const filteredItems = computed(() => {
   return sorted;
 });
 
+// Available sources and channels
+const availableSources = computed(() => {
+  const sources = new Set<string>();
+  articles.value.forEach(a => {
+    if (a.source) sources.add(a.source);
+  });
+  return Array.from(sources).sort();
+});
+
+const availableChannels = computed(() => {
+  const channels = new Set<string>();
+  videos.value.forEach(v => {
+    if (v.channel) channels.add(v.channel);
+  });
+  return Array.from(channels).sort();
+});
+
 // Pagination
 const totalPages = computed(() => Math.ceil(filteredItems.value.length / itemsPerPage.value));
 
@@ -279,7 +407,11 @@ const error = computed(() => articlesError.value || videosError.value || null);
 
 // Filter helpers
 const hasActiveFilters = computed(() => 
-  searchQuery.value || filters.value.types.length < 2
+  searchQuery.value || 
+  filters.value.types.length < 2 || 
+  filters.value.dateRange !== 'all' ||
+  filters.value.sources.length > 0 ||
+  filters.value.channels.length > 0
 );
 
 // Methods
@@ -300,6 +432,9 @@ function clearSearch() {
 function resetFilters() {
   searchQuery.value = '';
   filters.value.types = ['articles', 'videos'];
+  filters.value.dateRange = 'all';
+  filters.value.sources = [];
+  filters.value.channels = [];
   sortBy.value = 'date-desc';
   itemsPerPage.value = 24;
   currentPage.value = 1;
@@ -341,6 +476,11 @@ function truncateSummary(text: string, maxLength: number = 150): string {
   if (!text) return '';
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength).trim() + '...';
+}
+
+function handleImageError(event: Event) {
+  const img = event.target as HTMLImageElement;
+  img.style.display = 'none';
 }
 
 function formatDate(dateStr: string | undefined): string {
@@ -444,12 +584,60 @@ onMounted(() => {
   color: #212529;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: default;
+  padding: 0;
+}
+
+.filter-title.expandable {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.filter-title.expandable:hover {
+  color: #7b5ce0;
+}
+
+.expand-icon {
+  font-size: 10px;
+  color: #6c757d;
 }
 
 .filter-options {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.filter-options.scrollable {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.filter-options.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-options.scrollable::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 3px;
+}
+
+.filter-options.scrollable::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 3px;
+}
+
+.filter-options.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
 }
 
 .checkbox-label {
@@ -658,60 +846,101 @@ onMounted(() => {
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .item-card:hover {
   border-color: #7b5ce0;
-  box-shadow: 0 4px 12px rgba(123, 92, 224, 0.1);
+  box-shadow: 0 8px 24px rgba(123, 92, 224, 0.15);
+  transform: translateY(-2px);
 }
 
-.item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
+/* Image container */
+.item-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
   background: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover .item-image {
+  transform: scale(1.05);
+}
+
+.item-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ced4da;
+}
+
+.item-image-placeholder svg {
+  width: 60px;
+  height: 60px;
 }
 
 .media-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
   font-size: 11px;
   font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .article-badge {
-  background: #e7f5ff;
+  background: rgba(231, 245, 255, 0.95);
   color: #0066cc;
 }
 
 .video-badge {
-  background: #fff3bf;
+  background: rgba(255, 243, 191, 0.95);
   color: #997404;
 }
 
 .like-btn {
-  background: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
   border: none;
   cursor: pointer;
-  padding: 0;
-  width: 20px;
-  height: 20px;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   color: #dee2e6;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 .like-btn:hover {
+  background: white;
   color: #dc3545;
   transform: scale(1.1);
 }
 
 .like-btn svg {
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
 }
 
 .like-btn svg.liked {
@@ -728,10 +957,14 @@ onMounted(() => {
 
 .item-title {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #212529;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .item-summary {
@@ -740,6 +973,10 @@ onMounted(() => {
   color: #6c757d;
   line-height: 1.5;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .item-meta {
@@ -758,22 +995,6 @@ onMounted(() => {
 .meta-item.source {
   color: #7b5ce0;
   font-weight: 500;
-}
-
-.item-link {
-  display: inline-block;
-  padding: 12px 16px;
-  background: #f8f9fa;
-  color: #7b5ce0;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  border-top: 1px solid #e9ecef;
-  transition: all 0.2s ease;
-}
-
-.item-link:hover {
-  background: #e7f5ff;
 }
 
 /* Pagination */
