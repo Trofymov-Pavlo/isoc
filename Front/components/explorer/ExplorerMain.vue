@@ -125,7 +125,7 @@
               <p v-if="item.summary" class="item-summary">{{ truncateSummary(item.summary) }}</p>
               <div class="item-meta">
                 <span v-if="item.source" class="meta-item source">{{ item.source }}</span>
-                <span class="meta-item date">{{ formatDate(item.date) }}</span>
+                <span class="meta-item date">{{ formatDate(item.published) }}</span>
               </div>
             </div>
             <a :href="item.link" target="_blank" class="item-link">
@@ -204,7 +204,8 @@ const allItems = computed(() => {
       title: a.title,
       summary: a.summary,
       source: a.source,
-      date: a.date,
+      published: a.published,
+      publishedTime: a.publishedTime,
       link: a.link,
     })));
   }
@@ -214,9 +215,10 @@ const allItems = computed(() => {
     combined.push(...videos.value.map(v => ({
       type: 'video',
       title: v.title,
-      summary: v.description,
+      summary: v.summary,
       source: v.channel,
-      date: v.date,
+      published: v.published,
+      publishedTime: v.publishedTime,
       link: v.link,
     })));
   }
@@ -242,7 +244,7 @@ const filteredItems = computed(() => {
   const sorted = [...result];
   switch (sortBy.value) {
     case 'date-asc':
-      sorted.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      sorted.sort((a, b) => (a.publishedTime || 0) - (b.publishedTime || 0));
       break;
     case 'title-asc':
       sorted.sort((a, b) => a.title.localeCompare(b.title));
@@ -252,7 +254,7 @@ const filteredItems = computed(() => {
       break;
     case 'date-desc':
     default:
-      sorted.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      sorted.sort((a, b) => (b.publishedTime || 0) - (a.publishedTime || 0));
   }
 
   return sorted;
@@ -341,16 +343,18 @@ function truncateSummary(text: string, maxLength: number = 150): string {
   return text.slice(0, maxLength).trim() + '...';
 }
 
-function formatDate(dateStr: string): string {
+function formatDate(dateStr: string | undefined): string {
+  if (!dateStr) return '';
   try {
     const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return '';
     return new Intl.DateTimeFormat('fr-FR', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
     }).format(date);
   } catch {
-    return dateStr;
+    return '';
   }
 }
 
