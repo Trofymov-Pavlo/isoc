@@ -227,5 +227,18 @@ const yearRange = `2024-${new Date().getFullYear()}`
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; gap: 20px; }
   .bottom { flex-direction: column; align-items: flex-start; }
+
+/* Legal section accent (red) */
+.col:nth-child(4) .col-title {
+  color: #ff7a89 !important;
+}
+
+.col:nth-child(4) .link-list a::before {
+  background: linear-gradient(90deg, #dc3545, transparent) !important;
+}
+
+.col:nth-child(4) .link-list a:hover {
+  color: #ff9ca8 !important;
+}
 }
 </style>
