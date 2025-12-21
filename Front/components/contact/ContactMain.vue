@@ -1,11 +1,5 @@
 ﻿<template>
   <main class="contact-page">
-    <PageHero
-      title="Nous contacter"
-      subtitle="Vos questions, vos suggestions, vos retours - tous les messages comptent"
-      badge="Contact"
-      badge-icon="�"
-    />
 
     <div class="contact-wrapper">
       <div class="form-wrapper">
@@ -74,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import PageHero from '~/components/shared/PageHero.vue';
+
 </script>
 
 <style scoped>

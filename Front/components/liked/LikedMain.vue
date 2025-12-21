@@ -1,12 +1,5 @@
 <template>
   <main class="liked-page">
-    <PageHero
-      title="Mes médias enregistrés"
-      subtitle="Retrouvez tous vos articles et vidéos sauvegardés"
-      badge="Mes favoris"
-      badge-icon="❤️"
-    />
-
     <section class="liked-wrapper">
       <!-- Tabs for categories -->
       <div class="tabs-container">
@@ -89,7 +82,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import PageHero from '~/components/shared/PageHero.vue';
+
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 

@@ -1,12 +1,5 @@
 <template>
   <main class="featured-article-page">
-    <PageHero
-      title="La guerre de l'information"
-      subtitle="Stratégies d'influence et perceptions du conflit Ukraine-Russie"
-      badge="Article en vedette"
-      badge-icon="📰"
-    />
-
     <div class="article-wrapper">
       <div class="article-meta-bar">
         <div class="author-info">
@@ -110,7 +103,7 @@
 </template>
 
 <script setup lang="ts">
-import PageHero from '~/components/shared/PageHero.vue'
+
 import TableOfContents from './TableOfContents.vue'
 import ArticleSection from './sections/ArticleSection.vue'
 import RelatedGrid from './RelatedGrid.vue'
