@@ -65,7 +65,7 @@
           <div class="form-footer">
             <p class="signup-link">
               Pas encore de compte ?
-              <NuxtLink to="/signup" class="link">Créer un compte</NuxtLink>
+              <NuxtLink to="/signup" class="link" exact>Créer un compte</NuxtLink>
             </p>
             <p class="security-note">🔒 Connexion sécurisée. Vos données restent privées.</p>
           </div>
@@ -100,13 +100,13 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await login(email.value, password.value);
-    if (response.access_token) {
-      setAuth(response.access_token, remember.value);
-      router.push('/mon-compte');
-    } else {
-      error.value = 'Identifiants incorrects.';
+    const response = await login(email.value, password.value, remember.value);
+    if (response?.access) {
+      setAuth(true, remember.value);
+      await router.push('/mon-compte');
+      return;
     }
+    error.value = 'Identifiants incorrects.';
   } catch (err: any) {
     error.value = err.message || 'Erreur lors de la connexion.';
   }

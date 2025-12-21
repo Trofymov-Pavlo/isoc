@@ -35,8 +35,12 @@
               Regarder sur YouTube →
             </a>
             <LikeButton 
-              :is-liked="isVideoLiked(video.link)" 
-              @toggle="toggleLike(video.link)"
+              :link="video.link"
+              :title="video.title"
+              :source="video.source || video.channel || 'YouTube'"
+              media-type="video"
+              :thumbnail="video.thumbnail"
+              @toggle="() => {}"
             />
           </div>
         </div>
@@ -47,7 +51,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useLiked } from '~/composables/useLiked';
 import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface VideoItem {
@@ -65,11 +68,6 @@ interface VideoItem {
 }
 
 const props = defineProps<{ videos: VideoItem[] }>();
-const { likedItems, toggleLike } = useLiked();
-
-const isVideoLiked = (link: string): boolean => {
-  return likedItems.value.has(link);
-};
 
 const truncate = (text: string, max: number): string => {
   if (!text) return '';

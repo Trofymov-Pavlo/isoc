@@ -1,266 +1,316 @@
 <template>
-  <section class="profile-page">
-    <div class="profile-card">
-      <div class="profile-header">
-        <p class="eyebrow">Espace membre</p>
-        <h1>Mon compte</h1>
-        <p class="sub">Gérez vos informations et vos préférences.</p>
+  <section class="account-page">
+    <div v-if="loading && !user" class="loading" role="status" aria-live="polite">Chargement de votre espace…</div>
+    <div v-else-if="error && !user" class="error" role="alert">{{ error }}</div>
+
+    <div v-else-if="authMissing" class="info-card auth-needed" role="status" aria-live="polite">
+      <h3>Connexion requise</h3>
+      <p class="muted">Connectez-vous pour accéder à votre profil et à vos médias enregistrés.</p>
+      <div class="auth-actions">
+        <NuxtLink class="btn-primary link-btn" to="/connexion">Se connecter</NuxtLink>
+        <NuxtLink class="btn-secondary link-btn" to="/signup">Créer un compte</NuxtLink>
       </div>
+    </div>
 
-      <div v-if="loading && !user" class="loading">Chargement...</div>
-      <div v-else-if="error && !user" class="error">{{ error }}</div>
-      <div v-else-if="user" class="profile-content">
-        <!-- Edit Profile Section -->
-        <div class="info-section" v-if="!editMode && !passwordMode">
-          <div class="section-header">
-            <h2>Informations personnelles</h2>
-            <button @click="editMode = true" class="btn-edit">Modifier</button>
-          </div>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="label">Nom d'utilisateur</span>
-              <span class="value">{{ user.username }}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Email</span>
-              <span class="value">{{ user.email }}</span>
-            </div>
-            <div class="info-item" v-if="user.first_name">
-              <span class="label">Prénom</span>
-              <span class="value">{{ user.first_name }}</span>
-            </div>
-            <div class="info-item" v-if="user.last_name">
-              <span class="label">Nom</span>
-              <span class="value">{{ user.last_name }}</span>
-            </div>
-          </div>
+    <div v-else-if="user" class="grid">
+      <aside class="sidebar">
+        <div class="account-card">
+          <p class="eyebrow">Votre compte</p>
+          <span class="status" :class="statusClass">{{ statusLabel }}</span>
+          <p class="name">{{ displayName }}</p>
+          <p class="muted">ID client : {{ user.id || '—' }}</p>
+          <button
+            class="copy-btn"
+            type="button"
+            @click="copyId"
+            :disabled="!user?.id"
+            :title="user?.id ? 'Copier dans le presse-papiers' : 'ID indisponible'"
+          >
+            Copier l’ID client
+          </button>
+          <p v-if="copyFeedback" class="success copy-feedback" aria-live="polite">{{ copyFeedback }}</p>
         </div>
 
-        <!-- Edit Profile Form -->
-        <div class="info-section" v-if="editMode">
-          <div class="section-header">
-            <h2>Modifier le profil</h2>
-            <button @click="cancelEdit" class="btn-cancel">Annuler</button>
-          </div>
-          <form @submit.prevent="handleUpdateProfile" class="edit-form">
-            <label class="field">
-              <span class="label">Nom d'utilisateur</span>
-              <input v-model="editData.username" type="text" required />
-            </label>
-            <label class="field">
-              <span class="label">Email</span>
-              <input v-model="editData.email" type="email" required />
-            </label>
-            <label class="field">
-              <span class="label">Prénom</span>
-              <input v-model="editData.firstName" type="text" />
-            </label>
-            <label class="field">
-              <span class="label">Nom</span>
-              <input v-model="editData.lastName" type="text" />
-            </label>
-            <p v-if="editError" class="error">{{ editError }}</p>
-            <button type="submit" class="btn-save" :disabled="loading">
-              {{ loading ? 'Enregistrement...' : 'Enregistrer' }}
-            </button>
-          </form>
-        </div>
+        <nav class="nav">
+          <button class="nav-item" type="button" @click="scrollTo('infos')">Vos informations</button>
+          <button class="nav-item" type="button" @click="scrollTo('saved')">Médias enregistrés</button>
+          <button class="nav-item" type="button" @click="scrollTo('contact')">Nous contacter</button>
+        </nav>
 
-        <!-- Change Password Form -->
-        <div class="info-section" v-if="passwordMode">
-          <div class="section-header">
-            <h2>Changer le mot de passe</h2>
-            <button @click="cancelPasswordChange" class="btn-cancel">Annuler</button>
-          </div>
-          <form @submit.prevent="handleChangePassword" class="edit-form">
-            <label class="field">
-              <span class="label">Mot de passe actuel</span>
-              <div class="password-field">
-                <input v-model="passwordData.oldPassword" :type="showOldPassword ? 'text' : 'password'" required />
-                <PasswordToggle :is-shown="showOldPassword" @toggle="showOldPassword = !showOldPassword" />
-              </div>
-            </label>
-            <label class="field">
-              <span class="label">Nouveau mot de passe</span>
-              <div class="password-field">
-                <input v-model="passwordData.newPassword" :type="showNewPassword ? 'text' : 'password'" required />
-                <PasswordToggle :is-shown="showNewPassword" @toggle="showNewPassword = !showNewPassword" />
-              </div>
-            </label>
-            <label class="field">
-              <span class="label">Confirmer le nouveau mot de passe</span>
-              <div class="password-field">
-                <input v-model="passwordData.confirmPassword" :type="showConfirmPassword ? 'text' : 'password'" required />
-                <PasswordToggle :is-shown="showConfirmPassword" @toggle="showConfirmPassword = !showConfirmPassword" />
-              </div>
-            </label>
-            <p v-if="passwordError" class="error">{{ passwordError }}</p>
-            <p v-if="passwordSuccess" class="success">{{ passwordSuccess }}</p>
-            <button type="submit" class="btn-save" :disabled="loading">
-              {{ loading ? 'Modification...' : 'Changer le mot de passe' }}
-            </button>
-          </form>
-        </div>
+        <button class="logout-btn" type="button" @click="handleLogout">Se déconnecter</button>
+      </aside>
 
-        <!-- Actions -->
-        <div class="actions" v-if="!editMode && !passwordMode">
-          <button @click="passwordMode = true" class="btn-password">Changer le mot de passe</button>
-          <button @click="handleLogout" class="btn-logout">Se déconnecter</button>
-        </div>
+      <main class="main">
+        <section id="infos" class="info-card">
+          <h3>Vos informations</h3>
 
-        <!-- Preferences & activity -->
-        <div class="info-section" v-if="!editMode && !passwordMode">
-          <div class="section-header">
-            <h2>Préférences & notifications</h2>
-          </div>
-          <div class="pref-grid">
-            <div class="pref-card">
-              <div class="card-header">Newsletter</div>
-              <p class="card-text">Gérez votre abonnement aux emails Axiome.</p>
-              <div class="pill" :class="newsletterEnabled ? 'pill-on' : 'pill-off'">
-                {{ newsletterEnabled ? 'Abonnement actif' : 'Abonnement désactivé' }}
+          <div class="info-rows">
+            <div class="info-row">
+              <div>
+                <p class="label">Civilité</p>
+                <p class="value">{{ user.first_name ? user.first_name + ' ' + (user.last_name || '') : displayName }}</p>
               </div>
-              <button class="card-btn" @click="toggleNewsletter">{{ newsletterEnabled ? 'Résilier la newsletter' : "Se réabonner" }}</button>
-              <p v-if="newsletterMessage" class="note success-lite">{{ newsletterMessage }}</p>
+              <button class="info-action" type="button" @click="toggleEdit">Modifier vos coordonnées</button>
             </div>
 
-            <div class="pref-card">
-              <div class="card-header">Sécurité</div>
-              <ul class="card-list">
-                <li>Authentification par mot de passe (JWT).</li>
-                <li>Pensez à mettre à jour votre mot de passe régulièrement.</li>
-                <li>Les sessions inactives expirent automatiquement.</li>
-              </ul>
-              <button class="card-link" @click="passwordMode = true">Mettre à jour le mot de passe</button>
+            <div class="info-row">
+              <div>
+                <p class="label">Adresse e-mail</p>
+                <p class="value">{{ user.email }}</p>
+              </div>
             </div>
 
-            <div class="pref-card">
-              <div class="card-header">Sessions & activité</div>
-              <ul class="card-list">
-                <li>Connexion active sur ce navigateur.</li>
-                <li>Déconnexion possible sur tous les appareils via « Se déconnecter ».</li>
-                <li>Les jetons d’accès expirent après 1h, refresh 7j.</li>
-              </ul>
+            <div class="info-row">
+              <div>
+                <p class="label">Mot de passe</p>
+                <p class="value">••••••••</p>
+              </div>
+              <button class="info-action" type="button" @click="togglePassword">Changer</button>
             </div>
           </div>
-        </div>
 
-        <!-- Saved articles -->
-        <div class="info-section" v-if="!editMode && !passwordMode">
-          <div class="section-header">
-            <h2>Derniers articles enregistrés</h2>
-            <NuxtLink class="link" to="/liked">Voir tous</NuxtLink>
+          <div v-if="editMode" class="editor">
+            <div class="form-grid">
+              <div class="field">
+                <span class="label">Nom d'utilisateur</span>
+                <input v-model="editData.username" type="text" :disabled="loading" autocomplete="username" />
+              </div>
+              <div class="field">
+                <span class="label">Email</span>
+                <input v-model="editData.email" type="email" :disabled="loading" autocomplete="email" />
+              </div>
+              <div class="field">
+                <span class="label">Prénom</span>
+                <input v-model="editData.firstName" type="text" :disabled="loading" autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <span class="label">Nom</span>
+                <input v-model="editData.lastName" type="text" :disabled="loading" autocomplete="family-name" />
+              </div>
+              <div class="actions-row">
+                <button class="btn-secondary" type="button" @click="resetEdit" :disabled="loading">Annuler</button>
+                <button class="btn-primary" type="button" @click="handleUpdateProfile" :disabled="loading || !hasEditChanges">Sauvegarder</button>
+              </div>
+              <p v-if="editError" class="error" role="alert">{{ editError }}</p>
+              <p v-if="editSuccess" class="success" aria-live="polite">{{ editSuccess }}</p>
+            </div>
           </div>
-          <ul v-if="savedArticles.length" class="saved-list">
-            <li v-for="item in savedArticles" :key="item.title" class="saved-item">
-              <div class="saved-meta">
-                <p class="saved-title">{{ item.title }}</p>
-                <p class="saved-info">{{ item.category }} • {{ item.date }}</p>
+
+          <div v-if="passwordMode" class="editor">
+            <div class="form-grid">
+              <div class="field">
+                <span class="label">Ancien mot de passe</span>
+                <input v-model="passwordData.oldPassword" type="password" :disabled="loading" autocomplete="current-password" />
               </div>
-              <div class="saved-actions">
-                <NuxtLink :to="item.link" class="chip">Ouvrir</NuxtLink>
-                <button class="chip ghost" @click="removeSaved(item.title)">Retirer</button>
+              <div class="field">
+                <span class="label">Nouveau mot de passe</span>
+                <input v-model="passwordData.newPassword" type="password" :disabled="loading" autocomplete="new-password" />
               </div>
+              <div class="field">
+                <span class="label">Confirmez</span>
+                <input v-model="passwordData.confirmPassword" type="password" :disabled="loading" autocomplete="new-password" />
+              </div>
+              <div class="actions-row">
+                <button class="btn-secondary" type="button" @click="cancelPasswordChange" :disabled="loading">Annuler</button>
+                <button class="btn-primary" type="button" @click="handleChangePassword" :disabled="loading">Mettre à jour</button>
+              </div>
+              <p v-if="passwordError" class="error" role="alert">{{ passwordError }}</p>
+              <p v-if="passwordSuccess" class="success" aria-live="polite">{{ passwordSuccess }}</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="saved" class="info-card">
+          <div class="card-header-row">
+            <h3>Vos médias enregistrés</h3>
+            <NuxtLink class="btn-secondary link-btn" to="/liked">Voir tout</NuxtLink>
+          </div>
+
+          <div v-if="loadingArticles" class="muted">Chargement de vos médias enregistrés…</div>
+          <div v-else-if="savedError" class="error" role="alert">{{ savedError }}</div>
+          <div v-else-if="!likedTop3.length" class="muted">Vous n'avez pas encore enregistré de média.</div>
+          <ul v-else class="liked-list">
+            <li v-for="item in likedTop3" :key="item.link" class="liked-item">
+              <div class="liked-meta">
+                <p class="liked-title">{{ item.title }}</p>
+                <p class="liked-source">{{ item.source || 'Source inconnue' }}</p>
+              </div>
+              <NuxtLink class="btn-primary link-btn" :to="item.link" target="_blank">Ouvrir</NuxtLink>
             </li>
           </ul>
-          <p v-else class="muted">Vous n'avez pas encore enregistré d'article.</p>
-        </div>
-      </div>
+        </section>
+
+        <section id="contact" class="info-card">
+          <h3>Nous contacter</h3>
+          <p class="muted">Une question ou besoin d'aide ? Envoyez-nous un message.</p>
+          <NuxtLink class="btn-primary link-btn" to="/contact">Nous contacter</NuxtLink>
+        </section>
+      </main>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRouter } from '#imports';
-import { useAuthState } from '~/composables/useAuthState';
+import { computed, onMounted, ref } from 'vue';
+import { useRouter } from '#app';
 import { useAuthAPI } from '~/composables/useAuthAPI';
+import { useAuthState } from '~/composables/useAuthState';
+import { useSavedMedia } from '~/composables/useSavedMedia';
 
 const router = useRouter();
-const { isAuthenticated, setAuth } = useAuthState();
-const { me, logout, updateProfile, changePassword, loading } = useAuthAPI();
+const { user, loading, error, me, updateProfile, changePassword, logout } = useAuthAPI();
+const { setAuth } = useAuthState();
+const { getTopSaved, loading: loadingArticles, error: savedMediaError } = useSavedMedia();
 
-const user = ref<any>(null);
-const error = ref('');
 const editMode = ref(false);
 const passwordMode = ref(false);
 const editError = ref('');
+const editSuccess = ref('');
 const passwordError = ref('');
 const passwordSuccess = ref('');
+const copyFeedback = ref('');
 
-const editData = ref({
-  username: '',
-  email: '',
-  firstName: '',
-  lastName: ''
+const authMissing = ref(false);
+
+const editData = ref({ username: '', email: '', firstName: '', lastName: '' });
+const passwordData = ref({ oldPassword: '', newPassword: '', confirmPassword: '' });
+
+const displayName = computed(() => user.value?.first_name || user.value?.username || user.value?.email || '');
+
+const likedTop3 = ref<any[]>([]);
+
+const savedError = computed(() => {
+  const raw = savedMediaError.value;
+  if (!raw) return '';
+  // Keep message user-friendly; backend messages can be technical.
+  if (raw.toLowerCase().includes('authentication expired')) return 'Votre session a expiré. Merci de vous reconnecter.';
+  return 'Impossible de charger vos médias enregistrés pour le moment.';
 });
 
-const passwordData = ref({
-  oldPassword: '',
-  newPassword: '',
-  confirmPassword: ''
+const isSubscribed = computed(() => {
+  const u = (user.value as any) || {};
+  const directFlag =
+    u.is_subscribed ??
+    u.subscribed ??
+    u.subscription_active ??
+    u.is_premium ??
+    u.isPremium ??
+    u.isSubscriber ??
+    u.has_subscription ??
+    u.abonne ??
+    u.abonnee;
+
+  if (typeof directFlag === 'boolean') return directFlag;
+
+  const subscription = u.subscription;
+  if (subscription && typeof subscription === 'object') {
+    if (typeof subscription.active === 'boolean') return subscription.active;
+    if (typeof subscription.status === 'string') {
+      return ['active', 'paid', 'trial', 'subscribed'].includes(subscription.status.toLowerCase());
+    }
+  }
+
+  return false;
 });
 
-const showOldPassword = ref(false);
-const showNewPassword = ref(false);
-const showConfirmPassword = ref(false);
+const statusLabel = computed(() => (isSubscribed.value ? 'ABONNÉ' : 'NON ABONNÉ'));
+const statusClass = computed(() => (isSubscribed.value ? 'is-subscribed' : 'is-not-subscribed'));
 
-const newsletterEnabled = ref(true);
-const newsletterMessage = ref('');
-const savedArticles = ref([
-  { title: 'Analyse : Situation sur le front Est', date: '13 déc 2025', category: 'Analyse', link: '/article-en-vedette' },
-  { title: 'Podcast : Voix du terrain', date: '12 déc 2025', category: 'Podcast', link: '/podcast' },
-  { title: 'Dossier vidéo : décryptage', date: '10 déc 2025', category: 'Vidéo', link: '/video' },
-]);
+const copyId = async () => {
+  copyFeedback.value = '';
+  try {
+    const id = user.value?.id;
+    if (!id) return;
+    await navigator.clipboard.writeText(String(id));
+    copyFeedback.value = 'ID copié.';
+    setTimeout(() => {
+      copyFeedback.value = '';
+    }, 1200);
+  } catch {
+    copyFeedback.value = 'Impossible de copier (presse-papiers non autorisé).';
+  }
+};
+
+const scrollTo = (id: string) => {
+  const element = document.getElementById(id);
+  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+const hydrateEditForm = () => {
+  if (!user.value) return;
+  editData.value = {
+    username: user.value.username || '',
+    email: user.value.email || '',
+    firstName: user.value.first_name || '',
+    lastName: user.value.last_name || '',
+  };
+};
+
+const hasEditChanges = computed(() => {
+  if (!user.value) return false;
+  return (
+    (editData.value.username || '') !== (user.value.username || '') ||
+    (editData.value.email || '') !== (user.value.email || '') ||
+    (editData.value.firstName || '') !== (user.value.first_name || '') ||
+    (editData.value.lastName || '') !== (user.value.last_name || '')
+  );
+});
+
+const loadUser = async () => {
+  if (!user.value) {
+    const u = await me();
+    if (!u) {
+      authMissing.value = true;
+      return;
+    }
+  }
+  authMissing.value = false;
+  hydrateEditForm();
+};
 
 onMounted(async () => {
-  if (!isAuthenticated.value) {
-    await router.push('/connexion');
-    return;
-  }
-
-  try {
-    const userData = await me();
-    if (userData) {
-      user.value = userData;
-      editData.value = {
-        username: userData.username || '',
-        email: userData.email || '',
-        firstName: userData.first_name || '',
-        lastName: userData.last_name || ''
-      };
-    }
-  } catch (err) {
-    error.value = err instanceof Error ? err.message : 'Erreur lors du chargement du profil';
+  await loadUser();
+  if (!authMissing.value) {
+    const top3 = await getTopSaved(3);
+    likedTop3.value = top3;
   }
 });
 
-const cancelEdit = () => {
-  editMode.value = false;
+const toggleEdit = () => {
+  // Avoid showing both forms at once.
+  if (!editMode.value) passwordMode.value = false;
+  if (editMode.value) hydrateEditForm();
   editError.value = '';
-  if (user.value) {
-    editData.value = {
-      username: user.value.username || '',
-      email: user.value.email || '',
-      firstName: user.value.first_name || '',
-      lastName: user.value.last_name || ''
-    };
-  }
+  editSuccess.value = '';
+  editMode.value = !editMode.value;
+};
+
+const resetEdit = () => {
+  hydrateEditForm();
+  editError.value = '';
+  editSuccess.value = '';
+  editMode.value = false;
+};
+
+const togglePassword = () => {
+  if (!passwordMode.value) editMode.value = false;
+  editError.value = '';
+  editSuccess.value = '';
+  passwordError.value = '';
+  passwordSuccess.value = '';
+  passwordMode.value = !passwordMode.value;
 };
 
 const cancelPasswordChange = () => {
   passwordMode.value = false;
   passwordError.value = '';
   passwordSuccess.value = '';
-  passwordData.value = {
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  };
+  passwordData.value = { oldPassword: '', newPassword: '', confirmPassword: '' };
 };
 
 const handleUpdateProfile = async () => {
   editError.value = '';
+  editSuccess.value = '';
   try {
     const updated = await updateProfile(
       editData.value.username,
@@ -269,6 +319,7 @@ const handleUpdateProfile = async () => {
       editData.value.lastName
     );
     user.value = updated;
+    editSuccess.value = 'Profil mis à jour.';
     editMode.value = false;
   } catch (err) {
     editError.value = err instanceof Error ? err.message : 'Erreur lors de la mise à jour du profil';
@@ -294,7 +345,7 @@ const handleChangePassword = async () => {
     passwordSuccess.value = 'Mot de passe changé avec succès !';
     setTimeout(() => {
       cancelPasswordChange();
-    }, 2000);
+    }, 1800);
   } catch (err) {
     passwordError.value = err instanceof Error ? err.message : 'Erreur lors du changement de mot de passe';
   }
@@ -310,419 +361,116 @@ const handleLogout = async () => {
   }
 };
 
-const toggleNewsletter = () => {
-  newsletterEnabled.value = !newsletterEnabled.value;
-  newsletterMessage.value = newsletterEnabled.value
-    ? 'Newsletter réactivée. Vous recevrez les prochaines publications.'
-    : 'Newsletter désactivée. Vous ne recevrez plus les emails.';
-  setTimeout(() => { newsletterMessage.value = ''; }, 2500);
-};
-
-const removeSaved = (title: string) => {
-  savedArticles.value = savedArticles.value.filter((item) => item.title !== title);
-};
 </script>
 
 <style scoped lang="scss">
-.profile-page {
-  min-height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 48px 16px;
-  background: #f7f7fb;
+.account-page {
+  padding: 28px 0 48px;
+  background: transparent;
 }
 
-.profile-card {
-  width: min(720px, 100%);
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 36px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+.grid {
   display: grid;
-  gap: 32px;
-}
-
-.profile-header {
-  display: grid;
-  gap: 6px;
-}
-
-.eyebrow {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #6b5ca5;
-  font-weight: 700;
-}
-
-h1 {
-  margin: 0;
-  font-size: 28px;
-  color: #241431;
-}
-
-h2 {
-  margin: 0 0 16px 0;
-  font-size: 18px;
-  color: #241431;
-}
-
-.sub {
-  margin: 0;
-  color: #4a4a55;
-  font-size: 14px;
-}
-
-.loading {
-  text-align: center;
-  padding: 24px;
-  color: #6b5ca5;
-}
-
-.error {
-  background: #fee;
-  border-left: 3px solid #c33;
-  padding: 12px;
-  color: #c33;
-  border-radius: 4px;
-}
-
-.profile-content {
-  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
   gap: 24px;
+  align-items: start;
 }
 
-.info-section {
-  display: grid;
-  gap: 12px;
+.muted { color: var(--text-secondary); margin: 2px 0; }
+
+button,
+.link-btn {
+  font: inherit;
 }
 
-.info-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+button:focus-visible,
+.link-btn:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
 }
 
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  background: #f7f7fb;
-  border-radius: 8px;
-}
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; gap: 16px; }
+.account-card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; }
+.eyebrow { letter-spacing: 0.12em; text-transform: uppercase; font-size: 12px; font-weight: 700; color: var(--text-tertiary); margin: 0 0 10px 0; }
+.status { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 999px; padding: 6px 10px; font-size: 11px; font-weight: 900; letter-spacing: 0.08em; }
+.status.is-not-subscribed { background: rgba(177, 90, 0, 0.10); border-color: rgba(177, 90, 0, 0.35); color: #b15a00; }
+.status.is-subscribed { background: rgba(29, 131, 72, 0.10); border-color: rgba(29, 131, 72, 0.35); color: #1d8348; }
+.name { margin: 12px 0 6px 0; font-size: 20px; font-weight: 800; color: var(--text-primary); }
+.copy-btn { margin-top: 14px; border: 1px solid var(--border-color); background: var(--bg-primary); padding: 10px 12px; border-radius: 999px; font-weight: 800; cursor: pointer; }
+.copy-btn:hover { background: var(--bg-secondary); }
 
-.info-item .label {
-  font-size: 12px;
-  color: #6b5ca5;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+.nav { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 6px; display: grid; }
+.nav-item { text-align: left; border: none; background: transparent; padding: 14px 12px; border-radius: 10px; cursor: pointer; color: var(--text-primary); font-weight: 700; }
+.nav-item:hover { background: var(--bg-secondary); }
+.nav-link { text-align: left; padding: 14px 12px; border-radius: 10px; color: var(--text-primary); font-weight: 800; text-decoration: none; }
+.nav-link:hover { background: var(--bg-secondary); text-decoration: none; }
+.logout-btn { border: 1px solid rgba(192, 57, 43, 0.35); background: rgba(192, 57, 43, 0.06); padding: 12px; border-radius: 10px; font-weight: 900; cursor: pointer; color: #c0392b; }
+.logout-btn:hover { background: rgba(192, 57, 43, 0.10); }
 
-.info-item .value {
-  font-size: 15px;
-  color: #241431;
-  font-weight: 500;
-}
+/* Main */
+.main { display: grid; gap: 18px; }
+.info-card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; }
+h3 { margin: 0 0 14px 0; font-size: 30px; color: var(--text-primary); }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px solid #e8e4f0;
-}
+.card-header-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.btn-edit,
-.btn-cancel {
-  padding: 8px 16px;
-  background: #fff;
-  border: 1px solid #7b5ce0;
-  color: #7b5ce0;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 13px;
-}
-
-.btn-edit:hover,
-.btn-cancel:hover {
-  background: #7b5ce0;
-  color: #fff;
-}
-
-.btn-password {
-  padding: 10px 20px;
-  background: #fff;
-  border: 1px solid #6b5ca5;
-  color: #6b5ca5;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-password:hover {
-  background: #6b5ca5;
-  color: #fff;
-}
-
-.btn-logout {
-  padding: 10px 20px;
-  background: #fff;
-  border: 1px solid #c33;
-  color: #c33;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-logout:hover {
-  background: #c33;
-  color: #fff;
-}
-
-.btn-save {
-  width: 100%;
-  border: none;
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #2f0538 0%, #3a0f4f 100%);
-  color: #ffffff;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 8px;
-}
-
-.btn-save:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(47, 5, 56, 0.16);
-}
-
-.btn-save:disabled {
+.btn-primary { border: none; padding: 10px 14px; border-radius: 10px; font-weight: 800; cursor: pointer; background: var(--brand-primary); color: #fff; width: fit-content; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-secondary { border: 1px solid var(--border-color); padding: 10px 18px; border-radius: 10px; font-weight: 800; cursor: pointer; background: var(--bg-secondary); color: var(--text-primary); width: fit-content; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-secondary:hover { filter: brightness(0.98); }
+.btn-primary:disabled,
+.btn-secondary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.edit-form {
-  display: grid;
-  gap: 16px;
+.blue-alert { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 18px; margin: 12px 0 18px 0; }
+.alert-icon { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--brand-accent); color: var(--brand-accent); display: flex; align-items: center; justify-content: center; font-weight: 900; margin-top: 2px; }
+.alert-title { margin: 0; font-weight: 900; color: var(--text-primary); }
+.alert-text .muted { margin-top: 6px; }
+.blue-alert .btn-primary { margin-top: 14px; }
+
+.info-rows { border-top: 1px solid var(--border-color); margin-top: 6px; }
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-top: 1px solid var(--border-color); gap: 16px; }
+.info-row:first-child { border-top: none; }
+.label { margin: 0; font-size: 12px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); }
+.value { margin: 6px 0 0 0; font-size: 15px; color: var(--text-primary); }
+.info-action { border: none; background: transparent; color: var(--brand-accent); font-weight: 900; cursor: pointer; padding: 8px 10px; border-radius: 10px; }
+.info-action:hover { background: var(--bg-secondary); }
+
+.editor { margin-top: 16px; border-top: 1px solid var(--border-color); padding-top: 16px; }
+.form-grid { display: grid; gap: 12px; }
+.field { display: grid; gap: 6px; }
+.field input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-primary); }
+.field input:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+.actions-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+
+.liked-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.liked-item { display: flex; justify-content: space-between; gap: 12px; padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); align-items: center; flex-wrap: wrap; }
+.liked-meta { display: grid; gap: 4px; min-width: 0; }
+.liked-title { margin: 0; font-weight: 800; color: var(--text-primary); }
+.liked-source { margin: 0; color: var(--text-secondary); font-size: 13px; }
+
+.copy-feedback { margin: 8px 0 0 0; font-size: 13px; }
+
+#contact .btn-primary { margin-top: 16px; }
+
+.loading { text-align: center; color: var(--text-secondary); }
+.error { color: #c0392b; }
+.success { color: #1d8348; }
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: 1fr; }
+  h3 { font-size: 28px; }
 }
 
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #241431;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #dcd9e6;
-  background: #faf9fd;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus {
-  outline: none;
-  border-color: #7b5ce0;
-  box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.15);
-}
-
-.password-field {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.password-field input {
-  flex: 1;
-  padding-right: 45px;
-}
-
-.success {
-  background: #efe;
-  border-left: 3px solid #3c3;
-  padding: 12px;
-  color: #3c3;
-  border-radius: 4px;
-  font-size: 13px;
-}
-
-.pref-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-}
-
-.pref-card {
-  background: #f7f7fb;
-  border-radius: 10px;
-  padding: 14px;
-  display: grid;
-  gap: 8px;
-  border: 1px solid #e8e4f0;
-}
-
-.card-header {
-  font-weight: 700;
-  color: #241431;
-}
-
-.card-text {
-  margin: 0;
-  color: #4a4a55;
-  font-size: 14px;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 12px;
-  width: fit-content;
-}
-
-.pill-on {
-  background: #e8f8ef;
-  color: #1b8a4d;
-  border: 1px solid #b8e6c9;
-}
-
-.pill-off {
-  background: #fff4f4;
-  color: #c0392b;
-  border: 1px solid #f3c7c1;
-}
-
-.card-btn,
-.card-link {
-  border: none;
-  background: linear-gradient(135deg, #2f0538 0%, #3a0f4f 100%);
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card-link {
-  background: #fff;
-  color: #6b5ca5;
-  border: 1px solid #dcd9e6;
-}
-
-.card-btn:hover,
-.card-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 14px rgba(47, 5, 56, 0.12);
-}
-
-.card-list {
-  margin: 0;
-  padding-left: 16px;
-  display: grid;
-  gap: 6px;
-  color: #4a4a55;
-  font-size: 14px;
-}
-
-.note {
-  margin: 0;
-  font-size: 13px;
-}
-
-.success-lite {
-  color: #1b8a4d;
-}
-
-.saved-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.saved-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #f7f7fb;
-  border: 1px solid #e8e4f0;
-}
-
-.saved-meta {
-  display: grid;
-  gap: 4px;
-}
-
-.saved-title {
-  margin: 0;
-  font-weight: 700;
-  color: #241431;
-}
-
-.saved-info {
-  margin: 0;
-  color: #6b5ca5;
-  font-size: 13px;
-}
-
-.saved-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.chip {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: #2f0538;
-  color: #fff;
-  border: none;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.chip.ghost {
-  background: #fff;
-  color: #6b5ca5;
-  border: 1px solid #dcd9e6;
-}
-
-.muted {
-  color: #6e6585;
-  font-size: 14px;
-  margin: 0;
+@media (max-width: 640px) {
+  .account-page { padding: 18px 0 36px; }
+  .hero-card, .info-card, .account-card { padding: 16px; }
+  .info-row { flex-direction: column; align-items: flex-start; }
+  .actions-row { justify-content: stretch; }
+  .actions-row .btn-primary,
+  .actions-row .btn-secondary { width: 100%; }
 }
 </style>

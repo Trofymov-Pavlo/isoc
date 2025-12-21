@@ -63,13 +63,22 @@ export const useAuthAPI = () => {
     loading.value = true;
     error.value = '';
     try {
-      const response = await fetch(`${API_BASE}/login/`, {
+      const url = `${API_BASE}/login/`;
+      
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, remember_me: rememberMe }),
       });
+
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Login failed');
+      
+      if (!response.ok) {
+        // Show detailed error message if available
+        const errorMsg = data.detail || data.error || 'Login failed';
+        throw new Error(errorMsg);
+      }
+
       setTokens(data.access, data.refresh);
       user.value = data.user;
       if (process.client) {
@@ -78,24 +87,27 @@ export const useAuthAPI = () => {
       }
       return data;
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Login error';
-      throw err;
+      const errorMsg = err instanceof Error ? err.message : 'Login error';
+      error.value = errorMsg;
+      throw new Error(errorMsg);
     } finally {
       loading.value = false;
     }
   };
 
   const logout = async () => {
+    if (!accessToken.value || !refreshToken.value) loadTokensFromStorage();
     loading.value = true;
     try {
+      // Even if refresh is missing/invalid, clear locally to avoid blocking logout.
       await fetch(`${API_BASE}/logout/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken.value}`,
+          ...(accessToken.value ? { 'Authorization': `Bearer ${accessToken.value}` } : {}),
         },
-        body: JSON.stringify({ refresh: refreshToken.value }),
-      });
+        body: JSON.stringify({ refresh: refreshToken.value || null }),
+      }).catch(() => {});
     } finally {
       clearTokens();
       loading.value = false;

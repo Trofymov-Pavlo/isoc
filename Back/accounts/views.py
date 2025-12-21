@@ -1,11 +1,24 @@
+"""
+Authentication and User Management Views.
+
+This module contains all API endpoints for:
+- User registration (signup)
+- Authentication (login/logout)
+- Password management (reset, change)
+- Profile management (view, update)
+"""
 from rest_framework import status, viewsets
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
-from django.views.decorators.cache import cache_page
+from django.shortcuts import redirect
+import logging
+
+logger = logging.getLogger(__name__)
+
 from .serializers import (
     UserSerializer, SignUpSerializer, LoginSerializer,
     PasswordResetSerializer, PasswordResetConfirmSerializer,
@@ -14,6 +27,12 @@ from .serializers import (
 from .throttles import SignupRateThrottle, LoginRateThrottle, PasswordResetRateThrottle
 
 User = get_user_model()
+
+
+@api_view(['GET'])
+def home(request):
+    """Redirect to Django admin panel"""
+    return redirect('/admin/')
 
 
 class AccountViewSet(viewsets.ModelViewSet):
@@ -38,24 +57,49 @@ class AccountViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['post'], permission_classes=[AllowAny], throttle_classes=[LoginRateThrottle])
     def login(self, request):
         """Login a user"""
+        logger.info(f"Login attempt - Request data: {request.data}")
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             email = serializer.validated_data.get('email')
             password = serializer.validated_data.get('password')
             remember_me = serializer.validated_data.get('remember_me', False)
 
-            try:
-                user = User.objects.get(email=email)
-            except User.DoesNotExist:
-                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            logger.info(f"Validated email: {email}, remember_me: {remember_me}")
 
+            # Case-insensitive email search
+            try:
+                user = User.objects.get(email__iexact=email)
+                logger.info(f"User found: {user.email}, username: {user.username}, is_active: {user.is_active}")
+            except User.DoesNotExist:
+                logger.warning(f"No user found with email: {email}")
+                return Response({
+                    'error': 'Invalid credentials',
+                    'detail': f'No user found with email: {email}'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+            # Verify password
             if not user.check_password(password):
-                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+                logger.warning(f"Invalid password for user: {email}")
+                return Response({
+                    'error': 'Invalid credentials',
+                    'detail': 'Password is incorrect'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+            logger.info(f"Password verified for user: {email}")
+
+            # Check if user is active
+            if not user.is_active:
+                logger.warning(f"Account disabled for user: {email}")
+                return Response({
+                    'error': 'Account disabled',
+                    'detail': 'This account has been deactivated'
+                }, status=status.HTTP_403_FORBIDDEN)
 
             user.remember_me = remember_me
             user.save()
 
             refresh = RefreshToken.for_user(user)
+            logger.info(f"Login successful for user: {email}")
             return Response({
                 'user': UserSerializer(user).data,
                 'access': str(refresh.access_token),
@@ -63,6 +107,7 @@ class AccountViewSet(viewsets.ModelViewSet):
                 'remember_me': remember_me,
             }, status=status.HTTP_200_OK)
 
+        logger.error(f"Login validation failed: {serializer.errors}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])

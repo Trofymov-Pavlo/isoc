@@ -1,3 +1,9 @@
+"""
+API Rate Limiting.
+
+Throttle classes to prevent abuse of authentication endpoints.
+Implements per-IP rate limiting for sensitive operations.
+"""
 from rest_framework.throttling import AnonRateThrottle
 
 

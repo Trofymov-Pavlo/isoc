@@ -12,6 +12,12 @@
   <FooterMain />
 </template>
 
+<script setup lang="ts">
+import HeaderMainHeader from '~/components/header/mainHeader.vue';
+import HeaderSubHeader from '~/components/header/SubHeader.vue';
+import FooterMain from '~/components/footer/FooterMain.vue';
+</script>
+
 <style>
 .site-container {
   max-width: 1400px;

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       // Backend API URLs - configurable par environment
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/accounts',
       apiDonations: process.env.NUXT_PUBLIC_API_DONATIONS || 'http://localhost:8000/api/donations',
-      apiScraper: process.env.NUXT_PUBLIC_SCRAPER_BASE || 'http://localhost:5000',
+      apiScraper: process.env.NUXT_PUBLIC_SCRAPER_BASE || 'http://localhost:8000',
       // Feature flags
       enableScraperIntegration: process.env.NUXT_PUBLIC_ENABLE_SCRAPER === 'true',
     }

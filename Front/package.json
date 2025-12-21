@@ -17,6 +17,7 @@
     "vuetify": "^3.10.5"
   },
   "devDependencies": {
+    "baseline-browser-mapping": "^2.9.11",
     "nuxt": "^4.1.3",
     "sass": "^1.93.2"
   }

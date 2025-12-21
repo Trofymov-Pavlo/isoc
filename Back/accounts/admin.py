@@ -1,9 +1,15 @@
+"""
+Django Admin Configuration.
+
+Customizes the admin interface for user management.
+"""
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 
 
 class CustomUserAdmin(UserAdmin):
+    """Admin interface for CustomUser model"""
     model = CustomUser
     list_display = ['email', 'username', 'first_name', 'last_name', 'is_staff']
     list_filter = ('is_staff', 'is_superuser', 'is_active')

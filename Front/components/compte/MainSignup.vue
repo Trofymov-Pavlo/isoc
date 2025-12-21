@@ -1,61 +1,86 @@
 <template>
-  <section class="auth-page">
-    <div class="auth-card">
-      <div class="auth-header">
-        <p class="eyebrow">Espace membre</p>
-        <h1>Créer un compte</h1>
-        <p class="sub">Rejoignez la communauté et suivez vos analyses préférées.</p>
+  <section class="signup-page">
+    <div class="signup-container">
+      <div class="signup-header">
+        <div class="icon-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+          </svg>
+        </div>
+        <h1>Rejoignez Axiome</h1>
+        <p class="sub">Créez votre compte pour accéder à l'analyse géopolitique indépendante</p>
       </div>
 
-      <form class="auth-form" @submit.prevent="handleSubmit">
-        <label class="field">
-          <span class="label">Nom d'utilisateur</span>
-          <input v-model="username" type="text" name="username" placeholder="john_doe" required autocomplete="username" />
-        </label>
+      <form class="signup-form" @submit.prevent="handleSubmit">
+        <div class="form-row">
+          <label class="field">
+            <span class="label">Email *</span>
+            <input v-model="email" type="email" name="email" placeholder="votre@email.com" required autocomplete="email" />
+          </label>
+
+          <label class="field">
+            <span class="label">Nom d'utilisateur *</span>
+            <input v-model="username" type="text" name="username" placeholder="johndoe" required autocomplete="username" />
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label class="field">
+            <span class="label">Prénom</span>
+            <input v-model="firstName" type="text" name="firstname" placeholder="Jean" />
+          </label>
+
+          <label class="field">
+            <span class="label">Nom</span>
+            <input v-model="lastName" type="text" name="lastname" placeholder="Dupont" />
+          </label>
+        </div>
 
         <label class="field">
-          <span class="label">Email</span>
-          <input v-model="email" type="email" name="email" placeholder="vous@example.com" required autocomplete="email" />
-        </label>
-
-        <label class="field">
-          <span class="label">Prénom</span>
-          <input v-model="firstName" type="text" name="firstname" placeholder="Jean" />
-        </label>
-
-        <label class="field">
-          <span class="label">Nom</span>
-          <input v-model="lastName" type="text" name="lastname" placeholder="Dupont" />
-        </label>
-
-        <label class="field">
-          <span class="label">Mot de passe</span>
+          <span class="label">Mot de passe *</span>
           <div class="password-field">
-            <input v-model="password" :type="showPassword ? 'text' : 'password'" name="password" placeholder="••••••••" required autocomplete="new-password" />
+            <input v-model="password" :type="showPassword ? 'text' : 'password'" name="password" placeholder="Min. 8 caractères" required autocomplete="new-password" />
             <PasswordToggle :is-shown="showPassword" @toggle="showPassword = !showPassword" />
           </div>
+          <span class="hint">Au moins 8 caractères</span>
         </label>
 
         <label class="field">
-          <span class="label">Confirmation</span>
+          <span class="label">Confirmer le mot de passe *</span>
           <div class="password-field">
-            <input v-model="passwordConfirm" :type="showPasswordConfirm ? 'text' : 'password'" name="confirm" placeholder="••••••••" required autocomplete="new-password" />
+            <input v-model="passwordConfirm" :type="showPasswordConfirm ? 'text' : 'password'" name="confirm" placeholder="Retapez votre mot de passe" required autocomplete="new-password" />
             <PasswordToggle :is-shown="showPasswordConfirm" @toggle="showPasswordConfirm = !showPasswordConfirm" />
           </div>
         </label>
 
-        <label class="checkbox">
-          <input v-model="newsletter" type="checkbox" name="newsletter" />
-          <span>Recevoir les mises à jour Axiome</span>
-        </label>
+        <div class="options">
+          <label class="checkbox-styled">
+            <input v-model="newsletter" type="checkbox" name="newsletter" />
+            <span class="checkmark"></span>
+            <span class="text">Je souhaite recevoir les actualités d'Axiome</span>
+          </label>
+        </div>
 
-        <button type="submit" class="primary" :disabled="loading">{{ loading ? 'Création en cours...' : 'Créer mon compte' }}</button>
-        <p v-if="error" class="error">{{ error }}</p>
+        <p v-if="error" class="error-message">{{ error }}</p>
+
+        <button type="submit" class="btn-signup" :disabled="loading">
+          <span v-if="!loading">Créer mon compte</span>
+          <span v-else>
+            <svg class="spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Création en cours...
+          </span>
+        </button>
       </form>
 
-      <div class="meta">
-        <p>Déjà membre ? <NuxtLink class="link" to="/connexion">Se connecter</NuxtLink></p>
-        <p class="small">Nous stockons vos informations en toute sécurité.</p>
+      <div class="signup-footer">
+        <p class="login-link">Vous avez déjà un compte ? <NuxtLink to="/connexion">Connectez-vous</NuxtLink></p>
+        <p class="terms">En créant un compte, vous acceptez nos <a href="/conditions">conditions d'utilisation</a> et notre <a href="/confidentialite">politique de confidentialité</a>.</p>
       </div>
     </div>
   </section>
@@ -126,82 +151,108 @@ const handleSubmit = async () => {
 </script>
 
 <style scoped lang="scss">
-.auth-page {
-  min-height: 70vh;
+.signup-page {
+  min-height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 48px 16px;
-  background: #f7f7fb;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f8f7fc 0%, #eceaf5 100%);
 }
 
-.auth-card {
-  width: min(520px, 100%);
+.signup-container {
+  width: min(600px, 100%);
   background: #ffffff;
-  border-radius: 16px;
-  padding: 36px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  display: grid;
-  gap: 20px;
+  border-radius: 20px;
+  padding: 48px 40px;
+  box-shadow: 0 20px 60px rgba(47, 5, 56, 0.12);
 }
 
-.auth-header {
-  display: grid;
-  gap: 6px;
+.signup-header {
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-.eyebrow {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #6b5ca5;
-  font-weight: 700;
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b5ce0 0%, #9c7ef5 100%);
+  color: #ffffff;
+  margin-bottom: 16px;
 }
 
 h1 {
-  margin: 0;
-  font-size: 28px;
-  color: #241431;
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a0b25;
+  letter-spacing: -0.5px;
 }
 
 .sub {
   margin: 0;
-  color: #4a4a55;
-  font-size: 14px;
+  color: #5a4a6e;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-.auth-form {
+.signup-form {
   display: grid;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
 .field {
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
 .label {
   font-size: 13px;
-  font-weight: 600;
-  color: #241431;
+  font-weight: 700;
+  color: #2a1a3a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hint {
+  font-size: 12px;
+  color: #7a6a8a;
+  margin-top: -4px;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #dcd9e6;
-  background: #faf9fd;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 2px solid #e5e0f0;
+  background: #fafbff;
+  font-size: 15px;
+  color: #1a0b25;
+  transition: all 0.3s ease;
 
-input:focus {
-  outline: none;
-  border-color: #7b5ce0;
-  box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.15);
+  &::placeholder {
+    color: #a89bb8;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #7b5ce0;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(123, 92, 224, 0.1);
+  }
 }
 
 .password-field {
@@ -212,80 +263,174 @@ input:focus {
 
 .password-field input {
   flex: 1;
-  padding-right: 45px;
+  padding-right: 50px;
 }
 
-.toggle-password {
-  position: absolute;
-  right: 12px;
-  background: transparent;
-  border: none;
+.options {
+  margin: 8px 0;
+}
+
+.checkbox-styled {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
-  padding: 4px;
+  user-select: none;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked + .checkmark {
+      background: linear-gradient(135deg, #7b5ce0 0%, #9c7ef5 100%);
+      border-color: #7b5ce0;
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  .checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d0c5e0;
+    border-radius: 6px;
+    background: #fafbff;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .text {
+    font-size: 14px;
+    color: #3a2a4a;
+  }
+}
+
+.error-message {
+  margin: 0;
+  padding: 12px 16px;
+  background: #fff0f0;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  color: #c0392b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-signup {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7b5ce0 0%, #9c7ef5 100%);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b5ca5;
-  transition: color 0.2s ease;
-}
-
-.checkbox {
-  display: inline-flex;
-  align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: #3c314f;
+  box-shadow: 0 8px 24px rgba(123, 92, 224, 0.3);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(123, 92, 224, 0.4);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
 }
 
-.checkbox input {
-  width: 16px;
-  height: 16px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.primary {
-  width: 100%;
-  border: none;
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #2f0538 0%, #3a0f4f 100%);
-  color: #ffffff;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.signup-footer {
+  text-align: center;
+  border-top: 1px solid #e5e0f0;
+  padding-top: 24px;
 }
 
-.primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(47, 5, 56, 0.16);
+.login-link {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #5a4a6e;
+
+  a {
+    color: #7b5ce0;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #9c7ef5;
+      text-decoration: underline;
+    }
+  }
 }
 
-.primary:active {
-  transform: translateY(0);
-}
-
-.meta {
-  display: grid;
-  gap: 4px;
-  font-size: 13px;
-  color: #4a4a55;
-}
-
-.link {
-  color: #7b5ce0;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.small {
+.terms {
   margin: 0;
-  color: #6e6585;
   font-size: 12px;
+  color: #8a7a9a;
+  line-height: 1.6;
+
+  a {
+    color: #7a6a8a;
+    text-decoration: underline;
+
+    &:hover {
+      color: #7b5ce0;
+    }
+  }
 }
 
 @media (max-width: 640px) {
-  .auth-card {
-    padding: 28px;
+  .signup-container {
+    padding: 36px 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 26px;
   }
 }
 </style>
