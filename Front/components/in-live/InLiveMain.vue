@@ -9,11 +9,10 @@
         </div>
         <h1 class="banner-title">Dernières actualités</h1>
         <p class="banner-subtitle">Informations mises à jour en temps réel</p>
-        <p class="last-update">Dernière mise à jour : {{ lastUpdateTime }}</p>
       </div>
     </div>
 
-    <!-- Search Section -->
+  <!-- Main content -->
     <div class="live-container">
       <div class="search-section">
         <div class="search-wrapper">
@@ -32,36 +31,36 @@
         </div>
       </div>
 
-      <!-- Results Info -->
+      <!-- Results info -->
       <div class="results-info">
         <p v-if="filteredItems.length > 0">
           <strong>{{ filteredItems.length }}</strong> actualités
           <span v-if="searchQuery"> pour "{{ searchQuery }}"</span>
         </p>
-        <p v-else>Aucune actualité trouvée</p>
+        <p v-else class="no-results">Aucune actualité trouvée</p>
       </div>
 
-      <!-- Loading State -->
+      <!-- Loading state -->
       <div v-if="isLoading" class="loading-state">
         <div class="spinner"></div>
-        <p>Chargement des actualités...</p>
+        <p>Chargement...</p>
       </div>
 
-      <!-- Error State -->
+      <!-- Error state -->
       <div v-else-if="error" class="error-state">
         <p>⚠️ {{ error }}</p>
         <button @click="loadData" class="retry-btn">Réessayer</button>
       </div>
 
-      <!-- Empty State -->
+      <!-- Empty state -->
       <div v-else-if="filteredItems.length === 0" class="empty-state">
-        <p>Aucune actualité ne correspond à votre recherche</p>
+        <p>Aucune actualité disponible</p>
         <button v-if="searchQuery" @click="clearSearch" class="retry-btn">
-          Annuler la recherche
+          Effacer la recherche
         </button>
       </div>
 
-      <!-- Grid of items -->
+      <!-- Grid -->
       <template v-else>
         <div class="items-grid">
           <a 
@@ -78,34 +77,33 @@
                 :alt="item.title"
                 class="item-image"
                 loading="lazy"
-                @error="handleImageError"
               />
-              <div v-else class="item-image-placeholder">
+              <div v-else class="item-placeholder">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <circle cx="8.5" cy="8.5" r="1.5"></circle>
                   <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
               </div>
-              <span class="media-badge" :class="{ 'article-badge': item.type === 'article', 'video-badge': item.type === 'video' }">
+              <span class="badge" :class="item.type">
                 {{ item.type === 'article' ? 'Article' : 'Vidéo' }}
               </span>
               <button 
                 class="like-btn" 
                 @click.prevent.stop="toggleLike(item.link)"
-                :title="isSavedItem(item.link) ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+                 :title="isSavedItem(item.link) ? 'Retirer' : 'Favoris'"
               >
-                <svg :class="{ liked: isSavedItem(item.link) }" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <svg :class="{ liked: isSavedItem(item.link) }" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
               </button>
             </div>
-            <div class="item-content">
+            <div class="item-info">
               <h3 class="item-title">{{ item.title }}</h3>
-              <p v-if="item.summary" class="item-summary">{{ truncateSummary(item.summary) }}</p>
+              <p v-if="item.summary" class="item-summary">{{ truncate(item.summary, 120) }}</p>
               <div class="item-meta">
-                <span v-if="item.source" class="meta-item source">{{ item.source }}</span>
-                <span class="meta-item date">{{ formatDate(item.published) }}</span>
+                <span v-if="item.source" class="source">{{ item.source }}</span>
+                <span class="date">{{ formatDate(item.published) }}</span>
               </div>
             </div>
           </a>
@@ -118,15 +116,11 @@
             @click="prevPage"
             class="pagination-btn"
           >
-            ← Précédent
+             ← Précédent
           </button>
 
-          <div class="pagination-logo">
-            <img src="/logo.svg" alt="ISOC AXIOM" class="pagination-logo-img" />
-          </div>
-
           <div class="pagination-info">
-            Page <strong>{{ currentPage }}</strong> sur <strong>{{ totalPages }}</strong>
+             Page <strong>{{ currentPage }}</strong> / <strong>{{ totalPages }}</strong>
           </div>
 
           <button
@@ -134,7 +128,7 @@
             @click="nextPage"
             class="pagination-btn"
           >
-            Suivant →
+             Suivant →
           </button>
         </div>
       </template>
@@ -162,18 +156,26 @@ interface MediaItem {
   type: 'article' | 'video'
 }
 
+interface Item {
+  title: string
+  link: string
+  published: string | Date
+  summary?: string
+  source?: string
+  image?: string
+  type: 'article' | 'video'
+}
+
 const { all: articles, load: loadArticles } = useArticles()
 const { all: videos, load: loadVideos } = useVideos()
 const { isSaved, toggleSave } = useSavedMedia()
 
 const searchQuery = ref('')
 const currentPage = ref(1)
-const itemsPerPage = ref(ITEMS_PER_PAGE[1]) // Default to 20
+const itemsPerPage = 20
 const isLoading = ref(true)
 const error = ref('')
-const lastUpdateTime = ref('')
 const refreshInterval = ref<NodeJS.Timer>()
-const updateInterval = ref<NodeJS.Timer>()
 
 const is24HoursOld = (dateString: string | Date): boolean => {
   const date = new Date(dateString)
@@ -188,25 +190,16 @@ const formatDate = (date: string | Date): string => {
   const diffMs = now.getTime() - d.getTime()
   const diffMins = Math.floor(diffMs / (1000 * 60))
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
   if (diffMins < 1) return 'À l\'instant'
-  if (diffMins < 60) return `il y a ${diffMins}m`
-  if (diffHours < 24) return `il y a ${diffHours}h`
-  if (diffDays < 7) return `il y a ${diffDays}j`
+  if (diffMins < 60) return `${diffMins}m`
+  if (diffHours < 24) return `${diffHours}h`
   return d.toLocaleDateString('fr-FR')
 }
 
-const truncateSummary = (text: string, maxLength: number = 150): string => {
+const truncate = (text: string, length: number): string => {
   if (!text) return ''
-  return text.length > maxLength ? text.substring(0, maxLength) + '...' : text
-}
-
-const handleImageError = (event: Event) => {
-  const img = event.target as HTMLImageElement
-  img.style.display = 'none'
-  const placeholder = img.parentElement?.querySelector('.item-image-placeholder') as HTMLElement
-  if (placeholder) placeholder.style.display = 'flex'
+  return text.length > length ? text.substring(0, length) + '...' : text
 }
 
 const isSavedItem = (link: string): boolean => {
@@ -259,19 +252,13 @@ const filteredItems = computed(() => {
 })
 
 const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage.value
-  const end = start + itemsPerPage.value
-  return filteredItems.value.slice(start, end)
+  const start = (currentPage.value - 1) * itemsPerPage
+  return filteredItems.value.slice(start, start + itemsPerPage)
 })
 
 const totalPages = computed(() => {
   return Math.ceil(filteredItems.value.length / itemsPerPage.value)
 })
-
-const updateLastUpdateTime = () => {
-  const now = new Date()
-  lastUpdateTime.value = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-}
 
 const clearSearch = () => {
   searchQuery.value = ''
@@ -301,9 +288,8 @@ const loadData = async () => {
   error.value = ''
   try {
     await Promise.all([loadArticles('all'), loadVideos('all')])
-    updateLastUpdateTime()
   } catch (err) {
-    error.value = 'Erreur lors du chargement des données. Veuillez réessayer.'
+    error.value = 'Erreur de chargement'
   } finally {
     isLoading.value = false
   }
@@ -312,12 +298,10 @@ const loadData = async () => {
 onMounted(async () => {
   await loadData()
   refreshInterval.value = setInterval(loadData, 5 * 60 * 1000) // Refresh every 5 minutes
-  updateInterval.value = setInterval(updateLastUpdateTime, 1 * 60 * 1000) // Update time every minute
 })
 
 onBeforeUnmount(() => {
   if (refreshInterval.value) clearInterval(refreshInterval.value)
-  if (updateInterval.value) clearInterval(updateInterval.value)
 })
 </script>
 

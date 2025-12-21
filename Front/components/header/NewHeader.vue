@@ -7,7 +7,12 @@
           <span class="pulse-indicator"></span>
           <span class="tagline">Média indépendant | Conflit Ukraine-Russie</span>
         </div>
-        <div class="top-right">
+         <!-- Logo in the middle of top bar -->
+         <div class="top-logo">
+           <img :src="logo" alt="ISOC AXIOM" class="top-logo-img" />
+         </div>
+       
+         <div class="top-right">
           <a href="/rss.xml" class="top-link" title="Flux RSS">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path>
@@ -25,11 +30,6 @@
     <nav class="header-nav">
       <div class="container">
         <div class="nav-content">
-          <!-- Logo -->
-          <div class="logo-wrapper" @click="goIndex">
-            <img :src="logo" alt="ISOC AXIOM" class="logo" />
-          </div>
-
           <!-- Navigation links -->
           <div class="nav-links">
             <NuxtLink to="/" exact-active-class="active">Accueil</NuxtLink>
@@ -147,6 +147,20 @@ function performSearch() {
   align-items: center;
   gap: 10px;
   color: #495057;
+.top-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.top-logo-img {
+  height: 28px;
+  width: auto;
+  opacity: 0.95;
+}
+
 }
 
 .pulse-indicator {
@@ -500,3 +514,7 @@ function performSearch() {
   }
 }
 </style>
+
+.header-top-bar {
+  position: relative;
+}
