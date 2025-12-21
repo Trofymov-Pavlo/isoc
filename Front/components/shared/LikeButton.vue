@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useAuthState } from '~/composables/useAuthState';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 
@@ -36,22 +36,29 @@ const emit = defineEmits<{
   (e: 'toggle', saved: boolean): void;
 }>();
 
-const { isLoggedIn } = useAuthState();
+const { isAuthenticated } = useAuthState();
 const { toggleSave, isSaved, loading } = useSavedMedia();
 
 const localSaved = ref(false);
 const isLoading = ref(false);
 
+// Keep SSR safe: default to “not liked” until mounted on client.
+const mounted = ref(false);
+onMounted(() => {
+  mounted.value = true;
+});
+
 // On mount, check if item is already saved
 const isLiked = computed(() => {
-  if (!isLoggedIn.value) {
+  if (!mounted.value) return false;
+  if (!isAuthenticated.value) {
     return localSaved.value;
   }
   return isSaved(props.link);
 });
 
 const onClick = async () => {
-  if (!isLoggedIn.value) {
+  if (!isAuthenticated.value) {
     // Fallback to localStorage for non-authenticated users
     localSaved.value = !localSaved.value;
     emit('toggle', localSaved.value);

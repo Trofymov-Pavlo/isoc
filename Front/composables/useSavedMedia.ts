@@ -25,7 +25,11 @@ export interface UserCategory {
 }
 
 export const useSavedMedia = () => {
-  const { token } = useAuthState();
+  // Auth state is used only for “logged-in” semantics; tokens are stored in localStorage.
+  // IMPORTANT: this composable can be imported during SSR, so never touch localStorage on server.
+  useAuthState();
+
+  const isServer = typeof window === 'undefined';
   
   const savedItems = ref<SavedMediaItem[]>([]);
   const userCategories = ref<UserCategory[]>([]);
@@ -34,16 +38,21 @@ export const useSavedMedia = () => {
 
   const API_BASE = 'http://localhost:8000/api/saved-media';
 
-  const getHeaders = () => {
-    const token = localStorage.getItem('access_token');
-    return {
-      'Content-Type': 'application/json',
-      ...(token && { 'Authorization': `Bearer ${token}` }),
-    };
+  const getToken = (): string | null => {
+    if (isServer) return null;
+    try {
+      return localStorage.getItem('access_token');
+    } catch {
+      return null;
+    }
   };
 
-  const getToken = () => {
-    return localStorage.getItem('access_token');
+  const getHeaders = () => {
+    const token = getToken();
+    return {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    };
   };
 
   /**
@@ -51,6 +60,10 @@ export const useSavedMedia = () => {
    */
   const apiCall = async (endpoint: string, method = 'GET', body?: any) => {
     try {
+      if (isServer) {
+        throw new Error('Saved media API cannot be called during SSR');
+      }
+
       const options: RequestInit = {
         method,
         headers: getHeaders(),
@@ -65,8 +78,12 @@ export const useSavedMedia = () => {
       if (!response.ok) {
         if (response.status === 401) {
           // Token expired or invalid
-          localStorage.removeItem('access_token');
-          localStorage.removeItem('refresh_token');
+          try {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+          } catch {
+            // ignore
+          }
           throw new Error('Authentication expired. Please login again.');
         }
         throw new Error(`API error: ${response.status}`);

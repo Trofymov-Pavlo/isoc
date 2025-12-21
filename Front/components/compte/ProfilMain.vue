@@ -1,7 +1,16 @@
 <template>
   <section class="account-page">
-    <div v-if="loading && !user" class="loading">Chargement...</div>
-    <div v-else-if="error && !user" class="error">{{ error }}</div>
+    <div v-if="loading && !user" class="loading" role="status" aria-live="polite">Chargement de votre espace…</div>
+    <div v-else-if="error && !user" class="error" role="alert">{{ error }}</div>
+
+    <div v-else-if="authMissing" class="info-card auth-needed" role="status" aria-live="polite">
+      <h3>Connexion requise</h3>
+      <p class="muted">Connectez-vous pour accéder à votre profil et à vos médias enregistrés.</p>
+      <div class="auth-actions">
+        <NuxtLink class="btn-primary link-btn" to="/connexion">Se connecter</NuxtLink>
+        <NuxtLink class="btn-secondary link-btn" to="/signup">Créer un compte</NuxtLink>
+      </div>
+    </div>
 
     <div v-else-if="user" class="grid">
       <aside class="sidebar">
@@ -10,7 +19,16 @@
           <span class="status" :class="statusClass">{{ statusLabel }}</span>
           <p class="name">{{ displayName }}</p>
           <p class="muted">ID client : {{ user.id || '—' }}</p>
-          <button class="copy-btn" type="button" @click="copyId">Copier l’ID client</button>
+          <button
+            class="copy-btn"
+            type="button"
+            @click="copyId"
+            :disabled="!user?.id"
+            :title="user?.id ? 'Copier dans le presse-papiers' : 'ID indisponible'"
+          >
+            Copier l’ID client
+          </button>
+          <p v-if="copyFeedback" class="success copy-feedback" aria-live="polite">{{ copyFeedback }}</p>
         </div>
 
         <nav class="nav">
@@ -55,25 +73,26 @@
             <div class="form-grid">
               <div class="field">
                 <span class="label">Nom d'utilisateur</span>
-                <input v-model="editData.username" type="text" />
+                <input v-model="editData.username" type="text" :disabled="loading" autocomplete="username" />
               </div>
               <div class="field">
                 <span class="label">Email</span>
-                <input v-model="editData.email" type="email" />
+                <input v-model="editData.email" type="email" :disabled="loading" autocomplete="email" />
               </div>
               <div class="field">
                 <span class="label">Prénom</span>
-                <input v-model="editData.firstName" type="text" />
+                <input v-model="editData.firstName" type="text" :disabled="loading" autocomplete="given-name" />
               </div>
               <div class="field">
                 <span class="label">Nom</span>
-                <input v-model="editData.lastName" type="text" />
+                <input v-model="editData.lastName" type="text" :disabled="loading" autocomplete="family-name" />
               </div>
               <div class="actions-row">
-                <button class="btn-secondary" type="button" @click="resetEdit">Annuler</button>
-                <button class="btn-primary" type="button" @click="handleUpdateProfile" :disabled="loading">Sauvegarder</button>
+                <button class="btn-secondary" type="button" @click="resetEdit" :disabled="loading">Annuler</button>
+                <button class="btn-primary" type="button" @click="handleUpdateProfile" :disabled="loading || !hasEditChanges">Sauvegarder</button>
               </div>
-              <p v-if="editError" class="error">{{ editError }}</p>
+              <p v-if="editError" class="error" role="alert">{{ editError }}</p>
+              <p v-if="editSuccess" class="success" aria-live="polite">{{ editSuccess }}</p>
             </div>
           </div>
 
@@ -81,22 +100,22 @@
             <div class="form-grid">
               <div class="field">
                 <span class="label">Ancien mot de passe</span>
-                <input v-model="passwordData.oldPassword" type="password" />
+                <input v-model="passwordData.oldPassword" type="password" :disabled="loading" autocomplete="current-password" />
               </div>
               <div class="field">
                 <span class="label">Nouveau mot de passe</span>
-                <input v-model="passwordData.newPassword" type="password" />
+                <input v-model="passwordData.newPassword" type="password" :disabled="loading" autocomplete="new-password" />
               </div>
               <div class="field">
                 <span class="label">Confirmez</span>
-                <input v-model="passwordData.confirmPassword" type="password" />
+                <input v-model="passwordData.confirmPassword" type="password" :disabled="loading" autocomplete="new-password" />
               </div>
               <div class="actions-row">
-                <button class="btn-secondary" type="button" @click="cancelPasswordChange">Annuler</button>
+                <button class="btn-secondary" type="button" @click="cancelPasswordChange" :disabled="loading">Annuler</button>
                 <button class="btn-primary" type="button" @click="handleChangePassword" :disabled="loading">Mettre à jour</button>
               </div>
-              <p v-if="passwordError" class="error">{{ passwordError }}</p>
-              <p v-if="passwordSuccess" class="success">{{ passwordSuccess }}</p>
+              <p v-if="passwordError" class="error" role="alert">{{ passwordError }}</p>
+              <p v-if="passwordSuccess" class="success" aria-live="polite">{{ passwordSuccess }}</p>
             </div>
           </div>
         </section>
@@ -108,6 +127,7 @@
           </div>
 
           <div v-if="loadingArticles" class="muted">Chargement de vos médias enregistrés…</div>
+          <div v-else-if="savedError" class="error" role="alert">{{ savedError }}</div>
           <div v-else-if="!likedTop3.length" class="muted">Vous n'avez pas encore enregistré de média.</div>
           <ul v-else class="liked-list">
             <li v-for="item in likedTop3" :key="item.link" class="liked-item">
@@ -122,8 +142,8 @@
 
         <section id="contact" class="info-card">
           <h3>Nous contacter</h3>
-          <p class="muted">Besoin d'aide ou d'une information ? Écrivez-nous directement.</p>
-          <NuxtLink class="btn-primary link-btn" to="/contact">Aller à la page contact</NuxtLink>
+          <p class="muted">Une question ou besoin d'aide ? Envoyez-nous un message.</p>
+          <NuxtLink class="btn-primary link-btn" to="/contact">Nous contacter</NuxtLink>
         </section>
       </main>
     </div>
@@ -140,20 +160,32 @@ import { useSavedMedia } from '~/composables/useSavedMedia';
 const router = useRouter();
 const { user, loading, error, me, updateProfile, changePassword, logout } = useAuthAPI();
 const { setAuth } = useAuthState();
-const { getTopSaved, loading: loadingArticles } = useSavedMedia();
+const { getTopSaved, loading: loadingArticles, error: savedMediaError } = useSavedMedia();
 
 const editMode = ref(false);
 const passwordMode = ref(false);
 const editError = ref('');
+const editSuccess = ref('');
 const passwordError = ref('');
 const passwordSuccess = ref('');
+const copyFeedback = ref('');
+
+const authMissing = ref(false);
 
 const editData = ref({ username: '', email: '', firstName: '', lastName: '' });
 const passwordData = ref({ oldPassword: '', newPassword: '', confirmPassword: '' });
 
-const displayName = computed(() => user.value?.first_name || user.value?.username || '');
+const displayName = computed(() => user.value?.first_name || user.value?.username || user.value?.email || '');
 
 const likedTop3 = ref<any[]>([]);
+
+const savedError = computed(() => {
+  const raw = savedMediaError.value;
+  if (!raw) return '';
+  // Keep message user-friendly; backend messages can be technical.
+  if (raw.toLowerCase().includes('authentication expired')) return 'Votre session a expiré. Merci de vous reconnecter.';
+  return 'Impossible de charger vos médias enregistrés pour le moment.';
+});
 
 const isSubscribed = computed(() => {
   const u = (user.value as any) || {};
@@ -185,10 +217,17 @@ const statusLabel = computed(() => (isSubscribed.value ? 'ABONNÉ' : 'NON ABONN�
 const statusClass = computed(() => (isSubscribed.value ? 'is-subscribed' : 'is-not-subscribed'));
 
 const copyId = async () => {
+  copyFeedback.value = '';
   try {
-    await navigator.clipboard.writeText(String(user.value?.id || ''));
+    const id = user.value?.id;
+    if (!id) return;
+    await navigator.clipboard.writeText(String(id));
+    copyFeedback.value = 'ID copié.';
+    setTimeout(() => {
+      copyFeedback.value = '';
+    }, 1200);
   } catch {
-    // no-op
+    copyFeedback.value = 'Impossible de copier (presse-papiers non autorisé).';
   }
 };
 
@@ -207,32 +246,56 @@ const hydrateEditForm = () => {
   };
 };
 
+const hasEditChanges = computed(() => {
+  if (!user.value) return false;
+  return (
+    (editData.value.username || '') !== (user.value.username || '') ||
+    (editData.value.email || '') !== (user.value.email || '') ||
+    (editData.value.firstName || '') !== (user.value.first_name || '') ||
+    (editData.value.lastName || '') !== (user.value.last_name || '')
+  );
+});
+
 const loadUser = async () => {
   if (!user.value) {
-    await me();
+    const u = await me();
+    if (!u) {
+      authMissing.value = true;
+      return;
+    }
   }
+  authMissing.value = false;
   hydrateEditForm();
 };
 
 onMounted(async () => {
   await loadUser();
-  const top3 = await getTopSaved(3);
-  likedTop3.value = top3;
+  if (!authMissing.value) {
+    const top3 = await getTopSaved(3);
+    likedTop3.value = top3;
+  }
 });
 
 const toggleEdit = () => {
+  // Avoid showing both forms at once.
+  if (!editMode.value) passwordMode.value = false;
   if (editMode.value) hydrateEditForm();
   editError.value = '';
+  editSuccess.value = '';
   editMode.value = !editMode.value;
 };
 
 const resetEdit = () => {
   hydrateEditForm();
   editError.value = '';
+  editSuccess.value = '';
   editMode.value = false;
 };
 
 const togglePassword = () => {
+  if (!passwordMode.value) editMode.value = false;
+  editError.value = '';
+  editSuccess.value = '';
   passwordError.value = '';
   passwordSuccess.value = '';
   passwordMode.value = !passwordMode.value;
@@ -247,6 +310,7 @@ const cancelPasswordChange = () => {
 
 const handleUpdateProfile = async () => {
   editError.value = '';
+  editSuccess.value = '';
   try {
     const updated = await updateProfile(
       editData.value.username,
@@ -255,6 +319,7 @@ const handleUpdateProfile = async () => {
       editData.value.lastName
     );
     user.value = updated;
+    editSuccess.value = 'Profil mis à jour.';
     editMode.value = false;
   } catch (err) {
     editError.value = err instanceof Error ? err.message : 'Erreur lors de la mise à jour du profil';
@@ -387,6 +452,9 @@ h3 { margin: 0 0 14px 0; font-size: 30px; color: var(--text-primary); }
 .liked-title { margin: 0; font-weight: 800; color: var(--text-primary); }
 .liked-source { margin: 0; color: var(--text-secondary); font-size: 13px; }
 
+.copy-feedback { margin: 8px 0 0 0; font-size: 13px; }
+
+#contact .btn-primary { margin-top: 16px; }
 
 .loading { text-align: center; color: var(--text-secondary); }
 .error { color: #c0392b; }
@@ -406,4 +474,3 @@ h3 { margin: 0 0 14px 0; font-size: 30px; color: var(--text-primary); }
   .actions-row .btn-secondary { width: 100%; }
 }
 </style>
-

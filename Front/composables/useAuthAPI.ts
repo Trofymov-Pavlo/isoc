@@ -64,43 +64,31 @@ export const useAuthAPI = () => {
     error.value = '';
     try {
       const url = `${API_BASE}/login/`;
-      console.log('📝 Login request:', { url, email, rememberMe });
       
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, remember_me: rememberMe }),
       });
-      
-      console.log('📨 Response status:', response.status, response.statusText);
+
       const data = await response.json();
-      console.log('📦 Response data:', data);
       
       if (!response.ok) {
         // Show detailed error message if available
         const errorMsg = data.detail || data.error || 'Login failed';
-        console.error('❌ Login error:', errorMsg);
         throw new Error(errorMsg);
       }
-      
-      console.log('✅ Login successful!');
-      console.log('Setting tokens...');
+
       setTokens(data.access, data.refresh);
-      console.log('✅ Tokens set');
       user.value = data.user;
-      console.log('✅ User set:', data.user);
       if (process.client) {
         localStorage.setItem('auth_logged_in', '1');
         localStorage.setItem('auth_remember', rememberMe ? '1' : '0');
-        console.log('✅ LocalStorage set');
       }
-      console.log('✅ About to return data');
       return data;
     } catch (err) {
-      console.error('🔴 Caught error in login:', err);
       const errorMsg = err instanceof Error ? err.message : 'Login error';
       error.value = errorMsg;
-      console.error('🔴 Error value set to:', error.value);
       throw new Error(errorMsg);
     } finally {
       loading.value = false;

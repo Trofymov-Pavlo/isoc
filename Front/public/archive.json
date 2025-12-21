@@ -1,6 +1,513 @@
 {
   "articles": [
     {
+      "source": "La Dépêche (monde)",
+      "title": "DIRECT. Guerre en Ukraine : Vladimir Poutine \"prêt au dialogue\" avec Emmanuel Macron, selon son porte-parole",
+      "link": "https://www.ladepeche.fr/2025/12/21/direct-guerre-en-ukraine-vladimir-poutine-pret-au-dialogue-avec-emmanuel-macron-selon-son-porte-parole-13123157.php",
+      "published": "2025-12-21T06:43:24+00:00",
+      "media": {
+        "url": "https://images.ladepeche.fr/api/v1/images/view/694712377ec9c9dd470d149e/standard/image.jpg?v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.ladepeche.fr/api/v1/images/view/694712377ec9c9dd470d149e/standard/image.jpg?v=1",
+      "thumb": "https://images.ladepeche.fr/api/v1/images/view/694712377ec9c9dd470d149e/standard/image.jpg?v=1",
+      "summary": "Suivez toute l’actualité de la guerre en Ukraine, ce dimanche 21 décembre 2025, toute la journée sur ladepeche.fr.",
+      "publishedTime": 1766299404000,
+      "archived_at": "2025-12-21T08:22:37.999186+00:00"
+    },
+    {
+      "source": "Sud Ouest (international)",
+      "title": "Guerre en Ukraine : Vladimir Poutine « prêt au dialogue » avec Emmanuel Macron, selon le Kremlin",
+      "link": "https://www.sudouest.fr/international/europe/ukraine/guerre-en-ukraine-vladimir-poutine-pret-au-dialogue-avec-emmanuel-macron-selon-le-kremlin-27180381.php",
+      "published": "2025-12-21T06:33:47+00:00",
+      "media": null,
+      "summary": "Le président russe se dit prêt à discuter avec son homologue français, après les déclarations d’Emmanuel Macron sur la nécessité de réengager le dialogue",
+      "publishedTime": 1766298827000,
+      "archived_at": "2025-12-21T08:22:37.999248+00:00"
+    },
+    {
+      "source": "France 24 (France)",
+      "title": "Live: Putin ready to talk to France's Macron on Ukraine, says spokesman",
+      "link": "https://www.france24.com/en/europe/20251221-live-putin-ready-to-talk-to-france-s-macron-on-ukraine-says-spokesman",
+      "published": "2025-12-21T06:33:42+00:00",
+      "media": {
+        "url": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+      "thumb": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+      "author": "FRANCE 24",
+      "summary": "Russian President Vladimir Putin is ready to talk with France's Emmanuel Macron over the war in Ukraine, said Kremin spokesman Dmitry Peskov in an interview published Sunday. Putin has \"expressed readiness to engage in dialogue with Macron\", said Peskov. Follow FRANCE 24's live blog for all the latest developments",
+      "publishedTime": 1766298822000,
+      "archived_at": "2025-12-21T08:22:37.999298+00:00"
+    },
+    {
+      "source": "HuffPost France",
+      "title": "Vladimir Poutine est « prêt au dialogue » avec Emmanuel Macron, selon son porte-parole",
+      "link": "https://www.huffingtonpost.fr/international/article/vladimir-poutine-est-pret-au-dialogue-avec-emmanuel-macron-selon-son-porte-parole_258462.html",
+      "published": "2025-12-21T06:32:21+00:00",
+      "media": {
+        "url": "https://focus.huffingtonpost.fr/2025/12/21/531/0/4000/2250/0/0/60/0/7f86b4d_upload-1-avicidek95pn-afp-20250701-64fy8nr-v2-highres-combofilesfrancerussiaukraineconflictpoliticsdi.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "OLGA MALTSEVA, LUDOVIC MARIN / AFP"
+      },
+      "image": "https://focus.huffingtonpost.fr/2025/12/21/531/0/4000/2250/0/0/60/0/7f86b4d_upload-1-avicidek95pn-afp-20250701-64fy8nr-v2-highres-combofilesfrancerussiaukraineconflictpoliticsdi.jpg",
+      "thumb": "https://focus.huffingtonpost.fr/2025/12/21/531/0/4000/2250/0/0/60/0/7f86b4d_upload-1-avicidek95pn-afp-20250701-64fy8nr-v2-highres-combofilesfrancerussiaukraineconflictpoliticsdi.jpg",
+      "summary": "Vendredi à Bruxelles, le président français avait fait une allusion à Donald Trump, qui avait lui déjà renoué le dialogue avec son homologue russe.",
+      "publishedTime": 1766298741000,
+      "archived_at": "2025-12-21T08:22:37.999338+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "Guerre en Ukraine : Vladimir Poutine «prêt au dialogue» avec Emmanuel Macron, selon le Kremlin",
+      "link": "https://www.lefigaro.fr/international/poutine-pret-au-dialogue-avec-macron-selon-son-porte-parole-20251221",
+      "published": "2025-12-21T06:30:06+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/orig/2025/12/21/7b7ae647b56832157a04d67361085e65dd371786d513642d6b260c98117f2271.jpg",
+        "width": 3000,
+        "height": 2001,
+        "type": null,
+        "description": null,
+        "credit": "Alexander Nemenov / via REUTERS"
+      },
+      "image": "https://i.f1g.fr/media/cms/orig/2025/12/21/7b7ae647b56832157a04d67361085e65dd371786d513642d6b260c98117f2271.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/orig/2025/12/21/7b7ae647b56832157a04d67361085e65dd371786d513642d6b260c98117f2271.jpg",
+      "summary": "Emmanuel Macron a déclaré, vendredi matin à Bruxelles, qu’il allait «redevenir utile de parler à Vladimir Poutine», voyant que le dialogue a été restauré entre Donald Trump et le chef du Kremlin.",
+      "publishedTime": 1766298606000,
+      "archived_at": "2025-12-21T08:22:37.999378+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "«Plus il fait froid, moins les montagnes russes vont vite» : ouvrir à Noël, le grand défi des parcs d’attractions",
+      "link": "https://www.lefigaro.fr/societes/plus-il-fait-froid-moins-les-montagnes-russes-vont-vite-ouvrir-a-noel-le-grand-defi-des-parcs-d-attractions-20251221",
+      "published": "2025-12-21T06:30:00+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/2822x1587_crop/2025/12/18/a23abdfc5419c4d1ac95fe6f4d7f8d447cfb96a83c8c898931ea69e419ad41b9.jpg",
+        "width": 2822,
+        "height": 1587,
+        "type": null,
+        "description": null,
+        "credit": "Thibaut Déléaz / Le Figaro"
+      },
+      "image": "https://i.f1g.fr/media/cms/2822x1587_crop/2025/12/18/a23abdfc5419c4d1ac95fe6f4d7f8d447cfb96a83c8c898931ea69e419ad41b9.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/2822x1587_crop/2025/12/18/a23abdfc5419c4d1ac95fe6f4d7f8d447cfb96a83c8c898931ea69e419ad41b9.jpg",
+      "summary": "Parc Astérix, Walibi, Puy du Fou... De plus en plus de sites ouvrent au public pour les fêtes, un choix loin d’être évident à orchestrer avec des attractions et expériences souvent en extérieur, plutôt conçues pour fonctionner l’été.",
+      "publishedTime": 1766298600000,
+      "archived_at": "2025-12-21T08:22:37.999418+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "Vladimir Poutine «prêt au dialogue avec Emmanuel Macron», selon son porte-parole",
+      "link": "https://www.liberation.fr/international/europe/poutine-pret-au-dialogue-avec-macron-selon-son-porte-parole-20251221_ZGJHPM5O7FFK3D2D4JVITCHKEM/",
+      "published": "2025-12-21T06:25:53+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/YRIBRSHII5HLBO7EHZSJYMFJEI.jpg?auth=04904ee35be5d83be318cbd639ae6f9c74b85fbefb8e8d51f6b3c8046fee7365&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Vyacheslav Profokyev"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/YRIBRSHII5HLBO7EHZSJYMFJEI.jpg?auth=04904ee35be5d83be318cbd639ae6f9c74b85fbefb8e8d51f6b3c8046fee7365&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/YRIBRSHII5HLBO7EHZSJYMFJEI.jpg?auth=04904ee35be5d83be318cbd639ae6f9c74b85fbefb8e8d51f6b3c8046fee7365&smart=true&width=1024&height=682",
+      "author": "LIBERATION,  AFP",
+      "summary": "Le Kremlin a répondu au président français qui, vendredi à Bruxelles, appelait à renouer un dialogue direct avec Moscou dans le cadre des pourparlers pour la paix en Ukraine.",
+      "publishedTime": 1766298353000,
+      "archived_at": "2025-12-21T08:22:37.999463+00:00"
+    },
+    {
+      "source": "France 24 (Europe)",
+      "title": "Ukraine en direct : Vladimir Poutine se dit \"prêt au dialogue\" avec Emmanuel Macron",
+      "link": "https://www.france24.com/fr/europe/20251221-ukraine-en-direct-poutine-se-dit-pr%C3%AAt-au-dialogue-avec-macron-selon-son-porte-parole",
+      "published": "2025-12-21T06:25:22+00:00",
+      "media": {
+        "url": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+      "thumb": "https://s.france24.com/media/display/b56477c0-de3c-11f0-907f-005056a97e36/w:1024/p:16x9/2025-12-19T093007Z-2129680514-RC2LJIAOBE87-RTRMADP-3-RUSSIA-PUTIN.jpg",
+      "author": "FRANCE 24",
+      "summary": "Vladimir Poutine est \"prêt au dialogue\" avec Emmanuel Macron, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin, Dmitri Peskov. Une référence à une remarque d'Emmanuel Macron vendredi matin à Bruxelles, à l'issue d'un sommet où avait estimé qu'il allait \"redevenir utile de parler\" au dirigeant russe. Suivez notre direct.",
+      "publishedTime": 1766298322000,
+      "archived_at": "2025-12-21T08:22:37.999503+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "American Intelligence Questions Russia’s Ability to Conquer Ukraine",
+      "link": "https://www.kyivpost.com/post/66678",
+      "published": "2025-12-21T06:08:27+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/21/69af91d22f98149248f40a7ea9d4e018.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/21/69af91d22f98149248f40a7ea9d4e018.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/21/69af91d22f98149248f40a7ea9d4e018.jpg?w=640&q=90&f=jpg",
+      "author": "Kyiv Post",
+      "summary": "Director of National Intelligence Tulsi Gabbard says US intelligence does not believe Moscow can occupy Ukraine, contradicting European and NATO assessments of Russian ambitions.",
+      "publishedTime": 1766297307000,
+      "archived_at": "2025-12-21T08:22:37.999544+00:00"
+    },
+    {
+      "source": "RTL (La Une)",
+      "title": "Selon le porte-parole du Kremlin: Poutine est \"prêt au dialogue avec Macron\"",
+      "link": "https://infos.rtl.lu/news/monde/poutine-est-pret-au-dialogue-avec-macron-508603287",
+      "published": "2025-12-21T06:07:16+00:00",
+      "media": {
+        "url": "https://static-prod.rtl.lu/84/ea/f993044527cc5b7360b9a136f940/e74593f86616d4a91e26cc17d63abb1b.jpeg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static-prod.rtl.lu/84/ea/f993044527cc5b7360b9a136f940/e74593f86616d4a91e26cc17d63abb1b.jpeg",
+      "thumb": "https://static-prod.rtl.lu/84/ea/f993044527cc5b7360b9a136f940/e74593f86616d4a91e26cc17d63abb1b.jpeg",
+      "summary": "Le président russe Vladimir Poutine est \"prêt au dialogue\" avec son homologue français Emmanuel Macron, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin, Dmitri Peskov, à l'agence russe RIA Novosti.",
+      "publishedTime": 1766297236000,
+      "archived_at": "2025-12-21T08:22:37.999585+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Beijing, the Kremlin, and the Ukrainian Factor: What the West Has Yet to Notice",
+      "link": "https://www.kyivpost.com/opinion/66623",
+      "published": "2025-12-21T06:07:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/19/5b0e7dcc1d916bfda9b9fea86ea7401a.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/19/5b0e7dcc1d916bfda9b9fea86ea7401a.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/19/5b0e7dcc1d916bfda9b9fea86ea7401a.png?w=640&q=90&f=jpg",
+      "author": "Oleksandr Antonyuk",
+      "summary": "Although China is no doubt helping Russia’s war machine, it is also hedging its bets. Should the Russia Federation begin to disintegrate, Beijing has already worked out a strategy.",
+      "publishedTime": 1766297220000,
+      "archived_at": "2025-12-21T08:22:37.999627+00:00"
+    },
+    {
+      "source": "Franceinfo (fil)",
+      "title": "Vladimir Poutine se dit \"prêt au dialogue avec Macron\", selon son porte-parole du Kremlin",
+      "link": "https://www.franceinfo.fr/monde/russie/vladimir-poutine-se-dit-pret-au-dialogue-avec-macron-selon-son-porte-parole-du-kremlin_7693687.html#xtor=RSS-3-[lestitres]",
+      "published": "2025-12-21T05:55:35+00:00",
+      "media": {
+        "url": "https://www.franceinfo.fr/pictures/gs62aMo92FkzEDwldt5ByYWYktM/0x0:1024x575/432x243/filters:format(jpg)/2025/12/21/000-84jp9mm-6947995fb0062550268201.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.franceinfo.fr/pictures/gs62aMo92FkzEDwldt5ByYWYktM/0x0:1024x575/432x243/filters:format(jpg)/2025/12/21/000-84jp9mm-6947995fb0062550268201.jpg",
+      "thumb": "https://www.franceinfo.fr/pictures/gs62aMo92FkzEDwldt5ByYWYktM/0x0:1024x575/432x243/filters:format(jpg)/2025/12/21/000-84jp9mm-6947995fb0062550268201.jpg",
+      "summary": "Cette déclaration, dimanche, du porte-parole de la présidence russe intervient après qu'Emmanuel Macron a notamment déclaré : \"Je pense qu'il va redevenir utile de parler à Vladimir Poutine\".",
+      "publishedTime": 1766296535000,
+      "archived_at": "2025-12-21T08:22:37.999667+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Putin Ready to Talk to France’s Macron on Ukraine: Spokesman",
+      "link": "https://www.kyivpost.com/post/66676",
+      "published": "2025-12-21T05:54:51+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/21/313ce2c4074ac59986b6af8fbc6d709e.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/21/313ce2c4074ac59986b6af8fbc6d709e.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/21/313ce2c4074ac59986b6af8fbc6d709e.jpg?w=640&q=90&f=jpg",
+      "author": "AFP",
+      "summary": "Macron said this week he believed Europe should reach back out to Putin over ending the war.",
+      "publishedTime": 1766296491000,
+      "archived_at": "2025-12-21T08:22:37.999709+00:00"
+    },
+    {
+      "source": "Est Républicain",
+      "title": "Guerre en Ukraine. Moscou affirme que Vladimir Poutine est ouvert à un dialogue avec Emmanuel Macron",
+      "link": "https://www.estrepublicain.fr/defense-guerre-conflit/2025/12/21/moscou-affirme-que-vladimir-poutine-est-ouvert-a-un-dialogue-avec-emmanuel-macron",
+      "published": "2025-12-21T05:50:00+00:00",
+      "media": null,
+      "summary": "Le président russe est « prêt au dialogue » avec son homologue français, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin.",
+      "publishedTime": 1766296200000,
+      "archived_at": "2025-12-21T08:22:37.999749+00:00"
+    },
+    {
+      "source": "L'Alsace",
+      "title": "Guerre en Ukraine. Moscou affirme que Vladimir Poutine est ouvert à un dialogue avec Emmanuel Macron",
+      "link": "https://www.lalsace.fr/defense-guerre-conflit/2025/12/21/moscou-affirme-que-vladimir-poutine-est-ouvert-a-un-dialogue-avec-emmanuel-macron",
+      "published": "2025-12-21T05:50:00+00:00",
+      "media": null,
+      "summary": "Le président russe est « prêt au dialogue » avec son homologue français, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin.",
+      "publishedTime": 1766296200000,
+      "archived_at": "2025-12-21T08:22:37.999789+00:00"
+    },
+    {
+      "source": "Le Dauphiné",
+      "title": "Guerre en Ukraine. Moscou affirme que Vladimir Poutine est ouvert à un dialogue avec Emmanuel Macron",
+      "link": "https://www.ledauphine.com/defense-guerre-conflit/2025/12/21/moscou-affirme-que-vladimir-poutine-est-ouvert-a-un-dialogue-avec-emmanuel-macron",
+      "published": "2025-12-21T05:50:00+00:00",
+      "media": null,
+      "summary": "Le président russe est « prêt au dialogue » avec son homologue français, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin.",
+      "publishedTime": 1766296200000,
+      "archived_at": "2025-12-21T08:22:37.999829+00:00"
+    },
+    {
+      "source": "7sur7 – Monde",
+      "title": "Poutine est “prêt au dialogue avec Macron”, selon son porte-parole",
+      "link": "https://www.7sur7.be/monde/poutine-est-pret-au-dialogue-avec-macron-selon-son-porte-parole~aa36182e/",
+      "published": "2025-12-21T05:42:27+00:00",
+      "media": {
+        "url": "https://images.7sur7.be/ZTNhNTllYmU2MzM2MjFkYmRiMWYvZGlvLzI2Nzk1MjI3NC9maXQtd2lkdGgvNDAw/russian-president-vladimir-putin-delivers-a-video-address-to-congratulate-officers-and-veterans-on-security-agency-worker-s-day-at-the-kremlin-in-moscow-on-saturday-dec-20-2025-mikhail-metzel-sputnik-kremlin-pool-photo-via-ap-france-s-president-emmanuel-macron-reacts-as-he-arrives-to-attend-the-european-council-meeting-in-brussels-on-december-18-2025-european-unions-leaders-meet-in-brussels-on-december-18-and-19-2025-to-discuss-in-particular-the-need-to-support-ukraine-transatlantic-relations-and-the-eu-s-strategic-autonomy-photo-by-nicolas-tucat-afp",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.7sur7.be/ZTNhNTllYmU2MzM2MjFkYmRiMWYvZGlvLzI2Nzk1MjI3NC9maXQtd2lkdGgvNDAw/russian-president-vladimir-putin-delivers-a-video-address-to-congratulate-officers-and-veterans-on-security-agency-worker-s-day-at-the-kremlin-in-moscow-on-saturday-dec-20-2025-mikhail-metzel-sputnik-kremlin-pool-photo-via-ap-france-s-president-emmanuel-macron-reacts-as-he-arrives-to-attend-the-european-council-meeting-in-brussels-on-december-18-2025-european-unions-leaders-meet-in-brussels-on-december-18-and-19-2025-to-discuss-in-particular-the-need-to-support-ukraine-transatlantic-relations-and-the-eu-s-strategic-autonomy-photo-by-nicolas-tucat-afp",
+      "thumb": "https://images.7sur7.be/ZTNhNTllYmU2MzM2MjFkYmRiMWYvZGlvLzI2Nzk1MjI3NC9maXQtd2lkdGgvNDAw/russian-president-vladimir-putin-delivers-a-video-address-to-congratulate-officers-and-veterans-on-security-agency-worker-s-day-at-the-kremlin-in-moscow-on-saturday-dec-20-2025-mikhail-metzel-sputnik-kremlin-pool-photo-via-ap-france-s-president-emmanuel-macron-reacts-as-he-arrives-to-attend-the-european-council-meeting-in-brussels-on-december-18-2025-european-unions-leaders-meet-in-brussels-on-december-18-and-19-2025-to-discuss-in-particular-the-need-to-support-ukraine-transatlantic-relations-and-the-eu-s-strategic-autonomy-photo-by-nicolas-tucat-afp",
+      "author": "MDV",
+      "summary": "Le président russe Vladimir Poutine est “prêt au dialogue” avec son homologue français Emmanuel Macron, a déclaré dans la nuit de samedi à dimanche le porte-parole du Kremlin, Dmitri Peskov, à l’agence russe RIA Novosti.",
+      "publishedTime": 1766295747000,
+      "archived_at": "2025-12-21T08:22:37.999883+00:00"
+    },
+    {
+      "source": "Le Télégramme (monde)",
+      "title": "Vladimir Poutine serait « prêt au dialogue avec Macron »",
+      "link": "https://www.letelegramme.fr/monde/guerre-ukraine-russie/vladimir-poutine-serait-pret-au-dialogue-avec-macron-6952045.php",
+      "published": "2025-12-21T05:25:00+00:00",
+      "media": {
+        "url": "https://media.letelegramme.fr/api/v1/files/694792e819c34d7f7b01e570?alt=file&v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.letelegramme.fr/api/v1/files/694792e819c34d7f7b01e570?alt=file&v=1",
+      "thumb": "https://media.letelegramme.fr/api/v1/files/694792e819c34d7f7b01e570?alt=file&v=1",
+      "summary": "Vladimir Poutine est « prêt au dialogue » avec Emmanuel Macron, a déclaré le porte-parole du Kremlin, Dmitri Peskov, la nuit dernière.",
+      "publishedTime": 1766294700000,
+      "archived_at": "2025-12-21T08:22:37.999923+00:00"
+    },
+    {
+      "source": "Numerama",
+      "title": "Paralysie de Baïkonour officialisée par la Russie, sonde martienne en danger et Ariane 6 — le récap’ de la semaine",
+      "link": "https://www.numerama.com/sciences/2146129-paralysie-de-baikonour-officialisee-par-la-russie-sonde-martienne-en-danger-et-ariane-6-le-recap-de-la-semaine.html",
+      "published": "2025-12-21T04:45:00+00:00",
+      "media": null,
+      "author": "Julien Cadot",
+      "summary": "Cette semaine sur Numerama, vous avez mis l'espace à l'honneur. Russie, Nasa et Ariane se retrouvent dans le top 3 des articles les plus lus ! Si vous les avez manqués, retrouvez-les ci-dessous.",
+      "publishedTime": 1766292300000,
+      "archived_at": "2025-12-21T08:22:37.999964+00:00"
+    },
+    {
+      "source": "RFI (Europe)",
+      "title": "Ce que disent les graffitis des soldats russes en Ukraine",
+      "link": "https://www.rfi.fr/fr/podcasts/lignes-de-d%C3%A9fense/20251221-ce-que-disent-les-graffitis-des-soldats-russes-en-ukraine",
+      "published": "2025-12-21T04:37:31+00:00",
+      "media": {
+        "url": "https://s.rfi.fr/media/display/d40fab9a-a66f-11f0-9858-005056bfb2b6/w:1024/p:16x9/05-Kamianka.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.rfi.fr/media/display/d40fab9a-a66f-11f0-9858-005056bfb2b6/w:1024/p:16x9/05-Kamianka.jpg",
+      "thumb": "https://s.rfi.fr/media/display/d40fab9a-a66f-11f0-9858-005056bfb2b6/w:1024/p:16x9/05-Kamianka.jpg",
+      "author": "Franck Alexandre",
+      "summary": "C’est un aspect du conflit ukrainien encore peu documenté. Les soldats russes, depuis bientôt quatre ans de guerre, ont multiplié les graffitis sur les murs des zones occupées. Wall Evidence, un collectif basé à Kiev, répertorie et classe les photos de ces graffitis, comme des pièces à conviction. [Rediffusion]",
+      "publishedTime": 1766291851000,
+      "archived_at": "2025-12-21T08:22:38.000004+00:00"
+    },
+    {
+      "source": "Le Monde (en continu)",
+      "title": "EN DIRECT, guerre en Ukraine : Vladimir Poutine « prêt au dialogue avec Macron », selon son porte-parole",
+      "link": "https://www.lemonde.fr/international/live/2025/12/21/en-direct-guerre-en-ukraine-vladimir-poutine-pret-au-dialogue-avec-macron-selon-son-porte-parole_6658995_3210.html",
+      "published": "2025-12-21T04:00:38+00:00",
+      "media": {
+        "url": "https://img.lemde.fr/2025/12/20/304/0/6559/3279/644/322/60/0/2e7815e_ftp-1-usyyyxyhwhoa-5ca2d6598af549d2a18cc49e61d0dd5f-0-59545fa23aab442b8301be558cf30458.jpg",
+        "width": 644,
+        "height": 322,
+        "type": null,
+        "description": null,
+        "credit": "Mikhail Metzel/Sputnik/AP"
+      },
+      "image": "https://img.lemde.fr/2025/12/20/304/0/6559/3279/644/322/60/0/2e7815e_ftp-1-usyyyxyhwhoa-5ca2d6598af549d2a18cc49e61d0dd5f-0-59545fa23aab442b8301be558cf30458.jpg",
+      "thumb": "https://img.lemde.fr/2025/12/20/304/0/6559/3279/644/322/60/0/2e7815e_ftp-1-usyyyxyhwhoa-5ca2d6598af549d2a18cc49e61d0dd5f-0-59545fa23aab442b8301be558cf30458.jpg",
+      "summary": "Alors que des envoyés de Kiev et de Moscou sont présents à Miami pour de nouvelles discussions, Volodymyr Zelensky appelle Washington à mettre la pression sur la Russie.",
+      "publishedTime": 1766289638000,
+      "archived_at": "2025-12-21T08:22:38.000048+00:00"
+    },
+    {
+      "source": "Courrier International",
+      "title": "Venezuela, Zelensky, Imran Khan et Australie : les informations de la nuit",
+      "link": "https://www.courrierinternational.com/article/pendant-que-vous-dormiez-venezuela-zelensky-imran-khan-et-australie-les-informations-de-la-nuit_238721",
+      "published": "2025-12-21T03:54:29+00:00",
+      "media": {
+        "url": "https://focus.courrierinternational.com/2025/12/21/0/0/2200/1466/644/0/60/0/e5d8d43_ftp-1-ue98ohvgse6t-2025-12-21t004257z-1544712258-rc2gkiajkv0i-rtrmadp-3-usa-venezuela-military-vessel.JPG",
+        "width": 644,
+        "height": 322,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Department of Homeland Security / via REUTERS"
+      },
+      "image": "https://focus.courrierinternational.com/2025/12/21/0/0/2200/1466/644/0/60/0/e5d8d43_ftp-1-ue98ohvgse6t-2025-12-21t004257z-1544712258-rc2gkiajkv0i-rtrmadp-3-usa-venezuela-military-vessel.JPG",
+      "thumb": "https://focus.courrierinternational.com/2025/12/21/0/0/2200/1466/644/0/60/0/e5d8d43_ftp-1-ue98ohvgse6t-2025-12-21t004257z-1544712258-rc2gkiajkv0i-rtrmadp-3-usa-venezuela-military-vessel.JPG",
+      "publishedTime": 1766289269000,
+      "archived_at": "2025-12-21T08:22:38.000090+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Russia Hits Sunflower Oil Storage in Relentless Odesa Strikes",
+      "link": "https://www.themoscowtimes.com/2025/12/21/russia-hits-sunflower-oil-storage-in-relentless-odesa-strikes-a91498",
+      "published": "2025-12-21T03:42:06+00:00",
+      "media": null,
+      "summary": "Russia struck, Ukraine's largest vegetable oil terminal in the Pivdennyi port, Allseeds Black Sea, killing one and wounding two.",
+      "publishedTime": 1766288526000,
+      "archived_at": "2025-12-21T08:22:38.000131+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "Guerre en Ukraine : Poutine « prêt à engager le dialogue avec Macron »",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192598-20251221-guerre-ukraine-poutine-pret-engager-dialogue-macron?at_medium=display&at_campaign=149",
+      "published": "2025-12-21T03:08:20+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/3KIw_LWpQR6wf-W8ADUaJik/1200x768_may-22-2025-moscow-moscow-oblast-russia-russian-president-vladimir-putin-speaks-by-phone-with-nikolai-volobuyev-mayor-of-the-belovsky-district-of-kursk-region-from-the-kremlin-may-22-2025-in-moscow-russia-volobuyev-was-wounded-in-a-ukrainian-drone-attack-on-his-car-and-is-recovering-in-a-hospital-credit-image-alexander-kazakov-kremlin-pool-planet-pix-via-zuma-press-wire-sipa60015540-000002-zeus-2505222132",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/3KIw_LWpQR6wf-W8ADUaJik/1200x768_may-22-2025-moscow-moscow-oblast-russia-russian-president-vladimir-putin-speaks-by-phone-with-nikolai-volobuyev-mayor-of-the-belovsky-district-of-kursk-region-from-the-kremlin-may-22-2025-in-moscow-russia-volobuyev-was-wounded-in-a-ukrainian-drone-attack-on-his-car-and-is-recovering-in-a-hospital-credit-image-alexander-kazakov-kremlin-pool-planet-pix-via-zuma-press-wire-sipa60015540-000002-zeus-2505222132",
+      "thumb": "https://img.20mn.fr/3KIw_LWpQR6wf-W8ADUaJik/1200x768_may-22-2025-moscow-moscow-oblast-russia-russian-president-vladimir-putin-speaks-by-phone-with-nikolai-volobuyev-mayor-of-the-belovsky-district-of-kursk-region-from-the-kremlin-may-22-2025-in-moscow-russia-volobuyev-was-wounded-in-a-ukrainian-drone-attack-on-his-car-and-is-recovering-in-a-hospital-credit-image-alexander-kazakov-kremlin-pool-planet-pix-via-zuma-press-wire-sipa60015540-000002-zeus-2505222132",
+      "author": "20 Minutes avec AFP",
+      "summary": "Alors que le maître du Kremlin parle avec Trump d’une issue à la guerre en Ukraine, Poutine se dit prêt à en faire de même avec Macron",
+      "publishedTime": 1766286500000,
+      "archived_at": "2025-12-21T08:22:38.000173+00:00"
+    },
+    {
+      "source": "Courrier International",
+      "title": "Bienvenue au ministère de la Culture russe : plongée dans les coulisses d’une machine à propagande",
+      "link": "https://www.courrierinternational.com/long-format/enquete-bienvenue-au-ministere-de-la-culture-russe-plongee-dans-les-coulisses-d-une-machine-a-propagande_235192",
+      "published": "2025-12-21T03:00:23+00:00",
+      "media": {
+        "url": "https://focus.courrierinternational.com/2025/12/19/0/0/2400/1412/644/0/60/0/5279a95_upload-1-e8zvexjoesqo-tiouninecolor-w.jpg",
+        "width": 644,
+        "height": 322,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Dessin de Tiounine paru dans Kommersant, Moscou"
+      },
+      "image": "https://focus.courrierinternational.com/2025/12/19/0/0/2400/1412/644/0/60/0/5279a95_upload-1-e8zvexjoesqo-tiouninecolor-w.jpg",
+      "thumb": "https://focus.courrierinternational.com/2025/12/19/0/0/2400/1412/644/0/60/0/5279a95_upload-1-e8zvexjoesqo-tiouninecolor-w.jpg",
+      "summary": "Pendant plusieurs mois, le journaliste du média indépendant “Most” a eu un accès rare et prolongé aux coulisses du ministère de la Culture russe. Publié sous pseudonyme pour des raisons de sécurité, son récit dévoile le quotidien idéologique, bureaucratique et souvent absurde d’une institution devenue un pilier du patriotisme d’État.",
+      "publishedTime": 1766286023000,
+      "archived_at": "2025-12-21T08:22:38.000213+00:00"
+    },
+    {
+      "source": "RFI (Monde)",
+      "title": "Égypte: fin de la conférence ministérielle entre la Russie et les pays africains",
+      "link": "https://www.rfi.fr/fr/afrique/20251221-%C3%A9gypte-fin-de-la-conf%C3%A9rence-minist%C3%A9rielle-entre-la-russie-et-les-pays-africains",
+      "published": "2025-12-21T01:13:21+00:00",
+      "media": {
+        "url": "https://s.rfi.fr/media/display/dbe028fc-de11-11f0-a5fc-005056a90284/w:1024/p:16x9/AP25354588029716.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.rfi.fr/media/display/dbe028fc-de11-11f0-a5fc-005056a90284/w:1024/p:16x9/AP25354588029716.jpg",
+      "thumb": "https://s.rfi.fr/media/display/dbe028fc-de11-11f0-a5fc-005056a90284/w:1024/p:16x9/AP25354588029716.jpg",
+      "author": "RFI",
+      "summary": "Une soixantaine de délégations africaines ont participé, samedi 20 décembre, à une conférence organisée en Égypte par la Russie. L’objectif affiché par Moscou était de réfléchir aux moyens de renforcer ses relations économiques et commerciales avec le continent africain, malgré les tentatives de ses adversaires, soutiens de l’Ukraine, de l’isoler diplomatiquement. Les échanges n’ont toutefois débouché sur aucune annonce concrète.",
+      "publishedTime": 1766279601000,
+      "archived_at": "2025-12-21T08:22:38.000254+00:00"
+    },
+    {
+      "source": "HuffPost France",
+      "title": "Pour Zelensky, les États-Unis doivent faire davantage pression sur Poutine",
+      "link": "https://www.huffingtonpost.fr/international/article/pour-zelensky-les-etats-unis-doivent-faire-davantage-pression-sur-poutine_258458.html",
+      "published": "2025-12-20T19:11:19+00:00",
+      "media": {
+        "url": "https://focus.huffingtonpost.fr/2025/12/20/0/80/864/486/0/0/60/0/1b71f20_upload-1-nyvs48xcvtuc-afp-20251220-aa-20122025-2570072-v1-midres-ukrainianpresidentzelenskyyymeetspor.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "STRINGER / Anadolu via AFP"
+      },
+      "image": "https://focus.huffingtonpost.fr/2025/12/20/0/80/864/486/0/0/60/0/1b71f20_upload-1-nyvs48xcvtuc-afp-20251220-aa-20122025-2570072-v1-midres-ukrainianpresidentzelenskyyymeetspor.jpg",
+      "thumb": "https://focus.huffingtonpost.fr/2025/12/20/0/80/864/486/0/0/60/0/1b71f20_upload-1-nyvs48xcvtuc-afp-20251220-aa-20122025-2570072-v1-midres-ukrainianpresidentzelenskyyymeetspor.jpg",
+      "summary": "Alors que les émissaires russes se rendent à Miami pour participer aux pourparlers de paix, le président ukrainien a appelé les États-Unis à peser dans les discussions.",
+      "publishedTime": 1766257879000,
+      "archived_at": "2025-12-21T08:22:38.000298+00:00"
+    },
+    {
+      "source": "France Inter (info)",
+      "title": "La Radio de Vanessa Wagner",
+      "link": "https://www.radiofrance.fr/franceinter/podcasts/la-radio-de/la-radio-de-du-samedi-20-decembre-2025-3280101",
+      "published": "2025-12-20T19:04:50+00:00",
+      "media": {
+        "url": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/b6c425b3-e374-4c56-9522-8af703e42725/sc_vannessaxpeopleworld574820.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/b6c425b3-e374-4c56-9522-8af703e42725/sc_vannessaxpeopleworld574820.jpg",
+      "thumb": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/b6c425b3-e374-4c56-9522-8af703e42725/sc_vannessaxpeopleworld574820.jpg",
+      "summary": "Vanessa Wagner, pianiste  éclectique, malgré formation classique elle aime explorer de nouveaux territoires , œuvres minimalistes, ambiantes et électroniques. Elle nous propose sa playlist   étonnante pour sa première Radio de ce soir sur France Inter.",
+      "publishedTime": 1766257490000,
+      "archived_at": "2025-12-21T08:22:38.000339+00:00"
+    },
+    {
+      "source": "Le Monde (en continu)",
+      "title": "Guerre en Ukraine : Volodymyr Zelensky appelle Washington à mettre la pression sur la Russie. Retrouvez les informations du 14 au 20 décembre.",
+      "link": "https://www.lemonde.fr/international/live/2025/12/20/en-direct-guerre-en-ukraine-washington-a-propose-une-rencontre-entre-les-etats-unis-l-ukraine-et-la-russie-a-miami-dit-volodymyr-zelensky_6657241_3210.html",
+      "published": "2025-12-20T18:45:46+00:00",
+      "media": {
+        "url": "https://img.lemde.fr/2025/12/20/475/0/2849/1424/644/322/60/0/c67319f_ftp-1-xxooj7isjn0e-5723216-01-06.jpg",
+        "width": 644,
+        "height": 322,
+        "type": null,
+        "description": null,
+        "credit": "TETIANA DZHAFAROVA / AFP"
+      },
+      "image": "https://img.lemde.fr/2025/12/20/475/0/2849/1424/644/322/60/0/c67319f_ftp-1-xxooj7isjn0e-5723216-01-06.jpg",
+      "thumb": "https://img.lemde.fr/2025/12/20/475/0/2849/1424/644/322/60/0/c67319f_ftp-1-xxooj7isjn0e-5723216-01-06.jpg",
+      "summary": "« Les Etats-Unis doivent dire clairement : s’il n’y a pas de voie diplomatique, alors il y aura une pression totale », a lancé, samedi, le président ukrainien au moment où des négociateurs se retrouvent à Miami pour de nouvelles discussions en vue de mettre fin à la guerre en Ukraine.",
+      "publishedTime": 1766256346000,
+      "archived_at": "2025-12-21T08:22:38.000379+00:00"
+    },
+    {
       "source": "Le Figaro (actualités)",
       "title": "DIRECT - Rencontre entre Américains, Ukrainiens et Russes à Miami ? Volodymyr Zelensky doute qu’elle donnerait des résultats «nouveaux»",
       "link": "https://www.lefigaro.fr/international/en-direct-guerre-en-ukraine-les-negociations-continuent-a-miami-cette-fois-entre-americains-et-russes-20251220",
@@ -10038,6 +10545,28 @@
     }
   ],
   "videos": [
+    {
+      "channel": "Fox News",
+      "title": "Elise Stefanik DROPS OUT of NY gubernatorial race, won't seek re-election #shorts",
+      "link": "https://www.youtube.com/watch?v=UXud6BtM0p0",
+      "published": "2025-12-21T00:30:36Z",
+      "publishedTime": 1766277036000,
+      "thumbnail": "https://i.ytimg.com/vi/UXud6BtM0p0/hqdefault.jpg",
+      "summary": "Rep. Elise Stefanik, R-N.Y., announced Friday that she is ending her bid for governor of New York and she won't seek re-eleciton to the House of Representatives. #foxnews #news #us #fox\n\nSubscribe to Fox News: https://bit.ly/2vBUvAS\nWatch more Fox News Video: http://video.foxnews.com\nWatch Fox News ",
+      "type": "youtube",
+      "archived_at": "2025-12-21T08:22:57.174658+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "CRIMEA IN FLAMES: UKRAINIAN DRONES WIPE OUT PAIR OF SU-27S BEFORE TAKEOFF || 2025",
+      "link": "https://www.youtube.com/watch?v=_-M2_3FkOVo",
+      "published": "2025-12-20T23:00:55Z",
+      "publishedTime": 1766271655000,
+      "thumbnail": "https://i.ytimg.com/vi/_-M2_3FkOVo/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2025-12-21T08:23:02.674332+00:00"
+    },
     {
       "channel": "France 24",
       "title": "À Odessa, ciblée des frappes russes, les générateurs devenus indispensables • FRANCE 24",
