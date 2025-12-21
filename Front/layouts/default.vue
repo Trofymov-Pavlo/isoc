@@ -1,9 +1,5 @@
 <template>
-  <div class="site-container">
-    <HeaderMainHeader />
-  </div>
-
-  <HeaderSubHeader />
+  <HeaderNewHeader />
 
   <div class="site-container">
     <slot />
@@ -14,8 +10,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import HeaderMainHeader from '~/components/header/mainHeader.vue';
-import HeaderSubHeader from '~/components/header/SubHeader.vue';
+import HeaderNewHeader from '~/components/header/NewHeader.vue';
 import FooterMain from '~/components/footer/FooterMain.vue';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 import { useAuthState } from '~/composables/useAuthState';
