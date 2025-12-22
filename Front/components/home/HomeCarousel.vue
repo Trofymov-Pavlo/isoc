@@ -180,6 +180,13 @@ function handleImageError(event: Event) {
   img.style.display = 'none'
 }
 
+function validateImageQuality(src?: string): boolean {
+  // Filter out very small or invalid images
+  if (!src) return false
+  // Accept all valid URLs (quality check can be enhanced later with image dimensions)
+  return true
+}
+
 function resetAutoplay() {
   if (autoplayInterval) {
     clearInterval(autoplayInterval)
