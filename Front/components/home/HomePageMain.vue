@@ -34,37 +34,11 @@
         </div>
       </div>
     </section>
+  <!-- Carousel/Slideshow Hero -->
+  <HomeCarousel />
 
     <!-- Latest preview (24h) -->
     <section class="latest">
-      <div class="section-head">
-        <h2>Dernières 24h</h2>
-        <NuxtLink to="/en-direct" class="section-link">Voir tout →</NuxtLink>
-      </div>
-      <div class="items-grid">
-        <a v-for="item in latestPreview" :key="item.link" :href="item.link" target="_blank" class="item-card">
-          <div class="item-image-container">
-            <img v-if="item.image" :src="item.image" :alt="item.title" class="item-image" />
-            <div v-else class="item-image-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-            </div>
-            <span v-if="item.type === 'article'" class="media-badge article-badge">Article</span>
-            <span v-else class="media-badge video-badge">Vidéo</span>
-          </div>
-          <div class="item-content">
-            <h3 class="item-title">{{ item.title }}</h3>
-            <p v-if="item.summary" class="item-summary">{{ truncate(item.summary, 120) }}</p>
-            <div class="item-meta">
-              <span v-if="item.source" class="meta-item source">{{ item.source }}</span>
-              <span class="meta-item date">{{ formatExactDate(item) }}</span>
-            </div>
-          </div>
-        </a>
-      </div>
     </section>
 
     <!-- Explore tiles -->
@@ -107,6 +81,7 @@
 import { ref, computed } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useVideos } from '@/composables/useVideos'
+import HomeCarousel from './HomeCarousel.vue'
 
 const type = ref<'all'|'articles'|'videos'>('all')
 const date = ref<'today'|'week'|'month'|'3months'|'6months'|'year'|'all'>('today')
@@ -191,6 +166,7 @@ loadVideos()
 .hero {
   background: linear-gradient(180deg, #f7f8fa, #ffffff);
   border-bottom: 1px solid #e9ecef;
+  display: none;
 }
 
 .hero-inner {
@@ -225,26 +201,6 @@ loadVideos()
 .quick-links button:hover { background: #f8fafc; }
 
 .latest { padding: 32px 24px; max-width: 1200px; margin: 0 auto; }
-.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-.section-head h2 { margin: 0; font-size: 20px; color: #111827; }
-.section-link { font-size: 12px; color: #7b5ce0; text-decoration: none; }
-
-.items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.item-card { display: flex; flex-direction: column; background: white; border: 1px solid #e9ecef; border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.2s ease; }
-.item-card:hover { border-color: #7b5ce0; box-shadow: 0 8px 24px rgba(123,92,224,0.12); transform: translateY(-2px); }
-.item-image-container { position: relative; width: 100%; height: 180px; background: #f8f9fa; overflow: hidden; }
-.item-image { width: 100%; height: 100%; object-fit: cover; }
-.item-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #ced4da; }
-.item-image-placeholder svg { width: 60px; height: 60px; }
-.media-badge { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 600; padding: 6px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.3px; backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.article-badge { background: rgba(231,245,255,0.95); color: #0066cc; }
-.video-badge { background: rgba(255,243,191,0.95); color: #997404; }
-.item-content { padding: 14px; display: grid; gap: 10px; }
-.item-title { margin: 0; font-size: 15px; font-weight: 600; color: #212529; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.item-summary { margin: 0; font-size: 13px; color: #6c757d; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.item-meta { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid #e9ecef; }
-.meta-item { font-size: 12px; color: #adb5bd; }
-.meta-item.source { color: #7b5ce0; font-weight: 500; }
 
 .tiles { padding: 24px; max-width: 1200px; margin: 0 auto; }
 .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
