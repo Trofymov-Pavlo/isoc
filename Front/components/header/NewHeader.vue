@@ -1,36 +1,21 @@
 <template>
   <header class="header">
-    <!-- Top bar with info and controls -->
-    <div class="header-top-bar">
-      <div class="container">
-        <div class="top-left">
-          <span class="pulse-indicator"></span>
-          <span class="tagline">Média indépendant | Conflit Ukraine-Russie</span>
-        </div>
-        <div class="top-right">
-          <a href="/rss.xml" class="top-link" title="Flux RSS">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path>
-              <circle cx="5" cy="19" r="1"></circle>
-            </svg>
-          </a>
-          <NuxtLink :to="accountLink" class="account-btn">
-            {{ accountLabel }}
-          </NuxtLink>
-        </div>
-      </div>
+    <!-- Tagline with pulse indicator -->
+    <div class="tagline-bar">
+      <span class="pulse-indicator"></span>
+      <span class="tagline">Média indépendant | Conflit Ukraine-Russie</span>
     </div>
 
     <!-- Main navigation bar -->
     <nav class="header-nav">
       <div class="container">
         <div class="nav-content">
-          <!-- Logo -->
-          <div class="logo-wrapper" @click="goIndex">
-            <img :src="logo" alt="ISOC AXIOM" class="logo" />
+          <!-- Logo on the left -->
+          <div class="logo-block" @click="goIndex">
+            <img :src="logo" alt="ISOC AXIOM" class="logo-img" />
           </div>
 
-          <!-- Navigation links -->
+          <!-- Navigation links in center -->
           <div class="nav-links">
             <NuxtLink to="/" exact-active-class="active">Accueil</NuxtLink>
             <NuxtLink to="/en-direct" exact-active-class="active">
@@ -42,27 +27,43 @@
             <NuxtLink to="/contact" exact-active-class="active">Contact</NuxtLink>
           </div>
 
-          <!-- Search -->
-          <div class="search-box">
-            <button class="search-toggle" @click="toggleSearch" title="Rechercher">
+          <!-- Right side: Search, RSS, Account -->
+          <div class="nav-right">
+            <!-- Search -->
+            <div class="search-box">
+              <button class="search-toggle" @click="toggleSearch" title="Rechercher">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
+              </button>
+              <Transition name="search-panel">
+                <div v-if="isSearchOpen" class="search-dropdown">
+                  <input
+                    ref="searchInput"
+                    v-model="searchTerm"
+                    type="text"
+                    placeholder="Rechercher articles, vidéos..."
+                    class="search-input"
+                    @keydown.esc="closeSearch"
+                    @keyup.enter="performSearch"
+                  />
+                </div>
+              </Transition>
+            </div>
+
+            <!-- RSS Link -->
+            <a href="/rss.xml" class="icon-link" title="Flux RSS">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
+                <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path>
+                <circle cx="5" cy="19" r="1"></circle>
               </svg>
-            </button>
-            <Transition name="search-panel">
-              <div v-if="isSearchOpen" class="search-dropdown">
-                <input
-                  ref="searchInput"
-                  v-model="searchTerm"
-                  type="text"
-                  placeholder="Rechercher articles, vidéos..."
-                  class="search-input"
-                  @keydown.esc="closeSearch"
-                  @keyup.enter="performSearch"
-                />
-              </div>
-            </Transition>
+            </a>
+
+            <!-- Account Link -->
+            <NuxtLink :to="accountLink" class="account-btn">
+              {{ accountLabel }}
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -72,12 +73,10 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import { useRouter } from 'vue-router';
 import logoIsoc from '@/assets/logoIsoc.png';
 import { useAuthState } from '~/composables/useAuthState';
 
 const logo = logoIsoc;
-const router = useRouter();
 const { isAuthenticated } = useAuthState();
 const isSearchOpen = ref(false);
 const searchTerm = ref('');
@@ -92,7 +91,7 @@ const accountLink = computed(() =>
 );
 
 function goIndex() {
-  router.push('/');
+  navigateTo('/');
 }
 
 function toggleSearch() {
@@ -108,7 +107,7 @@ function closeSearch() {
 
 function performSearch() {
   if (searchTerm.value.trim()) {
-    router.push(`/articles?q=${encodeURIComponent(searchTerm.value)}`);
+    navigateTo(`/explorer?q=${encodeURIComponent(searchTerm.value)}`);
     closeSearch();
   }
 }
@@ -124,31 +123,19 @@ function performSearch() {
   top: 0;
   z-index: 1000;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Top bar */
-.header-top-bar {
-  background: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
-  padding: 10px 0;
+/* Tagline bar */
+.tagline-bar {
+  background: #f1f3f5;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 40px;
   font-size: 12px;
-}
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.top-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #495057;
+  color: #343a40;
 }
 
 .pulse-indicator {
@@ -172,61 +159,23 @@ function performSearch() {
 }
 
 .tagline {
-  color: #495057;
-  font-weight: 500;
+  color: #2d2f33;
+  font-weight: 600;
   letter-spacing: 0.3px;
-}
-
-.top-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.top-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  color: #6c757d;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.top-link:hover {
-  color: #212529;
-}
-
-.top-link svg {
-  width: 100%;
-  height: 100%;
-}
-
-.account-btn {
-  padding: 6px 16px;
-  background: #ffffff;
-  border: 1.5px solid #dee2e6;
-  border-radius: 6px;
-  color: #212529;
-  text-decoration: none;
   font-size: 12px;
-  font-weight: 500;
-  transition: all 0.25s ease;
-  cursor: pointer;
 }
 
-.account-btn:hover {
-  border-color: #7b5ce0;
-  background: #f8f9ff;
-  color: #7b5ce0;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 /* Main navigation */
 .header-nav {
   padding: 12px 0;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #e6e8ec;
+  background: #ffffff;
 }
 
 .nav-content {
@@ -239,7 +188,8 @@ function performSearch() {
   justify-content: flex-start;
 }
 
-.logo-wrapper {
+/* Logo block (left) */
+.logo-block {
   flex-shrink: 0;
   cursor: pointer;
   display: flex;
@@ -247,15 +197,16 @@ function performSearch() {
   transition: opacity 0.2s ease;
 }
 
-.logo-wrapper:hover {
+.logo-block:hover {
   opacity: 0.8;
 }
 
-.logo {
+.logo-img {
   height: 40px;
   width: auto;
 }
 
+/* Navigation links (center) */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -264,7 +215,7 @@ function performSearch() {
 
 .nav-links a {
   position: relative;
-  color: #495057;
+  color: #3b4048;
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
@@ -304,16 +255,17 @@ function performSearch() {
   flex-shrink: 0;
 }
 
-@keyframes blink {
-  0%, 49%, 100% { opacity: 1; }
-  50%, 99% { opacity: 0.4; }
+/* Right section: Search, RSS, Account */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
 }
 
 /* Search box */
 .search-box {
-  flex-shrink: 0;
   position: relative;
-  margin-left: auto;
 }
 
 .search-toggle {
@@ -376,6 +328,50 @@ function performSearch() {
   color: #adb5bd;
 }
 
+/* Icon link (RSS) */
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #5c606a;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-link:hover {
+  color: #111827;
+}
+
+.icon-link svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Account button */
+.account-btn {
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.account-btn:hover {
+  background: #f8fafc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 /* Transitions */
 .search-panel-enter-active,
 .search-panel-leave-active {
@@ -390,12 +386,12 @@ function performSearch() {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .container {
+  .tagline-bar,
+  .nav-content {
     padding: 0 24px;
   }
 
   .nav-content {
-    padding: 0 24px;
     gap: 20px;
   }
 
@@ -414,34 +410,29 @@ function performSearch() {
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-
+  .tagline-bar,
   .nav-content {
     padding: 0 16px;
-    gap: 12px;
-  }
-
-  .top-left {
-    gap: 8px;
   }
 
   .tagline {
     font-size: 11px;
   }
 
-  .logo {
+  .logo-img {
     height: 36px;
   }
 
   .nav-links {
     gap: 16px;
-    flex-wrap: wrap;
   }
 
   .nav-links a {
     font-size: 11px;
+  }
+
+  .nav-right {
+    gap: 12px;
   }
 
   .search-dropdown {
@@ -451,38 +442,40 @@ function performSearch() {
 }
 
 @media (max-width: 480px) {
-  .header-top-bar {
-    padding: 8px 0;
+  .tagline-bar {
+    padding: 8px 12px;
     font-size: 11px;
+    gap: 8px;
   }
 
   .header-nav {
     padding: 10px 0;
   }
 
-  .container {
-    padding: 0 12px;
-  }
-
+  .tagline-bar,
   .nav-content {
     padding: 0 12px;
-    gap: 8px;
-  }
-
-  .top-left {
-    min-width: 0;
   }
 
   .tagline {
     display: none;
   }
 
-  .logo {
+  .logo-img {
     height: 32px;
   }
 
   .nav-links {
-    display: none;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  .nav-right {
+    gap: 8px;
   }
 
   .search-dropdown {
