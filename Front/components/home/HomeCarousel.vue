@@ -61,41 +61,6 @@
           :aria-label="`Aller à l'image ${idx + 1}`"
         ></button>
       </div>
-
-      <div class="explore-overlay">
-        <div class="explore-search">
-          <div class="search-input-group">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input
-              v-model="exploreSearch"
-              type="text"
-              placeholder="Rechercher articles, vidéos..."
-              class="search-input"
-              @keyup.enter="performSearch"
-            />
-          </div>
-          <div class="explore-filters">
-            <select v-model="exploreType" class="filter-select">
-              <option value="all">Tous les médias</option>
-              <option value="articles">Articles</option>
-              <option value="videos">Vidéos</option>
-            </select>
-            <select v-model="exploreDate" class="filter-select">
-              <option value="today">Aujourd'hui</option>
-              <option value="week">Cette semaine</option>
-              <option value="month">Ce mois-ci</option>
-              <option value="3months">3 derniers mois</option>
-              <option value="6months">6 derniers mois</option>
-              <option value="year">Cette année</option>
-              <option value="all">Toutes les dates</option>
-            </select>
-            <button class="explore-btn" @click="goExplore">Explorer</button>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -118,9 +83,6 @@ type Slide = {
 }
 
 const activeIndex = ref(0)
-const exploreSearch = ref('')
-const exploreType = ref<'all' | 'articles' | 'videos'>('all')
-const exploreDate = ref<'today' | 'week' | 'month' | '3months' | '6months' | 'year' | 'all'>('today')
 
 let autoplayInterval: ReturnType<typeof setInterval> | null = null
 
@@ -171,20 +133,6 @@ function startAutoplay() {
   autoplayInterval = setInterval(() => {
     activeIndex.value = (activeIndex.value + 1) % slides.value.length
   }, 7000)
-}
-
-function performSearch() {
-  goExplore()
-}
-
-function goExplore() {
-  const params = new URLSearchParams()
-  params.set('type', exploreType.value)
-  params.set('date', exploreDate.value)
-  if (exploreSearch.value.trim()) {
-    params.set('q', exploreSearch.value.trim())
-  }
-  navigateTo(`/explorer?${params.toString()}`)
 }
 
 function handleImageError(idx: number) {
@@ -297,6 +245,16 @@ async function isUsableImage(url?: string): Promise<boolean> {
 
 async function refreshSlides() {
   const candidates = baseSlides.value
+  
+  // Afficher immédiatement les premières images sans attendre la validation
+  const immediate = candidates.filter(s => imageUrl(s)).slice(0, 5)
+  if (immediate.length > 0) {
+    slides.value = immediate
+    activeIndex.value = 0
+    startAutoplay()
+  }
+  
+  // Puis filtrer en arrière-plan et remplacer
   const checked: Slide[] = []
   const fallback: Slide[] = []
   
@@ -304,7 +262,6 @@ async function refreshSlides() {
     const url = imageUrl(s)
     if (!url) continue
     
-    // Ajouter au fallback pour avoir au moins quelques images
     if (fallback.length < 10) {
       fallback.push(s)
     }
@@ -315,10 +272,21 @@ async function refreshSlides() {
     if (checked.length >= 8) break
   }
   
-  // Si aucune image ne passe les filtres, utiliser le fallback
-  slides.value = checked.length > 0 ? checked : fallback.slice(0, 5)
-  activeIndex.value = 0
-  startAutoplay()
+  // Remplacer par les images validées seulement si elles sont différentes
+  const validatedSlides = checked.length > 0 ? checked : fallback.slice(0, 5)
+  const currentLinks = slides.value.map(s => s.link).join(',')
+  const validatedLinks = validatedSlides.map(s => s.link).join(',')
+  
+  // Ne remplacer que si la liste est vraiment différente
+  if (currentLinks !== validatedLinks) {
+    // Garder l'index actuel pour éviter le saut visuel
+    const currentIndex = activeIndex.value
+    slides.value = validatedSlides
+    // Ajuster l'index si nécessaire
+    if (currentIndex >= slides.value.length) {
+      activeIndex.value = 0
+    }
+  }
 }
 
 onMounted(() => {
@@ -522,112 +490,11 @@ watch(baseSlides, () => {
 
 .dot.active { background: #ffffff; transform: scale(1.15); }
 
-.explore-overlay {
-  position: absolute;
-  top: 85px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(280px, 45vw);
-  padding: 6px 8px;
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  z-index: 25;
-}
-
-.explore-search {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: stretch;
-}
-
-.search-input-group {
-  position: relative;
-  width: 100%;
-}
-
-.search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  color: #cbd5e1;
-  pointer-events: none;
-}
-
-.search-input {
-  width: 100%;
-  padding: 6px 8px 6px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  font-size: 11px;
-  height: 30px;
-  line-height: 1;
-  box-sizing: border-box;
-}
-
-.search-input::placeholder { color: #cbd5e1; }
-
-.explore-filters {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 6px;
-  align-items: center;
-}
-
-.filter-select {
-  padding: 6px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.12);
-  color: #ffffff;
-  font-size: 11px;
-  height: 30px;
-  line-height: 1;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.filter-select option {
-  background: #ffffff;
-  color: #000000;
-}
-
-.filter-select option:hover {
-  background: #f0f0f0;
-}
-
-.explore-btn {
-  padding: 6px 8px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(120deg, #6d5dd3, #8c7cff);
-  color: #ffffff;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(109, 93, 211, 0.4);
-  font-size: 11px;
-  white-space: nowrap;
-  height: 30px;
-  line-height: 1;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 @media (max-width: 900px) {
   .carousel { height: 80vh; }
   .carousel-content { top: 40px; gap: 6px; }
   .carousel-bottom { bottom: 90px; padding: 0 24px; }
   .image-title { font-size: 18px; }
-  .explore-overlay { top: 80px; left: 50%; transform: translateX(-50%); padding: 6px 8px; width: 90vw; }
-  .explore-filters { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 540px) {
@@ -637,7 +504,5 @@ watch(baseSlides, () => {
   .carousel-bottom { bottom: 70px; padding: 0 20px; }
   .image-title { font-size: 16px; }
   .image-source { font-size: 11px; }
-  .explore-overlay { top: 75px; left: 50%; transform: translateX(-50%); width: 92vw; }
-  .explore-btn { width: 100%; }
 }
 </style>
