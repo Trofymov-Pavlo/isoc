@@ -1,6 +1,666 @@
 {
   "articles": [
     {
+      "source": "7sur7 – Monde",
+      "title": "La Russie se prépare-t-elle à attaquer les pays baltes? “C’est absurde”",
+      "link": "https://www.7sur7.be/monde/la-russie-se-prepare-t-elle-a-attaquer-les-pays-baltes-cest-absurde~aaf5d466/",
+      "published": "2025-12-22T07:17:16+00:00",
+      "media": {
+        "url": "https://images.7sur7.be/NDdkMGViOTRmOTEyNTVkODc1NjkvZGlvLzI2Nzk4MDkyNC9maXQtd2lkdGgvNDAw/deputy-commander-kainuu-border-guard-district-lieutenant-colonel-tomi-tirkkonen-r-and-captain-jouko-kinnunen-head-of-border-guard-unit-kainuu-district-walk-along-the-newly-ercted-fence-at-the-border-with-russia-at-the-vartius-border-crossing-on-june-24-2025-in-kuhmo-finland-finland-on-june-24-unveiled-a-new-segment-of-a-200kms-fence-it-is-building-along-its-eastern-border-with-russia-aimed-at-preventing-moscow-from-conducting-what-helsinki-calls-instrumentalised-migration-photo-by-alessandro-rampazzo-afp-zaventem-belgium-may-05-portrait-of-roger-housen-in-and-out-of-studio-on-05-may-2025-in-zaventem-belgium-05-05-2025-gregory-van-gansen-photo-news",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.7sur7.be/NDdkMGViOTRmOTEyNTVkODc1NjkvZGlvLzI2Nzk4MDkyNC9maXQtd2lkdGgvNDAw/deputy-commander-kainuu-border-guard-district-lieutenant-colonel-tomi-tirkkonen-r-and-captain-jouko-kinnunen-head-of-border-guard-unit-kainuu-district-walk-along-the-newly-ercted-fence-at-the-border-with-russia-at-the-vartius-border-crossing-on-june-24-2025-in-kuhmo-finland-finland-on-june-24-unveiled-a-new-segment-of-a-200kms-fence-it-is-building-along-its-eastern-border-with-russia-aimed-at-preventing-moscow-from-conducting-what-helsinki-calls-instrumentalised-migration-photo-by-alessandro-rampazzo-afp-zaventem-belgium-may-05-portrait-of-roger-housen-in-and-out-of-studio-on-05-may-2025-in-zaventem-belgium-05-05-2025-gregory-van-gansen-photo-news",
+      "thumb": "https://images.7sur7.be/NDdkMGViOTRmOTEyNTVkODc1NjkvZGlvLzI2Nzk4MDkyNC9maXQtd2lkdGgvNDAw/deputy-commander-kainuu-border-guard-district-lieutenant-colonel-tomi-tirkkonen-r-and-captain-jouko-kinnunen-head-of-border-guard-unit-kainuu-district-walk-along-the-newly-ercted-fence-at-the-border-with-russia-at-the-vartius-border-crossing-on-june-24-2025-in-kuhmo-finland-finland-on-june-24-unveiled-a-new-segment-of-a-200kms-fence-it-is-building-along-its-eastern-border-with-russia-aimed-at-preventing-moscow-from-conducting-what-helsinki-calls-instrumentalised-migration-photo-by-alessandro-rampazzo-afp-zaventem-belgium-may-05-portrait-of-roger-housen-in-and-out-of-studio-on-05-may-2025-in-zaventem-belgium-05-05-2025-gregory-van-gansen-photo-news",
+      "author": "Martin Ducrotois",
+      "summary": "Le spécialiste de la défense Roger Housen est très surpris par les propos du chef du renseignement militaire ukrainien Kyrylo Budanov. Selon ce dernier, le Kremlin aurait avancé de 2030 à 2027 ses plans d’attaque directe contre l’UE/OTAN. Housen qualifie ces propos d’“absurdes” sur De Ochtend.",
+      "publishedTime": 1766387836000,
+      "archived_at": "2025-12-22T08:24:54.391914+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Russia Attacked Odesa Region With Nearly 100 UAVs Overnight, Injuries, Infrastructure Damage Reported",
+      "link": "https://www.kyivpost.com/post/66714",
+      "published": "2025-12-22T07:16:34+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/22/b38a2f510290839dbe8cdeef1e58a05c.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/22/b38a2f510290839dbe8cdeef1e58a05c.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/22/b38a2f510290839dbe8cdeef1e58a05c.png?w=640&q=90&f=jpg",
+      "author": "Sergii Kostezh",
+      "summary": "According to the Air Force, most of the drones were suppressed. The main target of the enemy once again was Odesa region.",
+      "publishedTime": 1766387794000,
+      "archived_at": "2025-12-22T08:24:54.392099+00:00"
+    },
+    {
+      "source": "RTL (La Une)",
+      "title": "Russie: Un général de l'état-major russe tué dans une explosion à Moscou",
+      "link": "https://infos.rtl.lu/news/monde/un-general-de-letat-major-russe-tue-dans-une-explosion-a-moscou-2141930664",
+      "published": "2025-12-22T07:11:55+00:00",
+      "media": {
+        "url": "https://static-prod.rtl.lu/ff/0d/27ed67214b3292ab03c57d6fec6e/afp-20251222-88tr9kf-v1-highres-russiaukraineconflictblastmilitary.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static-prod.rtl.lu/ff/0d/27ed67214b3292ab03c57d6fec6e/afp-20251222-88tr9kf-v1-highres-russiaukraineconflictblastmilitary.jpg",
+      "thumb": "https://static-prod.rtl.lu/ff/0d/27ed67214b3292ab03c57d6fec6e/afp-20251222-88tr9kf-v1-highres-russiaukraineconflictblastmilitary.jpg",
+      "summary": "Un général de l'état-major russe a été tué lundi matin dans l'explosion d'une voiture dans le sud de Moscou, a annoncé le Comité d'enquête russe, en affirmant étudier une piste ukrainienne.",
+      "publishedTime": 1766387515000,
+      "archived_at": "2025-12-22T08:24:54.392190+00:00"
+    },
+    {
+      "source": "Franceinfo (fil)",
+      "title": "Un général de l'état-major russe tué dans une explosion à Moscou",
+      "link": "https://www.franceinfo.fr/monde/russie/un-general-de-l-etat-major-russe-tue-dans-une-explosion-a-moscou_7695553.html#xtor=RSS-3-[lestitres]",
+      "published": "2025-12-22T07:05:19+00:00",
+      "media": {
+        "url": "https://www.franceinfo.fr/pictures/bnx-6WqjbIvtVoYhWmUBi7dbi4A/0x830:4999x3639/432x243/filters:format(jpg)/2025/12/22/sipa-ap23004490-000001-6948f9d036698926197365.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.franceinfo.fr/pictures/bnx-6WqjbIvtVoYhWmUBi7dbi4A/0x830:4999x3639/432x243/filters:format(jpg)/2025/12/22/sipa-ap23004490-000001-6948f9d036698926197365.jpg",
+      "thumb": "https://www.franceinfo.fr/pictures/bnx-6WqjbIvtVoYhWmUBi7dbi4A/0x830:4999x3639/432x243/filters:format(jpg)/2025/12/22/sipa-ap23004490-000001-6948f9d036698926197365.jpg",
+      "summary": "Une enquête pour \"meurtre\" et \"trafic d'explosifs\" a été ouverte. L'une des pistes étudiées est celle \"liée\" aux \"services spéciaux ukrainiens\", a affirmé le Comité d'enquête russe.",
+      "publishedTime": 1766387119000,
+      "archived_at": "2025-12-22T08:24:54.392294+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Un général de l'état-major russe tué dans une explosion à Moscou",
+      "link": "https://www.lexpress.fr/monde/un-general-de-letat-major-russe-tue-dans-une-explosion-a-moscou-IYSAMM7LCFEXFKW5VPT3XQLTGY/",
+      "published": "2025-12-22T07:05:11+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/7IQBZEOBVVDCJD33HRTHWTTMZ4.jpg?auth=d32d857ae06ed596fe13562caba9e427462e92108b508c964b4ee2156a59c477&smart=true&width=2048&height=1323",
+        "width": 2048,
+        "height": 1323,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "afp.com/Natalia KOLESNIKOVA"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/7IQBZEOBVVDCJD33HRTHWTTMZ4.jpg?auth=d32d857ae06ed596fe13562caba9e427462e92108b508c964b4ee2156a59c477&smart=true&width=2048&height=1323",
+      "thumb": "https://www.lexpress.fr/resizer/v2/7IQBZEOBVVDCJD33HRTHWTTMZ4.jpg?auth=d32d857ae06ed596fe13562caba9e427462e92108b508c964b4ee2156a59c477&smart=true&width=2048&height=1323",
+      "publishedTime": 1766387111000,
+      "archived_at": "2025-12-22T08:24:54.392425+00:00"
+    },
+    {
+      "source": "Ouest-France (à la une)",
+      "title": "Un général de l’état-major russe tué dans l’explosion d’une voiture piégée à Moscou",
+      "link": "https://www.ouest-france.fr/europe/russie/un-general-de-letat-major-russe-tue-dans-lexplosion-dune-voiture-piegee-a-moscou-selon-un-comite-denquete-local-e5a654f0-df07-11f0-ae25-7dba037201f1?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "published": "2025-12-22T07:03:05+00:00",
+      "media": {
+        "url": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2FjMWM0YWUzMWU5NDYxOTY1MWJmNDNiMjU4ODczNWE?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=bc5cfa2a666284ab580fa988e71881bd2500ca22d7e4ded36650570925facf70",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2FjMWM0YWUzMWU5NDYxOTY1MWJmNDNiMjU4ODczNWE?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=bc5cfa2a666284ab580fa988e71881bd2500ca22d7e4ded36650570925facf70",
+      "thumb": "https://media.ouest-france.fr/v1/pictures/MjAyNTEyN2FjMWM0YWUzMWU5NDYxOTY1MWJmNDNiMjU4ODczNWE?width=320&height=240&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=bc5cfa2a666284ab580fa988e71881bd2500ca22d7e4ded36650570925facf70",
+      "summary": "Dans la matinée de ce lundi 22 décembre, le général-lieutenant Fanil Sarvarov est mort dans l’explosion d’une voiture, dans le sud de la capitale russe. Le Comité d’enquête russe affirme étudier une piste ukrainienne.",
+      "publishedTime": 1766386985000,
+      "archived_at": "2025-12-22T08:24:54.392560+00:00"
+    },
+    {
+      "source": "La Dépêche (monde)",
+      "title": "Guerre en Ukraine : un engin explosif avait été déposé sous une voiture… Un général russe tué en plein Moscou, la Russie accuse Kiev",
+      "link": "https://www.ladepeche.fr/2025/12/22/guerre-en-ukraine-un-engin-explosif-avait-ete-depose-sous-une-voiture-un-general-russe-tue-en-plein-moscou-la-russie-accuse-kiev-13125354.php",
+      "published": "2025-12-22T06:58:16+00:00",
+      "media": {
+        "url": "https://images.ladepeche.fr/api/v1/images/view/6948f710112dee293404f80c/standard/image.jpg?v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.ladepeche.fr/api/v1/images/view/6948f710112dee293404f80c/standard/image.jpg?v=1",
+      "thumb": "https://images.ladepeche.fr/api/v1/images/view/6948f710112dee293404f80c/standard/image.jpg?v=1",
+      "summary": "Un général russe a été tué dans l’explosion d’une voiture à Moscou. Le Comité d’enquête russe soupçonne les services spéciaux ukrainiens.",
+      "publishedTime": 1766386696000,
+      "archived_at": "2025-12-22T08:24:54.392679+00:00"
+    },
+    {
+      "source": "La Dépêche (monde)",
+      "title": "DIRECT. Guerre en Ukraine : un général de l’état-major russe tué dans une explosion ce matin à Moscou",
+      "link": "https://www.ladepeche.fr/2025/12/22/direct-guerre-en-ukraine-un-general-de-letat-major-russe-tue-dans-une-explosion-ce-matin-a-moscou-13125337.php",
+      "published": "2025-12-22T06:57:01+00:00",
+      "media": {
+        "url": "https://images.ladepeche.fr/api/v1/images/view/6948f1de38e2c3a8540caeb0/standard/image.jpg?v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.ladepeche.fr/api/v1/images/view/6948f1de38e2c3a8540caeb0/standard/image.jpg?v=1",
+      "thumb": "https://images.ladepeche.fr/api/v1/images/view/6948f1de38e2c3a8540caeb0/standard/image.jpg?v=1",
+      "summary": "Suivez toute l’actualité liée à la guerre en Ukraine de ce lundi 22 décembre 2025 sur ladepeche.fr.",
+      "publishedTime": 1766386621000,
+      "archived_at": "2025-12-22T08:24:54.392789+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "Russie : un général de l’état-major russe tué dans une explosion à Moscou",
+      "link": "https://www.liberation.fr/international/europe/russie-un-general-de-letat-major-russe-tue-dans-une-explosion-a-moscou-20251222_SNEIVDC7RNBEPD4SJMVFJOO6ZY/",
+      "published": "2025-12-22T06:55:35+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/PCWUAEN7UVFN7DHLVU7VW6VIHE.JPG?auth=acfaefceb9953526feb13251ab7af3b36a4f609d831e4e9ac198d6643e282c80&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Russian Investigation Committee"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/PCWUAEN7UVFN7DHLVU7VW6VIHE.JPG?auth=acfaefceb9953526feb13251ab7af3b36a4f609d831e4e9ac198d6643e282c80&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/PCWUAEN7UVFN7DHLVU7VW6VIHE.JPG?auth=acfaefceb9953526feb13251ab7af3b36a4f609d831e4e9ac198d6643e282c80&smart=true&width=1024&height=682",
+      "author": "LIBERATION,  AFP",
+      "summary": "La voiture du lieutenant-général Fanil Sarvarov a explosé ce lundi matin, a annoncé le Comité d’enquête russe, en affirmant étudier une piste ukrainienne. Cet attentat s’inscrit dans une longue série d’explosions visant des Russes favorables à la guerre contre l’Ukraine.",
+      "publishedTime": 1766386535000,
+      "archived_at": "2025-12-22T08:24:54.393030+00:00"
+    },
+    {
+      "source": "La Dépêche (monde)",
+      "title": "Guerre en Ukraine : la Russie déploie ses 8 brise-glaces nucléaires en Arctique pour ouvrir la voie aux navires transportant du pétrole",
+      "link": "https://www.ladepeche.fr/2025/12/22/guerre-en-ukraine-la-russie-deploie-ses-8-brise-glaces-nucleaires-en-arctique-pour-ouvrir-la-voie-aux-navires-transportant-du-petrole-13124645.php",
+      "published": "2025-12-22T06:53:36+00:00",
+      "media": {
+        "url": "https://images.ladepeche.fr/api/v1/images/view/694834c2481e3013ff0034be/standard/image.jpg?v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.ladepeche.fr/api/v1/images/view/694834c2481e3013ff0034be/standard/image.jpg?v=1",
+      "thumb": "https://images.ladepeche.fr/api/v1/images/view/694834c2481e3013ff0034be/standard/image.jpg?v=1",
+      "summary": "Ce territoire est une zone dans laquelle le président russe veut absolument investir pour permettre à son pays de continuer la guerre.",
+      "publishedTime": 1766386416000,
+      "archived_at": "2025-12-22T08:24:54.393154+00:00"
+    },
+    {
+      "source": "Sud Ouest (international)",
+      "title": "Guerre en Ukraine : un général de l’état-major russe tué dans un attentat à la voiture piégée à Moscou",
+      "link": "https://www.sudouest.fr/international/russie/guerre-en-ukraine-un-general-de-l-etat-major-russe-tue-dans-un-attentat-a-la-voiture-piegee-a-moscou-27189834.php",
+      "published": "2025-12-22T06:49:17+00:00",
+      "media": null,
+      "summary": "Un haut gradé de l’armée russe, le lieutenant-général Fanil Sarvarov, a été victime d’un attentat à Moscou, ravivant les tensions sur le conflit russo-ukrainien",
+      "publishedTime": 1766386157000,
+      "archived_at": "2025-12-22T08:24:54.393256+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "Russie: un général de l'état-major tué dans l’explosion d’une voiture à Moscou",
+      "link": "https://www.lefigaro.fr/international/russie-un-general-de-l-etat-major-tue-dans-l-explosion-d-une-voiture-a-moscou-20251222",
+      "published": "2025-12-22T06:44:09+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/3000x2006_crop/2025/12/22/eacabc6f36787bb71932f4017a8274d791952edc54b2e2716ed7e5036d831cad.jpg",
+        "width": 3000,
+        "height": 2006,
+        "type": null,
+        "description": null,
+        "credit": "Ramil Sitdikov / REUTERS"
+      },
+      "image": "https://i.f1g.fr/media/cms/3000x2006_crop/2025/12/22/eacabc6f36787bb71932f4017a8274d791952edc54b2e2716ed7e5036d831cad.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/3000x2006_crop/2025/12/22/eacabc6f36787bb71932f4017a8274d791952edc54b2e2716ed7e5036d831cad.jpg",
+      "summary": "Un général de l’état-major russe a été tué lundi matin dans l’explosion d’une voiture au sud de Moscou, selon le Comité d’enquête russe. Les autorités évoquent une possible implication des services spéciaux ukrainiens.",
+      "publishedTime": 1766385849000,
+      "archived_at": "2025-12-22T08:24:54.393353+00:00"
+    },
+    {
+      "source": "Le Télégramme (monde)",
+      "title": "Russie : un général de l’état-major russe tué dans une explosion à Moscou",
+      "link": "https://www.letelegramme.fr/monde/russie-un-general-de-letat-major-russe-tue-dans-une-explosion-a-moscou-6952573.php",
+      "published": "2025-12-22T06:26:00+00:00",
+      "media": {
+        "url": "https://media.letelegramme.fr/api/v1/files/6948f2f089fdfcbf5a02955e?alt=file&v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://media.letelegramme.fr/api/v1/files/6948f2f089fdfcbf5a02955e?alt=file&v=1",
+      "thumb": "https://media.letelegramme.fr/api/v1/files/6948f2f089fdfcbf5a02955e?alt=file&v=1",
+      "summary": "Une enquête pour « meurtre » du général-lieutenant, chef du département de la formation opérationnelle au sein de l’état-major, a été ouverte, annonce ce lundi matin le comité d’enquête russe.",
+      "publishedTime": 1766384760000,
+      "archived_at": "2025-12-22T08:24:54.393449+00:00"
+    },
+    {
+      "source": "Est Républicain",
+      "title": "Guerre en Ukraine. Un général de l'état-major russe tué dans l'explosion d'une voiture à Moscou",
+      "link": "https://www.estrepublicain.fr/defense-guerre-conflit/2025/12/22/un-general-de-l-etat-major-russe-tue-dans-l-explosion-d-une-voiture-a-moscou",
+      "published": "2025-12-22T06:21:00+00:00",
+      "media": null,
+      "summary": "Selon le Comité d'enquête russe, une des pistes étudiées est celle « liée » aux « services spéciaux ukrainiens », après la mort de  Fanil Sarvarov, chef du département de la formation opérationnelle au sein de l'état-major.",
+      "publishedTime": 1766384460000,
+      "archived_at": "2025-12-22T08:24:54.393557+00:00"
+    },
+    {
+      "source": "Le Dauphiné",
+      "title": "Guerre en Ukraine. Un général de l'état-major russe tué dans l'explosion d'une voiture à Moscou",
+      "link": "https://www.ledauphine.com/defense-guerre-conflit/2025/12/22/un-general-de-l-etat-major-russe-tue-dans-l-explosion-d-une-voiture-a-moscou",
+      "published": "2025-12-22T06:21:00+00:00",
+      "media": null,
+      "summary": "Selon le Comité d'enquête russe, une des pistes étudiées est celle « liée » aux « services spéciaux ukrainiens », après la mort de  Fanil Sarvarov, chef du département de la formation opérationnelle au sein de l'état-major.",
+      "publishedTime": 1766384460000,
+      "archived_at": "2025-12-22T08:24:54.393658+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine, jour 1398 : général russe tué à Moscou ; échanges « productifs » en Floride",
+      "link": "https://www.la-croix.com/international/ukraine-russie-jour-1398-point-conflit-ukrainien-poutine-aujourdhui-20251222",
+      "published": "2025-12-22T06:16:34+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/22/2291626-des-adolescents-ukrainiens-participent-a-un-entrai.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/22/2291626-des-adolescents-ukrainiens-participent-a-un-entrai.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/22/2291626-des-adolescents-ukrainiens-participent-a-un-entrai.jpg",
+      "author": "La Croix (avec AFP)",
+      "summary": "Le Comité d’enquête russe a affirmé, lundi 22 décembre, étudier une piste ukrainienne après qu’un général de l’état-major a été tué dans l’explosion d’une voiture à Moscou. Washington et Kiev ont salué des échanges « productifs » entre émissaires des deux pays réunis à Miami pour mettre fin à la guerre en Ukraine.",
+      "publishedTime": 1766384194000,
+      "archived_at": "2025-12-22T08:24:54.393764+00:00"
+    },
+    {
+      "source": "Sud Ouest (international)",
+      "title": "Négociations sur l’Ukraine : Washington et Kiev se félicitent d’échanges « productifs » en Floride",
+      "link": "https://www.sudouest.fr/international/europe/ukraine/negociations-sur-l-ukraine-washington-et-kiev-se-felicitent-d-echanges-productifs-en-floride-27189525.php",
+      "published": "2025-12-22T06:16:09+00:00",
+      "media": null,
+      "summary": "Les États-Unis et l’Ukraine affichent un optimisme prudent après des discussions en Floride, en présence de négociateurs européens, visant à trouver une issue au conflit ukrainien",
+      "publishedTime": 1766384169000,
+      "archived_at": "2025-12-22T08:24:54.393884+00:00"
+    },
+    {
+      "source": "7sur7 – Monde",
+      "title": "Un général de l’état-major russe tué dans l’explosion d’une voiture à Moscou",
+      "link": "https://www.7sur7.be/monde/un-general-de-letat-major-russe-tue-dans-lexplosion-dune-voiture-a-moscou~a9b5be7c/",
+      "published": "2025-12-22T06:15:43+00:00",
+      "media": {
+        "url": "https://images.7sur7.be/YmNiNDBkZjdkOWUxMTQ1Y2I4ZTEvZGlvLzI2Nzk1ODQyNC9maXQtd2lkdGgvNDAw/epaselect-epa12606910-a-russian-policeman-guards-during-a-birthday-celebration-of-the-former-soviet-leader-joseph-stalin-near-st-basil-s-cathedral-and-lenin-s-mausoleum-on-red-square-in-moscow-russia-21-december-2025-russian-communists-are-marking-the-146th-anniversary-of-joseph-stalin-s-birthday-epa-sergei-ilnitsky",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.7sur7.be/YmNiNDBkZjdkOWUxMTQ1Y2I4ZTEvZGlvLzI2Nzk1ODQyNC9maXQtd2lkdGgvNDAw/epaselect-epa12606910-a-russian-policeman-guards-during-a-birthday-celebration-of-the-former-soviet-leader-joseph-stalin-near-st-basil-s-cathedral-and-lenin-s-mausoleum-on-red-square-in-moscow-russia-21-december-2025-russian-communists-are-marking-the-146th-anniversary-of-joseph-stalin-s-birthday-epa-sergei-ilnitsky",
+      "thumb": "https://images.7sur7.be/YmNiNDBkZjdkOWUxMTQ1Y2I4ZTEvZGlvLzI2Nzk1ODQyNC9maXQtd2lkdGgvNDAw/epaselect-epa12606910-a-russian-policeman-guards-during-a-birthday-celebration-of-the-former-soviet-leader-joseph-stalin-near-st-basil-s-cathedral-and-lenin-s-mausoleum-on-red-square-in-moscow-russia-21-december-2025-russian-communists-are-marking-the-146th-anniversary-of-joseph-stalin-s-birthday-epa-sergei-ilnitsky",
+      "author": "M. DU",
+      "summary": "Un général de l’état-major russe a été tué lundi matin dans l’explosion d’une voiture dans le sud de Moscou, a annoncé le Comité d’enquête russe, en affirmant étudier une piste ukrainienne.",
+      "publishedTime": 1766384143000,
+      "archived_at": "2025-12-22T08:24:54.393988+00:00"
+    },
+    {
+      "source": "BFM TV (monde)",
+      "title": "Un général de l'état-major russe tué dans l'explosion d'une voiture à Moscou",
+      "link": "https://www.bfmtv.com/international/asie/russie/un-general-de-l-etat-major-russe-tue-dans-l-explosion-d-une-voiture-a-moscou_AD-202512220161.html",
+      "published": "2025-12-22T06:11:42+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/nhB8cUjpylkp8vsPV_3ZZVdrVxA=/0x178:2048x1330/800x0/images/Un-drapeau-de-la-Russie-a-Moscou-le-13-mars-2018-photo-d-illustration-1850277.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/nhB8cUjpylkp8vsPV_3ZZVdrVxA=/0x178:2048x1330/800x0/images/Un-drapeau-de-la-Russie-a-Moscou-le-13-mars-2018-photo-d-illustration-1850277.jpg",
+      "thumb": "https://images.bfmtv.com/nhB8cUjpylkp8vsPV_3ZZVdrVxA=/0x178:2048x1330/800x0/images/Un-drapeau-de-la-Russie-a-Moscou-le-13-mars-2018-photo-d-illustration-1850277.jpg",
+      "summary": "Une enquête pour \"meurtre\" du général-lieutenant Fanil Sarvarov, chef du département de la formation opérationnelle au sein de l'état-major, a été ouverte.<br /><br /><img src=\"https://images.bfmtv.com/nhB8cUjpylkp8vsPV_3ZZVdrVxA=/0x178:2048x1330/800x0/images/Un-drapeau-de-la-Russie-a-Moscou-le-13-mars-2018-photo-d-illustration-1850277.jpg\" />",
+      "publishedTime": 1766383902000,
+      "archived_at": "2025-12-22T08:24:54.394100+00:00"
+    },
+    {
+      "source": "Franceinfo (fil)",
+      "title": "Les réfugiés ukrainiens bénéficient de moins en moins d'aide sur le territoire français",
+      "link": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/les-refugies-ukrainiens-beneficient-de-moins-en-moins-d-aide-sur-le-territoire-francais_7695544.html#xtor=RSS-3-[lestitres]",
+      "published": "2025-12-22T06:08:18+00:00",
+      "media": {
+        "url": "https://www.franceinfo.fr/pictures/hgiHARkKKnJlvw32QwZtx712smc/0x363:6716x4137/432x243/filters:format(jpg)/2022/09/26/php2eFTnz.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.franceinfo.fr/pictures/hgiHARkKKnJlvw32QwZtx712smc/0x363:6716x4137/432x243/filters:format(jpg)/2022/09/26/php2eFTnz.jpg",
+      "thumb": "https://www.franceinfo.fr/pictures/hgiHARkKKnJlvw32QwZtx712smc/0x363:6716x4137/432x243/filters:format(jpg)/2022/09/26/php2eFTnz.jpg",
+      "summary": "Plus de la moitié des logements réservés Les logements réservés aux réfugiés ukrainiens ont ainsi été divisé par plus de deux.",
+      "publishedTime": 1766383698000,
+      "archived_at": "2025-12-22T08:24:54.394211+00:00"
+    },
+    {
+      "source": "Le Figaro (actualités)",
+      "title": "Pourquoi Emmanuel Macron envisage de reparler à Poutine",
+      "link": "https://www.lefigaro.fr/international/pourquoi-emmanuel-macron-envisage-de-reparler-a-poutine-20251221",
+      "published": "2025-12-22T06:08:09+00:00",
+      "media": {
+        "url": "https://i.f1g.fr/media/cms/3000x1687_crop/2025/12/21/8a7e3577b9fd7a60dcb1b4f451ba07e29ded369a5df9d83f2f5ef3a9a456e5ac.jpg",
+        "width": 3000,
+        "height": 1687,
+        "type": null,
+        "description": null,
+        "credit": "Thibault Camus/Pool via REUTERS"
+      },
+      "image": "https://i.f1g.fr/media/cms/3000x1687_crop/2025/12/21/8a7e3577b9fd7a60dcb1b4f451ba07e29ded369a5df9d83f2f5ef3a9a456e5ac.jpg",
+      "thumb": "https://i.f1g.fr/media/cms/3000x1687_crop/2025/12/21/8a7e3577b9fd7a60dcb1b4f451ba07e29ded369a5df9d83f2f5ef3a9a456e5ac.jpg",
+      "summary": "DÉCRYPTAGE - Les négociations sur le conflit ukrainien se sont poursuivies à Miami sous l’égide des États-Unis, sans avancée décisive.",
+      "publishedTime": 1766383689000,
+      "archived_at": "2025-12-22T08:24:54.394370+00:00"
+    },
+    {
+      "source": "Franceinfo (fil)",
+      "title": "\"J'ai peur de mourir\" : rencontre avec un Ukrainien qui refuse de partir au front",
+      "link": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/temoignage-j-ai-peur-de-mourir-rencontre-avec-un-ukrainien-qui-refuse-de-partir-au-front_7695466.html#xtor=RSS-3-[lestitres]",
+      "published": "2025-12-22T06:03:50+00:00",
+      "media": {
+        "url": "https://www.franceinfo.fr/pictures/_SPLvKUsSVcs2c0wXRnyMgExGaY/0x430:4134x2754/432x243/filters:format(jpg)/2023/11/16/soldat-ukrainien-65569a193b143046092716.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.franceinfo.fr/pictures/_SPLvKUsSVcs2c0wXRnyMgExGaY/0x430:4134x2754/432x243/filters:format(jpg)/2023/11/16/soldat-ukrainien-65569a193b143046092716.jpg",
+      "thumb": "https://www.franceinfo.fr/pictures/_SPLvKUsSVcs2c0wXRnyMgExGaY/0x430:4134x2754/432x243/filters:format(jpg)/2023/11/16/soldat-ukrainien-65569a193b143046092716.jpg",
+      "summary": "Depuis l'invasion russe de février 2022, tout Ukrainien en âge de combattre peut être mobilisé par l'armée. Ceux qui refusent d'aller au front doivent bien souvent vivre cachés, par crainte d'être réquisitionnés de force.",
+      "publishedTime": 1766383430000,
+      "archived_at": "2025-12-22T08:24:54.394509+00:00"
+    },
+    {
+      "source": "BFM TV (monde)",
+      "title": "ÉDITO – “C'est une idée nécessaire”: quel est l’intérêt d’une discussion entre Emmanuel Macron et Vladimir Poutine sur l’Ukraine",
+      "link": "https://www.bfmtv.com/international/asie/russie/video-edito-c-est-une-idee-necessaire-quel-est-l-interet-d-une-discussion-entre-emmanuel-macron-et-vladimir-poutine-sur-l-ukraine_VN-202512220150.html",
+      "published": "2025-12-22T05:55:17+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/9KgMERcOk6kx39I1yiWxHO29xmM=/0x0:1280x720/800x0/images/EDITO-C-est-une-idee-necessaire-quel-est-l-interet-d-une-discussion-entre-Emmanuel-Macron-et-Vladimir-Poutine-sur-l-Ukraine-2205168.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/9KgMERcOk6kx39I1yiWxHO29xmM=/0x0:1280x720/800x0/images/EDITO-C-est-une-idee-necessaire-quel-est-l-interet-d-une-discussion-entre-Emmanuel-Macron-et-Vladimir-Poutine-sur-l-Ukraine-2205168.jpg",
+      "thumb": "https://images.bfmtv.com/9KgMERcOk6kx39I1yiWxHO29xmM=/0x0:1280x720/800x0/images/EDITO-C-est-une-idee-necessaire-quel-est-l-interet-d-une-discussion-entre-Emmanuel-Macron-et-Vladimir-Poutine-sur-l-Ukraine-2205168.jpg",
+      "summary": "Le porte-parole du Kremlin, Dmitri Peskov, a déclaré, dans la nuit du samedi 20 au dimanche 21 décembre, que Vladimir Poutine était \"prêt au dialogue\" avec Emmanuel Macron. L'Élysée a jugé \"bienvenue\" cette posture du président russe.<br /><br /><img src=\"https://images.bfmtv.com/9KgMERcOk6kx39I1yiWxHO29xmM=/0x0:1280x720/800x0/images/EDITO-C-est-une-idee-necessaire-quel-est-l-interet-d-une-discussion-entre-Emmanuel-Macron-et-Vladimir-Poutine-sur-l-Ukraine-2205168.jpg\" />",
+      "publishedTime": 1766382917000,
+      "archived_at": "2025-12-22T08:24:54.394619+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "EN DIRECT Guerre en Ukraine : Un général de l’état-major russe tué dans une explosion à Moscou…",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192761-20251222-direct-guerre-ukraine-pourparlers-floride-constructifs-percee-significative?at_medium=display&at_campaign=149",
+      "published": "2025-12-22T05:51:54+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/QpFV1irnQ3uKRBXijvSI8yk/1200x768_russia-moscow-november-18-2025-a-shoulder-badge-of-a-russian-police-officer-credit-image-darya-rotocheva-tass-via-zuma-press-20251118-zaa-t113-1015-zeus-2511201156",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/QpFV1irnQ3uKRBXijvSI8yk/1200x768_russia-moscow-november-18-2025-a-shoulder-badge-of-a-russian-police-officer-credit-image-darya-rotocheva-tass-via-zuma-press-20251118-zaa-t113-1015-zeus-2511201156",
+      "thumb": "https://img.20mn.fr/QpFV1irnQ3uKRBXijvSI8yk/1200x768_russia-moscow-november-18-2025-a-shoulder-badge-of-a-russian-police-officer-credit-image-darya-rotocheva-tass-via-zuma-press-20251118-zaa-t113-1015-zeus-2511201156",
+      "author": "H.M., X.M.",
+      "summary": "Suivez avec nous les informations de ce lundi 22 décembre 2025 sur le conflit russo-ukrainien",
+      "publishedTime": 1766382714000,
+      "archived_at": "2025-12-22T08:24:54.394749+00:00"
+    },
+    {
+      "source": "Actu.fr – Société",
+      "title": "Près de Nantes. \"Une belle expérience de vie\", ces familles ont ouvert leur porte aux artistes ukrainiens",
+      "link": "https://actu.fr/pays-de-la-loire/le-pallet_44117/pres-de-nantes-une-belle-experience-de-vie-ces-familles-ont-ouvert-leur-porte-aux-artistes-ukrainiens_63608243.html",
+      "published": "2025-12-22T05:13:55+00:00",
+      "media": {
+        "url": "https://static.actu.fr/uploads/2025/12/61a9327e4049675a9327e404949a93v-1024x557.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.actu.fr/uploads/2025/12/61a9327e4049675a9327e404949a93v-1024x557.jpg",
+      "thumb": "https://static.actu.fr/uploads/2025/12/61a9327e4049675a9327e404949a93v-1024x557.jpg",
+      "author": "Rédaction Clisson - L'Hebdo de Sèvre et Maine",
+      "summary": "La tournée d'automne des Joyeux Petits Souliers vient de s'achever dans le Vignoble nantais. Dans l'ombre, l'association s'appuie sur un maillon essentiel : les familles d'accueil.",
+      "publishedTime": 1766380435000,
+      "archived_at": "2025-12-22T08:24:54.394860+00:00"
+    },
+    {
+      "source": "France 24 (Europe)",
+      "title": "Ukraine en direct : un général russe tué dans l'explosion d'une voiture à Moscou",
+      "link": "https://www.france24.com/fr/europe/20251222-ukraine-en-direct-washington-kiev-saluent-echanges-productifs-miami-guerre-russie",
+      "published": "2025-12-22T05:01:49+00:00",
+      "media": {
+        "url": "https://s.france24.com/media/display/839f5018-df07-11f0-b559-005056a90284/w:1024/p:16x9/2025-12-02T131140Z-1094515744-RC2D8IAZ5M9E-RTRMADP-3-UKRAINE-CRISIS-PUTIN-WITKOFF.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.france24.com/media/display/839f5018-df07-11f0-b559-005056a90284/w:1024/p:16x9/2025-12-02T131140Z-1094515744-RC2D8IAZ5M9E-RTRMADP-3-UKRAINE-CRISIS-PUTIN-WITKOFF.jpg",
+      "thumb": "https://s.france24.com/media/display/839f5018-df07-11f0-b559-005056a90284/w:1024/p:16x9/2025-12-02T131140Z-1094515744-RC2D8IAZ5M9E-RTRMADP-3-UKRAINE-CRISIS-PUTIN-WITKOFF.jpg",
+      "author": "FRANCE 24",
+      "summary": "Un général de l'état-major russe a été tué lundi matin dans l'explosion d'une voiture dans le sud de Moscou, a annoncé le Comité d'enquête russe, en affirmant étudier une piste ukrainienne. Si le dernier cycle de pourparlers, à Miami, n'a produit aucune percée significative, toutes les parties ont tenu à se montrer positives. Suivez notre direct.",
+      "publishedTime": 1766379709000,
+      "archived_at": "2025-12-22T08:24:54.394969+00:00"
+    },
+    {
+      "source": "France Inter (info)",
+      "title": "Les réfugiés ukrainiens bénéficient de moins en moins d'aide sur le territoire français",
+      "link": "https://www.radiofrance.fr/franceinter/podcasts/l-info-de-france-inter/les-refugies-ukrainiens-beneficient-de-moins-en-moins-d-aide-sur-le-territoire-francais-1181132",
+      "published": "2025-12-22T05:00:00+00:00",
+      "media": {
+        "url": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/89eb6e5e-8809-4e38-8084-0303db6e92a4/sc_maxnewsspecial640866.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/89eb6e5e-8809-4e38-8084-0303db6e92a4/sc_maxnewsspecial640866.jpg",
+      "thumb": "https://www.radiofrance.fr/s3/cruiser-production-eu3/2025/12/89eb6e5e-8809-4e38-8084-0303db6e92a4/sc_maxnewsspecial640866.jpg",
+      "summary": "Les Ukrainiens accueillis en France pour fuir la guerre dans leur pays disposent de moins en moins d'aides sur le territoire français, selon une circulaire envoyée aux préfets de régions et de départements il y a un an, que France Inter a pu consulter.",
+      "publishedTime": 1766379600000,
+      "archived_at": "2025-12-22T08:24:54.395079+00:00"
+    },
+    {
+      "source": "7sur7 – Monde",
+      "title": "“Kidnappé et torturé”: un Belge détenu depuis plus de six mois en Russie pour “trahison”",
+      "link": "https://www.7sur7.be/monde/kidnappe-et-torture-un-belge-detenu-depuis-plus-de-six-mois-en-russie-pour-trahison~a08bc54f/",
+      "published": "2025-12-22T04:19:01+00:00",
+      "media": {
+        "url": "https://images.7sur7.be/ODJlMjc0OTIwNmI1NTBlOTBiNTMvZGlvLzI2NjM1NTY4OC9maXQtd2lkdGgvNDAw/28-january-2024-latvia-valka-a-sign-with-the-inscription-carry-your-passport-when-crossing-the-border-in-latvian-and-russian-stands-at-the-latvian-border-to-dpa-russians-in-the-baltic-states-in-turmoil-latvia-threatens-forced-expulsion-photo-alexander-welscher-dpa-photo-by-alexander-welscher-picture-alliance-via-getty-images-inzet-mikhail-loshchinin",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.7sur7.be/ODJlMjc0OTIwNmI1NTBlOTBiNTMvZGlvLzI2NjM1NTY4OC9maXQtd2lkdGgvNDAw/28-january-2024-latvia-valka-a-sign-with-the-inscription-carry-your-passport-when-crossing-the-border-in-latvian-and-russian-stands-at-the-latvian-border-to-dpa-russians-in-the-baltic-states-in-turmoil-latvia-threatens-forced-expulsion-photo-alexander-welscher-dpa-photo-by-alexander-welscher-picture-alliance-via-getty-images-inzet-mikhail-loshchinin",
+      "thumb": "https://images.7sur7.be/ODJlMjc0OTIwNmI1NTBlOTBiNTMvZGlvLzI2NjM1NTY4OC9maXQtd2lkdGgvNDAw/28-january-2024-latvia-valka-a-sign-with-the-inscription-carry-your-passport-when-crossing-the-border-in-latvian-and-russian-stands-at-the-latvian-border-to-dpa-russians-in-the-baltic-states-in-turmoil-latvia-threatens-forced-expulsion-photo-alexander-welscher-dpa-photo-by-alexander-welscher-picture-alliance-via-getty-images-inzet-mikhail-loshchinin",
+      "author": "M. DU",
+      "summary": "Un Belgo-Russe de 48 ans, qui s’est rendu en juin dernier à Saint-Pétersbourg pour rendre visite à son père malade, est incarcéré en Russie pour “trahison et atteinte à la sécurité nationale”, écrit lundi le journal Le Soir.",
+      "publishedTime": 1766377141000,
+      "archived_at": "2025-12-22T08:24:54.395187+00:00"
+    },
+    {
+      "source": "Courrier International",
+      "title": "Ukraine, Venezuela et Nigeria : les informations de la nuit",
+      "link": "https://www.courrierinternational.com/article/pendant-que-vous-dormiez-ukraine-venezuela-et-nigeria-les-informations-de-la-nuit_238727",
+      "published": "2025-12-22T03:46:41+00:00",
+      "media": {
+        "url": "https://focus.courrierinternational.com/2025/12/03/0/0/6500/4335/644/0/60/0/c03d71d_ftp-1-f7annsvjefy0-2025-12-03t104145z-679083712-rc277iajp98s-rtrmadp-3-ukraine-crisis-talks-umerov.JPG",
+        "width": 644,
+        "height": 322,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Eva Marie Uzcategui/REUTERS"
+      },
+      "image": "https://focus.courrierinternational.com/2025/12/03/0/0/6500/4335/644/0/60/0/c03d71d_ftp-1-f7annsvjefy0-2025-12-03t104145z-679083712-rc277iajp98s-rtrmadp-3-ukraine-crisis-talks-umerov.JPG",
+      "thumb": "https://focus.courrierinternational.com/2025/12/03/0/0/6500/4335/644/0/60/0/c03d71d_ftp-1-f7annsvjefy0-2025-12-03t104145z-679083712-rc277iajp98s-rtrmadp-3-ukraine-crisis-talks-umerov.JPG",
+      "publishedTime": 1766375201000,
+      "archived_at": "2025-12-22T08:24:54.395293+00:00"
+    },
+    {
+      "source": "20 Minutes (monde)",
+      "title": "Guerre en Ukraine : Américains, Ukrainiens et Russes satisfaits des réunions distinctes en Floride",
+      "link": "https://www.20minutes.fr/monde/ukraine/4192657-20251222-guerre-ukraine-americains-ukrainiens-russes-satisfaits-reunions-distinctes-floride?at_medium=display&at_campaign=149",
+      "published": "2025-12-22T02:36:02+00:00",
+      "media": {
+        "url": "https://img.20mn.fr/wtyapY3iSQeEH5zK0rq12yk/1200x768_mandatory-credit-photo-by-dts-news-agency-germany-shutterstock-16115468af-visit-by-the-ukrainian-president-steve-witkoff-visit-by-the-ukrainian-president-bundeskanzleramt-berlin-germany-15-dec-2025-shutterstock-editorial-visit-by-the-ukrainian-presid-16115468af-2512152158",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://img.20mn.fr/wtyapY3iSQeEH5zK0rq12yk/1200x768_mandatory-credit-photo-by-dts-news-agency-germany-shutterstock-16115468af-visit-by-the-ukrainian-president-steve-witkoff-visit-by-the-ukrainian-president-bundeskanzleramt-berlin-germany-15-dec-2025-shutterstock-editorial-visit-by-the-ukrainian-presid-16115468af-2512152158",
+      "thumb": "https://img.20mn.fr/wtyapY3iSQeEH5zK0rq12yk/1200x768_mandatory-credit-photo-by-dts-news-agency-germany-shutterstock-16115468af-visit-by-the-ukrainian-president-steve-witkoff-visit-by-the-ukrainian-president-bundeskanzleramt-berlin-germany-15-dec-2025-shutterstock-editorial-visit-by-the-ukrainian-presid-16115468af-2512152158",
+      "author": "20 Minutes avec AFP",
+      "summary": "Sans négocier entre eux directement, Ukrainiens et Russes sont aux Etats-Unis pour discuter du plan de Trump pour mettre fin au conflit en Ukraine",
+      "publishedTime": 1766370962000,
+      "archived_at": "2025-12-22T08:24:54.395416+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Vance Suggests Trump Administration Won’t Be ‘Shipping Off Money to Ukraine’",
+      "link": "https://www.kyivpost.com/post/66700",
+      "published": "2025-12-22T00:15:51+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/05/18/c5d4253091ef817fe9fea0071fd04aff.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/05/18/c5d4253091ef817fe9fea0071fd04aff.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/05/18/c5d4253091ef817fe9fea0071fd04aff.jpg?w=640&q=90&f=jpg",
+      "author": "John Moretti",
+      "summary": "Rather than being invited to peace talks, Vance has been shipped off to the desert to fire up the so-called “Christian” right-wing base.",
+      "publishedTime": 1766362551000,
+      "archived_at": "2025-12-22T08:24:54.395530+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Paris Welcomes Putin’s Readiness to Speak With Macron",
+      "link": "https://www.kyivpost.com/post/66698",
+      "published": "2025-12-21T22:35:30+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2022/11/07/7e65a817e3dc0b0e060e7a776f565ec2.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2022/11/07/7e65a817e3dc0b0e060e7a776f565ec2.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2022/11/07/7e65a817e3dc0b0e060e7a776f565ec2.jpg?w=640&q=90&f=jpg",
+      "author": "AFP",
+      "summary": "“The invasion of Ukraine and President Putin’s obstinacy ended any possibility of dialogue” over the past three years, the Elysee said.",
+      "publishedTime": 1766356530000,
+      "archived_at": "2025-12-22T08:24:54.395639+00:00"
+    },
+    {
+      "source": "RFI (Europe)",
+      "title": "Ukraine: se cacher pour éviter le front, le témoignage d'un déserteur ukrainien",
+      "link": "https://www.rfi.fr/fr/podcasts/reportage-international/20251221-ukraine-se-cacher-pour-%C3%A9viter-le-front-le-t%C3%A9moignage-d-un-d%C3%A9serteur-ukrainien",
+      "published": "2025-12-21T22:03:04+00:00",
+      "media": {
+        "url": "https://s.rfi.fr/media/display/d723997a-debb-11f0-bf74-005056bf30b7/w:1024/p:16x9/soldat-ukraine.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.rfi.fr/media/display/d723997a-debb-11f0-bf74-005056bf30b7/w:1024/p:16x9/soldat-ukraine.jpg",
+      "thumb": "https://s.rfi.fr/media/display/d723997a-debb-11f0-bf74-005056bf30b7/w:1024/p:16x9/soldat-ukraine.jpg",
+      "author": "Théo Renaudon",
+      "summary": "Pendant qu'à Miami les États-Unis tiennent depuis trois jours des pourparlers séparément avec les délégations ukrainienne et russe, dans l'espoir de mettre un fin au conflit en Ukraine, sur le front, la situation est toujours aussi difficile. Les pertes des deux côtés ne sont pas communiquées mais elles semblent lourdes. Plusieurs centaines de milliers de soldats tués depuis le début de la guerre. Côté ukrainien, chaque homme entre 25 et 60 ans peut être mobilisé. Il peut l’être de force. Dans tout le pays, la police ukrainienne fait la chasse aux potentiels soldats qui ne sont pas en règle ou qui n’ont pas répondu à leur ordre de mobilisation. Alors pour échapper au front et à la mort, beaucoup d’hommes se cachent. Probablement des dizaines de milliers. Pour RFI, notre correspondant a rencontré l’un d’entre eux.",
+      "publishedTime": 1766354584000,
+      "archived_at": "2025-12-22T08:24:54.395748+00:00"
+    },
+    {
+      "source": "BFMTV – International États-Unis",
+      "title": "Américains et Ukrainiens saluent des \"réunions productives et constructives\" à Miami pour la fin de la guerre en Ukraine",
+      "link": "https://www.bfmtv.com/international/amerique-nord/etats-unis/americains-et-ukrainiens-saluent-des-reunions-productives-et-constructives-a-miami-pour-la-fin-de-la-guerre-en-ukraine_AD-202512210377.html",
+      "published": "2025-12-21T22:00:14+00:00",
+      "media": {
+        "url": "https://images.bfmtv.com/jWvuQ8z-WsOnkjBrKIjf_EOohV8=/0x106:2048x1258/800x0/images/Steeve-Witkoff-et-Jared-Kushner-le-29-septembre-2025-a-Washington-D-C-Etats-Unis-2158081.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.bfmtv.com/jWvuQ8z-WsOnkjBrKIjf_EOohV8=/0x106:2048x1258/800x0/images/Steeve-Witkoff-et-Jared-Kushner-le-29-septembre-2025-a-Washington-D-C-Etats-Unis-2158081.jpg",
+      "thumb": "https://images.bfmtv.com/jWvuQ8z-WsOnkjBrKIjf_EOohV8=/0x106:2048x1258/800x0/images/Steeve-Witkoff-et-Jared-Kushner-le-29-septembre-2025-a-Washington-D-C-Etats-Unis-2158081.jpg",
+      "summary": "Réunis à Miami pour des négociations en vue de mettre fin à la guerre en Ukraine, Américains et Ukrainiens ont indiqué, ce dimanche, que les échanges ont été \"productifs et constructifs\". Des négociateurs européens étaient également présents. <br /><br /><img src=\"https://images.bfmtv.com/jWvuQ8z-WsOnkjBrKIjf_EOohV8=/0x106:2048x1258/800x0/images/Steeve-Witkoff-et-Jared-Kushner-le-29-septembre-2025-a-Washington-D-C-Etats-Unis-2158081.jpg\" />",
+      "publishedTime": 1766354414000,
+      "archived_at": "2025-12-22T08:24:54.395857+00:00"
+    },
+    {
+      "source": "RFI (Monde)",
+      "title": "Russie: une ONG révèle une augmentation de condamnations injustifiées pour espionnage et trahison",
+      "link": "https://www.rfi.fr/fr/monde/20251221-russie-une-ong-r%C3%A9v%C3%A8le-une-augmentation-de-condamnations-injustifi%C3%A9es-pour-espionnage-et-trahison",
+      "published": "2025-12-21T21:53:37+00:00",
+      "media": {
+        "url": "https://s.rfi.fr/media/display/b2aa1338-debd-11f0-96bf-005056a97e36/w:1024/p:16x9/000-34JT8HA.jpg",
+        "width": null,
+        "height": null,
+        "type": null,
+        "description": null,
+        "credit": null
+      },
+      "image": "https://s.rfi.fr/media/display/b2aa1338-debd-11f0-96bf-005056a97e36/w:1024/p:16x9/000-34JT8HA.jpg",
+      "thumb": "https://s.rfi.fr/media/display/b2aa1338-debd-11f0-96bf-005056a97e36/w:1024/p:16x9/000-34JT8HA.jpg",
+      "author": "RFI",
+      "summary": "La Russie a battu un nouveau record. En 2025, 468 personnes ont été condamnées pour espionnage et haute trahison et des centaines d’autres attendent d’être jugées. Depuis le début de l’invasion russe de l’Ukraine, plus d’un millier de personnes ont été condamnées pour ces motifs. Parmi elles, figurent aussi de nombreux Ukrainiens. C’est ce que pointe une étude réalisée par une ONG de juristes en exil.",
+      "publishedTime": 1766354017000,
+      "archived_at": "2025-12-22T08:24:54.395964+00:00"
+    },
+    {
+      "source": "HuffPost France",
+      "title": "Malgré des pourparlers « productifs » à Miami, l’Ukraine dénonce des frappes russes près de Soumy",
+      "link": "https://www.huffingtonpost.fr/international/article/malgre-des-pourparlers-productifs-a-miami-l-ukraine-denonce-des-frappes-russes-pres-de-soumy_258480.html",
+      "published": "2025-12-21T20:45:11+00:00",
+      "media": {
+        "url": "https://focus.huffingtonpost.fr/2025/12/16/0/0/1024/576/0/0/60/0/e7cd0e8_upload-1-nbtrsx7elrr1-afp-20251215-contini-talksonp251215-npos3-v1-midres-berlinhoststalksonpossibleu.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "EMMANUELE CONTINI / NurPhoto via AFP"
+      },
+      "image": "https://focus.huffingtonpost.fr/2025/12/16/0/0/1024/576/0/0/60/0/e7cd0e8_upload-1-nbtrsx7elrr1-afp-20251215-contini-talksonp251215-npos3-v1-midres-berlinhoststalksonpossibleu.jpg",
+      "thumb": "https://focus.huffingtonpost.fr/2025/12/16/0/0/1024/576/0/0/60/0/e7cd0e8_upload-1-nbtrsx7elrr1-afp-20251215-contini-talksonp251215-npos3-v1-midres-berlinhoststalksonpossibleu.jpg",
+      "summary": "Si Zelensky a salué des échanges « constructifs » avec la délégation américaine en Floride, il dénonce les « signaux négatifs » envoyés par la Russie qui poursuit ses frappes.",
+      "publishedTime": 1766349911000,
+      "archived_at": "2025-12-22T08:24:54.396093+00:00"
+    },
+    {
       "source": "Kyiv Post",
       "title": "Ukraine After the War: Scenarios, Risks, and Europe",
       "link": "https://www.kyivpost.com/opinion/66578",
@@ -10815,6 +11475,61 @@
     }
   ],
   "videos": [
+    {
+      "channel": "Euronews",
+      "title": "Orban : l'effondrement de l'Ukraine serait un désastre pour la Hongrie",
+      "link": "https://www.youtube.com/watch?v=-pL-EzPsLsk",
+      "published": "2025-12-22T08:13:16Z",
+      "publishedTime": 1766391196000,
+      "thumbnail": "https://i.ytimg.com/vi/-pL-EzPsLsk/hqdefault.jpg",
+      "summary": "Orban : l'effondrement de l'Ukraine serait un désastre pour la Hongrie \n\nLe Premier ministre hongrois, toujours critique par rapport à l'aide de l'UE à Kyiv et à ses perspectives européennes, a déclaré que la Hongrie devrait aider à empêcher l'effondrement de l'Ukraine, car \"la valeur d'un terrain d",
+      "type": "youtube",
+      "archived_at": "2025-12-22T08:25:19.761121+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "RUSSIA’S GAS LIFELINE SNAPS — CENTRAL ASIA PIPELINE GOES DARK! PUTIN’S WAR INDUSTRY FEELS THE FREEZE",
+      "link": "https://www.youtube.com/watch?v=zb1Vgd6DSqk",
+      "published": "2025-12-22T07:00:55Z",
+      "publishedTime": 1766386855000,
+      "thumbnail": "https://i.ytimg.com/vi/zb1Vgd6DSqk/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2025-12-22T08:25:32.927392+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Ukrainian schools in Odesa region swap coal for straw to stay warm | REUTERS",
+      "link": "https://www.youtube.com/watch?v=4Qv-CGtYj1k",
+      "published": "2025-12-22T05:49:26Z",
+      "publishedTime": 1766382566000,
+      "thumbnail": "https://i.ytimg.com/vi/4Qv-CGtYj1k/hqdefault.jpg",
+      "summary": "A decision made eight years ago to switch schools in the south-western part of Odesa region to straw-fired boilers has turned into a lifeline this winter, as Russia stepped up strikes on Ukraine's energy infrastructure.\n\n#school #straw #boiler #odesa #ukraine #News #Reuters #Newsfeed\n\n👉  Subscribe: ",
+      "type": "youtube",
+      "archived_at": "2025-12-22T08:25:28.492557+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "Shahed hunters: Ukraine is leveraging its powerful – and cheap – new drone killers",
+      "link": "https://www.youtube.com/watch?v=fnCofr5HG_4",
+      "published": "2025-12-22T05:32:54Z",
+      "publishedTime": 1766381574000,
+      "thumbnail": "https://i.ytimg.com/vi/fnCofr5HG_4/hqdefault.jpg",
+      "summary": "Nightly attacks on Ukrainian cities and power infrastructure have forced Kyiv to rewrite the air defense rulebook and develop cut-price drone killers costing as little as $1,000. Interceptors went from prototype to mass production in just a few months in 2025 and represent the latest shift in modern",
+      "type": "youtube",
+      "archived_at": "2025-12-22T08:25:25.966603+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "RUSSIA TRIED TO CRAWL THROUGH A PIPE — UKRAINE TURNED IT INTO A TOMB, 40 RUSSIANS ERASED IN SECONDS",
+      "link": "https://www.youtube.com/watch?v=DZOgK27qv2I",
+      "published": "2025-12-21T23:00:15Z",
+      "publishedTime": 1766358015000,
+      "thumbnail": "https://i.ytimg.com/vi/DZOgK27qv2I/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2025-12-22T08:25:32.932537+00:00"
+    },
     {
       "channel": "Fox News",
       "title": "'First thing' the Left wants to do is 'blame': GOP senator",

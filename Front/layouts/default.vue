@@ -1,5 +1,5 @@
 <template>
-  <HeaderNewHeader />
+  <Header />
 
   <div class="site-container">
     <slot />
@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import HeaderNewHeader from '~/components/header/NewHeader.vue';
+import Header from '~/components/header/Header.vue';
 import FooterMain from '~/components/footer/FooterMain.vue';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 import { useAuthState } from '~/composables/useAuthState';
@@ -36,5 +36,12 @@ onMounted(() => {
 
 html, body {
   margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>
