@@ -108,9 +108,8 @@ const isAnySaved = computed(() => {
 
 const toggleMenu = () => {
   if (!isAuthenticated.value) {
-    if (typeof window !== 'undefined') {
-      window.location.href = '/connexion';
-    }
+    // Redirect to login if not authenticated
+    navigateTo('/connexion');
     return;
   }
   menuOpen.value = !menuOpen.value;

@@ -156,38 +156,17 @@ export const useSavedMedia = () => {
     category?: string;
     thumbnail?: string;
   }) => {
+    // Ensure user is authenticated before allowing saves
+    if (!getToken()) {
+      error.value = 'Vous devez être connecté pour enregistrer des médias';
+      return { saved: false };
+    }
+
     // Ensure thumbnail is set (fallback to empty string if undefined)
     const payloadWithThumbnail = {
       ...payload,
       thumbnail: payload.thumbnail || '',
     };
-
-    // LocalStorage fallback when unauthenticated
-    if (!getToken()) {
-      const category = payloadWithThumbnail.category || 'liked';
-      const existing = lsReadItems();
-      const idx = existing.findIndex(i => i.link === payloadWithThumbnail.link && i.category === category);
-      if (idx >= 0) {
-        existing.splice(idx, 1);
-        lsWriteItems(existing);
-        savedItems.value = existing;
-        return { saved: false };
-      }
-      const newItem: SavedMediaItem = {
-        id: Date.now(),
-        link: payloadWithThumbnail.link,
-        title: payloadWithThumbnail.title,
-        source: payloadWithThumbnail.source,
-        media_type: payloadWithThumbnail.media_type,
-        category,
-        thumbnail: payloadWithThumbnail.thumbnail || undefined,
-        saved_at: new Date().toISOString(),
-      };
-      const updated = [newItem, ...existing];
-      lsWriteItems(updated);
-      savedItems.value = updated;
-      return { saved: true };
-    }
     
     try {
       loading.value = true;
