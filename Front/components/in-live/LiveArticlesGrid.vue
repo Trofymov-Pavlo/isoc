@@ -39,13 +39,12 @@
             <a :href="article.link" target="_blank" rel="noopener" class="read-link">
               Lire →
             </a>
-            <LikeButton 
+            <LikeButtonMenu 
               :link="article.link"
               :title="article.title"
               :source="article.source || 'En direct'"
-              :media-type="article.type === 'video' ? 'video' : 'live'"
+              :media-type="article.type === 'video' ? 'video' : 'article'"
               :thumbnail="article.image"
-              @toggle="() => {}"
             />
           </div>
         </div>
@@ -56,7 +55,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import LikeButton from '~/components/shared/LikeButton.vue';
+import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
 
 interface Article {
   title: string;

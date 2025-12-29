@@ -5,24 +5,24 @@
       <div class="tabs-container">
         <button
           class="tab"
-          :class="{ active: activeTab === 'all' }"
-          @click="activeTab = 'all'"
-        >
-          📑 Tous ({{ savedItems.length }})
-        </button>
-        <button
-          class="tab"
           :class="{ active: activeTab === 'liked' }"
           @click="activeTab = 'liked'"
         >
-          ❤️ Likés ({{ likedItems.length }})
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          Likés ({{ likedItems.length }})
         </button>
         <button
           class="tab"
           :class="{ active: activeTab === 'watch_later' }"
           @click="activeTab = 'watch_later'"
         >
-          ⏰ À lire plus tard ({{ watchLaterItems.length }})
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          À lire plus tard ({{ watchLaterItems.length }})
         </button>
         <button
           v-for="cat in userCategories"
@@ -34,7 +34,11 @@
           {{ cat.icon }} {{ cat.name }} ({{ getCategoryItems(cat.name).length }})
         </button>
         <button class="tab tab-add" @click="showCreateModal = true">
-          + Nouvelle catégorie
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Nouvelle catégorie
         </button>
       </div>
 
@@ -63,8 +67,18 @@
           <input v-model="newCategoryName" type="text" placeholder="Ex: À lire demain" maxlength="50" />
         </div>
         <div class="form-group">
-          <label>Icône (emoji)</label>
-          <input v-model="newCategoryIcon" type="text" placeholder="Ex: 📚" maxlength="2" />
+          <label>Choisir une icône</label>
+          <div class="icon-selector">
+            <button
+              v-for="icon in availableIcons"
+              :key="icon"
+              class="icon-option"
+              :class="{ selected: newCategoryIcon === icon }"
+              @click="newCategoryIcon = icon"
+            >
+              {{ icon }}
+            </button>
+          </div>
         </div>
         <div class="form-group">
           <label>Couleur</label>
@@ -98,19 +112,19 @@ const {
   createCategory 
 } = useSavedMedia();
 
-const activeTab = ref<string>('all');
+const activeTab = ref<string>('liked');
 const showCreateModal = ref(false);
 const newCategoryName = ref('');
 const newCategoryIcon = ref('📌');
 const newCategoryColor = ref('#2f0538');
 const createError = ref('');
 
+const availableIcons = ['📌', '📚', '🎯', '⭐', '🔖', '📝', '💡', '🎬', '🎵', '🏆', '🔥', '⚡', '🎨', '📰', '🎓', '💼'];
+
 const displayedItems = computed(() => {
   let items = [];
   
-  if (activeTab.value === 'all') {
-    items = savedItems.value;
-  } else if (activeTab.value === 'liked') {
+  if (activeTab.value === 'liked') {
     items = likedItems.value;
   } else if (activeTab.value === 'watch_later') {
     items = watchLaterItems.value;
@@ -124,7 +138,7 @@ const displayedItems = computed(() => {
     link: item.link,
     title: item.title,
     source: item.source,
-    image: item.thumbnail,
+    image: item.thumbnail || '',
     summary: '',
     type: item.media_type === 'article' || item.media_type === 'live' ? 'article' : 'video',
     published: item.saved_at,
@@ -196,6 +210,14 @@ const handleCreateCategory = async () => {
   cursor: pointer;
   transition: all 0.2s ease;
   color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .tab:hover {
@@ -307,6 +329,36 @@ const handleCreateCategory = async () => {
   outline: none;
   border-color: #7b5ce0;
   box-shadow: 0 0 0 3px rgba(123, 92, 224, 0.1);
+}
+
+.icon-selector {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+
+.icon-option {
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-option:hover {
+  border-color: #7b5ce0;
+  background: #f8f5ff;
+}
+
+.icon-option.selected {
+  border-color: #7b5ce0;
+  background: linear-gradient(135deg, #2f0538 0%, #4b2faa 100%);
+  transform: scale(1.1);
 }
 
 .modal-actions {

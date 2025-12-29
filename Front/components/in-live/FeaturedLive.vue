@@ -34,13 +34,12 @@
           <a :href="article.link" target="_blank" rel="noopener" class="read-link">
             Lire l'article complet →
           </a>
-          <LikeButton 
+          <LikeButtonMenu 
             :link="article.link"
             :title="article.title"
             :source="article.source || 'En direct'"
-            :media-type="article.type === 'video' ? 'video' : 'live'"
+            :media-type="article.type === 'video' ? 'video' : 'article'"
             :thumbnail="article.image"
-            @toggle="() => {}"
           />
         </div>
       </div>
@@ -49,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import LikeButton from '~/components/shared/LikeButton.vue';
+import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
 
 interface Article {
   title: string;
@@ -114,7 +113,7 @@ const formatTime = (dateString?: string): string => {
 .featured-image {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
   overflow: hidden;
   background: #f5f5f5;
   display: block;

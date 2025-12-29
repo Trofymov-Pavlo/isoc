@@ -70,7 +70,7 @@
           :class="{ expanded: ui.sourcesExpanded }"
         >
           <span class="label-text">Sources <span v-if="filters.sources.length" class="active-count">({{ filters.sources.length }})</span></span>
-          <span class="expand-icon">⋮</span>
+          <span class="expand-icon">▼</span>
         </button>
         <transition name="filter-expand">
           <div v-show="ui.sourcesExpanded" class="filter-options-scrollable">
@@ -95,7 +95,7 @@
           :class="{ expanded: ui.channelsExpanded }"
         >
           <span class="label-text">Chaînes <span v-if="filters.channels.length" class="active-count">({{ filters.channels.length }})</span></span>
-          <span class="expand-icon">⋮</span>
+          <span class="expand-icon">▼</span>
         </button>
         <transition name="filter-expand">
           <div v-show="ui.channelsExpanded" class="filter-options-scrollable">
@@ -183,12 +183,11 @@
       <!-- Grid of items -->
       <template v-else>
         <div class="items-grid">
-          <a 
+          <div 
             v-for="item in paginatedItems" 
-            :key="item.link" 
-            :href="item.link" 
-            target="_blank" 
+            :key="item.link"
             class="item-card"
+            @click="navigateToLink(item.link)"
           >
             <div class="item-image-container">
               <img 
@@ -226,7 +225,7 @@
                 <span class="meta-item date">{{ formatExactDate(item) }}</span>
               </div>
             </div>
-          </a>
+          </div>
         </div>
 
         <!-- Pagination -->
@@ -240,7 +239,7 @@
           </button>
 
           <div class="pagination-logo">
-            <img src="/logo.svg" alt="ISOC AXIOM" class="pagination-logo-img" />
+            <img src="/assets/logoIsoc.png" alt="ISOC AXIOM" class="pagination-logo-img" />
           </div>
 
           <div class="pagination-info">
@@ -499,6 +498,10 @@ async function toggleLike(link: string) {
     media_type: item.type === 'article' ? 'article' : 'video',
     category: 'liked',
   });
+}
+
+function navigateToLink(link: string) {
+  window.open(link, '_blank', 'noopener,noreferrer');
 }
 
 function truncateSummary(text: string, maxLength: number = 150): string {
