@@ -156,11 +156,17 @@ export const useSavedMedia = () => {
     category?: string;
     thumbnail?: string;
   }) => {
+    // Ensure thumbnail is set (fallback to empty string if undefined)
+    const payloadWithThumbnail = {
+      ...payload,
+      thumbnail: payload.thumbnail || '',
+    };
+
     // LocalStorage fallback when unauthenticated
     if (!getToken()) {
-      const category = payload.category || 'liked';
+      const category = payloadWithThumbnail.category || 'liked';
       const existing = lsReadItems();
-      const idx = existing.findIndex(i => i.link === payload.link && i.category === category);
+      const idx = existing.findIndex(i => i.link === payloadWithThumbnail.link && i.category === category);
       if (idx >= 0) {
         existing.splice(idx, 1);
         lsWriteItems(existing);
@@ -169,12 +175,12 @@ export const useSavedMedia = () => {
       }
       const newItem: SavedMediaItem = {
         id: Date.now(),
-        link: payload.link,
-        title: payload.title,
-        source: payload.source,
-        media_type: payload.media_type,
+        link: payloadWithThumbnail.link,
+        title: payloadWithThumbnail.title,
+        source: payloadWithThumbnail.source,
+        media_type: payloadWithThumbnail.media_type,
         category,
-        thumbnail: payload.thumbnail,
+        thumbnail: payloadWithThumbnail.thumbnail || undefined,
         saved_at: new Date().toISOString(),
       };
       const updated = [newItem, ...existing];
@@ -186,7 +192,7 @@ export const useSavedMedia = () => {
     try {
       loading.value = true;
       error.value = null;
-      const response = await apiCall('/toggle/', 'POST', payload);
+      const response = await apiCall('/toggle/', 'POST', payloadWithThumbnail);
       
       // Update local state immediately for instant UI feedback
       if (response.saved) {
@@ -194,9 +200,9 @@ export const useSavedMedia = () => {
         await getSavedItems();
       } else {
         // Item was removed - remove from local state
-        const category = payload.category || 'liked';
+        const category = payloadWithThumbnail.category || 'liked';
         savedItems.value = savedItems.value.filter(
-          item => !(item.link === payload.link && item.category === category)
+          item => !(item.link === payloadWithThumbnail.link && item.category === category)
         );
       }
       

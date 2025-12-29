@@ -1,6 +1,16 @@
 <template>
   <main class="liked-page">
-    <section class="liked-wrapper">
+    <!-- Login prompt if not authenticated -->
+    <div v-if="!isAuthenticated" class="auth-prompt">
+      <div class="auth-card">
+        <span class="auth-icon">🔐</span>
+        <h2>Connectez-vous pour accéder à vos favoris</h2>
+        <p>Créez un compte ou connectez-vous pour sauvegarder et organiser vos articles préférés.</p>
+        <NuxtLink to="/connexion" class="auth-btn">Se connecter</NuxtLink>
+      </div>
+    </div>
+
+    <section v-else class="liked-wrapper">
       <!-- Tabs for categories -->
       <div class="tabs-container">
         <button
@@ -96,10 +106,11 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-
+import { useAuthState } from '~/composables/useAuthState';
 import LiveArticlesGrid from '~/components/in-live/LiveArticlesGrid.vue';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 
+const { isAuthenticated } = useAuthState();
 const { 
   savedItems, 
   userCategories, 
@@ -150,7 +161,7 @@ const displayedItems = computed(() => {
     title: item.title,
     source: item.source,
     image: item.thumbnail,
-    summary: `Sauvegardé le ${formatSavedDate(item.saved_at)}`,
+    summary: '',
     type: item.media_type === 'article' || item.media_type === 'live' ? 'article' : 'video',
     published: item.saved_at,
   }));
@@ -198,6 +209,61 @@ const handleCreateCategory = async () => {
 .liked-page {
   min-height: 100vh;
   background: #fff;
+}
+
+.auth-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fc 100%);
+}
+
+.auth-card {
+  background: white;
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.auth-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.auth-card h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.auth-card p {
+  margin: 0 0 32px;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.auth-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #2f0538 0%, #4b2faa 100%);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(47, 5, 56, 0.3);
 }
 
 .liked-wrapper {
