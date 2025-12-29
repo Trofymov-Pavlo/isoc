@@ -37,6 +37,8 @@ export const useSavedMedia = () => {
   const isServer = typeof window === 'undefined';
   
   const API_BASE = 'http://localhost:8000/api/saved-media';
+  const LS_ITEMS_KEY = 'saved_media_items';
+  const LS_CATEGORIES_KEY = 'saved_media_categories';
 
   const getToken = (): string | null => {
     if (isServer) return null;
@@ -115,6 +117,35 @@ export const useSavedMedia = () => {
   };
 
   /**
+   * LocalStorage fallback helpers (used when no token/auth)
+   */
+  const lsReadItems = (): SavedMediaItem[] => {
+    if (isServer) return [];
+    try {
+      const raw = localStorage.getItem(LS_ITEMS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch { return []; }
+  };
+
+  const lsWriteItems = (items: SavedMediaItem[]) => {
+    if (isServer) return;
+    try { localStorage.setItem(LS_ITEMS_KEY, JSON.stringify(items)); } catch { /* ignore */ }
+  };
+
+  const lsReadCategories = (): UserCategory[] => {
+    if (isServer) return [];
+    try {
+      const raw = localStorage.getItem(LS_CATEGORIES_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch { return []; }
+  };
+
+  const lsWriteCategories = (cats: UserCategory[]) => {
+    if (isServer) return;
+    try { localStorage.setItem(LS_CATEGORIES_KEY, JSON.stringify(cats)); } catch { /* ignore */ }
+  };
+
+  /**
    * Toggle save status for a media item
    */
   const toggleSave = async (payload: {
@@ -125,7 +156,32 @@ export const useSavedMedia = () => {
     category?: string;
     thumbnail?: string;
   }) => {
-    if (!getToken()) return { saved: false };
+    // LocalStorage fallback when unauthenticated
+    if (!getToken()) {
+      const category = payload.category || 'liked';
+      const existing = lsReadItems();
+      const idx = existing.findIndex(i => i.link === payload.link && i.category === category);
+      if (idx >= 0) {
+        existing.splice(idx, 1);
+        lsWriteItems(existing);
+        savedItems.value = existing;
+        return { saved: false };
+      }
+      const newItem: SavedMediaItem = {
+        id: Date.now(),
+        link: payload.link,
+        title: payload.title,
+        source: payload.source,
+        media_type: payload.media_type,
+        category,
+        thumbnail: payload.thumbnail,
+        saved_at: new Date().toISOString(),
+      };
+      const updated = [newItem, ...existing];
+      lsWriteItems(updated);
+      savedItems.value = updated;
+      return { saved: true };
+    }
     
     try {
       loading.value = true;
@@ -157,7 +213,12 @@ export const useSavedMedia = () => {
    * Get all saved items
    */
   const getSavedItems = async () => {
-    if (!getToken()) return [];
+    // LocalStorage fallback when unauthenticated
+    if (!getToken()) {
+      const items = lsReadItems();
+      savedItems.value = items;
+      return items;
+    }
     
     try {
       loading.value = true;
@@ -180,7 +241,9 @@ export const useSavedMedia = () => {
    * Get saved items by category
    */
   const getSavedByCategory = async (category: string) => {
-    if (!getToken()) return [];
+    if (!getToken()) {
+      return lsReadItems().filter(i => i.category === category);
+    }
     
     try {
       const response = await apiCall(`/by_category/?category=${category}`);
@@ -195,7 +258,9 @@ export const useSavedMedia = () => {
    * Get top N saved items (for dashboard)
    */
   const getTopSaved = async (limit = 3, category = 'liked') => {
-    if (!getToken()) return [];
+    if (!getToken()) {
+      return lsReadItems().filter(i => i.category === category).slice(0, limit);
+    }
     
     try {
       const response = await apiCall(`/top/?limit=${limit}&category=${category}`);
@@ -217,7 +282,11 @@ export const useSavedMedia = () => {
    * Get all user custom categories
    */
   const getUserCategories = async () => {
-    if (!getToken()) return [];
+    if (!getToken()) {
+      const cats = lsReadCategories();
+      userCategories.value = cats;
+      return cats;
+    }
     
     try {
       const response = await apiCall('/categories/');
@@ -236,7 +305,25 @@ export const useSavedMedia = () => {
    * Create a new custom category
    */
   const createCategory = async (name: string, color = '#2f0538', icon = '❤️') => {
-    if (!getToken()) return null;
+    if (!getToken()) {
+      const cats = lsReadCategories();
+      // prevent duplicate names
+      if (cats.some(c => c.name === name)) {
+        error.value = 'Cette catégorie existe déjà';
+        return null;
+      }
+      const newCat: UserCategory = {
+        id: Date.now(),
+        name,
+        color,
+        icon,
+        created_at: new Date().toISOString(),
+      };
+      const updated = [...cats, newCat];
+      lsWriteCategories(updated);
+      userCategories.value = updated;
+      return newCat;
+    }
     
     try {
       const response = await apiCall('/categories/', 'POST', {
@@ -258,7 +345,16 @@ export const useSavedMedia = () => {
    * Delete a custom category
    */
   const deleteCategory = async (categoryId: number) => {
-    if (!getToken()) return false;
+    if (!getToken()) {
+      const cats = lsReadCategories().filter(c => c.id !== categoryId);
+      lsWriteCategories(cats);
+      userCategories.value = cats;
+      // Also remove items in that category
+      const items = lsReadItems().filter(i => i.category !== (userCategories.value.find(c => c.id === categoryId)?.name || ''));
+      lsWriteItems(items);
+      savedItems.value = items;
+      return true;
+    }
     
     try {
       await apiCall(`/categories/${categoryId}/`, 'DELETE');
