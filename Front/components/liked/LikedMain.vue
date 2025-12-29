@@ -3,7 +3,10 @@
     <!-- Login prompt if not authenticated -->
     <div v-if="!isAuthenticated" class="auth-prompt">
       <div class="auth-card">
-        <span class="auth-icon">🔐</span>
+        <svg class="auth-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
         <h2>Connectez-vous pour accéder à vos favoris</h2>
         <p>Créez un compte ou connectez-vous pour sauvegarder et organiser vos articles préférés.</p>
         <NuxtLink to="/connexion" class="auth-btn">Se connecter</NuxtLink>
@@ -217,7 +220,7 @@ const handleCreateCategory = async () => {
   justify-content: center;
   min-height: 100vh;
   padding: 24px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fc 100%);
+  background: #fff;
 }
 
 .auth-card {
@@ -230,9 +233,10 @@ const handleCreateCategory = async () => {
 }
 
 .auth-icon {
-  font-size: 64px;
-  display: block;
-  margin-bottom: 24px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  color: #7b5ce0;
 }
 
 .auth-card h2 {
