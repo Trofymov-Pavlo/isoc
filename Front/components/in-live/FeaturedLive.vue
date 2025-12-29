@@ -89,6 +89,9 @@ const formatTime = (dateString?: string): string => {
     return dateString;
   }
 };
+
+// TODO(liked-vertical-bar): Consider adding a persistent vertical action bar
+// on heart-click (heart, watch later, categories, plus) to match requested UX.
 </script>
 
 <style scoped>
@@ -113,7 +116,7 @@ const formatTime = (dateString?: string): string => {
 .featured-image {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 720px;
   overflow: hidden;
   background: #f5f5f5;
   display: block;
@@ -260,7 +263,7 @@ const formatTime = (dateString?: string): string => {
   }
 
   .featured-image {
-    height: 300px;
+    height: 340px;
   }
 }
 
@@ -271,7 +274,7 @@ const formatTime = (dateString?: string): string => {
   }
 
   .featured-image {
-    height: 240px;
+    height: 280px;
   }
 
   .featured-content {

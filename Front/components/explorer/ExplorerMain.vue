@@ -239,7 +239,7 @@
           </button>
 
           <div class="pagination-logo">
-            <img src="/assets/logoIsoc.png" alt="ISOC AXIOM" class="pagination-logo-img" />
+            <img :src="logo" alt="ISOC AXIOM" class="pagination-logo-img" />
           </div>
 
           <div class="pagination-info">
@@ -264,6 +264,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { useVideos } from '@/composables/useVideos';
 import { useSavedMedia } from '@/composables/useSavedMedia';
+import logoIsoc from '@/assets/logoIsoc.png';
 
 // Data fetching
 const { all: articles, loading: articlesLoading, error: articlesError, load: loadArticles } = useArticles({
@@ -279,7 +280,8 @@ const { all: videos, loading: videosLoading, error: videosError, load: loadVideo
   meta: 1,
 });
 
-const { isSaved, toggleSave: saveMedia } = useSavedMedia();
+const { isSaved, toggleSave: saveMedia, initialize } = useSavedMedia();
+const logo = logoIsoc;
 
 // UI State
 const searchQuery = ref('');
@@ -497,6 +499,7 @@ async function toggleLike(link: string) {
     source: item.source || '',
     media_type: item.type === 'article' ? 'article' : 'video',
     category: 'liked',
+    thumbnail: item.image,
   });
 }
 
@@ -530,7 +533,10 @@ function formatExactDate(item: { published?: string | number; publishedTime?: st
     ? new Date(asNumber < 1e12 ? asNumber * 1000 : asNumber)
     : new Date(raw as string);
 
-  if (Number.isNaN(date.getTime())) return '';
+  if (Number.isNaN(date.getTime())) {
+    // Fallback for non-ISO strings (e.g., '14 décembre 2025')
+    return typeof raw === 'string' ? (raw as string) : '';
+  }
 
   const datePart = new Intl.DateTimeFormat('fr-FR', {
     year: 'numeric',
@@ -549,6 +555,8 @@ function formatExactDate(item: { published?: string | number; publishedTime?: st
 // Load data on mount
 onMounted(() => {
   loadData();
+  // Initialize saved media so hearts reflect saved status
+  initialize();
   
   // Check for URL query parameter
   const urlParams = new URLSearchParams(window.location.search);
@@ -567,6 +575,7 @@ onMounted(() => {
     filters.value.dateRange = dateParam;
   }
   applyFilters();
+  // TODO(liked-ui): Replace simple heart with vertical action bar for unified UX
 });
 </script>
 

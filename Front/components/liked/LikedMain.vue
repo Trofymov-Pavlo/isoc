@@ -179,6 +179,9 @@ const handleCreateCategory = async () => {
     createError.value = 'Impossible de créer la catégorie';
   }
 };
+
+// TODO(categories-backend): Investigate backend response for category creation failures
+// (auth token presence, API base, validation errors). Provide clearer UI errors.
 </script>
 
 <style scoped>
@@ -333,21 +336,22 @@ const handleCreateCategory = async () => {
 
 .icon-selector {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 8px;
 }
 
 .icon-option {
-  padding: 12px;
+  padding: 10px;
   border: 2px solid #e0e0e0;
   background: #fff;
   border-radius: 8px;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .icon-option:hover {
@@ -437,6 +441,14 @@ const handleCreateCategory = async () => {
 
   .modal-card {
     padding: 24px;
+  }
+  .icon-selector {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .icon-option {
+    font-size: 18px;
+    padding: 8px;
   }
 }
 </style>
