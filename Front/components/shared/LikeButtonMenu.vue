@@ -90,10 +90,9 @@ const { toggleSave, isSaved: checkSaved, userCategories, getUserCategories } = u
 
 const menuOpen = ref(false);
 
-onMounted(() => {
-  if (isAuthenticated.value) {
-    getUserCategories();
-  }
+onMounted(async () => {
+  // Load categories regardless of auth status
+  await getUserCategories();
 });
 
 const isSaved = (category: string) => {

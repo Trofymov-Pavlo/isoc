@@ -104,6 +104,7 @@ const {
   savedItems, 
   userCategories, 
   loading, 
+  error: savedMediaError,
   likedItems, 
   watchLaterItems, 
   getCategoryItems, 
@@ -120,6 +121,16 @@ const newCategoryColor = ref('#2f0538');
 const createError = ref('');
 
 const availableIcons = ['📌', '📚', '🎯', '⭐', '🔖', '📝', '💡', '🎬', '🎵', '🏆', '🔥', '⚡', '🎨', '📰', '🎓', '💼'];
+
+const formatSavedDate = (dateString: string): string => {
+  try {
+    const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return dateString;
+    return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch {
+    return dateString;
+  }
+};
 
 const displayedItems = computed(() => {
   let items = [];
@@ -138,18 +149,16 @@ const displayedItems = computed(() => {
     link: item.link,
     title: item.title,
     source: item.source,
-    image: item.thumbnail || '',
-    summary: '',
+    image: item.thumbnail,
+    summary: `Sauvegardé le ${formatSavedDate(item.saved_at)}`,
     type: item.media_type === 'article' || item.media_type === 'live' ? 'article' : 'video',
     published: item.saved_at,
   }));
 });
 
 onMounted(async () => {
-  await Promise.all([
-    getSavedItems(),
-    getUserCategories(),
-  ]);
+  await getSavedItems();
+  await getUserCategories();
 });
 
 const cancelCreate = () => {
@@ -174,9 +183,10 @@ const handleCreateCategory = async () => {
   );
   
   if (result) {
+    activeTab.value = newCategoryName.value.trim();
     cancelCreate();
   } else {
-    createError.value = 'Impossible de créer la catégorie';
+    createError.value = savedMediaError.value || 'Impossible de créer la catégorie';
   }
 };
 
