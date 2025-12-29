@@ -7,20 +7,22 @@
           :key="idx"
           :class="['carousel-item', { active: idx === activeIndex }]"
         >
-          <img
-            v-if="imageUrl(image)"
-            :src="imageUrl(image)"
-            :alt="image.title"
-            class="carousel-image"
-            @error="handleImageError(idx)"
-          />
-          <div v-else class="carousel-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-          </div>
+          <a :href="image.link" target="_blank" rel="noopener" class="carousel-image-link">
+            <img
+              v-if="imageUrl(image)"
+              :src="imageUrl(image)"
+              :alt="image.title"
+              class="carousel-image"
+              @error="handleImageError(idx)"
+            />
+            <div v-else class="carousel-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+          </a>
 
           <div class="carousel-overlay"></div>
 
@@ -307,6 +309,14 @@ watch(baseSlides, () => {
 
 .carousel-item.active { opacity: 1; z-index: 10; }
 
+.carousel-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .carousel-image {
   width: 100%;
   height: 100%;
@@ -335,11 +345,15 @@ watch(baseSlides, () => {
 
 .carousel-content {
   position: absolute;
-  top: 80px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   color: #ffffff;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .tagline-chip {
@@ -453,22 +467,21 @@ watch(baseSlides, () => {
 
 .explore-overlay {
   position: absolute;
-  bottom: 60px;
+  top: 85px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(550px, 85vw);
-  padding: 10px 12px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  backdrop-filter: blur(16px);
+  width: min(280px, 45vw);
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
   z-index: 25;
 }
 
 .explore-search {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   align-items: stretch;
 }
 
@@ -479,24 +492,26 @@ watch(baseSlides, () => {
 
 .search-icon {
   position: absolute;
-  left: 14px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   color: #cbd5e1;
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 9px 10px 9px 36px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 8px 6px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  font-size: 13px;
-  backdrop-filter: blur(8px);
+  font-size: 11px;
+  height: 30px;
+  line-height: 1;
+  box-sizing: border-box;
 }
 
 .search-input::placeholder { color: #cbd5e1; }
@@ -504,39 +519,53 @@ watch(baseSlides, () => {
 .explore-filters {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
 
 .filter-select {
-  padding: 8px 9px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.08);
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.12);
   color: #ffffff;
-  backdrop-filter: blur(8px);
-  font-size: 12px;
+  font-size: 11px;
+  height: 30px;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.filter-select option {
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .explore-btn {
-  padding: 9px 14px;
-  border-radius: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
   border: none;
   background: linear-gradient(120deg, #6d5dd3, #8c7cff);
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(109, 93, 211, 0.4);
-  font-size: 12px;
+  font-size: 11px;
   white-space: nowrap;
+  height: 30px;
+  line-height: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {
   .carousel { height: 80vh; }
-  .carousel-content { top: 40px; }
+  .carousel-content { top: 40px; gap: 6px; }
   .carousel-bottom { bottom: 90px; padding: 0 24px; }
   .image-title { font-size: 18px; }
-  .explore-overlay { bottom: 40px; padding: 10px; width: 92vw; }
+  .explore-overlay { top: 80px; left: 50%; transform: translateX(-50%); padding: 6px 8px; width: 90vw; }
   .explore-filters { grid-template-columns: 1fr; }
 }
 
@@ -547,7 +576,7 @@ watch(baseSlides, () => {
   .carousel-bottom { bottom: 70px; padding: 0 20px; }
   .image-title { font-size: 16px; }
   .image-source { font-size: 11px; }
-  .explore-overlay { width: 94vw; bottom: 24px; }
+  .explore-overlay { top: 75px; left: 50%; transform: translateX(-50%); width: 92vw; }
   .explore-btn { width: 100%; }
 }
 </style>

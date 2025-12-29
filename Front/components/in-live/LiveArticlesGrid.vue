@@ -43,9 +43,8 @@
               :link="article.link"
               :title="article.title"
               :source="article.source || 'En direct'"
-              :media-type="article.type === 'video' ? 'video' : 'live'"
+              :media-type="article.type === 'video' ? 'video' : 'article'"
               :thumbnail="article.image"
-              @toggle="() => {}"
             />
           </div>
         </div>

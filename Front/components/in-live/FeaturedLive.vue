@@ -38,9 +38,8 @@
             :link="article.link"
             :title="article.title"
             :source="article.source || 'En direct'"
-            :media-type="article.type === 'video' ? 'video' : 'live'"
+            :media-type="article.type === 'video' ? 'video' : 'article'"
             :thumbnail="article.image"
-            @toggle="() => {}"
           />
         </div>
       </div>
@@ -114,7 +113,7 @@ const formatTime = (dateString?: string): string => {
 .featured-image {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
   overflow: hidden;
   background: #f5f5f5;
   display: block;

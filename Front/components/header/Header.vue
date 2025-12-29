@@ -185,12 +185,18 @@ function goIndex() {
 }
 
 .live-dot {
-  width: 6px;
-  height: 6px;
-  background: #ff5c5c;
+  width: 7px;
+  height: 7px;
+  background: #ff6b6b;
   border-radius: 50%;
   display: inline-block;
+  box-shadow: 0 0 0 6px rgba(255, 107, 107, 0.16);
   animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 6px rgba(255, 107, 107, 0.16); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 12px rgba(255, 107, 107, 0.08); }
 }
 
 .nav-right {
