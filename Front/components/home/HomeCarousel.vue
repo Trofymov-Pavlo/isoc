@@ -203,12 +203,13 @@ function loadImage(url: string): Promise<HTMLImageElement> {
 }
 
 function detectTextPresence(img: HTMLImageElement): boolean {
-  const minW = 320
-  const minH = 200
+  // Vérifier la résolution minimale (meilleure qualité)
+  const minW = 450
+  const minH = 300
   if (img.naturalWidth < minW || img.naturalHeight < minH) return true
 
   const canvas = document.createElement('canvas')
-  const size = 64
+  const size = 150
   canvas.width = size
   canvas.height = size
   const ctx = canvas.getContext('2d')
@@ -222,20 +223,66 @@ function detectTextPresence(img: HTMLImageElement): boolean {
     return false
   }
 
+  // Convertir en niveaux de gris
+  const gray: number[] = []
+  for (let i = 0; i < data.length; i += 4) {
+    const lum = 0.299 * data[i]! + 0.587 * data[i + 1]! + 0.114 * data[i + 2]!
+    gray.push(lum)
+  }
+
+  // Détection simple de contours
   let edgeCount = 0
-  let total = 0
-  for (let y = 0; y < size; y++) {
-    for (let x = 1; x < size; x++) {
-      const idx = (y * size + x) * 4
-      const idxPrev = (y * size + (x - 1)) * 4
-      const lum = 0.299 * data[idx]! + 0.587 * data[idx + 1]! + 0.114 * data[idx + 2]!
-      const lumPrev = 0.299 * data[idxPrev]! + 0.587 * data[idxPrev + 1]! + 0.114 * data[idxPrev + 2]!
-      if (Math.abs(lum - lumPrev) > 38) edgeCount++
-      total++
+  const edgeThreshold = 45
+
+  for (let y = 1; y < size - 1; y++) {
+    for (let x = 1; x < size - 1; x++) {
+      const idx = y * size + x
+      const gx = Math.abs(gray[idx + 1]! - gray[idx - 1]!)
+      const gy = Math.abs(gray[idx + size]! - gray[idx - size]!)
+      
+      if (gx > edgeThreshold || gy > edgeThreshold) edgeCount++
     }
   }
-  const edgeDensity = edgeCount / total
-  return edgeDensity > 0.28
+
+  const totalPixels = (size - 2) * (size - 2)
+  const edgeDensity = edgeCount / totalPixels
+
+  // Rejeter seulement si vraiment beaucoup de contours (texte évident)
+  if (edgeDensity > 0.25) return true
+
+  // Analyse de variance pour détecter zones de texte
+  const blockSize = 10
+  let highVarianceBlocks = 0
+  let totalBlocks = 0
+
+  for (let by = 0; by < size; by += blockSize) {
+    for (let bx = 0; bx < size; bx += blockSize) {
+      let sum = 0
+      let sumSq = 0
+      let count = 0
+
+      for (let y = by; y < Math.min(by + blockSize, size); y++) {
+        for (let x = bx; x < Math.min(bx + blockSize, size); x++) {
+          const val = gray[y * size + x]!
+          sum += val
+          sumSq += val * val
+          count++
+        }
+      }
+
+      if (count > 0) {
+        const mean = sum / count
+        const variance = (sumSq / count) - (mean * mean)
+        if (variance > 1800) highVarianceBlocks++
+        totalBlocks++
+      }
+    }
+  }
+
+  const varianceRatio = highVarianceBlocks / totalBlocks
+  
+  // Score combiné - être sélectif mais pas trop
+  return edgeDensity > 0.18 && varianceRatio > 0.30
 }
 
 async function isUsableImage(url?: string): Promise<boolean> {
@@ -251,15 +298,25 @@ async function isUsableImage(url?: string): Promise<boolean> {
 async function refreshSlides() {
   const candidates = baseSlides.value
   const checked: Slide[] = []
+  const fallback: Slide[] = []
+  
   for (const s of candidates) {
     const url = imageUrl(s)
     if (!url) continue
+    
+    // Ajouter au fallback pour avoir au moins quelques images
+    if (fallback.length < 10) {
+      fallback.push(s)
+    }
+    
     if (await isUsableImage(url)) {
       checked.push(s)
     }
     if (checked.length >= 8) break
   }
-  slides.value = checked
+  
+  // Si aucune image ne passe les filtres, utiliser le fallback
+  slides.value = checked.length > 0 ? checked : fallback.slice(0, 5)
   activeIndex.value = 0
   startAutoplay()
 }
@@ -537,8 +594,12 @@ watch(baseSlides, () => {
 }
 
 .filter-select option {
-  background: #1a1a1a;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
+}
+
+.filter-select option:hover {
+  background: #f0f0f0;
 }
 
 .explore-btn {
