@@ -29,13 +29,12 @@
           <a :href="video.link" target="_blank" rel="noopener" class="read-link">
             Regarder sur YouTube →
           </a>
-          <LikeButton 
+          <LikeButtonMenu 
             :link="video.link"
             :title="video.title"
             :source="video.source || video.channel || 'YouTube'"
             media-type="video"
             :thumbnail="video.thumbnail"
-            @toggle="() => {}"
           />
         </div>
       </div>
@@ -45,7 +44,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import LikeButton from '~/components/shared/LikeButton.vue';
+import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
 
 interface VideoItem {
   id?: number;

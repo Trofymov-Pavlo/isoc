@@ -34,7 +34,7 @@
           <a :href="article.link" target="_blank" rel="noopener" class="read-link">
             Lire l'article complet →
           </a>
-          <LikeButton 
+          <LikeButtonMenu 
             :link="article.link"
             :title="article.title"
             :source="article.source || 'En direct'"
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import LikeButton from '~/components/shared/LikeButton.vue';
+import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
 
 interface Article {
   title: string;
