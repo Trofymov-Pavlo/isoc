@@ -10,6 +10,11 @@ cd "$SCRIPT_DIR"
 
 mkdir -p logs
 
+RUN_TS="$(date '+%Y%m%d-%H%M%S')"
+FRONTEND_LOG="$SCRIPT_DIR/logs/frontend-$RUN_TS.log"
+BACKEND_LOG="$SCRIPT_DIR/logs/backend-$RUN_TS.log"
+SCRAPING_LOG="$SCRIPT_DIR/logs/scraping.log"
+
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
@@ -51,14 +56,14 @@ fi
 
 echo -e "${BLUE}[1/3] Frontend Nuxt...${NC}"
 cd Front
-npm run dev > ../logs/frontend.log 2>&1 &
+npm run dev > "$FRONTEND_LOG" 2>&1 &
 FRONTEND_PID=$!
 cd ..
 echo -e "${GREEN}✓ Frontend (PID: $FRONTEND_PID) → http://localhost:3000${NC}"
 
 echo -e "${BLUE}[2/3] Backend Django...${NC}"
 cd Back
-"${PYTHON_CMD[@]}" manage.py runserver 8000 > ../logs/backend.log 2>&1 &
+"${PYTHON_CMD[@]}" manage.py runserver 8000 > "$BACKEND_LOG" 2>&1 &
 BACKEND_PID=$!
 cd ..
 echo -e "${GREEN}✓ Backend (PID: $BACKEND_PID) → http://localhost:8000${NC}"
@@ -67,7 +72,7 @@ echo -e "${BLUE}[3/3] Scraping...${NC}"
 if [ ! -f "$SCRAPING_FIRST_RUN" ]; then
   echo -e "${YELLOW}Premier lancement → scraping du dernier jour${NC}"
   cd Back
-  "${PYTHON_CMD[@]}" -m scraping.api --days 1 > ../logs/scraping.log 2>&1
+  "${PYTHON_CMD[@]}" -m scraping.api --days 1 > "$SCRAPING_LOG" 2>&1
   cd ..
   : > "$SCRAPING_FIRST_RUN"
 else
@@ -79,7 +84,7 @@ cd Back
 while true; do
   sleep 1800
   echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] Scraping (1 heure)...${NC}"
-  "${PYTHON_CMD[@]}" -m scraping.api --hours 1 >> ../logs/scraping.log 2>&1
+  "${PYTHON_CMD[@]}" -m scraping.api --hours 1 >> "$SCRAPING_LOG" 2>&1
 done &
 cd ..
 
@@ -88,6 +93,9 @@ echo -e "${GREEN}✓ Tous les services sont lancés${NC}"
 echo "  • Frontend → http://localhost:3000"
 echo "  • Backend  → http://localhost:8000"
 echo "  • Logs     → ./logs"
+echo "    - $FRONTEND_LOG"
+echo "    - $BACKEND_LOG"
+echo "    - $SCRAPING_LOG"
 echo -e "${YELLOW}Ctrl+C pour arrêter${NC}"
 
 wait
