@@ -15,7 +15,7 @@
           v-for="(article, index) in articles"
           :key="article.id"
           class="article-entry"
-          @click="$router.push(`/articles/${article.slug}`)"
+          @click="$router.push(`/${article.slug}`)"
         >
           <div class="article-number">{{ String(index + 1).padStart(2, '0') }}</div>
           
