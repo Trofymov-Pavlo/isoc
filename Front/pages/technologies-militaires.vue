@@ -88,13 +88,10 @@ CONCLUSION
 L'innovation technologique est devenue le facteur décisif de ce conflit. Les trois piliers – drones, intelligence artificielle et cyberguerre – fonctionnent de manière interdépendante pour créer un nouveau paradigme militaire où la vitesse, la précision et le contrôle de l'information déterminent l'issue des batailles. Cette guerre préfigure les conflits de demain, où la supériorité technologique pourrait primer sur les effectifs militaires traditionnels.`
 
 const formattedContent = computed(() => {
-  let formatted = articleContent
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
+  // Échapper seulement les & pour éviter les problèmes d'entités HTML
+  let formatted = articleContent.replace(/&/g, '&amp;')
   
+  // Appliquer les transformations de formatage
   formatted = formatted
     .replace(/^(\d+\.\s.+)$/gm, '<h2>$1</h2>')
     .replace(/^(CONCLUSION)$/gm, '<h2>$1</h2>')

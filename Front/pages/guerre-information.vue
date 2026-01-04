@@ -137,22 +137,23 @@ Dans ce contexte, la formation d'ingénieur (IDU) prend une dimension civique. C
 La leçon de ce conflit est claire : la liberté ne se défend pas uniquement avec des systèmes sol-air Patriot, mais aussi avec un esprit critique affûté, capable de dissiper le brouillard numérique que les autocraties tentent d'imposer au monde.`
 
 const formattedContent = computed(() => {
-  let formatted = articleContent
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
+  // Échapper seulement les & pour éviter les problèmes d'entités HTML
+  let formatted = articleContent.replace(/&/g, '&amp;')
   
+  // Appliquer les transformations de formatage
   formatted = formatted
     .replace(/^([IVX]+\.\s.+)$/gm, '<h2>$1</h2>')
     .replace(/^(CONCLUSION\s*:.+)$/gm, '<h2>$1</h2>')
-    .replace(/^([A-ZÀÂÄÇÈÉÊËÎÏÔÙÛÜŸŒ][^:\n]{5,100}\s:.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(La [a-z].{10,80})$/gm, '<h3>$1</h3>')
-    .replace(/^(Le [a-z].{10,80})$/gm, '<h3>$1</h3>')
-    .replace(/^(Cas d'école.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(Côté Russe.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(Le danger.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(La doctrine du.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(La fracture du.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(L'arme de l'.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(Le phénomène NAFO.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(Telegram\s*:.+)$/gm, '<h3>$1</h3>')
+
+    .replace(/^(TikTok et la.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(Cas d'\u00e9cole.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(Le spectre du.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(Le "Dividende du.+)$/gm, '<h3>$1</h3>')
     .replace(/\n\n+/g, '</p><p style="margin: 16px 0; line-height: 1.8;">')
     .replace(/^(?!<)/gm, '<p style="margin: 16px 0; line-height: 1.8;">')
   

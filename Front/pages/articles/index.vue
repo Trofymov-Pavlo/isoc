@@ -39,10 +39,34 @@
 </template>
 
 <script setup lang="ts">
-import { useFeaturedArticles } from '~/composables/useFeaturedArticles'
 import ArticlePreviewCard from '~/components/home/ArticlePreviewCard.vue'
 
-const { articles } = useFeaturedArticles()
+const articles = [
+  {
+    id: 1,
+    title: 'Les technologies militaires utilisées dans le conflit',
+    author: 'Hiba ABDESSADAK',
+    date: '2025-12-05',
+    excerpt: 'Le conflit ukrainien marque un tournant dans l\'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant...',
+    slug: 'technologies-militaires'
+  },
+  {
+    id: 2,
+    title: 'La vérité est une munition : Plongée dans la guerre de l\'information en Ukraine',
+    author: 'Antoine TENA',
+    date: '2025-12-12',
+    excerpt: 'Alors que l\'hiver 2025 fige les lignes de front du Donbass dans la boue et la glace, une autre guerre bat son plein, insensible aux saisons...',
+    slug: 'guerre-information'
+  },
+  {
+    id: 3,
+    title: 'Guerre en Ukraine : quand l\'algorithme décide de donner la mort',
+    author: 'Nathan BARRACHIN',
+    date: '2025-12-18',
+    excerpt: 'Dans les steppes ukrainiennes, l\'intelligence artificielle a révolutionné la guerre moderne avec une efficacité qui glace le sang...',
+    slug: 'enjeux-ethiques'
+  }
+]
 </script>
 
 <style scoped>

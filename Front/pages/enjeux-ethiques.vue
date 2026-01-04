@@ -110,22 +110,20 @@ La vraie question n'est pas technique, elle est anthropologique : voulons-nous v
 Le conflit ukrainien n'est qu'un aperçu. Dans les 10 prochaines années, chaque guerre mobilisera des IA de plus en plus autonomes. Si nous n'établissons pas maintenant des lignes rouges éthiques et juridiques, nous risquons de créer un futur où l'humanité aura perdu le contrôle de ses propres moyens de destruction. Et à ce moment-là, il sera trop tard pour regretter.`
 
 const formattedContent = computed(() => {
-  let formatted = articleContent
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
+  // Échapper seulement les & pour éviter les problèmes d'entités HTML
+  let formatted = articleContent.replace(/&/g, '&amp;')
   
+  // Appliquer les transformations de formatage
   formatted = formatted
-    .replace(/^([A-ZÀÂÄÇÈÉÊËÎÏÔÙÛÜŸŒ][A-ZÀÂÄÇÈÉÊËÎÏÔÙÛÜŸŒ\s':]{8,80})$/gm, '<h2>$1</h2>')
-    .replace(/^(L'ABSENCE.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(LE "CONTRÔLE.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(UN RISQUE.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(LA COURSE.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(UNE RESPONSABILITÉ.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(LES PISTES.+)$/gm, '<h3>$1</h3>')
-    .replace(/^(CONCLUSION.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(UNE RÉVOLUTION COMPARABLE AU NUCLÉAIRE)$/gm, '<h2>$1</h2>')
+    .replace(/^(LE SPECTRE DU “TERMINATOR”)$/gm, '<h3>$1</h3>')
+    .replace(/^(L’ABSENCE DE COMPASSION)$/gm, '<h3>$1</h3>')
+    .replace(/^(LE “CONTRÔLE HUMAIN SIGNIFICATIF”)$/gm, '<h3>$1</h3>')
+    .replace(/^(UN RISQUE D’ESCALADE AUTOMATISÉE)$/gm, '<h3>$1</h3>')
+    .replace(/^(LA COURSE RÉGLEMENTAIRE EST PERDUE)$/gm, '<h2>$1</h2>')
+    .replace(/^(UNE RESPONSABILITÉ ÉTHIQUE COLLECTIVE)$/gm, '<h2>$1</h2>')
+    .replace(/^(LES PISTES DE RÉGULATION)$/gm, '<h2>$1</h2>')
+    .replace(/^(CONCLUSION\s*:.+)$/gm, '<h2>$1</h2>')
     .replace(/\n\n+/g, '</p><p style="margin: 16px 0; line-height: 1.8;">')
     .replace(/^(?!<)/gm, '<p style="margin: 16px 0; line-height: 1.8;">')
   

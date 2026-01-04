@@ -81,12 +81,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useFeaturedArticles } from '~/composables/useFeaturedArticles'
 
 const route = useRoute()
-const { articles, getArticle } = useFeaturedArticles()
+const router = useRouter()
 
-const article = computed(() => getArticle(route.params.slug as string))
+// Redirection vers les pages individuelles
+const slug = route.params.slug as string
+if (slug === 'technologies-militaires' || slug === 'guerre-information' || slug === 'enjeux-ethiques') {
+  router.push(`/${slug}`)
+}
+
+const article = computed(() => undefined)
 
 const formattedContent = computed(() => {
   if (!article.value?.content) return ''

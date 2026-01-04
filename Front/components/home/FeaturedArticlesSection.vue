@@ -47,9 +47,32 @@
 </template>
 
 <script setup lang="ts">
-import { useFeaturedArticles } from '~/composables/useFeaturedArticles'
-
-const { articles } = useFeaturedArticles()
+const articles = [
+  {
+    id: 1,
+    title: 'Les technologies militaires utilisées dans le conflit',
+    author: 'Hiba ABDESSADAK',
+    date: '2025-12-05',
+    slug: 'technologies-militaires',
+    content: 'Le conflit ukrainien marque un tournant dans l\'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant sur le terrain. Les drones, l\'intelligence artificielle et les cyberattaques transforment profondément les stratégies de combat et redéfinissent les notions de supériorité militaire. Cette guerre démontre comment l\'innovation technologique peut compenser des désavantages en termes de ressources ou de personnel.'
+  },
+  {
+    id: 2,
+    title: 'La vérité est une munition : Plongée dans la guerre de l\'information en Ukraine',
+    author: 'Antoine TENA',
+    date: '2025-12-12',
+    slug: 'guerre-information',
+    content: 'Alors que l\'hiver 2025 fige les lignes de front du Donbass dans la boue et la glace, une autre guerre bat son plein, insensible aux saisons. Elle ne se mesure pas en kilomètres carrés reconquis, mais en parts de cerveau disponible. De la doctrine russe du « chaos contrôlé » à la guérilla numérique ukrainienne, en passant par le rôle trouble des algorithmes et l\'émergence de l\'OSINT, plongée dans les entrailles d\'un conflit où la vérité est la première victime — et la munition la plus convoitée.'
+  },
+  {
+    id: 3,
+    title: 'Guerre en Ukraine : quand l\'algorithme décide de donner la mort',
+    author: 'Nathan BARRACHIN',
+    date: '2025-12-18',
+    slug: 'enjeux-ethiques',
+    content: 'Dans les steppes ukrainiennes, l\'intelligence artificielle a révolutionné la guerre moderne avec une efficacité qui glace le sang. Des drones autonomes patrouillent le ciel, capables de sélectionner et d\'éliminer leurs cibles sans intervention humaine. Ce conflit force l\'humanité à se poser une question aussi urgente que vertigineuse : jusqu\'où sommes-nous prêts à aller dans l\'automatisation de la mort ?'
+  }
+]
 
 const formatDate = (date: string) => {
   return new Intl.DateTimeFormat('fr-FR', {

@@ -38,7 +38,14 @@
 </template>
 
 <script setup lang="ts">
-import type { FeaturedArticle } from '~/composables/useFeaturedArticles'
+interface FeaturedArticle {
+  id: number
+  title: string
+  author: string
+  date: string
+  excerpt: string
+  slug: string
+}
 
 defineProps<{
   article: FeaturedArticle
