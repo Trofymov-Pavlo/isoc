@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" lg="8" offset-lg="2">
         <!-- Header -->
-        <div class="article-header mb-8">
+        <div class="article-header mb-4">
           <v-btn
             variant="text"
             prepend-icon="mdi-arrow-left"
@@ -26,7 +26,7 @@
             </div>
           </div>
 
-          <v-divider class="my-6"></v-divider>
+          <v-divider class="my-4"></v-divider>
         </div>
 
         <!-- Content -->
@@ -35,8 +35,8 @@
         </div>
 
         <!-- Navigation -->
-        <div class="article-navigation mt-12">
-          <v-divider class="mb-8"></v-divider>
+        <div class="article-navigation mt-8">
+          <v-divider class="mb-4"></v-divider>
           <div class="d-flex justify-space-between gap-4">
             <v-btn
               variant="tonal"
@@ -102,7 +102,7 @@ const formatDate = (date: string) => {
 
 <style scoped>
 .article-page {
-  padding: 40px 20px;
+  padding: 20px 16px;
 }
 
 .article-header {
@@ -110,18 +110,18 @@ const formatDate = (date: string) => {
 }
 
 .article-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--v-primary);
-  margin-bottom: 24px;
+  color: #f59e0b;
+  margin-bottom: 16px;
 }
 
 .article-meta {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   flex-wrap: wrap;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -131,56 +131,63 @@ const formatDate = (date: string) => {
 }
 
 .article-content {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: rgba(0, 0, 0, 0.8);
 }
 
 .article-content :deep(h2) {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin: 32px 0 16px 0;
-  color: var(--v-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+  color: #f59e0b;
+  padding-left: 12px;
+  border-left: 4px solid #fbbf24;
 }
 
 .article-content :deep(h3) {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin: 24px 0 12px 0;
-  color: rgba(0, 0, 0, 0.8);
+  margin: 16px 0 8px 0;
+  color: #ea580c;
 }
 
 .article-content :deep(p) {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .article-content :deep(ul),
 .article-content :deep(ol) {
-  margin-left: 24px;
-  margin-bottom: 16px;
+  margin-left: 20px;
+  margin-bottom: 12px;
 }
 
 .article-content :deep(li) {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .article-navigation {
-  min-height: 60px;
+  min-height: 50px;
+  margin-top: 32px;
 }
 
 @media (max-width: 600px) {
+  .article-page {
+    padding: 16px 12px;
+  }
+
   .article-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .article-meta {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   .article-navigation .d-flex {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   .article-navigation :deep(.v-btn) {
