@@ -1,5 +1,12 @@
 <template>
   <main class="liked-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Mes favoris</h1>
+      </div>
+    </section>
+
     <!-- Login prompt if not authenticated -->
     <div v-if="!isAuthenticated" class="auth-prompt">
       <div class="auth-card">
@@ -14,17 +21,12 @@
     </div>
 
     <section v-else class="liked-wrapper">
-      <!-- Header -->
-      <div class="liked-header">
-        <h1>Mes favoris</h1>
-        <p class="count">{{ likedItems.length }} article{{ likedItems.length > 1 ? 's' : '' }}</p>
-      </div>
-
       <!-- Loading state -->
       <div v-if="loading" class="loading-state">Chargement de vos favoris…</div>
 
       <!-- Content -->
       <div v-else-if="likedItems.length > 0" class="liked-content">
+        <p class="count">{{ likedItems.length }} article{{ likedItems.length > 1 ? 's' : '' }}</p>
         <LiveArticlesGrid :articles="displayedItems" />
       </div>
 
@@ -122,6 +124,39 @@ onMounted(async () => {
   background: #fff;
 }
 
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(180deg, #f3f4f6 0%, #ffffff 100%);
+  padding: 60px calc(2vw) 50px;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #2f0538 0%, #4b2faa 100%);
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-section h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  color: #2f0538;
+  text-align: center;
+}
+
+/* Auth Prompt */
 .auth-prompt {
   display: flex;
   align-items: center;
@@ -181,24 +216,14 @@ onMounted(async () => {
 .liked-wrapper {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 48px calc(2vw) 60px;
+  padding: 60px calc(2vw);
 }
 
-.liked-header {
-  margin-bottom: 40px;
-}
-
-.liked-header h1 {
-  margin: 0 0 8px;
-  font-size: 32px;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.liked-header .count {
-  margin: 0;
-  font-size: 14px;
-  color: #999;
+.count {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 40px;
+  text-align: center;
 }
 
 .liked-content {
@@ -238,12 +263,17 @@ onMounted(async () => {
 }
 
 @media (max-width: 768px) {
-  .liked-wrapper {
-    padding: 32px calc(2vw) 40px;
+  .hero-section {
+    padding: 40px calc(2vw) 35px;
   }
 
-  .liked-header h1 {
-    font-size: 24px;
+  .hero-section h1 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .liked-wrapper {
+    padding: 50px calc(2vw);
   }
 
   .empty-state {

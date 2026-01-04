@@ -1,5 +1,11 @@
 ﻿<template>
   <main class="contact-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Contact</h1>
+      </div>
+    </section>
 
     <div class="contact-wrapper">
       <div class="form-wrapper">
@@ -77,10 +83,42 @@
   background: #fff;
 }
 
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(180deg, #f3f4f6 0%, #ffffff 100%);
+  padding: 60px calc(2vw) 50px;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #2f0538 0%, #4b2faa 100%);
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-section h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  color: #2f0538;
+  text-align: center;
+}
+
 .contact-wrapper {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 48px calc(2vw) 60px;
+  padding: 60px calc(2vw) 60px;
 }
 
 .form-wrapper {
@@ -158,8 +196,17 @@
 }
 
 @media (max-width: 680px) {
+  .hero-section {
+    padding: 40px calc(2vw) 35px;
+  }
+
+  .hero-section h1 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
   .contact-wrapper {
-    padding: 32px calc(2vw) 40px;
+    padding: 50px calc(2vw);
   }
 }
 </style>
