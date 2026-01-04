@@ -56,7 +56,7 @@ Le 24 février 2022, à l'aube, deux offensives ont été lancées simultanémen
 
 Comme le souligne le Général (2S) Jérôme Pellistrandi, rédacteur en chef de la Revue Défense Nationale, nous assistons à une mutation anthropologique de la guerre : « Le champ de bataille n'est plus seulement physique, il est cognitif. L'objectif n'est plus seulement de détruire le potentiel militaire de l'adversaire, mais de briser sa volonté en manipulant sa perception du réel. »
 
-I. MOSCOU ET LA STRATÉGIE DU « BROUILLARD PERMANENT »
+MOSCOU ET LA STRATÉGIE DU « BROUILLARD PERMANENT »
 
 Pour comprendre l'approche russe, il faut remonter aux racines soviétiques de la maskirovka (l'art de la tromperie militaire) et l'adapter à l'ère des réseaux sociaux. La Russie ne cherche pas toujours à convaincre le monde qu'elle a raison. Sa stratégie est plus cynique et, d'une certaine manière, plus redoutable.
 
@@ -72,7 +72,7 @@ La fracture du Sud Global
 
 Si cette propagande peine à convaincre en Europe, elle triomphe ailleurs. En Afrique, en Amérique Latine et en Inde, le narratif russe d'une "lutte contre l'impérialisme occidental" trouve un écho puissant. Via des plateformes comme RT (Russia Today) ou Sputnik, qui continuent d'émettre massivement en espagnol, arabe et français (à destination de l'Afrique), Moscou parvient à isoler diplomatiquement l'Ukraine d'une grande partie du monde non-occidental.
 
-II. KIEV OU LA « START-UP NATION » EN TREILLIS
+KIEV OU LA « START-UP NATION » EN TREILLIS
 
 Face au rouleau compresseur russe, l'Ukraine a opposé une agilité stupéfiante. Dès les premiers jours, le président Volodymyr Zelensky a compris que sa survie dépendait de l'internationalisation du conflit.
 
@@ -88,7 +88,7 @@ L'un des chapitres les plus inattendus de cette guerre restera l'émergence de l
 
 En répondant aux discours menaçants des diplomates russes par des mèmes absurdes et de l'argot internet, la NAFO a désamorcé la peur. « On ne peut pas terroriser quelqu'un qui se moque de vous », analyse Phillips O'Brien, professeur d'études stratégiques. Ils ont rendu la propagande russe inopérante en la rendant ridicule.
 
-III. LE CHAMP DE BATAILLE TECHNIQUE : ALGORITHMES ET TELEGRAM
+LE CHAMP DE BATAILLE TECHNIQUE : ALGORITHMES ET TELEGRAM
 
 En tant qu'étudiant en informatique et données (IDU), il est fascinant d'observer comment l'architecture même des plateformes façonne le conflit. Le code n'est pas neutre ; il est le terrain.
 
@@ -104,7 +104,7 @@ TikTok et la décontextualisation
 
 TikTok a changé la visualité de la guerre. Les vidéos y sont courtes, sans date, sans lieu, souvent accompagnées de musiques tendances qui dramatisent ou banalisent la violence. L'algorithme de TikTok, extrêmement agressif, peut propulser une vidéo de 2014 en la faisant passer pour un événement de 2025, créant des flambées de colère basées sur du vide. C'est le triomphe de l'émotion pure sur l'analyse contextuelle.
 
-IV. L'ÈRE DE L'OSINT : LA CONTRE-ATTAQUE PAR LA PREUVE
+L'ÈRE DE L'OSINT : LA CONTRE-ATTAQUE PAR LA PREUVE
 
 Si le mensonge est industriel, la vérité est devenue artisanale. C'est l'avènement de l'OSINT (Open Source Intelligence).
 
@@ -116,7 +116,7 @@ Lorsque le croiseur amiral russe Moskva a coulé en avril 2022, la Russie a évo
 
 Cette "bataille de la preuve" force les belligérants à une certaine prudence. Aujourd'hui, un char détruit est géolocalisé en quelques minutes par des bénévoles à 3000 km du front. Comme le dit l'historien militaire Michel Goya, « La transparence du champ de bataille est devenue quasi totale. La surprise stratégique devient extrêmement difficile. »
 
-V. 2025-2026 : LE DÉFI DE L'INTELLIGENCE ARTIFICIELLE
+2025-2026 : LE DÉFI DE L'INTELLIGENCE ARTIFICIELLE
 
 Nous entrons désormais dans une phase encore plus critique. L'IA générative (GenAI) a atteint un niveau de maturité inquiétant.
 
@@ -128,7 +128,7 @@ Le "Dividende du Menteur"
 
 Le danger le plus pernicieux de l'IA est le concept du "Liar's Dividend" (le dividende du menteur). Puisque tout peut être faux, les acteurs malveillants peuvent désormais nier des preuves réelles (crimes de guerre, corruption) en affirmant simplement : "C'est une création de l'IA". La charge de la preuve s'inverse. La vérité ne suffit plus ; elle doit être prouvée cryptographiquement.
 
-CONCLUSION : VERS UNE HYGIÈNE NUMÉRIQUE DE GUERRE
+VERS UNE HYGIÈNE NUMÉRIQUE DE GUERRE
 
 La guerre en Ukraine a définitivement aboli la frontière entre le civil et le militaire dans l'espace informationnel. Chaque "J'aime", chaque partage, chaque commentaire participe à la viralité d'un narratif ou d'un autre.
 
@@ -142,14 +142,17 @@ const formattedContent = computed(() => {
   
   // Appliquer les transformations de formatage
   formatted = formatted
-    .replace(/^([IVX]+\.\s.+)$/gm, '<h2>$1</h2>')
-    .replace(/^(CONCLUSION\s*:.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(MOSCOU ET LA STRATÉGIE.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(KIEV OU LA.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(LE CHAMP DE BATAILLE TECHNIQUE.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(L'ÈRE DE L'OSINT.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(2025-2026 : LE DÉFI.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(VERS UNE HYGIÈNE NUMÉRIQUE.+)$/gm, '<h2>$1</h2>')
     .replace(/^(La doctrine du.+)$/gm, '<h3>$1</h3>')
     .replace(/^(La fracture du.+)$/gm, '<h3>$1</h3>')
     .replace(/^(L'arme de l'.+)$/gm, '<h3>$1</h3>')
     .replace(/^(Le phénomène NAFO.+)$/gm, '<h3>$1</h3>')
     .replace(/^(Telegram\s*:.+)$/gm, '<h3>$1</h3>')
-
     .replace(/^(TikTok et la.+)$/gm, '<h3>$1</h3>')
     .replace(/^(Cas d'\u00e9cole.+)$/gm, '<h3>$1</h3>')
     .replace(/^(Le spectre du.+)$/gm, '<h3>$1</h3>')
