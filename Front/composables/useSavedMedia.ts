@@ -14,6 +14,7 @@ export interface SavedMediaItem {
   media_type: 'article' | 'video' | 'live';
   category: 'liked' | 'watch_later' | string;
   thumbnail?: string;
+  published_date?: string;
   saved_at: string;
 }
 
@@ -37,8 +38,6 @@ export const useSavedMedia = () => {
   const isServer = typeof window === 'undefined';
   
   const API_BASE = 'http://localhost:8000/api/saved-media';
-  const LS_ITEMS_KEY = 'saved_media_items';
-  const LS_CATEGORIES_KEY = 'saved_media_categories';
 
   const getToken = (): string | null => {
     if (isServer) return null;
@@ -117,35 +116,6 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * LocalStorage fallback helpers (used when no token/auth)
-   */
-  const lsReadItems = (): SavedMediaItem[] => {
-    if (isServer) return [];
-    try {
-      const raw = localStorage.getItem(LS_ITEMS_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch { return []; }
-  };
-
-  const lsWriteItems = (items: SavedMediaItem[]) => {
-    if (isServer) return;
-    try { localStorage.setItem(LS_ITEMS_KEY, JSON.stringify(items)); } catch { /* ignore */ }
-  };
-
-  const lsReadCategories = (): UserCategory[] => {
-    if (isServer) return [];
-    try {
-      const raw = localStorage.getItem(LS_CATEGORIES_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch { return []; }
-  };
-
-  const lsWriteCategories = (cats: UserCategory[]) => {
-    if (isServer) return;
-    try { localStorage.setItem(LS_CATEGORIES_KEY, JSON.stringify(cats)); } catch { /* ignore */ }
-  };
-
-  /**
    * Toggle save status for a media item
    */
   const toggleSave = async (payload: {
@@ -155,6 +125,7 @@ export const useSavedMedia = () => {
     media_type: 'article' | 'video' | 'live';
     category?: string;
     thumbnail?: string;
+    published_date?: string;
   }) => {
     // Ensure user is authenticated before allowing saves
     if (!getToken()) {
@@ -198,11 +169,10 @@ export const useSavedMedia = () => {
    * Get all saved items
    */
   const getSavedItems = async () => {
-    // LocalStorage fallback when unauthenticated
     if (!getToken()) {
-      const items = lsReadItems();
-      savedItems.value = items;
-      return items;
+      savedItems.value = [];
+      error.value = 'Vous devez être connecté pour accéder à vos favoris';
+      return [];
     }
     
     try {
@@ -227,7 +197,8 @@ export const useSavedMedia = () => {
    */
   const getSavedByCategory = async (category: string) => {
     if (!getToken()) {
-      return lsReadItems().filter(i => i.category === category);
+      error.value = 'Vous devez être connecté pour accéder à vos favoris';
+      return [];
     }
     
     try {
@@ -244,7 +215,8 @@ export const useSavedMedia = () => {
    */
   const getTopSaved = async (limit = 3, category = 'liked') => {
     if (!getToken()) {
-      return lsReadItems().filter(i => i.category === category).slice(0, limit);
+      error.value = 'Vous devez être connecté pour accéder à vos favoris';
+      return [];
     }
     
     try {
@@ -268,9 +240,8 @@ export const useSavedMedia = () => {
    */
   const getUserCategories = async () => {
     if (!getToken()) {
-      const cats = lsReadCategories();
-      userCategories.value = cats;
-      return cats;
+      userCategories.value = [];
+      return [];
     }
     
     try {
@@ -291,23 +262,8 @@ export const useSavedMedia = () => {
    */
   const createCategory = async (name: string, color = '#2f0538', icon = '❤️') => {
     if (!getToken()) {
-      const cats = lsReadCategories();
-      // prevent duplicate names
-      if (cats.some(c => c.name === name)) {
-        error.value = 'Cette catégorie existe déjà';
-        return null;
-      }
-      const newCat: UserCategory = {
-        id: Date.now(),
-        name,
-        color,
-        icon,
-        created_at: new Date().toISOString(),
-      };
-      const updated = [...cats, newCat];
-      lsWriteCategories(updated);
-      userCategories.value = updated;
-      return newCat;
+      error.value = 'Vous devez être connecté pour créer une catégorie';
+      return null;
     }
     
     try {
@@ -331,14 +287,8 @@ export const useSavedMedia = () => {
    */
   const deleteCategory = async (categoryId: number) => {
     if (!getToken()) {
-      const cats = lsReadCategories().filter(c => c.id !== categoryId);
-      lsWriteCategories(cats);
-      userCategories.value = cats;
-      // Also remove items in that category
-      const items = lsReadItems().filter(i => i.category !== (userCategories.value.find(c => c.id === categoryId)?.name || ''));
-      lsWriteItems(items);
-      savedItems.value = items;
-      return true;
+      error.value = 'Vous devez être connecté pour supprimer une catégorie';
+      return false;
     }
     
     try {
@@ -349,6 +299,26 @@ export const useSavedMedia = () => {
       return true;
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Failed to delete category';
+      return false;
+    }
+  };
+
+  /**
+   * Delete a saved media item by ID
+   */
+  const deleteSavedMedia = async (itemId: number) => {
+    if (!getToken()) {
+      error.value = 'Vous devez être connecté pour supprimer un favori';
+      return false;
+    }
+    
+    try {
+      await apiCall(`/${itemId}/`, 'DELETE');
+      // Update local state immediately
+      savedItems.value = savedItems.value.filter(item => item.id !== itemId);
+      return true;
+    } catch (err) {
+      error.value = err instanceof Error ? err.message : 'Failed to delete saved media';
       return false;
     }
   };
@@ -376,6 +346,7 @@ export const useSavedMedia = () => {
 
   return {
     // State
+    savedMedia: savedItems,
     savedItems,
     userCategories,
     loading,
@@ -391,6 +362,7 @@ export const useSavedMedia = () => {
     getUserCategories,
     createCategory,
     deleteCategory,
+    deleteSavedMedia,
     
     // Computed/helpers
     isSaved,

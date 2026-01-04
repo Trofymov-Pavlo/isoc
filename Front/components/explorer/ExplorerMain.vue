@@ -207,15 +207,16 @@
               </div>
               <span v-if="item.type === 'article'" class="media-badge article-badge">Article</span>
               <span v-else class="media-badge video-badge">Vidéo</span>
-              <button 
-                class="like-btn" 
-                @click.prevent.stop="toggleLike(item.link)"
-                :title="isSavedItem(item.link) ? 'Retirer des favoris' : 'Ajouter aux favoris'"
-              >
-                <svg :class="{ liked: isSavedItem(item.link) }" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </button>
+              <div class="explorer-like" @click.stop>
+                <LikeButtonMenu
+                  :link="item.link"
+                  :title="item.title"
+                  :source="item.source || ''"
+                  :media-type="item.type === 'video' ? 'video' : 'article'"
+                  :thumbnail="item.image"
+                  :published-date="item.published"
+                />
+              </div>
             </div>
             <div class="item-content">
               <h3 class="item-title">{{ item.title }}</h3>
@@ -264,6 +265,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { useVideos } from '@/composables/useVideos';
 import { useSavedMedia } from '@/composables/useSavedMedia';
+import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
 import logoIsoc from '@/assets/logoIsoc.png';
 
 // Data fetching
@@ -280,7 +282,7 @@ const { all: videos, loading: videosLoading, error: videosError, load: loadVideo
   meta: 1,
 });
 
-const { isSaved, toggleSave: saveMedia, initialize } = useSavedMedia();
+const { initialize } = useSavedMedia();
 const logo = logoIsoc;
 
 // UI State
@@ -482,25 +484,6 @@ function prevPage() {
     currentPage.value--;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-}
-
-function isSavedItem(link: string): boolean {
-  return isSaved(link, 'liked');
-}
-
-async function toggleLike(link: string) {
-  // Find the item to get its metadata
-  const item = allItems.value.find(i => i.link === link);
-  if (!item) return;
-
-  await saveMedia({
-    link,
-    title: item.title,
-    source: item.source || '',
-    media_type: item.type === 'article' ? 'article' : 'video',
-    category: 'liked',
-    thumbnail: item.image,
-  });
 }
 
 function navigateToLink(link: string) {
@@ -1063,36 +1046,27 @@ onMounted(() => {
   color: #997404;
 }
 
-.like-btn {
+.explorer-like {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  cursor: pointer;
-  padding: 8px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #dee2e6;
-  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.like-btn:hover {
+.explorer-like:hover {
   background: white;
-  color: #dc3545;
-  transform: scale(1.1);
 }
 
-.like-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.like-btn svg.liked {
-  color: #dc3545;
+.explorer-like :deep(.like-btn) {
+  padding: 0;
 }
 
 .item-content {

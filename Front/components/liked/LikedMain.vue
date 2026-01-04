@@ -134,6 +134,8 @@ const newCategoryIcon = ref('📌');
 const newCategoryColor = ref('#2f0538');
 const createError = ref('');
 
+const archiveByLink = ref<Record<string, { image?: string; published?: string }>>({});
+
 const availableIcons = ['📌', '📚', '🎯', '⭐', '🔖', '📝', '💡', '🎬', '🎵', '🏆', '🔥', '⚡', '🎨', '📰', '🎓', '💼'];
 
 const formatSavedDate = (dateString: string): string => {
@@ -163,16 +165,50 @@ const displayedItems = computed(() => {
     link: item.link,
     title: item.title,
     source: item.source,
-    image: item.thumbnail,
+    image: item.thumbnail || archiveByLink.value[item.link]?.image,
     summary: '',
     type: item.media_type === 'article' || item.media_type === 'live' ? 'article' : 'video',
-    published: item.saved_at,
+    published: item.published_date || archiveByLink.value[item.link]?.published || item.saved_at,
   }));
 });
+
+const loadArchiveIndex = async () => {
+  try {
+    const res = await fetch('/archive.json');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    const rawArticles: any[] = Array.isArray(data) ? data : (data?.articles ?? []);
+    const rawVideos: any[] = Array.isArray(data) ? [] : (data?.videos ?? []);
+
+    const idx: Record<string, { image?: string; published?: string }> = {};
+
+    for (const a of rawArticles) {
+      const link = (a?.link || a?.url || '').toString();
+      if (!link) continue;
+      const image = (a?.image || a?.img || a?.thumbnail || a?.thumb || a?.og_image || a?.picture || a?.cover) as string | undefined;
+      const published = (a?.published || a?.pubDate || a?.date || a?.updated || a?.published_at) as string | undefined;
+      if (image || published) idx[link] = { image, published };
+    }
+
+    for (const v of rawVideos) {
+      const link = (v?.link || '').toString();
+      if (!link) continue;
+      const image = (v?.thumbnail || v?.image) as string | undefined;
+      const published = (v?.published || v?.date || v?.publishedAt) as string | undefined;
+      if (image || published) idx[link] = { image, published };
+    }
+
+    archiveByLink.value = idx;
+  } catch {
+    // ignore
+  }
+};
 
 onMounted(async () => {
   await getSavedItems();
   await getUserCategories();
+  await loadArchiveIndex();
 });
 
 const cancelCreate = () => {

@@ -2,62 +2,81 @@
   <div class="like-menu-container">
     <button
       class="like-btn"
-      @click="toggleMenu"
-      :title="'Enregistrer'"
+      type="button"
+      @click.stop="onHeartClick"
+      :title="isAnySaved ? 'Gérer' : 'Enregistrer'"
       :class="{ active: isAnySaved }"
     >
-      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        :fill="isAnySaved ? 'currentColor' : 'none'"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+        ></path>
       </svg>
     </button>
 
-    <!-- Dropdown menu -->
+    <!-- Vertical action bar (opens when heart is already pink) -->
     <Transition name="menu">
-      <div v-if="menuOpen" class="like-menu" @click.stop>
+      <div v-if="menuOpen" class="action-bar" @click.stop>
         <button
-          class="menu-item"
+          class="action-btn"
+          type="button"
           :class="{ active: isSaved('liked') }"
+          :title="isSaved('liked') ? 'Retirer des likés' : 'Ajouter aux likés'"
           @click="toggleCategory('liked')"
         >
-          <svg class="menu-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          <svg
+            class="action-icon"
+            viewBox="0 0 24 24"
+            :fill="isSaved('liked') ? 'currentColor' : 'none'"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            ></path>
           </svg>
-          <span>Likés</span>
         </button>
 
         <button
-          class="menu-item"
+          class="action-btn"
+          type="button"
           :class="{ active: isSaved('watch_later') }"
+          :title="isSaved('watch_later') ? 'Retirer de à lire plus tard' : 'Ajouter à lire plus tard'"
           @click="toggleCategory('watch_later')"
         >
-          <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
-          <span>À lire plus tard</span>
         </button>
 
-        <div v-if="userCategories.length > 0" class="menu-divider"></div>
+        <div v-if="userCategories.length > 0" class="action-divider"></div>
 
         <button
           v-for="cat in userCategories"
           :key="cat.id"
-          class="menu-item"
+          class="action-btn"
+          type="button"
           :class="{ active: isSaved(cat.name) }"
+          :title="cat.name"
           @click="toggleCategory(cat.name)"
         >
-          <span class="menu-icon">{{ cat.icon }}</span>
-          <span>{{ cat.name }}</span>
+          <span class="action-emoji">{{ cat.icon }}</span>
         </button>
 
-        <div class="menu-divider"></div>
+        <div class="action-divider"></div>
 
-        <button class="menu-item menu-add" @click="openCreateModal">
-          <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="action-btn add" type="button" title="Nouvelle catégorie" @click="createCategoryFromPrompt">
+          <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
-          <span>Nouvelle catégorie</span>
         </button>
       </div>
     </Transition>
@@ -65,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useAuthState } from '~/composables/useAuthState';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 
@@ -75,25 +94,32 @@ interface Props {
   source?: string;
   mediaType: 'article' | 'video' | 'live';
   thumbnail?: string;
+  publishedDate?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   source: 'AXIOM',
 });
 
-const emit = defineEmits<{
-  (e: 'createCategory'): void;
-}>();
-
 const { isAuthenticated } = useAuthState();
-const { toggleSave, isSaved: checkSaved, userCategories, getUserCategories } = useSavedMedia();
+const { toggleSave, isSaved: checkSaved, userCategories, getUserCategories, createCategory, initialize, isInitialized } =
+  useSavedMedia();
 
 const menuOpen = ref(false);
 
-onMounted(async () => {
-  // Load categories regardless of auth status
-  await getUserCategories();
-});
+watch(
+  () => isAuthenticated.value,
+  async (authed) => {
+    if (!authed) {
+      menuOpen.value = false;
+      return;
+    }
+    if (!isInitialized.value) {
+      await initialize();
+    }
+  },
+  { immediate: true }
+);
 
 const isSaved = (category: string) => {
   if (!isAuthenticated.value) return false;
@@ -102,17 +128,21 @@ const isSaved = (category: string) => {
 
 const isAnySaved = computed(() => {
   if (!isAuthenticated.value) return false;
-  const categories = ['liked', 'watch_later', ...userCategories.value.map(c => c.name)];
-  return categories.some(cat => checkSaved(props.link, cat));
+  const categories = ['liked', 'watch_later', ...userCategories.value.map((c) => c.name)];
+  return categories.some((cat) => checkSaved(props.link, cat));
 });
 
-const toggleMenu = () => {
+const closeMenu = () => {
+  menuOpen.value = false;
+};
+
+const openMenu = async () => {
   if (!isAuthenticated.value) {
-    // Redirect to login if not authenticated
     navigateTo('/connexion');
     return;
   }
-  menuOpen.value = !menuOpen.value;
+  await getUserCategories();
+  menuOpen.value = true;
 };
 
 const toggleCategory = async (category: string) => {
@@ -122,16 +152,43 @@ const toggleCategory = async (category: string) => {
     source: props.source,
     media_type: props.mediaType,
     thumbnail: props.thumbnail,
+    published_date: props.publishedDate,
     category,
   });
 };
 
-const openCreateModal = () => {
-  menuOpen.value = false;
-  emit('createCategory');
+const onHeartClick = async () => {
+  if (!isAuthenticated.value) {
+    navigateTo('/connexion');
+    return;
+  }
+
+  // Grey heart -> like directly (pink)
+  if (!isAnySaved.value) {
+    await toggleCategory('liked');
+    return;
+  }
+
+  // Pink heart -> open/close action bar
+  if (menuOpen.value) closeMenu();
+  else await openMenu();
 };
 
-// Close menu when clicking outside
+const createCategoryFromPrompt = async () => {
+  if (!isAuthenticated.value) {
+    navigateTo('/connexion');
+    return;
+  }
+
+  const name = window.prompt('Nom de la nouvelle catégorie :');
+  if (!name || !name.trim()) return;
+
+  const created = await createCategory(name.trim());
+  if (created) {
+    await getUserCategories();
+  }
+};
+
 const handleClickOutside = (event: MouseEvent) => {
   const target = event.target as HTMLElement;
   if (!target.closest('.like-menu-container')) {
@@ -151,7 +208,8 @@ onUnmounted(() => {
 <style scoped>
 .like-menu-container {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 }
 
 .like-btn {
@@ -159,12 +217,11 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   padding: 6px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
   color: #ccc;
-  position: relative;
 }
 
 .like-btn:hover {
@@ -181,80 +238,75 @@ onUnmounted(() => {
   height: 20px;
 }
 
-/* Dropdown menu */
-.like-menu {
+/* Vertical action bar centered on the heart icon (Y-centered) */
+.action-bar {
   position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(28px, -50%) scale(1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 999px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 8px;
-  min-width: 220px;
   z-index: 1000;
 }
 
-.menu-item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
   border: none;
   background: white;
-  border-radius: 6px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
-  font-size: 14px;
-  color: #333;
-  text-align: left;
+  color: #666;
 }
 
-.menu-item:hover {
+.action-btn:hover {
   background: #f5f5f5;
 }
 
-.menu-item.active {
+.action-btn.active {
   background: linear-gradient(135deg, #2f0538 0%, #4b2faa 100%);
   color: white;
 }
 
-.menu-item.active .menu-icon {
-  color: white;
-}
-
-.menu-icon {
+.action-icon {
   width: 18px;
   height: 18px;
-  flex-shrink: 0;
-  color: #666;
 }
 
-.menu-add {
-  color: #7b5ce0;
-  font-weight: 600;
+.action-emoji {
+  font-size: 16px;
+  line-height: 1;
 }
 
-.menu-add .menu-icon {
-  color: #7b5ce0;
-}
-
-.menu-divider {
+.action-divider {
+  width: 100%;
   height: 1px;
-  background: #e0e0e0;
-  margin: 8px 0;
+  background: #e9e9e9;
+}
+
+.action-btn.add {
+  color: #7b5ce0;
 }
 
 /* Transition */
 .menu-enter-active,
 .menu-leave-active {
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .menu-enter-from,
 .menu-leave-to {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translate(28px, -50%) scale(0.96);
 }
 </style>

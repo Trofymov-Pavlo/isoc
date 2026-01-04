@@ -8,7 +8,7 @@ from .models import SavedMedia, UserCategory
 class SavedMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavedMedia
-        fields = ('id', 'link', 'title', 'source', 'media_type', 'category', 'thumbnail', 'saved_at')
+        fields = ('id', 'link', 'title', 'source', 'media_type', 'category', 'thumbnail', 'published_date', 'saved_at')
         read_only_fields = ('id', 'saved_at')
 
 
