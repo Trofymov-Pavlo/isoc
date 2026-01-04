@@ -102,7 +102,7 @@ const formattedContent = computed(() => {
   
   // Format sections
   formatted = formatted
-    .replace(/^([A-ZÀ-ÖØ-Ý0-9][A-ZÀ-ÖØ-Ý0-9\s'’"():,.\-–—…!?]+)$/gm, '<h2 style="margin-top: 24px; margin-bottom: 16px; font-weight: 700;">$1</h2>')
+    .replace(/^([A-ZÀ-ÖØ-ÝŒ0-9][A-ZÀ-ÖØ-ÝŒ0-9\s'’"():,.\-–—…!?]+)$/gm, '<h2 style="margin-top: 24px; margin-bottom: 16px; font-weight: 700;">$1</h2>')
     .replace(/^• (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
     .replace(/^- (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
     .replace(/(<li[^>]*>.+<\/li>)/s, '<ul style="list-style: none; padding: 0; margin-bottom: 16px;">$1</ul>')
