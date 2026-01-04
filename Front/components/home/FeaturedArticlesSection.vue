@@ -89,13 +89,13 @@ const getPreviewText = (content: string) => {
 
 <style scoped>
 .featured-articles-section {
-  padding: 40px 0 50px 0;
+  padding: 24px 0 32px 0;
   background: #ffffff;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 28px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -124,8 +124,8 @@ const getPreviewText = (content: string) => {
 .article-entry {
   display: grid;
   grid-template-columns: 60px 1fr;
-  gap: 32px;
-  padding: 28px 0;
+  gap: 24px;
+  padding: 20px 0;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
@@ -159,7 +159,7 @@ const getPreviewText = (content: string) => {
 .article-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .article-meta {
@@ -197,7 +197,7 @@ const getPreviewText = (content: string) => {
 
 .article-preview {
   position: relative;
-  margin-top: 8px;
+  margin-top: 4px;
   max-height: 110px;
   overflow: hidden;
 }
@@ -232,7 +232,7 @@ const getPreviewText = (content: string) => {
   color: #111827;
   font-weight: 600;
   font-size: 0.9rem;
-  margin-top: 8px;
+  margin-top: 4px;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -246,12 +246,12 @@ const getPreviewText = (content: string) => {
   grid-column: 1 / -1;
   height: 1px;
   background: #e5e7eb;
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {
   .featured-articles-section {
-    padding: 30px 0 40px 0;
+    padding: 20px 0 28px 0;
   }
 
   .section-title {
@@ -263,13 +263,13 @@ const getPreviewText = (content: string) => {
   }
 
   .section-header {
-    margin-bottom: 35px;
+    margin-bottom: 24px;
   }
 
   .article-entry {
     grid-template-columns: 50px 1fr;
-    gap: 20px;
-    padding: 24px 0;
+    gap: 16px;
+    padding: 18px 0;
   }
 
   .article-number {
@@ -281,7 +281,7 @@ const getPreviewText = (content: string) => {
   }
 
   .article-divider {
-    margin-top: 24px;
+    margin-top: 18px;
   }
 }
 
