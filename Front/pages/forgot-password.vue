@@ -128,6 +128,11 @@ import { useRouter } from '#imports';
 import PasswordToggle from '~/components/compte/PasswordToggle.vue';
 import { useAuthAPI } from '~/composables/useAuthAPI';
 
+// Disable default layout (no header, footer, subheader)
+definePageMeta({
+  layout: false,
+});
+
 const router = useRouter();
 const { passwordReset, passwordResetConfirm, loading: loadingAPI } = useAuthAPI();
 

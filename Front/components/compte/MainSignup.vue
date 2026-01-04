@@ -56,14 +56,6 @@
           </div>
         </label>
 
-        <div class="options">
-          <label class="checkbox-styled">
-            <input v-model="newsletter" type="checkbox" name="newsletter" />
-            <span class="checkmark"></span>
-            <span class="text">Je souhaite recevoir les actualités d'Axiome</span>
-          </label>
-        </div>
-
         <p v-if="error" class="error-message">{{ error }}</p>
 
         <button type="submit" class="btn-signup" :disabled="loading">
@@ -101,7 +93,6 @@ const password = ref('');
 const passwordConfirm = ref('');
 const showPassword = ref(false);
 const showPasswordConfirm = ref(false);
-const newsletter = ref(false);
 const error = ref('');
 const router = useRouter();
 const { setAuth } = useAuthState();
