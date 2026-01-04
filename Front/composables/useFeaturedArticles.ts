@@ -60,55 +60,65 @@ L'innovation technologique est devenue le facteur décisif de ce conflit. Les tr
   },
   {
     id: 2,
-    title: 'Guerre de l\'information : le champ de bataille invisible',
+    title: 'Guerre de l\'information : Enquête sur le "deuxième front" ukrainien',
     author: 'Antoine TENA',
     date: '2025-12-12',
-    excerpt: 'Le conflit russo-ukrainien se joue aussi sur un front invisible : images, récits, réseaux sociaux et vérification deviennent des armes stratégiques...',
-    content: `Le conflit russo-ukrainien ne se joue pas uniquement à coups d'artillerie, de drones et de manœuvres terrestres. Il se joue aussi dans les fils d'actualité, dans les chaînes Telegram, dans les titres des médias et jusque dans les conversations quotidiennes. En Ukraine comme en Russie, convaincre peut parfois produire des effets aussi décisifs que vaincre : obtenir des armes et des sanctions, maintenir le moral, isoler l'adversaire, ou au contraire semer le doute.
+    excerpt: 'Entre propagande d\'État, Telegram et IA générative, enquête sur le "deuxième front" où l\'information devient une arme.',
+    content: `Guerre de l'information : Enquête sur le "deuxième front" ukrainien
 
-Cette "guerre de l'information" n'est pas un simple bruit de fond : c'est un théâtre à part entière, avec ses doctrines, ses acteurs et ses outils. Elle combine des stratégies d'État (propagande, censure, communication officielle), la mécanique des plateformes (viralité, algorithmes, communautés) et une bataille de la preuve (images, géolocalisations, fact-checking). Comprendre ce front invisible, c'est comprendre une partie de la dynamique du conflit.
+Par Antoine TENA Étudiant en Ingénierie des Données et Usages (Polytech Annecy) | Projet AXIOME Publié le 12 décembre 2025 à 14h30 • Lecture 8 min.
 
-MAÎTRISER LE RÉCIT : DEUX STRATÉGIES, UN OBJECTIF
+Si les canons Caesar et les drones FPV saturent le ciel du Donbass, une autre bataille, tout aussi féroce, se joue sur nos écrans. Entre la « maskirovka » (l'art de la tromperie) russe et la guerilla numérique ukrainienne, décryptage d'un conflit où l'information est devenue une arme cinétique. Enquête.
 
-Côté russe, l'information est largement pensée comme un instrument de contrôle. La communication officielle vise d'abord un public intérieur : maintenir la cohésion, justifier l'intervention, minimiser les revers et délégitimer les sources contradictoires. La rhétorique s'appuie sur des éléments récurrents (menace, protection, "opération spéciale") et sur une posture de défi face aux médias occidentaux, présentés comme partiaux.
+Le 16 mars 2022, une vidéo circule massivement sur les réseaux sociaux. On y voit le président Volodymyr Zelensky, le teint cireux, ordonner à ses troupes de déposer les armes. La vidéo est techniquement médiocre, la voix sonne étrangement, mais le doute s'installe quelques minutes. C'était un deepfake. Grossier, certes, mais précurseur.
 
-Côté ukrainien, la communication s'inscrit davantage dans une logique de mobilisation et d'internationalisation. Les messages cherchent à tenir la population, à documenter les destructions, et à convaincre des partenaires étrangers. Les prises de parole régulières, directes et incarnées, la mise en avant des civils, ainsi qu'un discours centré sur la souveraineté et la défense, participent à installer une lecture du conflit favorable à Kiev.
+Trois ans plus tard, cet épisode semble presque artisanal. Comme l'analyse le colonel et historien militaire Michel Goya, la guerre en Ukraine a marqué « la fusion définitive entre le champ de bataille physique et le champ psychologique ». Pour comprendre ce conflit, il ne suffit plus de regarder les cartes d'état-major ; il faut plonger dans les flux de données.
 
-Dans les deux cas, l'objectif est identique : imposer un cadre d'interprétation du réel. Ce n'est pas seulement "informer", c'est orienter : quels faits compter, quels mots employer, quelles images montrer, quels silences maintenir.
+1. La doctrine de la "Forteresse" contre l'agilité du "David"
 
-PLATEFORMES ET VIRALITÉ : L'INFO CIRCULE COMME UNE MUNITION
+La Russie est entrée en guerre avec une doctrine de l'information héritée de l'ère soviétique mais dopée au numérique. C'est ce que les chercheurs de la RAND Corporation appelaient dès 2016 le "Firehose of Falsehood" (la lance à incendie du mensonge) : inonder l'espace de versions contradictoires pour noyer la vérité.
 
-Les réseaux sociaux n'ont pas remplacé les médias traditionnels : ils les ont accélérés, fragmentés et parfois court-circuités. La rapidité de circulation crée une pression constante : publier vite, avant l'adversaire, avant le démenti, avant la vérification. Cette temporalité favorise les contenus émotionnels et spectaculaires, et rend l'espace informationnel plus vulnérable aux manipulations.
+L'objectif de Moscou n'est pas toujours de vous faire croire à sa version, mais de vous dégoûter de la recherche de la vérité. David Colon, chercheur à Sciences Po et spécialiste de la propagande, explique que la stratégie russe vise à « fragmenter les réalités ». En interne, le Kremlin verrouille : lois contre les "fake news" sur l'armée, contrôle de Telegram. À l'externe, il joue la carte de la victime face à l'"Occident collectif".
 
-Telegram s'est imposé comme un carrefour stratégique. On y trouve des canaux officiels, des sources militantes, des communautés locales et des relais pseudo-journalistiques. Son avantage : une diffusion rapide, une audience fidèle, une circulation en "circuit fermé". Son problème : l'opacité, la difficulté de tracer l'origine et la multiplication des contenus non vérifiés.
+En face, l'Ukraine a surpris le monde par sa "résilience narrative". Dès les premières heures, le mythe du "Fantôme de Kiev" (ce pilote supposé avoir abattu 6 avions russes en un jour, qui s'est avéré être une légende urbaine créée pour le moral) a montré que Kiev comprenait la viralité. L'Ukraine ne communique pas comme un État, mais comme une start-up : rapide, directe, utilisant l'humour noir et les mèmes pour galvaniser ses soutiens.
 
-X (Twitter) joue un autre rôle : celui du temps réel et du commentaire. Observateurs OSINT, journalistes, institutions et comptes anonymes s'y croisent. La plateforme sert à diffuser des images, à interpréter, à contester, mais aussi à amplifier. Entre algorithmes, effets de meute et comptes automatisés, certaines narratives prennent de l'ampleur non parce qu'elles sont vraies, mais parce qu'elles sont répétées.
+2. Le terrain : Telegram, le "Far West" crypté
 
-TikTok, enfin, influe sur un public différent : format court, forte charge émotionnelle, montage dynamique. Cette logique peut sensibiliser… mais aussi simplifier, dramatiser et faciliter l'essor de contenus trompeurs. Dans un contexte de guerre, la forme peut parfois compter autant que le fond.
+Si la guerre du Golfe était celle de CNN, la guerre d'Ukraine est celle de Telegram. L'application fondée par Pavel Durov est devenue le système nerveux du conflit.
 
-MANIPULATION VISUELLE ET IA : DEEPFAKES, MONTAGES, CONTEXTES DÉTOURNÉS
+• L'opacité comme atout : Contrairement à Facebook ou X (ex-Twitter), Telegram modère peu. C'est ici que les "Milbloggers" (blogueurs militaires russes comme Rybar, suivi par plus d'un million de personnes) publient des cartes souvent plus précises que celles du Ministère de la Défense russe.
 
-Une grande partie de la bataille se joue sur les images. Photos, vidéos et extraits audio circulent en masse, souvent sans contexte. Les manipulations ne reposent pas uniquement sur des deepfakes sophistiqués : le plus efficace reste souvent le détournement.
+• Le risque de la manipulation : C'est aussi le terrain de jeu des opérations psychologiques (PSYOPS). Des fausses chaînes se faisant passer pour des unités ukrainiennes diffusent des nouvelles démoralisantes. Pour un analyste en données (IDU), Telegram est un cauchemar : impossible de tracer l'origine réelle d'un contenu viral transféré des milliers de fois.
 
-Un extrait coupé, une vidéo d'un autre conflit recyclée, un plan sans géolocalisation, une date absente : ces détails suffisent à orienter une interprétation. La désinformation moderne n'a pas toujours besoin d'inventer, elle peut simplement déplacer.
+3. La surprise NAFO : Quand Internet contre-attaque
 
-L'IA générative ajoute un niveau de complexité. Elle rend la fabrication plus accessible et augmente le volume de contenus potentiellement trompeurs. Mais elle renforce aussi les capacités de détection (analyse d'artefacts, recoupements, outils de vérification). Dans ce duel, l'important n'est pas seulement la technologie : c'est l'écosystème qui décide de ce qui est crédible.
+L'un des phénomènes les plus fascinants de ce conflit reste l'émergence de la NAFO (North Atlantic Fella Organization). Ce mouvement décentralisé d'internautes, représentés par des avatars de chiens Shiba Inu, s'est donné pour mission de harceler les officiels russes et de noyer la propagande sous l'humour absurde.
 
-OSINT ET FACT-CHECKING : LA CONTRE-ATTAQUE PAR LA PREUVE
+Ce qui ressemble à une blague a pourtant des effets stratégiques. Phillips O'Brien, professeur d'études stratégiques à l'Université de St Andrews, a souligné comment ces mouvements citoyens ont aidé à maintenir l'attention occidentale sur le conflit quand la lassitude menaçait. En "trollant" les ambassades russes, la NAFO a rendu la propagande traditionnelle du Kremlin inopérante, car ridicule.
 
-Face à la désinformation, un contre-pouvoir s'est structuré : l'OSINT (Open Source Intelligence) et le fact-checking. Des analystes, journalistes et citoyens utilisent des sources ouvertes (images satellites, vidéos, cartes, données publiques) pour vérifier des événements, confirmer des lieux, dater des séquences et recouper les affirmations.
+4. OSINT : La fin du brouillard de guerre ?
 
-La méthode repose sur des gestes simples mais rigoureux : comparer des images, identifier des repères, analyser l'ombre et la météo, vérifier des métadonnées, confronter plusieurs sources. Cette pratique ne rend pas la vérité automatique, mais elle élève le niveau d'exigence. Elle réintroduit de la preuve dans un espace dominé par la vitesse.
+Face au mensonge, la réponse est venue de la société civile via l'OSINT (Open Source Intelligence).
 
-Le fact-checking institutionnel (agences, médias, organisations spécialisées) complète cet effort. Son défi est structurel : la correction circule souvent moins vite que l'erreur. Pourtant, dans la durée, ces mécanismes permettent de limiter l'impact de certaines campagnes et de maintenir une base minimale de confiance.
+Des groupes comme Bellingcat, dirigé par Eliot Higgins, ou l'équipe de l'Institute for the Study of War (ISW) qui publie des cartes quotidiennes, ont révolutionné le renseignement. Ils ne sont pas espions, ils sont analystes de données ouvertes.
 
-POURQUOI C'EST DÉCISIF : MORALE, ALLIANCES, LÉGITIMITÉ
+Un exemple majeur ? Le naufrage du croiseur Moskva en avril 2022. Alors que la Russie niait les faits, des analystes OSINT ont recoupé des photos volées, analysé la météo, la position des radars sur le navire et les messages de détresse en morse pour confirmer la frappe ukrainienne avant même les confirmations officielles.
 
-La guerre de l'information a des effets concrets. Le moral des populations dépend du sentiment de contrôle, de la cohérence du récit et de la perception des succès. Les alliances dépendent du soutien des opinions publiques et de la crédibilité des preuves présentées. La légitimité internationale se construit à travers des images et des récits capables de convaincre.
+"Dans cette guerre, chaque citoyen armé d'un smartphone est un capteur de renseignement potentiel. Le défi n'est plus de trouver l'information, mais de la vérifier." — Général (2S) Jérôme Pellistrandi, rédacteur en chef de la Revue Défense Nationale.
 
-Dans ce contexte, l'enjeu n'est pas seulement de "gagner" une bataille de communication, mais de stabiliser un espace de vérité minimale : suffisamment solide pour décider, soutenir, sanctionner, négocier. Quand l'information devient une arme, la capacité à vérifier devient une défense.
+5. L'IA générative : La menace de 2025
 
-Le conflit en Ukraine montre à quel point l'information n'est plus un simple accompagnement de la guerre : elle en est une dimension structurante. Propagande, réseaux sociaux, IA, OSINT et fact-checking composent un champ de bataille où la vitesse et l'émotion affrontent la preuve et la méthode. La leçon centrale est simple : dans un environnement saturé de contenus, la vérité n'est pas seulement un fait, c'est aussi un effort collectif.`,
+Aujourd'hui, le conflit entre dans une phase plus sombre avec l'IA. Les outils de génération d'images (comme Midjourney ou les versions avancées de DALL-E) permettent de créer de faux charniers ou de fausses manifestations à Paris contre l'aide à l'Ukraine.
+
+Le danger est double :
+
+• Le faux crédible : Inonder les réseaux d'images réalistes pour saturer les fact-checkers.
+
+• Le "Dividende du menteur" : Les politiques peuvent désormais balayer une vraie vidéo compromettante en affirmant simplement : "C'est de l'IA". La barrière de la preuve devient infinie.
+
+Conclusion : La bataille de la cognition
+
+La guerre russo-ukrainienne nous enseigne que la victoire militaire ne suffit plus si elle ne s'accompagne pas d'une victoire narrative. Pour les ingénieurs et citoyens de demain, la compétence critique ne sera pas seulement de savoir coder, mais de savoir décoder le réel. Comme le résume l'expert en cyberstratégie François-Bernard Huyghe, nous sommes passés de la guerre de l'information à la « guerre cognitive » : il ne s'agit plus de pirater les ordinateurs, mais de pirater les esprits.`,
     slug: 'guerre-information'
   },
   {
