@@ -1,92 +1,106 @@
 <template>
   <main class="legal-page">
-    <PageHero
-      title="Politique des Cookies"
-      subtitle="Comment nous utilisons les cookies sur ce site"
-      badge="Cookies"
-      badge-icon="🍪"
-    />
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Politique des Cookies</h1>
+      </div>
+    </section>
 
     <section class="legal-content">
       <div class="legal-wrapper">
-        <h2>Politique des Cookies</h2>
-
-        <h3>Qu'est-ce qu'un Cookie ?</h3>
+        <h2>1. Qu'est-ce qu'un cookie ?</h2>
         <p>
-          Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, smartphone, tablette) 
-          par votre navigateur web. Les cookies permettent aux sites web de se souvenir de vos préférences 
-          et d'améliorer votre expérience utilisateur.
+          Un cookie est un petit fichier texte déposé sur votre appareil (ordinateur, smartphone, tablette)
+          lors de la visite d'un site web. Les cookies permettent au site de mémoriser vos préférences
+          et d'améliorer votre expérience de navigation.
         </p>
 
-        <h3>Types de Cookies que nous Utilisons</h3>
+        <h2>2. Types de cookies utilisés sur AXIOME</h2>
 
-        <h4>Cookies Essentiels (Strictement Nécessaires)</h4>
+        <h3>Cookies strictement nécessaires</h3>
         <p>
-          Ces cookies sont essentiels au fonctionnement du site. Ils permettent les fonctionnalités 
-          basiques comme la navigation et l'accès aux zones sécurisées. Vous ne pouvez pas les désactiver.
+          Ces cookies sont essentiels au fonctionnement du site. Ils permettent l'utilisation
+          des fonctionnalités de base comme l'authentification et la sauvegarde de vos favoris.
         </p>
         <ul>
-          <li>Cookies de session</li>
-          <li>Cookies d'authentification</li>
-          <li>Cookies de préférences de langue</li>
+          <li><strong>Cookies de session</strong> : maintiennent votre connexion active</li>
+          <li><strong>Cookies d'authentification (JWT)</strong> : stockent votre token de connexion sécurisé</li>
+          <li><strong>Cookies de préférences</strong> : mémorisent vos paramètres de langue et de thème</li>
         </ul>
-
-        <h4>Cookies de Préférences</h4>
         <p>
-          Ces cookies mémorisent vos préférences pour personnaliser votre expérience, 
-          comme votre choix de langue ou votre préférence pour le mode sombre.
+          Ces cookies ne peuvent pas être désactivés car ils sont indispensables au bon fonctionnement
+          du site. Ils ne sont pas utilisés à des fins de suivi ou de publicité.
         </p>
 
-        <h4>Cookies d'Analyse</h4>
+        <h3>Cookies de fonctionnalité</h3>
         <p>
-          Ces cookies nous aident à comprendre comment vous utilisez notre site. 
-          Ils collectent des données anonymes sur le nombre de visiteurs, les pages visitées et les erreurs.
+          Ces cookies permettent d'améliorer votre expérience utilisateur en mémorisant vos choix :
         </p>
-
-        <h4>Cookies Publicitaires</h4>
-        <p>
-          Ces cookies peuvent être utilisés par nos partenaires publicitaires pour vous afficher 
-          des publicités pertinentes basées sur votre historique de navigation.
-        </p>
-
-        <h3>Contrôle de Vos Cookies</h3>
-        <p>
-          Vous pouvez contrôler et/ou supprimer les cookies selon vos souhaits. Pour plus d'informations, 
-          consultez le site <strong>aboutcookies.org</strong>.
-        </p>
-
-        <h4>Via Votre Navigateur</h4>
-        <p>La plupart des navigateurs vous permettent de refuser les cookies ou de vous alerter quand un cookie est envoyé.</p>
         <ul>
-          <li>Chrome : Paramètres > Confidentialité > Cookies et autres données de site</li>
-          <li>Firefox : Paramètres > Vie privée et sécurité > Cookies et données de site</li>
-          <li>Safari : Préférences > Confidentialité > Gérer les données de site</li>
-          <li>Edge : Paramètres > Confidentialité > Cookies et autres données de site</li>
+          <li>Préférence de thème (clair/sombre)</li>
+          <li>Catégories favorites sélectionnées</li>
+          <li>Paramètres d'affichage personnalisés</li>
         </ul>
 
-        <h3>Conséquences de la Désactivation des Cookies</h3>
+        <h3>Cookies analytiques</h3>
         <p>
-          Si vous désactivez les cookies essentiels, certaines fonctionnalités du site peuvent ne pas 
-          fonctionner correctement. Nous vous recommandons de conserver au moins les cookies essentiels activés.
+          AXIOME n'utilise actuellement pas de cookies analytiques tiers. Les données de navigation
+          anonymes peuvent être collectées via les logs serveur pour des analyses internes du projet.
         </p>
 
-        <h3>Cookies de Tiers</h3>
+        <h2>3. Durée de conservation</h2>
+        <p>Les cookies utilisés sur AXIOME ont les durées de conservation suivantes :</p>
+        <ul>
+          <li><strong>Cookies de session</strong> : supprimés à la fermeture du navigateur</li>
+          <li><strong>Token d'authentification</strong> : 7 jours maximum</li>
+          <li><strong>Préférences utilisateur</strong> : 365 jours</li>
+        </ul>
+
+        <h2>4. Gestion de vos cookies</h2>
+        
+        <h3>Paramétrage du navigateur</h3>
         <p>
-          Notre site peut contenir des cookies d'autres domaines (par exemple, YouTube, Google Maps). 
-          Nous ne sommes pas responsables de ces cookies. Consultez les politiques des tiers concernés 
-          pour plus d'informations.
+          Vous pouvez configurer votre navigateur pour refuser les cookies ou être alerté
+          lors de l'enregistrement d'un cookie. Voici les liens vers les pages d'aide des
+          principaux navigateurs :
+        </p>
+        <ul>
+          <li><strong>Chrome</strong> : Paramètres → Confidentialité et sécurité → Cookies</li>
+          <li><strong>Firefox</strong> : Options → Vie privée et sécurité → Cookies</li>
+          <li><strong>Safari</strong> : Préférences → Confidentialité</li>
+          <li><strong>Edge</strong> : Paramètres → Confidentialité → Cookies</li>
+        </ul>
+
+        <h3>Impact du refus des cookies</h3>
+        <p>
+          Le refus des cookies strictement nécessaires peut entraîner l'impossibilité d'utiliser
+          certaines fonctionnalités du site, notamment :
+        </p>
+        <ul>
+          <li>La connexion à votre compte</li>
+          <li>La sauvegarde de vos favoris</li>
+          <li>La mémorisation de vos préférences</li>
+        </ul>
+
+        <h2>5. Consentement</h2>
+        <p>
+          En utilisant AXIOME, vous consentez à l'utilisation des cookies strictement nécessaires
+          au fonctionnement du site. Pour les cookies facultatifs, votre consentement explicite
+          est requis via le bandeau de gestion des cookies affiché lors de votre première visite.
         </p>
 
-        <h3>Mise à Jour de Cette Politique</h3>
+        <h2>6. Modifications de la politique</h2>
         <p>
-          Nous pouvons mettre à jour cette politique des cookies. Les modifications entreront en vigueur 
-          dès leur publication sur le site. La dernière mise à jour a eu lieu le 1er janvier 2025.
+          Nous nous réservons le droit de modifier cette politique à tout moment. Les modifications
+          seront effectives dès leur publication sur cette page. Nous vous encourageons à consulter
+          régulièrement cette page pour rester informé.
         </p>
 
-        <h3>Contact</h3>
+        <h2>7. Contact</h2>
         <p>
-          Si vous avez des questions concernant notre utilisation des cookies, veuillez nous contacter 
-          via notre formulaire de contact.
+          Pour toute question concernant notre utilisation des cookies, veuillez nous contacter
+          via notre <NuxtLink to="/contact" class="inline-link">page de contact</NuxtLink>.
         </p>
       </div>
     </section>
@@ -94,7 +108,12 @@
 </template>
 
 <script setup lang="ts">
-import PageHero from '~/components/shared/PageHero.vue';
+useHead({
+  title: 'Politique des Cookies - AXIOME',
+  meta: [
+    { name: 'description', content: 'Politique d\'utilisation des cookies sur la plateforme AXIOME' }
+  ]
+});
 </script>
 
 <style scoped>
@@ -103,55 +122,150 @@ import PageHero from '~/components/shared/PageHero.vue';
   background: #fff;
 }
 
-.legal-content {
-  max-width: 1400px;
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(180deg, #f3f4f6 0%, #ffffff 100%);
+  padding: 60px calc(2vw) 50px;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #2f0538 0%, #4b2faa 100%);
+}
+
+.hero-content {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 48px calc(2vw) 60px;
+}
+
+.hero-section h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  color: #2f0538;
+  text-align: center;
+}
+
+/* Legal Content */
+.legal-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px calc(2vw);
 }
 
 .legal-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
+  line-height: 1.8;
 }
 
-.legal-wrapper h2 {
-  font-size: 28px;
+.last-update {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 32px;
+  padding: 12px 20px;
+  background: #f8f9fa;
+  border-left: 3px solid #4b2faa;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 24px;
   font-weight: 700;
   color: #2f0538;
-  margin: 0 0 24px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #f0f0f0;
+  margin: 40px 0 20px;
+  padding-top: 20px;
 }
 
-.legal-wrapper h3 {
+h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h3 {
   font-size: 20px;
-  font-weight: 700;
-  color: #2f0538;
-  margin: 32px 0 16px;
-}
-
-.legal-wrapper h4 {
-  font-size: 16px;
   font-weight: 600;
   color: #2f0538;
-  margin: 20px 0 12px;
+  margin: 24px 0 16px;
 }
 
-.legal-wrapper p {
+p {
   font-size: 16px;
-  line-height: 1.75;
+  line-height: 1.8;
   color: #4a4a55;
   margin: 0 0 16px;
 }
 
-.legal-wrapper ul {
-  margin: 16px 0 16px 24px;
-  padding: 0;
-  color: #4a4a55;
+ul {
+  margin: 16px 0;
+  padding-left: 24px;
 }
 
-.legal-wrapper li {
-  margin: 8px 0;
-  line-height: 1.6;
+li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a55;
+  margin-bottom: 8px;
+}
+
+strong {
+  font-weight: 600;
+  color: #2f0538;
+}
+
+.inline-link {
+  color: #4b2faa;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.inline-link:hover {
+  border-bottom-color: #4b2faa;
+}
+
+.external-link {
+  color: #4b2faa;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.external-link:hover {
+  text-decoration-style: solid;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 50px calc(2vw) 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 30px;
+    letter-spacing: -0.7px;
+  }
+
+  .legal-content {
+    padding: 50px calc(2vw);
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p, li {
+    font-size: 15px;
+  }
 }
 </style>
