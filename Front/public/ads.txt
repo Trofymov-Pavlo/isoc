@@ -1,0 +1,42 @@
+# ads.txt for AXIOME · Information & Analyse
+# Projet étudiant ISOC531 - 2025-2026
+# Standard IAB: https://iabtechlab.com/ads-txt/
+
+# =====================================================
+# NOTICE: NO ADVERTISING ON THIS SITE
+# =====================================================
+#
+# AXIOME est un projet étudiant académique sans but lucratif.
+# Aucune publicité n'est diffusée sur cette plateforme.
+# Aucun inventaire publicitaire n'est disponible à la vente.
+#
+# Ce fichier ads.txt existe pour:
+# 1. Prévenir toute tentative de fraude publicitaire
+# 2. Clarifier qu'aucun revendeur n'est autorisé
+# 3. Respecter les standards du web
+#
+# Si vous constatez des publicités affichées sur ce domaine,
+# il s'agit d'une activité frauduleuse. Merci de nous contacter:
+# contact@axiome-isoc.fr
+#
+# =====================================================
+
+# Aucun vendeur autorisé
+# Format: <domain>, <publisher ID>, <relationship>, <certification authority ID>
+
+# Exemple de ligne si publicités étaient présentes:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Pour AXIOME: Aucune ligne de vendeur = Aucune publicité autorisée
+
+# Variables de contact
+CONTACT=contact@axiome-isoc.fr
+CONTACT=antoine.tena@example.com
+
+# Informations supplémentaires
+# Projet: AXIOME · Information & Analyse
+# Nature: Plateforme académique d'agrégation d'information
+# Thématique: Conflit Ukraine-Russie
+# Financement: Aucun (projet étudiant)
+# Monétisation: Aucune
+# Cours: ISOC531 (2025-2026)
