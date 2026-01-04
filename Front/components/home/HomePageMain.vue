@@ -27,6 +27,8 @@
       </div>
     </section>
 
+    <FeaturedArticlesSection />
+
     <section class="about">
       <div class="about-box">
         <h3>Notre engagement</h3>
@@ -38,6 +40,7 @@
 
 <script setup lang="ts">
 import HomeCarousel from './HomeCarousel.vue'
+import FeaturedArticlesSection from './FeaturedArticlesSection.vue'
 </script>
 
 <style scoped>
