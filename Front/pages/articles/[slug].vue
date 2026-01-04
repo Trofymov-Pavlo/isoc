@@ -48,14 +48,13 @@
         <!-- Navigation -->
         <div class="article-navigation mt-12">
           <v-divider class="mb-8"></v-divider>
-          <div class="d-flex justify-space-between">
+          <div class="d-flex justify-space-between gap-4">
             <v-btn
-              v-if="previousArticle"
               variant="tonal"
-              prepend-icon="mdi-arrow-left"
-              :to="`/articles/${previousArticle.slug}`"
+              prepend-icon="mdi-home"
+              @click="$router.push('/')"
             >
-              {{ previousArticle.title }}
+              Retour à l'accueil
             </v-btn>
             <div></div>
             <v-btn
@@ -64,7 +63,7 @@
               append-icon="mdi-arrow-right"
               :to="`/articles/${nextArticle.slug}`"
             >
-              {{ nextArticle.title }}
+              Article suivant
             </v-btn>
           </div>
         </div>

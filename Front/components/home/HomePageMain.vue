@@ -21,15 +21,7 @@ import FeaturedArticlesSection from './FeaturedArticlesSection.vue'
 <style scoped>
 .home-page { background: #ffffff; }
 
-.tiles { padding: 28px 24px; max-width: 1200px; margin: 0 auto; }
-.tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.tile { background: #ffffff; border: 1px solid #e9ecef; border-radius: 12px; padding: 18px; text-align: left; display: grid; gap: 6px; cursor: pointer; transition: all 0.2s ease; }
-.tile:hover { border-color: #7b5ce0; box-shadow: 0 8px 24px rgba(123,92,224,0.12); transform: translateY(-2px); }
-.tile-eyebrow { font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; }
-.tile-title { font-size: 16px; font-weight: 700; color: #111827; }
-.tile-desc { font-size: 13px; color: #4b5563; }
-
-.about { padding: 24px; }
+.about { padding: 40px 24px; }
 .about-box { max-width: 1000px; margin: 0 auto; background: #f8fafc; border: 1px solid #e9ecef; border-radius: 12px; padding: 20px; }
 .about-box h3 { margin: 0 0 8px 0; font-size: 18px; color: #111827; }
 .about-box p { margin: 0; color: #4b5563; }
