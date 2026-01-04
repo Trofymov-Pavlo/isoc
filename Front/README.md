@@ -35,8 +35,7 @@ Front/
 │   ├── humans.txt      # Équipe projet
 │   ├── ads.txt         # Pas de publicité
 │   ├── archive.json    # Archive articles (247k+)
-│   └── .well-known/
-│       └── security.txt
+│   └── security.txt
 ├── app.vue              # Root component
 ├── nuxt.config.ts       # Configuration Nuxt
 └── package.json         # Dépendances

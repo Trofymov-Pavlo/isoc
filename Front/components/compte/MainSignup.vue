@@ -23,19 +23,19 @@
 
           <label class="field">
             <span class="label">Nom d'utilisateur *</span>
-            <input v-model="username" type="text" name="username" placeholder="johndoe" required autocomplete="username" />
+            <input v-model="username" type="text" name="username" placeholder="AntoineTena01" required autocomplete="username" />
           </label>
         </div>
 
         <div class="form-row">
           <label class="field">
             <span class="label">Prénom</span>
-            <input v-model="firstName" type="text" name="firstname" placeholder="Jean" />
+            <input v-model="firstName" type="text" name="firstname" placeholder="Antoine" />
           </label>
 
           <label class="field">
             <span class="label">Nom</span>
-            <input v-model="lastName" type="text" name="lastname" placeholder="Dupont" />
+            <input v-model="lastName" type="text" name="lastname" placeholder="Tena" />
           </label>
         </div>
 

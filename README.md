@@ -103,7 +103,7 @@ npm run dev
 
 - **Chef de projet & Développeur** : Antoine TENA (architecture, dev full-stack, article désinformation)
 - **Analyste juridique** : Nathan BARRACHIN (article enjeux juridiques)
-- **Analyste militaire & Designer** : Hiba EL HAYANI (article technologies militaires, UI/UX)
+- **Analyste militaire & Designer** : Hiba ABDESSADAK (article technologies militaires, UI/UX)
 - **Contributeur** : Pavel TROFYMOV (recherche)
 - **Présentation** : Co-rédigée par toute l'équipe
 

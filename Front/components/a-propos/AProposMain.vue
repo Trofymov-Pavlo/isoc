@@ -102,8 +102,8 @@
             </p>
           </div>
           <div class="team-member">
-            <div class="member-avatar">HE</div>
-            <h3>Hiba EL HAYANI</h3>
+            <div class="member-avatar">HA</div>
+            <h3>Hiba ABDESSADAK</h3>
             <p class="member-role">Analyste militaire & design</p>
             <p class="member-bio">
               Rédaction de l'article sur les technologies militaires utilisées dans le conflit.

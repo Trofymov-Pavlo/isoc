@@ -143,6 +143,8 @@ function goIndex() {
 .logo-img {
   height: 40px;
   width: auto;
+  transform: scale(2);
+  transform-origin: left center;
 }
 
 .nav-links {

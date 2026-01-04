@@ -19,7 +19,7 @@
         <ul>
           <li><strong>Antoine TENA</strong> - Chef de projet & développeur</li>
           <li><strong>Nathan BARRACHIN</strong> - Analyste juridique</li>
-          <li><strong>Hiba EL HAYANI</strong> - Analyste militaire & design</li>
+          <li><strong>Hiba ABDESSADAK</strong> - Analyste militaire & design</li>
           <li><strong>Pavel TROFYMOV</strong> - Contributeur</li>
         </ul>
 
