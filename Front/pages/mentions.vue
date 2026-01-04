@@ -74,7 +74,7 @@
         <h2>6. Données personnelles</h2>
         <p>
           Pour toute information concernant la collecte et le traitement de vos données personnelles,
-          veuillez consulter notre <NuxtLink to="/donnees-personnelles" class="inline-link">Politique de Confidentialité</NuxtLink>.
+          veuillez consulter notre <NuxtLink to="/cookies" class="inline-link">Politique des Cookies</NuxtLink>.
         </p>
 
         <h2>7. Cookies</h2>
