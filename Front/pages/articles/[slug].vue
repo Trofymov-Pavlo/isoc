@@ -30,7 +30,7 @@
         </div>
 
         <!-- Content -->
-        <div v-if="article?.content && article.content !== 'À remplir'" class="article-content">
+        <div v-if="article?.content && !article.content.includes('À COMPLÉTER')" class="article-content">
           <div v-html="formattedContent"></div>
         </div>
 

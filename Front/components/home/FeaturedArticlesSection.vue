@@ -2,51 +2,40 @@
   <section class="featured-articles-section">
     <v-container>
       <!-- Section Title -->
-      <div class="section-header mb-12">
-        <h2 class="section-title">Articles en vedette</h2>
+      <div class="section-header">
+        <h2 class="section-title">Nos analyses</h2>
         <p class="section-subtitle">
-          Explorez nos analyses approfondies sur les enjeux clés du conflit
+          Dans quelle mesure les nouvelles technologies transforment-elles la conduite de la guerre en Ukraine ?
         </p>
       </div>
 
-      <!-- Articles Stack (Full Width) -->
-      <div class="articles-stack">
-        <div
-          v-for="(article, index) in articles"
+      <!-- Articles Grid -->
+      <div class="articles-grid">
+        <article
+          v-for="article in articles"
           :key="article.id"
-          class="article-item"
-          :class="`article-${index + 1}`"
+          class="article-card"
           @click="$router.push(`/articles/${article.slug}`)"
         >
-          <div class="article-content-container">
-            <div class="article-index">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="article-info">
-              <h3 class="article-title">{{ article.title }}</h3>
-              <p class="article-excerpt">{{ article.excerpt }}</p>
-              
-              <div class="article-footer">
-                <div class="article-meta">
-                  <span class="meta-date">
-                    <v-icon small>mdi-calendar</v-icon>
-                    {{ formatDate(article.date) }}
-                  </span>
-                  <span class="meta-author">
-                    <v-icon small>mdi-account</v-icon>
-                    {{ article.author }}
-                  </span>
-                </div>
-                <v-btn
-                  color="white"
-                  variant="text"
-                  append-icon="mdi-arrow-right"
-                  size="small"
-                >
-                  Lire la suite
-                </v-btn>
-              </div>
+          <div class="article-header">
+            <h3 class="article-title">{{ article.title }}</h3>
+            <div class="article-meta">
+              <span class="meta-author">{{ article.author }}</span>
+              <span class="meta-separator">•</span>
+              <span class="meta-date">{{ formatDate(article.date) }}</span>
             </div>
           </div>
-        </div>
+
+          <div class="article-preview">
+            <p class="article-text">{{ getPreviewText(article.content) }}</p>
+            <div class="text-fade"></div>
+          </div>
+
+          <div class="article-action">
+            <span class="read-more">Lire la suite</span>
+            <v-icon size="small" class="arrow-icon">mdi-arrow-right</v-icon>
+          </div>
+        </article>
       </div>
     </v-container>
   </section>
@@ -64,206 +53,237 @@ const formatDate = (date: string) => {
     day: 'numeric'
   }).format(new Date(date))
 }
+
+const getPreviewText = (content: string) => {
+  // Get the first paragraph(s), skip headers and empty lines
+  const paragraphs = content.split('\n\n').filter(para => {
+    const trimmed = para.trim()
+    return trimmed && 
+           !trimmed.match(/^[A-Z\s]+$/) && // Skip all-caps headers
+           !trimmed.startsWith('##') &&
+           !trimmed.startsWith('#') &&
+           !trimmed.startsWith('À COMPLÉTER') &&
+           trimmed.length > 100 // Only substantial paragraphs
+  })
+  
+  // Take first 2 paragraphs or ~400 characters
+  let preview = paragraphs.slice(0, 2).join(' ')
+  
+  if (preview.length > 400) {
+    const cutPoint = preview.lastIndexOf('.', 400)
+    if (cutPoint > 300) {
+      preview = preview.substring(0, cutPoint + 1)
+    } else {
+      preview = preview.substring(0, 400) + '...'
+    }
+  }
+  
+  return preview
+}
 </script>
 
 <style scoped>
 .featured-articles-section {
-  padding: 80px 0;
-  background: #f8fafc;
+  padding: 60px 0 80px 0;
+  background: #ffffff;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--v-primary);
-  margin-bottom: 12px;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.6);
-  max-width: 600px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.articles-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.article-item {
-  cursor: pointer;
-  border-radius: 16px;
+.article-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   padding: 32px;
-  transition: all 0.3s ease;
-  background: white;
-  border: 2px solid transparent;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  min-height: 200px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.article-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7b5ce0 0%, #a78bfa 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
-/* Color coding for each article */
-.article-1 {
-  background: linear-gradient(135deg, #fef3c7 0%, #fef08a 100%);
-  border-color: #fbbf24;
+.article-card:hover::before {
+  transform: scaleX(1);
 }
 
-.article-1:hover {
-  border-color: #f59e0b;
-  background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+.article-card:hover {
+  border-color: #c4b5fd;
+  box-shadow: 0 20px 40px rgba(123, 92, 224, 0.08);
+  transform: translateY(-2px);
 }
 
-.article-2 {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border-color: #60a5fa;
-}
-
-.article-2:hover {
-  border-color: #3b82f6;
-  background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
-}
-
-.article-3 {
-  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
-  border-color: #a78bfa;
-}
-
-.article-3:hover {
-  border-color: #8b5cf6;
-  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
-}
-
-.article-content-container {
-  display: flex;
-  gap: 24px;
-  width: 100%;
-  align-items: flex-start;
-}
-
-.article-index {
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(0, 0, 0, 0.15);
-  min-width: 80px;
-  text-align: center;
-  line-height: 1;
-}
-
-.article-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.article-header {
+  margin-bottom: 20px;
 }
 
 .article-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.9);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.article-excerpt {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.article-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  padding-top: 12px;
+  color: #111827;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .article-meta {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 8px;
   font-size: 0.875rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: #6b7280;
 }
 
-.meta-date,
 .meta-author {
+  font-weight: 600;
+  color: #7b5ce0;
+}
+
+.meta-separator {
+  color: #d1d5db;
+}
+
+.article-preview {
+  position: relative;
+  margin-bottom: 20px;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.article-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4b5563;
+  margin: 0;
+}
+
+.text-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 40%,
+    rgba(255, 255, 255, 0.95) 80%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  pointer-events: none;
+}
+
+.article-action {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  color: #7b5ce0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: gap 0.3s ease;
 }
 
-:deep(.v-btn) {
-  text-transform: none;
+.article-card:hover .article-action {
+  gap: 10px;
+}
+
+.read-more {
+  transition: color 0.2s ease;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .arrow-icon {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
   .featured-articles-section {
-    padding: 40px 0;
+    padding: 40px 0 60px 0;
   }
 
   .section-title {
     font-size: 2rem;
   }
 
-  .article-item {
-    flex-direction: column;
-    text-align: center;
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .article-card {
     padding: 24px;
-    min-height: auto;
-  }
-
-  .article-content-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .article-index {
-    font-size: 2rem;
-  }
-
-  .article-footer {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .article-meta {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .article-item {
-    padding: 16px;
   }
 
   .article-title {
     font-size: 1.25rem;
   }
 
-  .article-excerpt {
-    font-size: 0.95rem;
+  .articles-grid {
+    gap: 24px;
   }
+}
 
+@media (max-width: 600px) {
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
-  .section-subtitle {
-    font-size: 1rem;
+  .article-card {
+    padding: 20px;
+  }
+
+  .article-preview {
+    max-height: 100px;
+  }
+
+  .article-text {
+    font-size: 0.95rem;
   }
 }
 </style>

@@ -16,8 +16,14 @@ const articles = reactive<FeaturedArticle[]>([
     title: 'Les technologies militaires utilisées dans le conflit',
     author: 'Hiba EL HAYANI',
     date: '2025-01-15',
-    excerpt: 'Découvrez les innovations technologiques qui façonnent le conflit moderno. Des drones terrestres aux systèmes de cyberattaques...',
-    content: 'À remplir par Hiba EL HAYANI',
+    excerpt: 'Découvrez les innovations technologiques qui façonnent le conflit moderne. Des drones terrestres aux systèmes de cyberattaques...',
+    content: `Le conflit ukrainien marque un tournant dans l'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant sur le terrain. Les drones, l'intelligence artificielle et les cyberattaques transforment profondément les stratégies de combat et redéfinissent les notions de supériorité militaire. Cette guerre démontre comment l'innovation technologique peut compenser des désavantages en termes de ressources ou de personnel.
+
+Les drones terrestres, aériens et navals sont devenus des outils essentiels pour la reconnaissance, le ciblage et les frappes de précision. Du côté de l'intelligence artificielle, des systèmes automatisés analysent des images satellites et des données en temps réel pour identifier des cibles et optimiser les décisions tactiques.
+
+Les cyberattaques constituent un front invisible mais crucial, où les intrusions dans les réseaux adverses, le brouillage des communications et la collecte de renseignements électroniques créent un avantage stratégique considérable.
+
+À COMPLÉTER PAR HIBA EL HAYANI`,
     slug: 'technologies-militaires'
   },
   {
@@ -106,7 +112,13 @@ La guerre de l'information est un élément crucial du conflit, déterminant l'e
     author: 'Nathan BARRACHIN',
     date: '2025-02-01',
     excerpt: 'Armements autonomes, responsabilité humaine, droit international : les questions éthiques du conflit moderne...',
-    content: 'À remplir par Nathan BARRACHIN',
+    content: `Le développement rapide des technologies militaires autonomes soulève des questions éthiques et juridiques fondamentales qui dépassent le cadre du conflit ukrainien. Jusqu'où peut-on déléguer les décisions de vie ou de mort à des machines ? Qui est responsable lorsqu'une arme autonome commet une erreur ou viole le droit international humanitaire ?
+
+Les systèmes d'armes létales autonomes (SALA) posent un défi majeur aux conventions internationales existantes. Le principe de discrimination entre combattants et civils, pierre angulaire du droit de la guerre, peut-il être garanti par des algorithmes ? La notion de responsabilité humaine dans la chaîne de commandement doit être repensée face à ces technologies.
+
+Le débat oppose ceux qui voient dans ces technologies un moyen de limiter les pertes humaines et d'améliorer la précision des frappes, et ceux qui craignent une déshumanisation de la guerre et une prolifération incontrôlée d'armes dangereuses.
+
+À COMPLÉTER PAR NATHAN BARRACHIN`,
     slug: 'enjeux-ethiques'
   }
 ])
