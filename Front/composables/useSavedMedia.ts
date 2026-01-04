@@ -1,5 +1,5 @@
 /**
- * Composable for managing saved media (liked, watch later, custom categories)
+ * Composable for managing liked media (simplified - only "liked" category)
  * Syncs with backend API with global reactive state
  */
 
@@ -12,23 +12,14 @@ export interface SavedMediaItem {
   title: string;
   source: string;
   media_type: 'article' | 'video' | 'live';
-  category: 'liked' | 'watch_later' | string;
+  category: 'liked';
   thumbnail?: string;
   published_date?: string;
   saved_at: string;
 }
 
-export interface UserCategory {
-  id: number;
-  name: string;
-  color: string;
-  icon: string;
-  created_at: string;
-}
-
 // Global state shared across all instances
 const savedItems = ref<SavedMediaItem[]>([]);
-const userCategories = ref<UserCategory[]>([]);
 const loading = ref(false);
 const error = ref<string | null>(null);
 const isInitialized = ref(false);
@@ -98,17 +89,14 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * Initialize: load saved items and categories
+   * Initialize: load saved items (only liked category)
    */
   const initialize = async () => {
     if (isInitialized.value || !isAuthenticated.value || !getToken()) return;
     
     try {
       isInitialized.value = true;
-      await Promise.all([
-        getSavedItems(),
-        getUserCategories(),
-      ]);
+      await getSavedItems();
     } catch (err) {
       console.error('Failed to initialize saved media:', err);
       isInitialized.value = false;
@@ -116,14 +104,13 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * Toggle save status for a media item
+   * Toggle save status for a media item (always "liked" category)
    */
   const toggleSave = async (payload: {
     link: string;
     title: string;
     source: string;
     media_type: 'article' | 'video' | 'live';
-    category?: string;
     thumbnail?: string;
     published_date?: string;
   }) => {
@@ -133,16 +120,17 @@ export const useSavedMedia = () => {
       return { saved: false };
     }
 
-    // Ensure thumbnail is set (fallback to empty string if undefined)
-    const payloadWithThumbnail = {
+    // Always use "liked" category
+    const payloadWithCategory = {
       ...payload,
+      category: 'liked',
       thumbnail: payload.thumbnail || '',
     };
     
     try {
       loading.value = true;
       error.value = null;
-      const response = await apiCall('/toggle/', 'POST', payloadWithThumbnail);
+      const response = await apiCall('/toggle/', 'POST', payloadWithCategory);
       
       // Update local state immediately for instant UI feedback
       if (response.saved) {
@@ -150,9 +138,8 @@ export const useSavedMedia = () => {
         await getSavedItems();
       } else {
         // Item was removed - remove from local state
-        const category = payloadWithThumbnail.category || 'liked';
         savedItems.value = savedItems.value.filter(
-          item => !(item.link === payloadWithThumbnail.link && item.category === category)
+          item => item.link !== payload.link
         );
       }
       
@@ -166,19 +153,18 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * Get all saved items
+   * Get all saved items (only liked category)
    */
   const getSavedItems = async () => {
     if (!getToken()) {
       savedItems.value = [];
-      error.value = 'Vous devez être connecté pour accéder à vos favoris';
       return [];
     }
     
     try {
       loading.value = true;
       error.value = null;
-      const response = await apiCall('/');
+      const response = await apiCall('/by_category/?category=liked');
       if (Array.isArray(response)) {
         savedItems.value = response;
         return response;
@@ -193,114 +179,10 @@ export const useSavedMedia = () => {
   };
 
   /**
-   * Get saved items by category
+   * Check if a specific media is liked (uses local cache)
    */
-  const getSavedByCategory = async (category: string) => {
-    if (!getToken()) {
-      error.value = 'Vous devez être connecté pour accéder à vos favoris';
-      return [];
-    }
-    
-    try {
-      const response = await apiCall(`/by_category/?category=${category}`);
-      return Array.isArray(response) ? response : [];
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch category items';
-      return [];
-    }
-  };
-
-  /**
-   * Get top N saved items (for dashboard)
-   */
-  const getTopSaved = async (limit = 3, category = 'liked') => {
-    if (!getToken()) {
-      error.value = 'Vous devez être connecté pour accéder à vos favoris';
-      return [];
-    }
-    
-    try {
-      const response = await apiCall(`/top/?limit=${limit}&category=${category}`);
-      return Array.isArray(response) ? response : [];
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch top items';
-      return [];
-    }
-  };
-
-  /**
-   * Check if a specific media is saved (uses local cache)
-   */
-  const isSaved = (link: string, category = 'liked') => {
-    return savedItems.value.some(item => item.link === link && item.category === category);
-  };
-
-  /**
-   * Get all user custom categories
-   */
-  const getUserCategories = async () => {
-    if (!getToken()) {
-      userCategories.value = [];
-      return [];
-    }
-    
-    try {
-      const response = await apiCall('/categories/');
-      if (Array.isArray(response)) {
-        userCategories.value = response;
-        return response;
-      }
-      return [];
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch categories';
-      return [];
-    }
-  };
-
-  /**
-   * Create a new custom category
-   */
-  const createCategory = async (name: string, color = '#2f0538', icon = '❤️') => {
-    if (!getToken()) {
-      error.value = 'Vous devez être connecté pour créer une catégorie';
-      return null;
-    }
-    
-    try {
-      const response = await apiCall('/categories/', 'POST', {
-        name,
-        color,
-        icon,
-      });
-      if (response) {
-        await getUserCategories();
-      }
-      return response;
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to create category';
-      return null;
-    }
-  };
-
-  /**
-   * Delete a custom category
-   */
-  const deleteCategory = async (categoryId: number) => {
-    if (!getToken()) {
-      error.value = 'Vous devez être connecté pour supprimer une catégorie';
-      return false;
-    }
-    
-    try {
-      await apiCall(`/categories/${categoryId}/`, 'DELETE');
-      await getUserCategories();
-      // Also refresh saved items as items in deleted category may have been removed
-      await getSavedItems();
-      return true;
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to delete category';
-      return false;
-    }
+  const isSaved = (link: string) => {
+    return savedItems.value.some(item => item.link === link);
   };
 
   /**
@@ -327,28 +209,12 @@ export const useSavedMedia = () => {
    * Computed property to get liked items
    */
   const likedItems = computed(() => {
-    return savedItems.value.filter(item => item.category === 'liked');
+    return savedItems.value;
   });
-
-  /**
-   * Computed property to get watch later items
-   */
-  const watchLaterItems = computed(() => {
-    return savedItems.value.filter(item => item.category === 'watch_later');
-  });
-
-  /**
-   * Get items for a specific custom category
-   */
-  const getCategoryItems = (category: string) => {
-    return savedItems.value.filter(item => item.category === category);
-  };
 
   return {
     // State
-    savedMedia: savedItems,
     savedItems,
-    userCategories,
     loading,
     error,
     isInitialized,
@@ -357,17 +223,10 @@ export const useSavedMedia = () => {
     initialize,
     toggleSave,
     getSavedItems,
-    getSavedByCategory,
-    getTopSaved,
-    getUserCategories,
-    createCategory,
-    deleteCategory,
     deleteSavedMedia,
     
     // Computed/helpers
     isSaved,
     likedItems,
-    watchLaterItems,
-    getCategoryItems,
   };
 };

@@ -207,16 +207,14 @@
               </div>
               <span v-if="item.type === 'article'" class="media-badge article-badge">Article</span>
               <span v-else class="media-badge video-badge">Vidéo</span>
-              <div class="explorer-like" @click.stop>
-                <LikeButtonMenu
-                  :link="item.link"
-                  :title="item.title"
-                  :source="item.source || ''"
-                  :media-type="item.type === 'video' ? 'video' : 'article'"
-                  :thumbnail="item.image"
-                  :published-date="item.published"
-                />
-              </div>
+              <LikeButton
+                :link="item.link"
+                :title="item.title"
+                :source="item.source || ''"
+                :media-type="item.type === 'video' ? 'video' : 'article'"
+                :thumbnail="item.image"
+                :published-date="item.published"
+              />
             </div>
             <div class="item-content">
               <h3 class="item-title">{{ item.title }}</h3>
@@ -265,7 +263,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { useVideos } from '@/composables/useVideos';
 import { useSavedMedia } from '@/composables/useSavedMedia';
-import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
+import LikeButton from '~/components/shared/LikeButton.vue';
 import logoIsoc from '@/assets/logoIsoc.png';
 
 // Data fetching
@@ -1044,29 +1042,6 @@ onMounted(() => {
 .video-badge {
   background: rgba(255, 243, 191, 0.95);
   color: #997404;
-}
-
-.explorer-like {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.explorer-like:hover {
-  background: white;
-}
-
-.explorer-like :deep(.like-btn) {
-  padding: 0;
 }
 
 .item-content {

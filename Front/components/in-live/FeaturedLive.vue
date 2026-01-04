@@ -13,6 +13,14 @@
         <span class="play-icon">▶</span>
       </div>
       <div class="featured-overlay"></div>
+      <LikeButton
+        :link="article.link"
+        :title="article.title"
+        :source="article.source || 'En direct'"
+        :media-type="article.type === 'video' ? 'video' : 'article'"
+        :thumbnail="article.image"
+        :published-date="article.published"
+      />
     </a>
     <div v-else class="featured-image placeholder">
       <span class="placeholder-icon">📰</span>
@@ -34,14 +42,6 @@
           <a :href="article.link" target="_blank" rel="noopener" class="read-link">
             Lire l'article complet →
           </a>
-          <LikeButtonMenu 
-            :link="article.link"
-            :title="article.title"
-            :source="article.source || 'En direct'"
-            :media-type="article.type === 'video' ? 'video' : 'article'"
-            :thumbnail="article.image"
-            :published-date="article.published"
-          />
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
+import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface Article {
   title: string;
