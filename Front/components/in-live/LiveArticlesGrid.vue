@@ -29,6 +29,14 @@
       </a>
       <div v-else class="article-image placeholder">
         <span class="placeholder-icon">📰</span>
+        <LikeButton
+          :link="article.link"
+          :title="article.title"
+          :source="article.source || 'En direct'"
+          :media-type="article.type === 'video' ? 'video' : 'article'"
+          :thumbnail="article.image"
+          :published-date="article.published"
+        />
       </div>
 
       <div class="article-content">

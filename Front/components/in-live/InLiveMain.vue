@@ -15,6 +15,14 @@
             </div>
             <span v-if="latestItem.type === 'article'" class="media-badge article-badge">Article</span>
             <span v-else class="media-badge video-badge">Vidéo</span>
+            <LikeButton
+              :link="latestItem.link"
+              :title="latestItem.title"
+              :source="latestItem.source || 'En direct'"
+              :media-type="latestItem.type"
+              :thumbnail="latestItem.image"
+              :published-date="latestItem.published"
+            />
           </div>
           <div class="item-content">
             <h3 class="item-title">{{ latestItem.title }}</h3>
@@ -242,16 +250,24 @@ onBeforeUnmount(() => {
 .panel-wide { grid-column: 1 / -1; }
 .latest-card { display: block; }
 /* Featured height: taller and responsive */
-.featured-image-container { height: 560px; }
+.latest .featured-image-container { 
+  height: 420px !important; 
+}
 
 @media (max-width: 1024px) {
-  .featured-image-container { height: 420px; }
+  .latest .featured-image-container { 
+    height: 360px !important; 
+  }
 }
 @media (max-width: 768px) {
-  .featured-image-container { height: 320px; }
+  .latest .featured-image-container { 
+    height: 290px !important; 
+  }
 }
 @media (max-width: 540px) {
-  .featured-image-container { height: 240px; }
+  .latest .featured-image-container { 
+    height: 250px !important; 
+  }
 }
 
 .head-text h1 {
