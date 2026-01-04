@@ -108,8 +108,6 @@ La guerre de l'information a des effets concrets. Le moral des populations dépe
 
 Dans ce contexte, l'enjeu n'est pas seulement de "gagner" une bataille de communication, mais de stabiliser un espace de vérité minimale : suffisamment solide pour décider, soutenir, sanctionner, négocier. Quand l'information devient une arme, la capacité à vérifier devient une défense.
 
-CONCLUSION
-
 Le conflit en Ukraine montre à quel point l'information n'est plus un simple accompagnement de la guerre : elle en est une dimension structurante. Propagande, réseaux sociaux, IA, OSINT et fact-checking composent un champ de bataille où la vitesse et l'émotion affrontent la preuve et la méthode. La leçon centrale est simple : dans un environnement saturé de contenus, la vérité n'est pas seulement un fait, c'est aussi un effort collectif.`,
     slug: 'guerre-information'
   },

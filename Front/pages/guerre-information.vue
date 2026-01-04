@@ -39,17 +39,25 @@
           <v-divider class="mb-4"></v-divider>
           <div class="d-flex justify-space-between gap-4">
             <v-btn
+              v-if="previousSlug"
+              variant="tonal"
+              prepend-icon="mdi-arrow-left"
+              :to="`/${previousSlug}`"
+            >
+              Article précédent
+            </v-btn>
+            <v-btn
               variant="tonal"
               prepend-icon="mdi-home"
               @click="$router.push('/')"
             >
               Retour à l'accueil
             </v-btn>
-            <div></div>
             <v-btn
+              v-if="nextSlug"
               variant="tonal"
               append-icon="mdi-arrow-right"
-              to="/enjeux-ethiques"
+              :to="`/${nextSlug}`"
             >
               Article suivant
             </v-btn>
@@ -64,9 +72,26 @@
 import { computed } from 'vue'
 import { useFeaturedArticles } from '~/composables/useFeaturedArticles'
 
-const { getArticle } = useFeaturedArticles()
+const { articles, getArticle } = useFeaturedArticles()
 
-const article = computed(() => getArticle('guerre-information'))
+const slug = 'guerre-information'
+const article = computed(() => getArticle(slug))
+
+const currentIndex = computed(() => articles.findIndex(a => a.slug === slug))
+
+const previousSlug = computed((): string | null => {
+  const index = currentIndex.value
+  if (index <= 0) return null
+  const previous = articles[index - 1]
+  return previous ? previous.slug : null
+})
+
+const nextSlug = computed((): string | null => {
+  const index = currentIndex.value
+  if (index < 0 || index >= articles.length - 1) return null
+  const next = articles[index + 1]
+  return next ? next.slug : null
+})
 
 const formattedContent = computed(() => {
   if (!article.value?.content) return ''
@@ -80,7 +105,7 @@ const formattedContent = computed(() => {
     .replace(/'/g, '&#039;')
   
   formatted = formatted
-    .replace(/^([A-Z][A-Z\s]+)$/gm, '<h2 style="margin-top: 24px; margin-bottom: 16px; font-weight: 700;">$1</h2>')
+    .replace(/^([A-ZÀ-ÖØ-Ý0-9][A-ZÀ-ÖØ-Ý0-9\s'’"():,.\-–—…!?]+)$/gm, '<h2 style="margin-top: 24px; margin-bottom: 16px; font-weight: 700;">$1</h2>')
     .replace(/^• (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
     .replace(/^- (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
     .replace(/(<li[^>]*>.+<\/li>)/s, '<ul style="list-style: none; padding: 0; margin-bottom: 16px;">$1</ul>')
