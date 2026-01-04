@@ -1,8 +1,11 @@
 @echo off
-REM AXIOME - Script de demarrage complet (Windows)
-REM Lance Frontend, Backend Django et Scraping automatique
+REM AXIOME - Script de demarrage (Windows)
+REM Lance Frontend (Nuxt), Backend (Django) + scraping automatique
 
 setlocal enabledelayedexpansion
+
+REM Toujours se placer a la racine du repo (dossier du script)
+cd /d "%~dp0"
 
 echo ==========================================
 echo   AXIOME · Information ^& Analyse
@@ -14,29 +17,25 @@ REM Creer le dossier logs s'il n'existe pas
 if not exist logs mkdir logs
 
 REM Fichier pour tracker si c'est le premier lancement
-set SCRAPING_FIRST_RUN=.scraping_first_run
+set "SCRAPING_FIRST_RUN=%~dp0.scraping_first_run"
+
+REM Determiner la commande Python (venv prioritaire)
+set "PYTHON_CMD=python"
+if exist "Back\venv\Scripts\python.exe" set "PYTHON_CMD=Back\venv\Scripts\python.exe"
 
 echo [1/3] Lancement Frontend Nuxt...
-cd Front
-start /B npm run dev > ..\logs\frontend.log 2>&1
-cd ..
+pushd Front
+start "AXIOME Front" /B cmd /c "npm run dev > ..\logs\frontend.log 2>&1"
+popd
 echo [OK] Frontend lance -^> http://localhost:3000
 echo.
 
 echo [2/3] Lancement Backend Django...
-cd Back
-
-REM Activation environnement virtuel
-if exist venv\Scripts\activate.bat (
-    call venv\Scripts\activate.bat
-    echo [OK] Environnement virtuel active
-) else (
-    echo [!] Pas d'environnement virtuel trouve
-)
+pushd Back
 
 REM Lancement Django
-start /B python manage.py runserver 8000 > ..\logs\backend.log 2>&1
-cd ..
+start "AXIOME Back" /B cmd /c "..\%PYTHON_CMD% manage.py runserver 8000 > ..\logs\backend.log 2>&1"
+popd
 echo [OK] Backend Django lance -^> http://localhost:8000
 echo.
 
@@ -45,10 +44,10 @@ echo [3/3] Configuration du scraping automatique...
 REM Premier lancement : scraping 7 jours
 if not exist %SCRAPING_FIRST_RUN% (
     echo Premier lancement detecte -^> Scraping du dernier jour
-    cd Back
-    python -m scraping.api --days 1 > ..\logs\scraping.log 2>&1
-    cd ..
-    echo. > %SCRAPING_FIRST_RUN%
+    pushd Back
+    ..\%PYTHON_CMD% -m scraping.api --days 1 > ..\logs\scraping.log 2>&1
+    popd
+    echo.>%SCRAPING_FIRST_RUN%
     echo [OK] Scraping initial termine ^(1 jour^)
 ) else (
     echo [OK] Premier lancement deja effectue
@@ -78,8 +77,8 @@ REM Boucle de scraping toutes les 30 minutes
 :loop
 timeout /t 1800 /nobreak >nul
 echo [%date% %time%] Scraping automatique ^(1 heure^)...
-cd Back
-python -m scraping.api --hours 1 >> ..\logs\scraping.log 2>&1
-cd ..
+pushd Back
+..\%PYTHON_CMD% -m scraping.api --hours 1 >> ..\logs\scraping.log 2>&1
+popd
 echo [OK] Scraping termine
 goto loop
