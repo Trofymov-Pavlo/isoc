@@ -52,7 +52,6 @@
                 <input v-model="remember" type="checkbox" name="remember" />
                 <span>Se souvenir de moi</span>
               </label>
-              <NuxtLink to="/forgot-password" class="forgot-link">Mot de passe oublié ?</NuxtLink>
             </div>
 
             <button type="submit" class="submit-button" :disabled="loading">

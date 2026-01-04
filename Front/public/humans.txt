@@ -1,0 +1,78 @@
+/* TEAM */
+
+Chef de projet & Développeur principal : Antoine TENA
+Role: Architecture, développement full-stack, scraping, article désinformation
+Contact: antoine.tena [at] example.com
+Location: France
+
+Analyste juridique : Nathan BARRACHIN
+Role: Recherche juridique, article enjeux juridiques, co-rédaction présentation
+Location: France
+
+Analyste militaire & Designer : Hiba EL HAYANI
+Role: Analyse militaire, design UI/UX, article technologies militaires, co-rédaction présentation
+Location: France
+
+Contributeur : Pavel TROFYMOV
+Role: Contribution aux travaux de recherche, co-rédaction présentation
+Location: France
+
+/* THANKS */
+
+Professeur du cours ISOC531 : Encadrement et supervision académique
+Sources médiatiques : Plus de 30 médias francophones agrégés
+Communauté open-source : Nuxt, Vue, Django, Vuetify
+
+/* SITE */
+
+Project: AXIOME · Information & Analyse
+Purpose: Plateforme d'agrégation multi-sources sur le conflit Ukraine-Russie
+Academic context: Projet étudiant - Cours ISOC531
+Year: 2025-2026
+Last update: 2026/01/04
+Standards: HTML5, CSS3, RSS 2.0, OpenGraph, Schema.org
+Components: Nuxt 4, Vue 3, Django REST Framework
+Language: French / Français
+Doctype: HTML5
+IDE: Visual Studio Code
+
+/* METHODOLOGY */
+
+Aggregation: Multi-source scraping (articles, RSS feeds)
+Sources: 30+ French-language media outlets
+Themes: Military, diplomatic, economic, humanitarian, legal, disinformation
+Update frequency: Hourly for live articles
+Authentication: JWT-based user accounts
+Storage: SQLite (dev), archival JSON
+
+/* SPECIAL FEATURES */
+
+- Real-time article aggregation from Ukrainian/Russian conflict coverage
+- Thematic categorization and keyword filtering
+- User favorites with authentication
+- RSS feed generation
+- Complete JSON archive (247k+ articles) at /archive.json
+- Source attribution and original link preservation
+- Academic transparency about student project nature
+
+/* ETHICS & LEGAL */
+
+All content remains property of original sources
+Links provided to original articles
+No content modification or republication
+Academic fair use for educational purposes
+User data protection (GDPR-inspired principles)
+No advertising or commercial exploitation
+
+/* CONTACT */
+
+Email: contact [at] axiome-isoc.fr
+GitHub: github.com/antoine/isoc (fictional)
+Location: France
+Social: N/A (student project)
+
+/* ABOUT THIS FILE */
+
+This humans.txt file follows the standard from http://humanstxt.org/
+It provides transparency about who built this website and how.
+Updated: January 4, 2026

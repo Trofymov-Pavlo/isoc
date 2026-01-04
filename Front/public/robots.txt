@@ -1,5 +1,40 @@
+# robots.txt for AXIOME · Information & Analyse
+# Projet étudiant ISOC531
+# Dernière mise à jour : 4 janvier 2026
+
+# Agent générique - Accès complet
 User-agent: *
 Allow: /
 
-# Sitemap (update URL if available)
-# Sitemap: https://isoc501-axiom.example/sitemap.xml
+# Pages publiques encouragées pour l'indexation
+Allow: /en-direct
+Allow: /explorer
+Allow: /a-propos
+Allow: /rss
+Allow: /contact
+
+# Zones restreintes (authentification requise)
+Disallow: /mon-compte
+Disallow: /liked
+Disallow: /api/
+Disallow: /signup
+Disallow: /connexion
+
+# Fichiers système et ressources
+Disallow: /_nuxt/
+Disallow: /assets/
+
+# Sitemap
+Sitemap: http://localhost:3000/sitemap.xml
+
+# Archive JSON complète (247k+ articles)
+# Accessible pour indexation et analyse
+Allow: /archive.json
+
+# Politesse : Crawl-delay pour éviter de surcharger le serveur
+Crawl-delay: 10
+
+# Notes pour développeurs et chercheurs
+# Ce site est un projet étudiant académique (ISOC531)
+# Agrégation d'information sur le conflit Ukraine-Russie
+# Respect du droit d'auteur : Tous les articles sont sourcés et liés aux originaux

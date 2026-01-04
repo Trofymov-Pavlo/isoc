@@ -80,7 +80,7 @@
 
       <div class="signup-footer">
         <p class="login-link">Vous avez déjà un compte ? <NuxtLink to="/connexion">Connectez-vous</NuxtLink></p>
-        <p class="terms">En créant un compte, vous acceptez nos <a href="/conditions">conditions d'utilisation</a> et notre <a href="/confidentialite">politique de confidentialité</a>.</p>
+        <p class="terms">En créant un compte, vous acceptez nos <a href="/conditions">conditions d'utilisation</a>.</p>
       </div>
     </div>
   </section>
