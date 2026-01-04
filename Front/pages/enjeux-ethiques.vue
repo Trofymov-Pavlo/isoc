@@ -47,67 +47,46 @@ const articleTitle = 'Guerre en Ukraine : quand l\'algorithme décide de donner 
 const articleAuthor = 'Nathan BARRACHIN'
 const articleDate = '2025-12-18'
 
-const articleContent = `Dans les steppes ukrainiennes, l'intelligence artificielle a révolutionné la guerre moderne avec une efficacité qui glace le sang. Des drones autonomes patrouillent le ciel, capables de sélectionner et d'éliminer leurs cibles sans intervention humaine. Ce conflit force l'humanité à se poser une question aussi urgente que vertigineuse : jusqu'où sommes-nous prêts à aller dans l'automatisation de la mort ?
+const articleContent = `Le conflit en Ukraine agit comme un accélérateur brutal pour l'intégration de l'intelligence artificielle (IA) sur le champ de bataille. Entre nécessité tactique et "ligne rouge" éthique, le déploiement de systèmes de plus en plus indépendants force les puissances mondiales et les experts à redéfinir la place de l'homme dans la guerre.
 
-UNE RÉVOLUTION COMPARABLE AU NUCLÉAIRE
+Une révolution comparable au nucléaire
 
-L'IA militaire redéfinit la guerre de manière aussi radicale que l'arme nucléaire au XXe siècle, selon le Secrétaire général de l'ONU. Aujourd'hui, des systèmes intègrent du machine learning pour analyser des images satellites, optimiser la logistique, et prendre des décisions létales en temps réel, parfois sans délai de validation humaine.
+L'avènement des armes autonomes est désormais perçu par les experts, comme le professeur Noel Sharkey, comme un changement radical de la nature même des conflits, au même titre que l'invention de l'arme nucléaire. Cette "course aux armements" algorithmique voit s'affronter des technologies de pointe : le char russe T-14 Armata, les drones chinois Dark Sword ou les systèmes américains X-47B. Tous recherchent la même chose : une vitesse d'exécution et une puissance de feu dépassant les capacités humaines.
 
-En Ukraine, ces technologies ont transformé le champ de bataille. Le système ukrainien Clearview AI et l'utilisation de drones autonomes FPV (First Person View) modifiés permettent d'identifier et de frapper des cibles en quelques secondes. Côté russe, les drones Lancet, équipés de reconnaissance automatique de cibles, ont détruit des centaines de véhicules blindés. Leur précision est stupéfiante, leur froideur absolue.
+Sur le terrain ukrainien, cette évolution est devenue une nécessité technique pour contrer la guerre électronique intense. Face au brouillage des signaux GPS et radio, les drones perdent le contact avec leurs pilotes. Pour pallier ce "silence numérique", des logiciels de reconnaissance de formes permettent aux machines de finaliser leurs missions de manière autonome en identifiant des cibles (chars, artillerie) sans intervention humaine directe.
 
-LE SPECTRE DU "TERMINATOR"
+Le spectre du "Terminator" face à la réalité technique
 
-La menace n'est plus de la science-fiction. L'armée turque a déjà utilisé en Libye le drone kamikaze Kargu-2, capable de traquer et détruire ses cibles sans ordre humain. En Ukraine, des vidéos troublantes montrent des essaims de drones coopérant entre eux pour saturer les défenses anti-aériennes, une stratégie autrefois réservée aux joueurs d'échecs.
+Si le grand public craint l'avènement d'un "Terminator", les rapports parlementaires français, notamment celui de Claude de Ganay et Fabien Gouttefarde (2020), nuancent cette vision. Les Systèmes d'Armes Létaux Autonomes (SALA) à proprement parler, capables de choisir et d'engager seuls une cible dans un environnement changeant sans aucune tutelle humaine, n'existent pas encore totalement à l'état opérationnel.
 
-L'ABSENCE DE COMPASSION
+L'autonomie est en réalité un continuum (Une progression ininterrompue) :
 
-Le risque moral est immense. Comme l'explique le philosophe Paul Scharre, ancien ranger américain, dans son ouvrage Army of None : "Un soldat humain peut hésiter devant un enfant tenant un objet suspect. Un algorithme ne connaît pas l'hésitation. Il optimise une probabilité de menace."
+• Niveaux 1 à 4 : Systèmes semi-autonomes ou supervisés, déjà maîtrisés par les grandes puissances.
+• Niveau 5 : Autonomie totale (SALA), où la machine agit sans aucune tutelle humaine. C'est ce niveau qui cristallise les inquiétudes juridiques et morales.
 
-Cette absence d'empathie peut conduire à des "erreurs" aux conséquences dramatiques. En 2020, un algorithme israélien de ciblage a identifié à tort des civils comme combattants en raison d'un biais de données d'entraînement. L'IA ne comprend pas la complexité humaine du contexte de guerre : un adolescent portant un sac peut être un écolier ou un combattant. L'algorithme choisit la probabilité, pas la nuance.
+Le "Contrôle Humain Significatif" : Un impératif moral
 
-LE "CONTRÔLE HUMAIN SIGNIFICATIF"
+Le débat central ne porte pas sur la technologie elle-même, mais sur la qualité du contrôle humain. L'expression "contrôle humain significatif" est devenue le cri de ralliement des ONG et de nombreux pays à l'ONU pour empêcher la déshumanisation des combats.
 
-Face à ces enjeux, les Nations Unies et des ONG comme Human Rights Watch plaident pour l'interdiction des "systèmes d'armes létaux autonomes" (LAWS). Le concept central est le "meaningful human control" (contrôle humain significatif) : toute décision de tuer doit rester l'apanage d'un être humain capable de jugement éthique.
+Sur le plan éthique, déléguer la mort à un algorithme pose des problèmes insolubles :
 
-Mais la définition reste floue. Où placer le curseur ? Un drone qui identifie automatiquement une cible mais nécessite une validation humaine pour tirer respecte-t-il ce principe ? Que se passe-t-il si cette validation se fait en 0,2 seconde par un opérateur déjà saturé d'informations ?
+L'absence de compassion : Contrairement à un soldat, une IA est incapable de discernement moral ou de compassion. Elle ne peut pas interpréter si un véhicule militaire transporte des blessés ou si un ennemi tente de se rendre.
 
-UN RISQUE D'ESCALADE AUTOMATISÉE
+La "boîte noire" algorithmique : Les décisions prises par une IA sont souvent opaques. Ce manque de transparence empêche de comprendre pourquoi une machine a choisi de frapper, ce qui est inacceptable pour la dignité humaine.
 
-Pire encore : l'IA pourrait créer des conflits non intentionnels. Imaginez deux systèmes de défense autonomes détectant mutuellement des comportements "suspects". Chacun interprète l'activation de l'autre comme une menace. En millisecondes, sans que personne n'ait appuyé sur un bouton, une bataille se déclenche. C'est le cauchemar du "flash war", l'équivalent militaire du krach boursier algorithmique de 2010.
+La facilité de la violence : Puisque la machine agit seule et que l'humain est loin du combat, on risque de tuer plus facilement. Sans le choc émotionnel de voir sa cible, la guerre pourrait devenir un réflexe plus fréquent et moins grave aux yeux des décideurs.
 
-Stuart Russell, pionnier de l'IA et professeur à Berkeley, avertit : "Le danger n'est pas une Skynet consciente qui décide d'exterminer l'humanité. Le danger, c'est une IA parfaitement obéissante mais mal programmée, ou mise en service trop rapidement dans un contexte qu'elle ne comprend pas."
+L'impasse juridique : Le fossé de la responsabilité
 
-LA COURSE RÉGLEMENTAIRE EST PERDUE
+Le Droit International Humanitaire (DIH) repose sur des piliers que l'IA ne peut garantir seule : la distinction (civil/combattant), la proportionnalité (évaluer si les dégâts civils sont excessifs par rapport au bénéfice militaire) et la nécessité militaire.
 
-Technologiquement, nous sommes déjà trop loin. La Russie, la Chine, les États-Unis, Israël, et la Turquie investissent massivement dans les systèmes autonomes. En 2024, le Pentagone a annoncé sa stratégie "Replicator", visant à déployer des milliers de drones autonomes pour contrer la Chine. Pékin de son côté développe des essaims de drones marins et aériens capables de coordonner des attaques sans intervention extérieure.
+En cas de crime de guerre commis par une machine, un "vide juridique" apparaît. Qui punir ? Le commandant, le programmeur ou l'État ? Pour la France, la létalité est le critère déterminant : un humain doit impérativement rester responsable de l'ouverture du feu pour garantir l'imputabilité des actes.
 
-Le problème est double. D'une part, aucun État ne veut renoncer unilatéralement à une technologie aussi stratégique (dilemme du prisonnier classique). D'autre part, les entreprises privées (startups de la Silicon Valley, sociétés israéliennes comme Elbit Systems) ont déjà commercialisé ces outils. L'interdiction devrait concerner aussi le secteur privé, ce qui est quasi impossible.
+Une diplomatie mondiale sous tension
 
-UNE RESPONSABILITÉ ÉTHIQUE COLLECTIVE
+À Genève, les discussions au sein de l'ONU stagnent. Si de nombreux pays demandent une interdiction préventive des robots tueurs, ils se heurtent à l'opposition de puissances comme la Russie, Israël et les États-Unis. Ces derniers préfèrent utiliser l'expression plus floue de "niveaux appropriés de jugement humain" plutôt que "contrôle humain significatif".
 
-En tant qu'étudiants ingénieurs, nous sommes en première ligne de ce débat. Contrairement à nos prédécesseurs du nucléaire qui ont compris les implications éthiques après Hiroshima, nous avons la chance (et le devoir) de réfléchir avant la catastrophe.
-
-Certains de nos camarades travailleront demain pour des entreprises comme Palantir, Anduril, ou Thales. Ils devront se poser la question : est-ce que je veux contribuer à créer une arme qui tue sans jugement humain ? La réponse n'est pas binaire. Développer un système de défense anti-missile autonome (protéger) est-il moralement équivalent à créer un drone tueur autonome (attaquer) ?
-
-LES PISTES DE RÉGULATION
-
-Tout n'est pas perdu. Plusieurs propositions émergent :
-
-Transparence algorithmique obligatoire : Toute IA militaire devrait être auditée par un tiers indépendant.
-
-"Kill switch" universel : Un mécanisme de désactivation d'urgence accessible aux commandants sur le terrain.
-
-Interdiction des essaims totalement autonomes : Limiter le nombre d'IA pouvant coopérer sans supervision.
-
-Responsabilité pénale : En cas de crime de guerre commis par une IA, qui est responsable ? Le programmeur ? Le commandant ? Le fabricant ? Le droit international doit évoluer.
-
-CONCLUSION : LA GUERRE, C'EST LA PAIX ?
-
-Le titre de cette section fait écho à 1984 d'Orwell, mais il résume l'absurdité où nous mène l'automatisation totale : des machines qui tuent pour, soi-disant, protéger des vies humaines. L'argument classique est que l'IA réduit les pertes civiles par sa précision. Mais cette logique est trompeuse. Si la guerre devient "propre" et sans risque pour l'agresseur (plus de pilotes en danger), le seuil d'entrée en guerre s'abaisse. On bombarde plus facilement quand nos soldats ne meurent plus.
-
-La vraie question n'est pas technique, elle est anthropologique : voulons-nous vivre dans un monde où la décision de tuer est déléguée à des lignes de code ? Comme le résume Toby Walsh, chercheur en IA : "Certaines choses doivent rester humaines. La mort en fait partie."
-
-Le conflit ukrainien n'est qu'un aperçu. Dans les 10 prochaines années, chaque guerre mobilisera des IA de plus en plus autonomes. Si nous n'établissons pas maintenant des lignes rouges éthiques et juridiques, nous risquons de créer un futur où l'humanité aura perdu le contrôle de ses propres moyens de destruction. Et à ce moment-là, il sera trop tard pour regretter.`
+L'idée clé à retenir : L'enjeu n'est pas d'interdire l'intelligence artificielle militaire, qui reste utile pour la détection ou le déminage, mais d'empêcher que la machine ne sorte de la "boucle de décision". Maintenir l'homme comme seul arbitre de la force létale est l'unique moyen de préserver la morale et le droit, même dans l'hyper-guerre de demain.`
 
 const formattedContent = computed(() => {
   // Échapper seulement les & pour éviter les problèmes d'entités HTML
@@ -115,15 +94,16 @@ const formattedContent = computed(() => {
   
   // Appliquer les transformations de formatage
   formatted = formatted
-    .replace(/^(UNE RÉVOLUTION COMPARABLE AU NUCLÉAIRE)$/gm, '<h2>$1</h2>')
-    .replace(/^(LE SPECTRE DU “TERMINATOR”)$/gm, '<h3>$1</h3>')
-    .replace(/^(L’ABSENCE DE COMPASSION)$/gm, '<h3>$1</h3>')
-    .replace(/^(LE “CONTRÔLE HUMAIN SIGNIFICATIF”)$/gm, '<h3>$1</h3>')
-    .replace(/^(UN RISQUE D’ESCALADE AUTOMATISÉE)$/gm, '<h3>$1</h3>')
-    .replace(/^(LA COURSE RÉGLEMENTAIRE EST PERDUE)$/gm, '<h2>$1</h2>')
-    .replace(/^(UNE RESPONSABILITÉ ÉTHIQUE COLLECTIVE)$/gm, '<h2>$1</h2>')
-    .replace(/^(LES PISTES DE RÉGULATION)$/gm, '<h2>$1</h2>')
-    .replace(/^(CONCLUSION\s*:.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(Une révolution comparable au nucléaire)$/gm, '<h2>$1</h2>')
+    .replace(/^(Le spectre du "Terminator" face à la réalité technique)$/gm, '<h2>$1</h2>')
+    .replace(/^(Le "Contrôle Humain Significatif" : Un impératif moral)$/gm, '<h2>$1</h2>')
+    .replace(/^(L'absence de compassion.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(La "boîte noire" algorithmique.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(La facilité de la violence.+)$/gm, '<h3>$1</h3>')
+    .replace(/^(L'impasse juridique : Le fossé de la responsabilité)$/gm, '<h2>$1</h2>')
+    .replace(/^(Une diplomatie mondiale sous tension)$/gm, '<h2>$1</h2>')
+    .replace(/^• (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n)+/g, '<ul style="list-style: disc; margin-left: 20px; margin-bottom: 16px;">$&</ul>')
     .replace(/\n\n+/g, '</p><p style="margin: 16px 0; line-height: 1.8;">')
     .replace(/^(?!<)/gm, '<p style="margin: 16px 0; line-height: 1.8;">')
   
