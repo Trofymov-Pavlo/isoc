@@ -89,13 +89,13 @@ const getPreviewText = (content: string) => {
 
 <style scoped>
 .featured-articles-section {
-  padding: 60px 0 80px 0;
+  padding: 40px 0 50px 0;
   background: #ffffff;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 45px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -125,7 +125,7 @@ const getPreviewText = (content: string) => {
   display: grid;
   grid-template-columns: 60px 1fr;
   gap: 32px;
-  padding: 40px 0;
+  padding: 28px 0;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
@@ -246,12 +246,12 @@ const getPreviewText = (content: string) => {
   grid-column: 1 / -1;
   height: 1px;
   background: #e5e7eb;
-  margin-top: 40px;
+  margin-top: 28px;
 }
 
 @media (max-width: 768px) {
   .featured-articles-section {
-    padding: 40px 0 60px 0;
+    padding: 30px 0 40px 0;
   }
 
   .section-title {
@@ -263,13 +263,13 @@ const getPreviewText = (content: string) => {
   }
 
   .section-header {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
   }
 
   .article-entry {
     grid-template-columns: 50px 1fr;
     gap: 20px;
-    padding: 30px 0;
+    padding: 24px 0;
   }
 
   .article-number {
@@ -281,7 +281,7 @@ const getPreviewText = (content: string) => {
   }
 
   .article-divider {
-    margin-top: 30px;
+    margin-top: 24px;
   }
 }
 
@@ -313,6 +313,3 @@ const getPreviewText = (content: string) => {
 }
 </style>
     font-size: 0.95rem;
-  }
-}
-</style>
