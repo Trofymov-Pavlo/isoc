@@ -1,8 +1,8 @@
-#!/bin/bash
-# AXIOME - Script de démarrage complet
-# Lance Frontend, Backend Django et Scraping automatique
+#!/usr/bin/env bash
+# AXIOME - Script de démarrage (macOS/Linux)
+# Lance Frontend (Nuxt), Backend (Django) + scraping automatique
 
-set -e
+set -euo pipefail
 
 echo "=========================================="
 echo "  AXIOME · Information & Analyse"
@@ -16,8 +16,13 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+mkdir -p logs
+
 # Fichier pour tracker si c'est le premier lancement du scraping
-SCRAPING_FIRST_RUN=".scraping_first_run"
+SCRAPING_FIRST_RUN="$SCRIPT_DIR/.scraping_first_run"
 
 # Fonction pour arrêter tous les process à la sortie
 cleanup() {
@@ -27,7 +32,17 @@ cleanup() {
     exit 0
 }
 
-trap cleanup SIGINT SIGTERM
+trap cleanup INT TERM
+
+require_cmd() {
+    command -v "$1" >/dev/null 2>&1 || {
+        echo -e "${YELLOW}⚠ Commande manquante: $1${NC}"
+        echo "Installez-la puis relancez le script." >&2
+        exit 1
+    }
+}
+
+require_cmd npm
 
 # 1. Frontend Nuxt (port 3000)
 echo -e "${BLUE}[1/3] Lancement Frontend Nuxt...${NC}"
@@ -50,9 +65,15 @@ elif [ -f "venv/bin/python" ]; then
     PYTHON_CMD="venv/bin/python"
     echo -e "${GREEN}✓ Utilisation venv Python (Unix)${NC}"
 else
-    PYTHON_CMD="python"
-    echo -e "${YELLOW}⚠ Utilisation Python système${NC}"
+        if command -v python3 >/dev/null 2>&1; then
+            PYTHON_CMD="python3"
+        else
+            PYTHON_CMD="python"
+        fi
+        echo -e "${YELLOW}⚠ Utilisation Python système ($PYTHON_CMD)${NC}"
 fi
+
+require_cmd "$PYTHON_CMD"
 
 # Lancement Django avec l'interpréteur du venv
 $PYTHON_CMD manage.py runserver 8000 > ../logs/backend.log 2>&1 &
