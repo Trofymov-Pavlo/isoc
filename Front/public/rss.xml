@@ -1,16 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>ISOC501 AXIOM</title>
-    <link>https://isoc501-axiom.example/</link>
-    <description>Dernières publications d'ISOC501 AXIOM</description>
+    <title>AXIOME · Information &amp; Analyse</title>
+    <link>http://localhost:3000/</link>
+    <description>Agrégation et structuration de l'information francophone sur le conflit Ukraine-Russie. Projet étudiant ISOC531.</description>
     <language>fr</language>
+    <copyright>© 2025-2026 AXIOME · Projet étudiant ISOC531</copyright>
+    <managingEditor>contact@axiome-isoc.fr (Équipe AXIOME)</managingEditor>
+    <webMaster>contact@axiome-isoc.fr (Antoine TENA)</webMaster>
+    <category>Actualités</category>
+    <category>Géopolitique</category>
+    <category>Conflit Ukraine-Russie</category>
+    <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2026 12:00:00 GMT</lastBuildDate>
+    <generator>AXIOME - Nuxt 4 Application</generator>
+    <ttl>60</ttl>
+    <image>
+      <url>http://localhost:3000/favicon.ico</url>
+      <title>AXIOME</title>
+      <link>http://localhost:3000/</link>
+    </image>
+    
+    <!-- Pages principales du site -->
     <item>
-      <title>Bienvenue sur ISOC501 AXIOM</title>
-      <link>https://isoc501-axiom.example/</link>
-      <description>Page d'accueil du site.</description>
-      <guid isPermaLink="true">https://isoc501-axiom.example/</guid>
-      <pubDate>Sat, 14 Dec 2024 12:00:00 GMT</pubDate>
+      <title>Accueil · AXIOME</title>
+      <link>http://localhost:3000/</link>
+      <description>Page d'accueil de AXIOME - Plateforme d'agrégation multi-sources sur le conflit Ukraine-Russie. Découvrez notre sélection d'articles, analyses et informations en temps réel.</description>
+      <guid isPermaLink="true">http://localhost:3000/</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Navigation</category>
     </item>
+    
+    <item>
+      <title>En Direct · AXIOME</title>
+      <link>http://localhost:3000/en-direct</link>
+      <description>Suivez l'actualité du conflit Ukraine-Russie en temps réel. Articles mis à jour régulièrement depuis plus de 30 sources francophones fiables.</description>
+      <guid isPermaLink="true">http://localhost:3000/en-direct</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Actualités en direct</category>
+    </item>
+    
+    <item>
+      <title>Explorer · AXIOME</title>
+      <link>http://localhost:3000/explorer</link>
+      <description>Explorez les articles par thématiques, sources et périodes. Recherchez dans notre base de données d'articles agrégés.</description>
+      <guid isPermaLink="true">http://localhost:3000/explorer</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Navigation</category>
+    </item>
+    
+    <item>
+      <title>Mes Favoris · AXIOME</title>
+      <link>http://localhost:3000/liked</link>
+      <description>Retrouvez vos articles sauvegardés. Créez votre propre sélection d'articles et analyses sur le conflit Ukraine-Russie.</description>
+      <guid isPermaLink="true">http://localhost:3000/liked</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Fonctionnalité</category>
+    </item>
+    
+    <item>
+      <title>Flux RSS · AXIOME</title>
+      <link>http://localhost:3000/rss</link>
+      <description>Abonnez-vous à notre flux RSS pour suivre automatiquement les dernières actualités du conflit Ukraine-Russie dans votre agrégateur de flux préféré.</description>
+      <guid isPermaLink="true">http://localhost:3000/rss</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Ressources</category>
+    </item>
+    
+    <item>
+      <title>Contact · AXIOME</title>
+      <link>http://localhost:3000/contact</link>
+      <description>Contactez l'équipe AXIOME. Posez vos questions, signalez des problèmes ou proposez des améliorations pour la plateforme.</description>
+      <guid isPermaLink="true">http://localhost:3000/contact</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Ressources</category>
+    </item>
+    
+    <item>
+      <title>À Propos · AXIOME</title>
+      <link>http://localhost:3000/a-propos</link>
+      <description>Découvrez la mission, la méthodologie et l'équipe derrière AXIOME. Projet étudiant ISOC531 réalisé par Antoine TENA, Nathan BARRACHIN, Hiba EL HAYANI et Pavel TROFYMOV.</description>
+      <guid isPermaLink="true">http://localhost:3000/a-propos</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>À propos</category>
+    </item>
+    
+    <item>
+      <title>Conditions Générales · AXIOME</title>
+      <link>http://localhost:3000/conditions</link>
+      <description>Conditions générales d'utilisation de la plateforme AXIOME. Consultez les règles d'usage, propriété intellectuelle et limitations de responsabilité.</description>
+      <guid isPermaLink="true">http://localhost:3000/conditions</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Légal</category>
+    </item>
+    
+    <item>
+      <title>Mentions Légales · AXIOME</title>
+      <link>http://localhost:3000/mentions</link>
+      <description>Mentions légales et informations sur l'éditeur. Projet étudiant réalisé dans le cadre du cours ISOC531.</description>
+      <guid isPermaLink="true">http://localhost:3000/mentions</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Légal</category>
+    </item>
+    
+    <item>
+      <title>Politique Cookies · AXIOME</title>
+      <link>http://localhost:3000/cookies</link>
+      <description>Politique d'utilisation des cookies sur AXIOME. Découvrez comment nous utilisons les cookies strictement nécessaires, de fonctionnalité et analytiques.</description>
+      <guid isPermaLink="true">http://localhost:3000/cookies</guid>
+      <pubDate>Sat, 04 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Légal</category>
+    </item>
+    
+    <!-- Articles en direct récents -->
+    <item>
+      <title>Ukraine Punches Back Against Russia, No Letup to Oil Refinery Strikes</title>
+      <link>https://www.kyivpost.com/analysis/67345</link>
+      <description>Ukrainians argue that the Russian strategy to blow up the power and heating grid in Ukraine only really works in the winter, but the Kremlin's energy industry is vulnerable all year around.</description>
+      <guid isPermaLink="true">https://www.kyivpost.com/analysis/67345</guid>
+      <pubDate>Sat, 04 Jan 2026 07:08:00 GMT</pubDate>
+      <dc:creator>Stefan Korshak</dc:creator>
+      <category>Kyiv Post</category>
+      <category>Articles agrégés</category>
+    </item>
+    
+    <item>
+      <title>Guerre en Ukraine : les pourparlers de paix se poursuivent avant un sommet en France la semaine prochaine</title>
+      <link>https://www.sudouest.fr/international/europe/ukraine/guerre-en-ukraine-les-pourparlers-de-paix-se-poursuivent-avant-un-sommet-en-france-la-semaine-prochaine-27283603.php</link>
+      <description>Les alliés de l'Ukraine se sont réunis à Kiev pour examiner un plan de sortie de crise, tandis que les efforts diplomatiques s'intensifient sous l'égide américaine</description>
+      <guid isPermaLink="true">https://www.sudouest.fr/international/europe/ukraine/guerre-en-ukraine-les-pourparlers-de-paix-se-poursuivent-avant-un-sommet-en-france-la-semaine-prochaine-27283603.php</guid>
+      <pubDate>Sat, 04 Jan 2026 06:45:57 GMT</pubDate>
+      <category>Sud Ouest</category>
+      <category>Articles agrégés</category>
+    </item>
+    
+    <item>
+      <title>Putin's Threats to Europe: Anatomy of a Great Deception</title>
+      <link>https://www.kyivpost.com/post/67341</link>
+      <description>Putin's bluff relies on his opponent not looking at the cards, as he seeks to turn Europe's insecurity into his own projection of strength.</description>
+      <guid isPermaLink="true">https://www.kyivpost.com/post/67341</guid>
+      <pubDate>Sat, 04 Jan 2026 06:22:00 GMT</pubDate>
+      <dc:creator>Dr. Orhan Dragas</dc:creator>
+      <category>Kyiv Post</category>
+      <category>Articles agrégés</category>
+    </item>
+    
+    <item>
+      <title>"HugoDécrypte en Russie", la BD qui dérange Vladimir Poutine</title>
+      <link>https://www.lexpress.fr/monde/europe/hugodecrypte-en-russie-la-bd-qui-derange-vladimir-poutine-XP7YESWF75HSZE27XIL43CPJDI/</link>
+      <description>Découvrez la bande dessinée HugoDécrypte en Russie qui suscite l'intérêt et la controverse autour de Vladimir Poutine et du régime russe.</description>
+      <guid isPermaLink="true">https://www.lexpress.fr/monde/europe/hugodecrypte-en-russie-la-bd-qui-derange-vladimir-poutine-XP7YESWF75HSZE27XIL43CPJDI/</guid>
+      <pubDate>Sat, 04 Jan 2026 05:45:00 GMT</pubDate>
+      <dc:creator>Axel Gyldén</dc:creator>
+      <category>L'Express</category>
+      <category>Articles agrégés</category>
+    </item>
+    
+    <item>
+      <title>DIRECT. Guerre en Ukraine : si Moscou fait échouer la diplomatie, l'Ukraine devra continuer à "se défendre" dit Volodymyr Zelensky</title>
+      <link>https://www.ladepeche.fr/2026/01/04/direct-guerre-en-ukraine-si-moscou-fait-echouer-la-diplomatie-lukraine-devra-continuer-a-se-defendre-dit-volodymyr-zelensky-13142255.php</link>
+      <description>Suivez l'actualité de la guerre en Ukraine, ce dimanche 4 janvier 2026, en direct toute la journée sur ladepeche.fr.</description>
+      <guid isPermaLink="true">https://www.ladepeche.fr/2026/01/04/direct-guerre-en-ukraine-si-moscou-fait-echouer-la-diplomatie-lukraine-devra-continuer-a-se-defendre-dit-volodymyr-zelensky-13142255.php</guid>
+      <pubDate>Sat, 04 Jan 2026 05:11:00 GMT</pubDate>
+      <category>La Dépêche</category>
+      <category>Articles agrégés</category>
+    </item>
+    
+    <item>
+      <title>EN DIRECT, guerre en Ukraine : Volodymyr Zelensky aimerait « voir les Etats-Unis faire davantage pression sur Moscou »</title>
+      <link>https://www.lemonde.fr/international/live/2026/01/04/en-direct-guerre-en-ukraine-volodymyr-zelensky-aimerait-voir-les-etats-unis-faire-davantage-pression-sur-moscou_6660486_3210.html</link>
+      <description>Volodymyr Zelensky souhaite voir les États-Unis intensifier la pression sur la Russie dans le cadre des négociations de paix en cours.</description>
+      <guid isPermaLink="true">https://www.lemonde.fr/international/live/2026/01/04/en-direct-guerre-en-ukraine-volodymyr-zelensky-aimerait-voir-les-etats-unis-faire-davantage-pression-sur-moscou_6660486_3210.html</guid>
+      <pubDate>Sat, 04 Jan 2026 03:45:06 GMT</pubDate>
+      <category>Le Monde</category>
+      <category>Articles agrégés</category>
+    </item>
+    
   </channel>
 </rss>
