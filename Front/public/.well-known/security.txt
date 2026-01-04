@@ -1,0 +1,62 @@
+# security.txt for AXIOME · Information & Analyse
+# Projet étudiant ISOC531 - 2025-2026
+# Standard: RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116.html)
+
+Contact: mailto:contact@axiome-isoc.fr
+Contact: mailto:antoine.tena@example.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: http://localhost:3000/.well-known/security.txt
+
+# Policy
+Policy: http://localhost:3000/a-propos
+
+# Acknowledgments
+Acknowledgments: http://localhost:3000/a-propos
+
+# Notes importantes
+# -----------------
+# ⚠️  Projet étudiant académique (ISOC531)
+# 
+# Ce site est développé dans un cadre pédagogique et n'est pas destiné
+# à un usage en production. Néanmoins, nous prenons la sécurité au sérieux
+# et apprécions tout signalement de vulnérabilités.
+#
+# Scope:
+# - Application web Nuxt 4 (Frontend)
+# - API Django REST Framework (Backend)
+# - Système d'authentification JWT
+# - Scraping et agrégation de contenus publics
+#
+# Out of scope:
+# - Infrastructures tierces (hébergeurs, CDN)
+# - Sites sources agrégés
+# - Services externes (APIs publiques)
+#
+# Programme de Bug Bounty: Aucun (projet étudiant non rémunéré)
+#
+# Types de vulnérabilités acceptées:
+# - XSS (Cross-Site Scripting)
+# - CSRF (Cross-Site Request Forgery)
+# - Injection SQL
+# - Authentification / Session hijacking
+# - Exposition de données sensibles
+# - Configuration de sécurité incorrecte
+#
+# Pas de:
+# - Tests automatisés intensifs (respectez le Crawl-delay)
+# - Déni de service (DoS/DDoS)
+# - Social engineering sur l'équipe
+# - Tests sur les environnements de production (N/A)
+#
+# Divulgation responsable:
+# 1. Envoyez un email détaillé à contact@axiome-isoc.fr
+# 2. Attendez notre réponse (objectif: 7 jours)
+# 3. Ne divulguez pas publiquement avant correction
+# 4. Nous vous créditons si vous le souhaitez
+#
+# Remerciements:
+# Nous mentionnerons votre contribution (avec votre accord) sur
+# la page À Propos du projet.
+
+# Hiring: N/A (projet académique temporaire)
