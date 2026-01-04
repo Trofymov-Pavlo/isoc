@@ -15,7 +15,7 @@ const articles = reactive<FeaturedArticle[]>([
     id: 1,
     title: 'Les technologies militaires utilisées dans le conflit',
     author: 'Hiba EL HAYANI',
-    date: '2025-01-15',
+    date: '2025-12-05',
     excerpt: 'Découvrez les innovations technologiques qui façonnent le conflit moderne. Des drones terrestres aux systèmes de cyberattaques...',
     content: `Le conflit ukrainien marque un tournant dans l'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant sur le terrain. Les drones, l'intelligence artificielle et les cyberattaques transforment profondément les stratégies de combat et redéfinissent les notions de supériorité militaire. Cette guerre démontre comment l'innovation technologique peut compenser des désavantages en termes de ressources ou de personnel.
 
@@ -30,7 +30,7 @@ Les cyberattaques constituent un front invisible mais crucial, où les intrusion
     id: 2,
     title: 'La guerre de l\'information',
     author: 'Antoine TENA',
-    date: '2025-01-20',
+    date: '2025-12-12',
     excerpt: 'Les stratégies médiatiques, réseaux sociaux et désinformation jouent un rôle crucial dans le conflit moderne...',
     content: `LA GUERRE DE L'INFORMATION : UN ENJEU STRATÉGIQUE MODERNE
 
@@ -110,7 +110,7 @@ La guerre de l'information est un élément crucial du conflit, déterminant l'e
     id: 3,
     title: 'Les enjeux éthiques et juridiques',
     author: 'Nathan BARRACHIN',
-    date: '2025-02-01',
+    date: '2025-12-18',
     excerpt: 'Armements autonomes, responsabilité humaine, droit international : les questions éthiques du conflit moderne...',
     content: `Le développement rapide des technologies militaires autonomes soulève des questions éthiques et juridiques fondamentales qui dépassent le cadre du conflit ukrainien. Jusqu'où peut-on déléguer les décisions de vie ou de mort à des machines ? Qui est responsable lorsqu'une arme autonome commet une erreur ou viole le droit international humanitaire ?
 
