@@ -86,17 +86,24 @@ const formattedContent = computed(() => {
   if (!article.value?.content) return ''
   const content = article.value.content
   
-  // Simple markdown-like formatting
-  return content
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/\n- (.+)/g, '\n<li>$1</li>')
-    .replace(/(<li>.+<\/li>)/s, '<ul>$1</ul>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^/g, '<p>')
-    .replace(/$/g, '</p>')
+  // Escape HTML and format text
+  let formatted = content
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+  
+  // Format sections
+  formatted = formatted
+    .replace(/^([A-Z][A-Z\s]+)$/gm, '<h2 style="margin-top: 24px; margin-bottom: 16px; font-weight: 700;">$1</h2>')
+    .replace(/^• (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
+    .replace(/^- (.+)$/gm, '<li style="margin-left: 20px;">$1</li>')
+    .replace(/(<li[^>]*>.+<\/li>)/s, '<ul style="list-style: none; padding: 0; margin-bottom: 16px;">$1</ul>')
+    .replace(/\n\n+/g, '</p><p style="margin: 16px 0; line-height: 1.8;">')
+    .replace(/^(?!<)/gm, '<p style="margin: 16px 0; line-height: 1.8;">')
+  
+  return formatted + '</p>'
 })
 
 const currentIndex = computed(() => {
