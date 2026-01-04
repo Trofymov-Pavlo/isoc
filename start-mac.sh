@@ -37,6 +37,10 @@ require_cmd python3
 
 echo -e "${BLUE}[1/3] Frontend Nuxt...${NC}"
 cd Front
+if [ ! -d "node_modules" ]; then
+    echo -e "${YELLOW}Premier lancement : Installation des dépendances Frontend...${NC}"
+    npm install
+fi
 npm run dev > ../logs/frontend.log 2>&1 &
 FRONTEND_PID=$!
 cd ..
