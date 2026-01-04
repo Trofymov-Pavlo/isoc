@@ -1,103 +1,180 @@
-# AXIOME - Backend
+# AXIOME · Backend
 
-Backend Flask + Scraping RSS pour le média indépendant AXIOME dédié au conflit Ukraine-Russie.
+Backend Django REST Framework pour la plateforme AXIOME.
+**Projet étudiant ISOC531 · 2025-2026**
 
 ## Structure
 
 ```
 Back/
-├── scraping/           # Module de scraping RSS + YouTube
-│   ├── __init__.py
-│   ├── api.py         # API Flask avec endpoints
-│   ├── core.py        # Logique de parsing RSS articles
-│   ├── video.py       # Scraping videos YouTube
-│   ├── archive.py     # Persistence des articles/vidéos dans archive.json
-│   ├── feeds.py       # Listes de flux RSS français + YouTube
-│   ├── filters.py     # Filtrage des articles
-│   ├── keywords.py    # Mots-clés de filtrage
-│   ├── media_extract.py
-│   ├── textops.py
-│   ├── http_state.py
-│   ├── scraping.py
-│   └── archive.json   # Archive permanente des articles/vidéos
-├── venv/              # Environnement Python virtuel
-├── requirements.txt   # Dépendances Python
-└── README.md
+├── accounts/              # App Django authentification
+│   ├── models.py         # User model
+│   ├── serializers.py    # Serializers DRF
+│   ├── views.py          # API endpoints (login, register, refresh)
+│   ├── urls.py           # Routes API
+│   ├── throttles.py      # Rate limiting
+│   └── AUTH_SYSTEM.md    # Documentation auth complète
+├── django_config/         # Configuration Django
+│   ├── settings.py       # Settings (CORS, JWT, DB)
+│   ├── urls.py           # Routes principales
+│   └── wsgi.py
+├── saved_media/           # App Django favoris utilisateurs
+│   ├── models.py         # SavedMedia, UserCategory
+│   ├── serializers.py
+│   ├── views.py
+│   └── urls.py
+├── scraping/              # Module de scraping
+│   ├── api.py            # Endpoints scraping
+│   ├── archive.py        # Gestion archive.json
+│   ├── articles/         # Scraping articles RSS
+│   │   ├── core.py
+│   │   ├── feeds.py      # 30+ sources RSS
+│   │   └── filters.py
+│   └── videos/           # Scraping vidéos YouTube
+├── db.sqlite3             # Base de données SQLite
+├── manage.py              # Django CLI
+└── requirements.txt       # Dépendances Python
 ```
 
 ## Installation
 
 ### 1. Créer l'environnement virtuel
 
+**Windows :**
 ```bash
+cd Back
 python -m venv venv
+```
+
+**macOS / Linux :**
+```bash
+cd Back
+python3 -m venv venv
 ```
 
 ### 2. Activer l'environnement virtuel
 
-**Windows (cmd):**
+**Windows :**
 ```bash
 venv\Scripts\activate
 ```
 
-**Windows (PowerShell):**
-```bash
-venv\Scripts\Activate.ps1
-```
-
-**macOS / Linux:**
+**macOS / Linux :**
 ```bash
 source venv/bin/activate
 ```
 
 ### 3. Installer les dépendances
 
+**Windows :**
 ```bash
 pip install -r requirements.txt
 ```
 
-## Démarrage
-
-### Lancer l'API Flask (port 5000)
-
+**macOS / Linux :**
 ```bash
-python -m scraping.api
+pip install -r requirements.txt
 ```
 
-L'API sera disponible sur `http://127.0.0.1:5000`
+### 4. Migrer la base de données
+
+**Windows :**
+```bash
+python manage.py migrate
+```
+
+**macOS / Linux :**
+```bash
+python manage.py migrate
+```
+
+## Démarrage
+
+### Lancer le serveur Django (port 8000)
+
+**Windows :**
+```bash
+python manage.py runserver 8000
+```
+
+**macOS / Linux :**
+```bash
+python manage.py runserver 8000
+```
+
+✅ API disponible sur `http://localhost:8000`
 
 ### Endpoints disponibles
 
-- **GET `/articles`** - Récupère les articles filtrés
-  - Paramètres:
-    - `q` : Requête de recherche (par défaut: `ukraine`)
-    - `hours` : Nombre d'heures (par défaut: `48`)
-    - `meta` : Inclure métadonnées (1 ou 0, par défaut: `1`)
+#### Authentification (`/api/accounts/`)
 
-Exemple:
+- **POST `/register`** - Inscription utilisateur
+- **POST `/login`** - Connexion (retourne access + refresh tokens)
+- **POST `/refresh`** - Rafraîchir access token
+- **POST `/logout`** - Déconnexion
+- **GET `/me`** - Informations utilisateur connecté
+
+#### Favoris (`/api/saved-media/`)
+
+- **GET `/saved-items`** - Liste des favoris
+- **POST `/save-item`** - Ajouter aux favoris
+- **DELETE `/unsave-item/<id>`** - Retirer des favoris
+- **GET `/categories`** - Catégories personnalisées
+
+#### Scraping (`/scraping/`)
+
+- **GET `/api/articles`** - Articles agrégés
+- **GET `/api/videos`** - Vidéos agrégées
+
+Exemples :
+
+**Windows :**
 ```bash
-curl "http://127.0.0.1:5000/articles?q=ukraine&hours=48&meta=1"
+curl http://localhost:8000/api/accounts/me -H "Authorization: Bearer <token>"
+```
+
+**macOS / Linux :**
+```bash
+curl http://localhost:8000/api/accounts/me -H "Authorization: Bearer <token>"
 ```
 
 ## Features
 
-- ✅ Scraping automatique de 50+ flux RSS français
-- ✅ Scraping automatique de 27 chaînes YouTube (français + international)
-- ✅ Archive permanente des articles et vidéos dans archive.json
-- ✅ Filtrage par mots-clés Ukraine, Russie, NATO
-- ✅ Cache 15 minutes des résultats
-- ✅ Extraction d'images et auteurs
-- ✅ Support CORS pour connexion au frontend
-- ✅ Planification automatique du scraping (15 min)
-- ✅ Détection et prévention des doublons
-- ✅ Thread-safe archive operations
+### Authentification
+- ✅ JWT avec access (15min) et refresh (7 jours) tokens
+- ✅ Inscription avec validation email
+- ✅ Connexion sécurisée
+- ✅ Rate limiting (5 req/min pour auth)
+- ✅ Refresh automatique des tokens
+
+### Favoris utilisateurs
+- ✅ Sauvegarde articles/vidéos
+- ✅ Catégories personnalisées
+- ✅ Gestion complète (add, remove, list)
+- ✅ Synchronisation avec frontend
+
+### Scraping
+- ✅ 30+ flux RSS francophones
+- ✅ Archive JSON 247k+ articles
+- ✅ Filtrage multi-critères
+- ✅ Extraction images et métadonnées
+- ✅ Détection doublons
+- ✅ Thread-safe operations
+
+### API
+- ✅ Django REST Framework
+- ✅ CORS configuré pour localhost:3000
+- ✅ Documentation intégrée
+- ✅ Throttling et rate limiting
 
 ## Configuration
 
-### Flux RSS Articles
-Les flux RSS articles sont définis dans `scraping/feeds.py` avec les meilleures sources françaises:
-- Le Monde, Figaro, Franceinfo
-- RFI, France 24
+### Sources RSS
+
+Les flux RSS sont définis dans `scraping/articles/feeds.py` :
+- **Généralistes** : Le Monde, Le Figaro, Libération
+- **Internationaux** : RFI, France 24
+- **Anglophones** : Kyiv Post, BBC
 - Et 45+ autres sources
 
 ### Chaînes YouTube

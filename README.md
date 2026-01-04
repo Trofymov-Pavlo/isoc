@@ -1,65 +1,77 @@
-# AXIOME - Média indépendant du conflit Ukraine-Russie
+# AXIOME · Information & Analyse
 
-Architecture réstructurée avec **Backend** (Django Auth + Flask/Scraping) et **Frontend** (Nuxt 4 + Vue 3 + Vuetify).
+Plateforme d'agrégation multi-sources sur le conflit Ukraine-Russie.
+**Projet étudiant ISOC531 · 2025-2026**
+
+Architecture full-stack : **Backend Django** (Auth + Scraping) + **Frontend Nuxt 4**
 
 ## 📁 Structure du projet
 
 ```
-ISOC/
-├── Back/              # Backend Django (Auth) + Flask (Scraping)
-│   ├── accounts/      # App Django pour authentification (users, JWT, tokens)
-│   ├── isoc_auth/     # Config Django (settings, urls, wsgi)
-│   ├── scraping/      # Module Flask de scraping (RSS, parsing, filtrage)
-│   ├── venv/          # Environnement Python virtuel
-│   ├── manage.py      # Django CLI
-│   ├── requirements.txt
-│   └── README.md
-├── Front/             # Frontend Nuxt 4 + Vue 3 + Vuetify 3
-│   ├── components/    # Composants Vue (auto-import)
-│   ├── pages/         # Pages (routage auto)
-│   ├── composables/   # Logique réutilisable (useAuthAPI, useAuthState)
-│   ├── plugins/       # Plugins Vue (Vuetify, JWT)
-│   ├── assets/        # Styles SCSS
-│   ├── public/        # Fichiers statiques
-│   ├── node_modules/  # Dépendances npm
+isoc/
+├── Back/                  # Backend Django REST Framework
+│   ├── accounts/         # Authentification JWT (users, tokens)
+│   ├── django_config/    # Configuration Django (settings, urls)
+│   ├── saved_media/      # Gestion favoris utilisateurs
+│   ├── scraping/         # Module scraping RSS (articles, vidéos)
+│   ├── db.sqlite3        # Base de données SQLite
+│   ├── manage.py         # Django CLI
+│   └── requirements.txt
+├── Front/                 # Frontend Nuxt 4 + Vue 3 + Vuetify 3
+│   ├── components/       # Composants Vue (auto-import)
+│   ├── pages/            # Pages (routage automatique)
+│   ├── composables/      # Logique réutilisable (useAuthAPI, useSavedMedia)
+│   ├── plugins/          # Plugins Vue (Vuetify)
+│   ├── assets/           # Styles SCSS
+│   ├── public/           # Fichiers statiques (RSS, robots.txt, sitemap.xml)
 │   ├── package.json
 │   └── README.md
-├── AUTH_SYSTEM.md     # Documentation complète d'authentification
-├── start-auth-system.sh  # Script de démarrage
-└── README.md          # Ce fichier
+└── README.md              # Ce fichier
 ```
 
 ## 🚀 Démarrage rapide
 
-### Tous les services (Bash/Git Bash)
+### Backend Django (Terminal 1)
 
-```bash
-chmod +x start-auth-system.sh
-./start-auth-system.sh
-```
-
-### Ou manuellement :
-
-#### Backend Django (Terminal 1)
-
+**Windows :**
 ```bash
 cd Back
-source venv/Scripts/activate    # Windows (Git Bash) ou venv\Scripts\activate (CMD)
-pip install -r requirements.txt # Si première fois
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver 8000
 ```
 
-API disponible sur `http://127.0.0.1:8000`
+**macOS / Linux :**
+```bash
+cd Back
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver 8000
+```
 
-#### Frontend Nuxt (Terminal 2)
+✅ API disponible sur `http://localhost:8000`
 
+### Frontend Nuxt (Terminal 2)
+
+**Windows :**
 ```bash
 cd Front
-npm install                     # Si première fois
+npm install
 npm run dev
 ```
 
-Site disponible sur `http://localhost:3000`
+**macOS / Linux :**
+```bash
+cd Front
+npm install
+npm run dev
+```
+
+✅ Site disponible sur `http://localhost:3000`
 
 ## 📋 Prérequis
 
@@ -69,89 +81,102 @@ Site disponible sur `http://localhost:3000`
 
 ## 🎯 Features
 
-### Backend
-- ✅ Scraping de 50+ flux RSS français
-- ✅ Filtrage par mots-clés (Ukraine, Russie, NATO)
-- ✅ Cache 15 minutes des articles
-- ✅ Extraction d'images et auteurs
-- ✅ API REST avec CORS
-- ✅ Planification automatique du scraping
+### Backend (Django REST Framework)
+- ✅ Authentification JWT (inscription, connexion, refresh)
+- ✅ Scraping automatique 30+ sources RSS francophones
+- ✅ Filtrage multi-critères (mots-clés, sources, dates)
+- ✅ Gestion favoris utilisateurs (SavedMedia)
+- ✅ Archive JSON persistante (247k+ articles)
+- ✅ API REST avec CORS configuré
+- ✅ Rate limiting et throttling
 
-### Frontend
-- ✅ Page d'accueil dynamique
-- ✅ Actualités en direct
-- ✅ Articles à la une (scraping)
-- ✅ Podcast AXIOME original
-- ✅ Vidéos d'analyse
-- ✅ Newsletter
-- ✅ Design responsive
-- ✅ Animations fluides
+### Frontend (Nuxt 4 + Vue 3 + Vuetify 3)
+- ✅ Pages : Accueil, En Direct, Explorer, Mes Favoris
+- ✅ Authentification complète avec JWT
+- ✅ Système de favoris avec like/unlike
+- ✅ Pages légales complètes (CGU, Mentions, Cookies)
+- ✅ Standards du web (RSS, sitemap.xml, robots.txt, humans.txt, security.txt)
+- ✅ Design moderne responsive
+- ✅ Hero sections avec gradients
 
-## 👥 Équipe éditoriale
+## 👥 Équipe ISOC531
 
-- **Article principal**: Antoine TENA
-- **Podcast**: Antoine TENA, Nathan BARRACHIN, Pavel TROFYMOV
-- **Scraping/Source**: Médias français (50+ sources)
+- **Chef de projet & Développeur** : Antoine TENA (architecture, dev full-stack, article désinformation)
+- **Analyste juridique** : Nathan BARRACHIN (article enjeux juridiques)
+- **Analyste militaire & Designer** : Hiba EL HAYANI (article technologies militaires, UI/UX)
+- **Contributeur** : Pavel TROFYMOV (recherche)
+- **Présentation** : Co-rédigée par toute l'équipe
 
-## 🔗 Connexion Backend-Frontend
+## 🔗 Configuration Backend-Frontend
 
-L'URL de l'API est configurée dans `Front/composables/useArticles.ts`:
+L'URL de l'API est configurée dans `Front/nuxt.config.ts` :
 
 ```typescript
-const apiBase = opts?.apiBase ?? "http://127.0.0.1:5000";
+apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/accounts'
 ```
 
-## 📊 Flux RSS sources
+## 📊 Sources d'information
 
-Le backend récupère les articles depuis 50+ sources françaises:
-- **Généralistes**: Le Monde, Figaro, Franceinfo, Libération
-- **Internationaux**: RFI, France 24
-- **Régionaux**: Ouest-France, Le Parisien, Sud Ouest
-- **Spécialisés**: La Croix, Challenges, Les Échos
-- Et bien d'autres...
+Le backend agrège 30+ sources francophones :
+- **Généralistes** : Le Monde, Le Figaro, Libération, L'Express
+- **Internationaux** : RFI, France 24, TV5 Monde
+- **Régionaux** : Sud Ouest, La Dépêche, Ouest-France
+- **Anglophones** : Kyiv Post, BBC, Reuters
 
-Voir `Back/scraping/feeds.py` pour la liste complète.
-
-## 📝 Commits et versioning
-
-- Branch principale: `develop`
-- Features en développement: `feature/*`
-
-### Dernier merge
-- Branche `feature/config` merge de `develop`
-- Restructuration Back/Front avec Nuxt et Flask
+Voir `Back/scraping/articles/feeds.py` pour la liste complète.
 
 ## 🔧 Dépannage
 
-### L'API ne répond pas?
+### L'API ne répond pas ?
+
+**Windows :**
 ```bash
-# Vérifier que le backend est lancé
-curl http://127.0.0.1:5000/articles?q=ukraine
+curl http://localhost:8000/api/accounts/health
 ```
 
-### Les articles ne s'affichent pas?
-1. Vérifier que le backend est en cours d'exécution
-2. Vérifier la console du navigateur pour les erreurs CORS
-3. Vérifier que l'URL API est correcte dans `useArticles.ts`
-
-### Les styles Vuetify ne fonctionnent pas?
+**macOS / Linux :**
 ```bash
-cd Front
-npm install
-npm run dev
+curl http://localhost:8000/api/accounts/health
 ```
+
+### Les articles ne s'affichent pas ?
+1. Vérifier que le backend Django tourne sur le port 8000
+2. Vérifier la console navigateur pour erreurs CORS
+3. Vérifier `archive.json` existe dans `Front/public/`
+
+### Erreur d'authentification ?
+1. Vérifier que `db.sqlite3` existe et est migré
+2. Tester avec `python manage.py createsuperuser`
+3. Vérifier les tokens JWT dans localStorage
 
 ## 📚 Documentation
 
 - [Backend - README.md](Back/README.md)
 - [Frontend - README.md](Front/README.md)
+- [Auth System - AUTH_SYSTEM.md](Back/accounts/AUTH_SYSTEM.md)
+
+## 🌐 Standards du web
+
+Le projet respecte les standards du web :
+- **RSS 2.0** : `/rss.xml` - Flux RSS professionnel
+- **Sitemap** : `/sitemap.xml` - Plan du site XML
+- **Robots.txt** : `/robots.txt` - Directives pour robots
+- **Humans.txt** : `/humans.txt` - Équipe et stack technique
+- **Security.txt** : `/.well-known/security.txt` - Contact sécurité (RFC 9116)
+- **Ads.txt** : `/ads.txt` - Pas de publicité (projet académique)
+
+## 🎨 Design
+
+**Palette de couleurs :**
+- Violet foncé : `#2f0538`
+- Violet clair : `#4b2faa`
+- Gris : `#f3f4f6`
+
+**Typographie :**
+- Titres : 32-48px, font-weight 600-800
+- Hero sections avec gradients subtils
 
 ## 📄 License
 
-Propriétaire - ISOC Media AXIOME 2025
-
-
-
-
-
-# #2f0538
+© 2025-2026 AXIOME · Projet étudiant ISOC531
+Tous droits réservés - Usage académique uniquement
