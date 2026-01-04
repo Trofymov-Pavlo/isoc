@@ -62,6 +62,8 @@
           <a href="/humans.txt" target="_blank">Humans</a>
           <span class="sep">·</span>
           <a href="/.well-known/security.txt" target="_blank">Security</a>
+          <span class="sep">·</span>
+          <a href="/archive.json" target="_blank">Archive</a>
         </p>
       </div>
     </div>

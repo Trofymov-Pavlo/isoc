@@ -3,7 +3,7 @@
   <channel>
     <title>AXIOME · Information &amp; Analyse</title>
     <link>http://localhost:3000/</link>
-    <description>Agrégation et structuration de l'information francophone sur le conflit Ukraine-Russie. Projet étudiant ISOC531.</description>
+    <description>Agrégation et structuration de l'information francophone sur le conflit Ukraine-Russie. Projet étudiant ISOC531. Archive complète disponible : http://localhost:3000/archive.json</description>
     <language>fr</language>
     <copyright>© 2025-2026 AXIOME · Projet étudiant ISOC531</copyright>
     <managingEditor>contact@axiome-isoc.fr (Équipe AXIOME)</managingEditor>

@@ -51,6 +51,7 @@ Storage: SQLite (dev), archival JSON
 - Thematic categorization and keyword filtering
 - User favorites with authentication
 - RSS feed generation
+- Complete JSON archive (247k+ articles) at /archive.json
 - Source attribution and original link preservation
 - Academic transparency about student project nature
 
