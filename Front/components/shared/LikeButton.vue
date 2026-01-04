@@ -1,20 +1,21 @@
 <template>
   <button
+    v-if="isAuthenticated"
     class="like-btn"
     :class="{ liked: isLiked }"
-    @click="onClick"
+    @click.prevent.stop="onClick"
     :title="isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'"
     :aria-pressed="isLiked"
     :disabled="isLoading"
   >
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="icon" viewBox="0 0 24 24" :fill="isLiked ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="2">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
     </svg>
   </button>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useAuthState } from '~/composables/useAuthState';
 import { useSavedMedia } from '~/composables/useSavedMedia';
 
@@ -24,49 +25,51 @@ interface Props {
   source?: string;
   mediaType: 'article' | 'video' | 'live';
   thumbnail?: string;
-  category?: string;
+  publishedDate?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  category: 'liked',
   source: 'AXIOM',
 });
 
-const emit = defineEmits<{
-  (e: 'toggle', saved: boolean): void;
-}>();
-
 const { isAuthenticated } = useAuthState();
-const { toggleSave, isSaved } = useSavedMedia();
+const { toggleSave, isSaved, initialize, isInitialized } = useSavedMedia();
 
 const isLoading = ref(false);
+
+// Initialize when user is authenticated
+watch(
+  () => isAuthenticated.value,
+  async (authed) => {
+    if (authed && !isInitialized.value) {
+      await initialize();
+    }
+  },
+  { immediate: true }
+);
 
 // Check if item is saved using the global cache
 const isLiked = computed(() => {
   if (!isAuthenticated.value) return false;
-  return isSaved(props.link, props.category);
+  return isSaved(props.link);
 });
 
 const onClick = async () => {
   if (!isAuthenticated.value) {
-    // Redirect to login if not authenticated
-    if (typeof window !== 'undefined') {
-      window.location.href = '/connexion';
-    }
+    navigateTo('/connexion');
     return;
   }
 
   isLoading.value = true;
   try {
-    const result = await toggleSave({
+    await toggleSave({
       link: props.link,
       title: props.title || 'Sans titre',
       source: props.source,
       media_type: props.mediaType,
       thumbnail: props.thumbnail,
-      category: props.category,
+      published_date: props.publishedDate,
     });
-    emit('toggle', result.saved);
   } finally {
     isLoading.value = false;
   }
@@ -75,20 +78,31 @@ const onClick = async () => {
 
 <style scoped>
 .like-btn {
-  background: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  color: #ccc;
+  color: #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  z-index: 10;
 }
 
 .like-btn:hover:not(:disabled) {
-  color: #ff9fb3;
-  transform: scale(1.15);
+  background: white;
+  color: #ff6b95;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .like-btn.liked {
@@ -96,7 +110,7 @@ const onClick = async () => {
 }
 
 .like-btn.liked:hover:not(:disabled) {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 .like-btn:disabled {

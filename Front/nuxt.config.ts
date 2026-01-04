@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-12-14',
   devtools: { enabled: process.env.NODE_ENV === 'development' },
 
+  nitro: {
+    experimental: {
+      websocket: false
+    }
+  },
+
   runtimeConfig: {
     public: {
       // Backend API URLs - configurable par environment

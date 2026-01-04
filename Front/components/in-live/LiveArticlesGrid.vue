@@ -18,9 +18,25 @@
           <span class="play-icon-small">▶</span>
         </div>
         <div class="image-overlay"></div>
+        <LikeButton
+          :link="article.link"
+          :title="article.title"
+          :source="article.source || 'En direct'"
+          :media-type="article.type === 'video' ? 'video' : 'article'"
+          :thumbnail="article.image"
+          :published-date="article.published"
+        />
       </a>
       <div v-else class="article-image placeholder">
         <span class="placeholder-icon">📰</span>
+        <LikeButton
+          :link="article.link"
+          :title="article.title"
+          :source="article.source || 'En direct'"
+          :media-type="article.type === 'video' ? 'video' : 'article'"
+          :thumbnail="article.image"
+          :published-date="article.published"
+        />
       </div>
 
       <div class="article-content">
@@ -39,13 +55,6 @@
             <a :href="article.link" target="_blank" rel="noopener" class="read-link">
               Lire →
             </a>
-            <LikeButtonMenu 
-              :link="article.link"
-              :title="article.title"
-              :source="article.source || 'En direct'"
-              :media-type="article.type === 'video' ? 'video' : 'article'"
-              :thumbnail="article.image"
-            />
           </div>
         </div>
       </div>
@@ -55,7 +64,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
+import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface Article {
   title: string;
@@ -78,26 +87,21 @@ const truncate = (text: string, max: number): string => {
 const formatTime = (dateString?: string): string => {
   if (!dateString) return '';
 
-  try {
-    if (/jan|fév|mar|avr|mai|jui|aoû|sep|oct|nov|déc/i.test(dateString)) {
-      return dateString;
-    }
+  // If the scraper already provided a human-readable date, keep it.
+  if (/jan|fév|mar|avr|mai|jui|aoû|sep|oct|nov|déc/i.test(dateString)) {
+    return dateString;
+  }
 
+  try {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return dateString;
 
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 1) return "À l'instant";
-    if (diffMins < 60) return `Il y a ${diffMins}m`;
-    if (diffHours < 24) return `Il y a ${diffHours}h`;
-    if (diffDays < 7) return `Il y a ${diffDays}j`;
-
-    return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    // Always show an absolute date (no "Il y a …")
+    return date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   } catch {
     return dateString;
   }

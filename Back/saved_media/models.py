@@ -34,6 +34,7 @@ class SavedMedia(models.Model):
         media_type: article/video/live
         category: Default category (liked/watch_later) or custom
         thumbnail: Thumbnail URL
+        published_date: Original publication date of the media
         saved_at: Timestamp when saved
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved_media')
@@ -43,6 +44,7 @@ class SavedMedia(models.Model):
     media_type = models.CharField(max_length=20, choices=SavedMediaType.choices, default=SavedMediaType.ARTICLE)
     category = models.CharField(max_length=100, default=SavedMediaCategory.LIKED)
     thumbnail = models.URLField(blank=True, null=True)
+    published_date = models.CharField(max_length=100, blank=True, null=True)
     saved_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

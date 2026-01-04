@@ -207,15 +207,14 @@
               </div>
               <span v-if="item.type === 'article'" class="media-badge article-badge">Article</span>
               <span v-else class="media-badge video-badge">Vidéo</span>
-              <button 
-                class="like-btn" 
-                @click.prevent.stop="toggleLike(item.link)"
-                :title="isSavedItem(item.link) ? 'Retirer des favoris' : 'Ajouter aux favoris'"
-              >
-                <svg :class="{ liked: isSavedItem(item.link) }" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </button>
+              <LikeButton
+                :link="item.link"
+                :title="item.title"
+                :source="item.source || ''"
+                :media-type="item.type === 'video' ? 'video' : 'article'"
+                :thumbnail="item.image"
+                :published-date="item.published"
+              />
             </div>
             <div class="item-content">
               <h3 class="item-title">{{ item.title }}</h3>
@@ -239,7 +238,7 @@
           </button>
 
           <div class="pagination-logo">
-            <img src="/assets/logoIsoc.png" alt="ISOC AXIOM" class="pagination-logo-img" />
+            <img :src="logo" alt="ISOC AXIOM" class="pagination-logo-img" />
           </div>
 
           <div class="pagination-info">
@@ -264,6 +263,8 @@ import { computed, onMounted, ref } from 'vue';
 import { useArticles } from '@/composables/useArticles';
 import { useVideos } from '@/composables/useVideos';
 import { useSavedMedia } from '@/composables/useSavedMedia';
+import LikeButton from '~/components/shared/LikeButton.vue';
+import logoIsoc from '@/assets/logoIsoc.png';
 
 // Data fetching
 const { all: articles, loading: articlesLoading, error: articlesError, load: loadArticles } = useArticles({
@@ -279,7 +280,8 @@ const { all: videos, loading: videosLoading, error: videosError, load: loadVideo
   meta: 1,
 });
 
-const { isSaved, toggleSave: saveMedia } = useSavedMedia();
+const { initialize } = useSavedMedia();
+const logo = logoIsoc;
 
 // UI State
 const searchQuery = ref('');
@@ -482,24 +484,6 @@ function prevPage() {
   }
 }
 
-function isSavedItem(link: string): boolean {
-  return isSaved(link, 'liked');
-}
-
-async function toggleLike(link: string) {
-  // Find the item to get its metadata
-  const item = allItems.value.find(i => i.link === link);
-  if (!item) return;
-
-  await saveMedia({
-    link,
-    title: item.title,
-    source: item.source || '',
-    media_type: item.type === 'article' ? 'article' : 'video',
-    category: 'liked',
-  });
-}
-
 function navigateToLink(link: string) {
   window.open(link, '_blank', 'noopener,noreferrer');
 }
@@ -530,7 +514,10 @@ function formatExactDate(item: { published?: string | number; publishedTime?: st
     ? new Date(asNumber < 1e12 ? asNumber * 1000 : asNumber)
     : new Date(raw as string);
 
-  if (Number.isNaN(date.getTime())) return '';
+  if (Number.isNaN(date.getTime())) {
+    // Fallback for non-ISO strings (e.g., '14 décembre 2025')
+    return typeof raw === 'string' ? (raw as string) : '';
+  }
 
   const datePart = new Intl.DateTimeFormat('fr-FR', {
     year: 'numeric',
@@ -549,6 +536,8 @@ function formatExactDate(item: { published?: string | number; publishedTime?: st
 // Load data on mount
 onMounted(() => {
   loadData();
+  // Initialize saved media so hearts reflect saved status
+  initialize();
   
   // Check for URL query parameter
   const urlParams = new URLSearchParams(window.location.search);
@@ -567,6 +556,7 @@ onMounted(() => {
     filters.value.dateRange = dateParam;
   }
   applyFilters();
+  // TODO(liked-ui): Replace simple heart with vertical action bar for unified UX
 });
 </script>
 
@@ -1052,38 +1042,6 @@ onMounted(() => {
 .video-badge {
   background: rgba(255, 243, 191, 0.95);
   color: #997404;
-}
-
-.like-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  color: #dee2e6;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-}
-
-.like-btn:hover {
-  background: white;
-  color: #dc3545;
-  transform: scale(1.1);
-}
-
-.like-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.like-btn svg.liked {
-  color: #dc3545;
 }
 
 .item-content {

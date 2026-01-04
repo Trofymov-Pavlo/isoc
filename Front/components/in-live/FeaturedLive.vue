@@ -13,9 +13,25 @@
         <span class="play-icon">▶</span>
       </div>
       <div class="featured-overlay"></div>
+      <LikeButton
+        :link="article.link"
+        :title="article.title"
+        :source="article.source || 'En direct'"
+        :media-type="article.type === 'video' ? 'video' : 'article'"
+        :thumbnail="article.image"
+        :published-date="article.published"
+      />
     </a>
     <div v-else class="featured-image placeholder">
       <span class="placeholder-icon">📰</span>
+      <LikeButton
+        :link="article.link"
+        :title="article.title"
+        :source="article.source || 'En direct'"
+        :media-type="article.type === 'video' ? 'video' : 'article'"
+        :thumbnail="article.image"
+        :published-date="article.published"
+      />
     </div>
 
     <div class="featured-content">
@@ -34,13 +50,6 @@
           <a :href="article.link" target="_blank" rel="noopener" class="read-link">
             Lire l'article complet →
           </a>
-          <LikeButtonMenu 
-            :link="article.link"
-            :title="article.title"
-            :source="article.source || 'En direct'"
-            :media-type="article.type === 'video' ? 'video' : 'article'"
-            :thumbnail="article.image"
-          />
         </div>
       </div>
     </div>
@@ -48,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import LikeButtonMenu from '~/components/shared/LikeButtonMenu.vue';
+import LikeButton from '~/components/shared/LikeButton.vue';
 
 interface Article {
   title: string;
@@ -73,22 +82,18 @@ const formatTime = (dateString?: string): string => {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return dateString;
 
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 1) return "À l'instant";
-    if (diffMins < 60) return `Il y a ${diffMins}m`;
-    if (diffHours < 24) return `Il y a ${diffHours}h`;
-    if (diffDays < 7) return `Il y a ${diffDays}j`;
-
-    return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    return date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   } catch {
     return dateString;
   }
 };
+
+// TODO(liked-vertical-bar): Consider adding a persistent vertical action bar
+// on heart-click (heart, watch later, categories, plus) to match requested UX.
 </script>
 
 <style scoped>
@@ -113,7 +118,7 @@ const formatTime = (dateString?: string): string => {
 .featured-image {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 720px;
   overflow: hidden;
   background: #f5f5f5;
   display: block;
@@ -260,7 +265,7 @@ const formatTime = (dateString?: string): string => {
   }
 
   .featured-image {
-    height: 300px;
+    height: 340px;
   }
 }
 
@@ -271,7 +276,7 @@ const formatTime = (dateString?: string): string => {
   }
 
   .featured-image {
-    height: 240px;
+    height: 280px;
   }
 
   .featured-content {
