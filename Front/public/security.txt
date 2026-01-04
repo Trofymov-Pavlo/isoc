@@ -6,7 +6,7 @@ Contact: mailto:contact@axiome-isoc.fr
 Contact: mailto:antoine.tena@example.com
 Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: fr, en
-Canonical: http://localhost:3000/.well-known/security.txt
+Canonical: http://localhost:3000/security.txt
 
 # Policy
 Policy: http://localhost:3000/a-propos

@@ -68,7 +68,7 @@ L'innovation technologique est devenue le facteur décisif de ce conflit. Les tr
 
 Cette "guerre de l'information" n'est pas un simple bruit de fond : c'est un théâtre à part entière, avec ses doctrines, ses acteurs et ses outils. Elle combine des stratégies d'État (propagande, censure, communication officielle), la mécanique des plateformes (viralité, algorithmes, communautés) et une bataille de la preuve (images, géolocalisations, fact-checking). Comprendre ce front invisible, c'est comprendre une partie de la dynamique du conflit.
 
-1. MAÎTRISER LE RÉCIT : DEUX STRATÉGIES, UN OBJECTIF
+MAÎTRISER LE RÉCIT : DEUX STRATÉGIES, UN OBJECTIF
 
 Côté russe, l'information est largement pensée comme un instrument de contrôle. La communication officielle vise d'abord un public intérieur : maintenir la cohésion, justifier l'intervention, minimiser les revers et délégitimer les sources contradictoires. La rhétorique s'appuie sur des éléments récurrents (menace, protection, "opération spéciale") et sur une posture de défi face aux médias occidentaux, présentés comme partiaux.
 
@@ -76,7 +76,7 @@ Côté ukrainien, la communication s'inscrit davantage dans une logique de mobil
 
 Dans les deux cas, l'objectif est identique : imposer un cadre d'interprétation du réel. Ce n'est pas seulement "informer", c'est orienter : quels faits compter, quels mots employer, quelles images montrer, quels silences maintenir.
 
-2. PLATEFORMES ET VIRALITÉ : L'INFO CIRCULE COMME UNE MUNITION
+PLATEFORMES ET VIRALITÉ : L'INFO CIRCULE COMME UNE MUNITION
 
 Les réseaux sociaux n'ont pas remplacé les médias traditionnels : ils les ont accélérés, fragmentés et parfois court-circuités. La rapidité de circulation crée une pression constante : publier vite, avant l'adversaire, avant le démenti, avant la vérification. Cette temporalité favorise les contenus émotionnels et spectaculaires, et rend l'espace informationnel plus vulnérable aux manipulations.
 
@@ -86,7 +86,7 @@ X (Twitter) joue un autre rôle : celui du temps réel et du commentaire. Observ
 
 TikTok, enfin, influe sur un public différent : format court, forte charge émotionnelle, montage dynamique. Cette logique peut sensibiliser… mais aussi simplifier, dramatiser et faciliter l'essor de contenus trompeurs. Dans un contexte de guerre, la forme peut parfois compter autant que le fond.
 
-3. MANIPULATION VISUELLE ET IA : DEEPFAKES, MONTAGES, CONTEXTES DÉTOURNÉS
+MANIPULATION VISUELLE ET IA : DEEPFAKES, MONTAGES, CONTEXTES DÉTOURNÉS
 
 Une grande partie de la bataille se joue sur les images. Photos, vidéos et extraits audio circulent en masse, souvent sans contexte. Les manipulations ne reposent pas uniquement sur des deepfakes sophistiqués : le plus efficace reste souvent le détournement.
 
@@ -94,7 +94,7 @@ Un extrait coupé, une vidéo d'un autre conflit recyclée, un plan sans géoloc
 
 L'IA générative ajoute un niveau de complexité. Elle rend la fabrication plus accessible et augmente le volume de contenus potentiellement trompeurs. Mais elle renforce aussi les capacités de détection (analyse d'artefacts, recoupements, outils de vérification). Dans ce duel, l'important n'est pas seulement la technologie : c'est l'écosystème qui décide de ce qui est crédible.
 
-4. OSINT ET FACT-CHECKING : LA CONTRE-ATTAQUE PAR LA PREUVE
+OSINT ET FACT-CHECKING : LA CONTRE-ATTAQUE PAR LA PREUVE
 
 Face à la désinformation, un contre-pouvoir s'est structuré : l'OSINT (Open Source Intelligence) et le fact-checking. Des analystes, journalistes et citoyens utilisent des sources ouvertes (images satellites, vidéos, cartes, données publiques) pour vérifier des événements, confirmer des lieux, dater des séquences et recouper les affirmations.
 
@@ -102,21 +102,13 @@ La méthode repose sur des gestes simples mais rigoureux : comparer des images, 
 
 Le fact-checking institutionnel (agences, médias, organisations spécialisées) complète cet effort. Son défi est structurel : la correction circule souvent moins vite que l'erreur. Pourtant, dans la durée, ces mécanismes permettent de limiter l'impact de certaines campagnes et de maintenir une base minimale de confiance.
 
-5. POURQUOI C'EST DÉCISIF : MORALE, ALLIANCES, LÉGITIMITÉ
+POURQUOI C'EST DÉCISIF : MORALE, ALLIANCES, LÉGITIMITÉ
 
 La guerre de l'information a des effets concrets. Le moral des populations dépend du sentiment de contrôle, de la cohérence du récit et de la perception des succès. Les alliances dépendent du soutien des opinions publiques et de la crédibilité des preuves présentées. La légitimité internationale se construit à travers des images et des récits capables de convaincre.
 
 Dans ce contexte, l'enjeu n'est pas seulement de "gagner" une bataille de communication, mais de stabiliser un espace de vérité minimale : suffisamment solide pour décider, soutenir, sanctionner, négocier. Quand l'information devient une arme, la capacité à vérifier devient une défense.
 
-CONCLUSION
-
-Le conflit en Ukraine montre à quel point l'information n'est plus un simple accompagnement de la guerre : elle en est une dimension structurante. Propagande, réseaux sociaux, IA, OSINT et fact-checking composent un champ de bataille où la vitesse et l'émotion affrontent la preuve et la méthode. La leçon centrale est simple : dans un environnement saturé de contenus, la vérité n'est pas seulement un fait, c'est aussi un effort collectif.
-
-BIBLIOGRAPHIE (SUGGESTIONS)
-- Reuters, dépêches et analyses sur la désinformation
-- AFP Factuel / BBC Verify, vérifications et méthodes
-- Rapports ONU / OSCE sur l'information et les conflits
-- Travaux et enquêtes OSINT (ex : Bellingcat)`,
+Le conflit en Ukraine montre à quel point l'information n'est plus un simple accompagnement de la guerre : elle en est une dimension structurante. Propagande, réseaux sociaux, IA, OSINT et fact-checking composent un champ de bataille où la vitesse et l'émotion affrontent la preuve et la méthode. La leçon centrale est simple : dans un environnement saturé de contenus, la vérité n'est pas seulement un fait, c'est aussi un effort collectif.`,
     slug: 'guerre-information'
   },
   {
