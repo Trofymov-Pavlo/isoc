@@ -45,6 +45,14 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Forgot Password -->
+  <url>
+    <loc>http://localhost:3000/forgot-password</loc>
+    <lastmod>2026-01-04T12:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- À Propos -->
   <url>
     <loc>http://localhost:3000/a-propos</loc>

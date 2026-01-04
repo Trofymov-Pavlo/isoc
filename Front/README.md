@@ -113,6 +113,7 @@ runtimeConfig: {
 - **/a-propos** - Mission, méthodologie, équipe
 - **/connexion** - Authentification
 - **/signup** - Inscription
+- **/forgot-password** - Réinitialisation du mot de passe
 - **/conditions** - Conditions générales d'utilisation
 - **/mentions** - Mentions légales
 - **/cookies** - Politique cookies
