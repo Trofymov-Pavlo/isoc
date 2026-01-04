@@ -187,34 +187,7 @@ const savedError = computed(() => {
   return 'Impossible de charger vos médias enregistrés pour le moment.';
 });
 
-const isSubscribed = computed(() => {
-  const u = (user.value as any) || {};
-  const directFlag =
-    u.is_subscribed ??
-    u.subscribed ??
-    u.subscription_active ??
-    u.is_premium ??
-    u.isPremium ??
-    u.isSubscriber ??
-    u.has_subscription ??
-    u.abonne ??
-    u.abonnee;
 
-  if (typeof directFlag === 'boolean') return directFlag;
-
-  const subscription = u.subscription;
-  if (subscription && typeof subscription === 'object') {
-    if (typeof subscription.active === 'boolean') return subscription.active;
-    if (typeof subscription.status === 'string') {
-      return ['active', 'paid', 'trial', 'subscribed'].includes(subscription.status.toLowerCase());
-    }
-  }
-
-  return false;
-});
-
-const statusLabel = computed(() => (isSubscribed.value ? 'ABONNÉ' : 'NON ABONNÉ'));
-const statusClass = computed(() => (isSubscribed.value ? 'is-subscribed' : 'is-not-subscribed'));
 
 const copyId = async () => {
   copyFeedback.value = '';

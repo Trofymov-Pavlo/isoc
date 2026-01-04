@@ -15,6 +15,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
 from django.shortcuts import redirect
+from django.core.mail import send_mail
+from django.conf import settings
 import logging
 
 logger = logging.getLogger(__name__)
@@ -133,10 +135,43 @@ class AccountViewSet(viewsets.ModelViewSet):
                 reset_token = get_random_string(64)
                 user.password_reset_token = reset_token
                 user.save()
-                # In production: send reset token via email
-                # send_password_reset_email(user.email, reset_token)
+                
+                # Send email with reset token
+                subject = 'Réinitialisation de votre mot de passe AXIOME'
+                reset_link = f'http://localhost:3000/forgot-password'
+                message = f"""
+Bonjour {user.first_name or user.username},
+
+Vous avez demandé une réinitialisation de mot de passe pour votre compte AXIOME.
+
+Voici votre code de réinitialisation:
+{reset_token}
+
+Allez sur {reset_link} et entrez ce code pour réinitialiser votre mot de passe.
+
+Ce code expirera dans 24 heures.
+
+Si vous n'avez pas demandé cette réinitialisation, ignorez cet email.
+
+Cordialement,
+L'équipe AXIOME
+                """
+                
+                try:
+                    send_mail(
+                        subject,
+                        message,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [user.email],
+                        fail_silently=False,
+                    )
+                    logger.info(f"Password reset email sent to {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send password reset email: {str(e)}")
+                    
             except User.DoesNotExist:
                 # Don't reveal if email exists
+                logger.info(f"Password reset requested for non-existent email: {email}")
                 pass
             
             return Response({
