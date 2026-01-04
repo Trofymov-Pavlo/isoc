@@ -2,31 +2,6 @@
   <div class="home-page">
     <HomeCarousel />
 
-    <section class="tiles">
-      <div class="tile-grid">
-        <button class="tile" @click="navigateTo('/en-direct')">
-          <span class="tile-eyebrow">Live</span>
-          <span class="tile-title">En Direct</span>
-          <span class="tile-desc">Derniers médias des 24 heures</span>
-        </button>
-        <button class="tile" @click="navigateTo('/explorer?type=videos&date=today')">
-          <span class="tile-eyebrow">Focus</span>
-          <span class="tile-title">Vidéos</span>
-          <span class="tile-desc">Sources officielles et indépendantes</span>
-        </button>
-        <button class="tile" @click="navigateTo('/explorer?type=articles&date=week')">
-          <span class="tile-eyebrow">Analyse</span>
-          <span class="tile-title">Articles</span>
-          <span class="tile-desc">Synthèses et rapports</span>
-        </button>
-        <button class="tile" @click="navigateTo('/liked')">
-          <span class="tile-eyebrow">Perso</span>
-          <span class="tile-title">Favoris</span>
-          <span class="tile-desc">Retrouvez vos sauvegardes</span>
-        </button>
-      </div>
-    </section>
-
     <FeaturedArticlesSection />
 
     <section class="about">
