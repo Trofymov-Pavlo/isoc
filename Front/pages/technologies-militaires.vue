@@ -113,7 +113,7 @@ const formatDate = (date: string) => {
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.2;
-  color: #f59e0b;
+  color: #8b5cf6;
   margin-bottom: 16px;
 }
 
@@ -140,16 +140,16 @@ const formatDate = (date: string) => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 24px 0 12px 0;
-  color: #f59e0b;
+  color: #8b5cf6;
   padding-left: 12px;
-  border-left: 4px solid #fbbf24;
+  border-left: 4px solid #a78bfa;
 }
 
 .article-content :deep(h3) {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 16px 0 8px 0;
-  color: #ea580c;
+  color: #7c3aed;
 }
 
 .article-content :deep(p) {

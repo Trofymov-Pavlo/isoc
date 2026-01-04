@@ -16,7 +16,7 @@ const articles = reactive<FeaturedArticle[]>([
     title: 'Les technologies militaires utilisées dans le conflit',
     author: 'Hiba EL HAYANI',
     date: '2025-12-05',
-    excerpt: 'Drones, intelligence artificielle et cyberattaques : découvrez comment les nouvelles technologies redéfinissent la guerre moderne...',
+    excerpt: 'Le conflit ukrainien marque un tournant dans l\'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant...',
     content: `Le conflit ukrainien marque un tournant dans l'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant sur le terrain. Les drones, l'intelligence artificielle et les cyberattaques transforment profondément les stratégies de combat et redéfinissent les notions de supériorité militaire. Cette guerre démontre comment l'innovation technologique peut compenser des désavantages en termes de ressources ou de personnel.
 
 1. DRONES RUSSES ET UKRAINIENS : UNE GUERRE MENÉE À DISTANCE
