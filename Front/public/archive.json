@@ -1,6 +1,44 @@
 {
   "articles": [
     {
+      "source": "HuffPost France",
+      "title": "Zelensky n’a pas pu réfréner ce sarcasme après la capture de Maduro par les États-Unis",
+      "link": "https://www.huffingtonpost.fr/international/article/zelensky-n-a-pas-pu-reprimer-ce-sarcasme-apres-la-capture-de-maduro-par-les-etats-unis_258850.html",
+      "published": "2026-01-04T08:48:13+00:00",
+      "media": {
+        "url": "https://focus.huffingtonpost.fr/2026/01/04/0/0/3372/1896/0/0/60/0/5341425_upload-1-cv9eiie234cc-afp-20260103-89je4nt-v1-highres-ukrainerussiaconflictwar.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "TETIANA DZHAFAROVA / AFP"
+      },
+      "image": "https://focus.huffingtonpost.fr/2026/01/04/0/0/3372/1896/0/0/60/0/5341425_upload-1-cv9eiie234cc-afp-20260103-89je4nt-v1-highres-ukrainerussiaconflictwar.jpg",
+      "thumb": "https://focus.huffingtonpost.fr/2026/01/04/0/0/3372/1896/0/0/60/0/5341425_upload-1-cv9eiie234cc-afp-20260103-89je4nt-v1-highres-ukrainerussiaconflictwar.jpg",
+      "summary": "Le président ukrainien a commenté l’information de la capture de son homolgue vénézuélien en faisant un lien avec Vladimir Poutine.",
+      "publishedTime": 1767516493000,
+      "archived_at": "2026-01-04T10:09:52.218767+00:00"
+    },
+    {
+      "source": "RTL (La Une)",
+      "title": "Réunis à Kiev: l'Ukraine et ses alliés européens s'entendent sur la poursuite des pourparlers de paix",
+      "link": "https://infos.rtl.lu/news/monde/lukraine-et-ses-allies-europeens-sentendent-sur-la-poursuite-des-pourparlers-de-paix-397699176",
+      "published": "2026-01-04T08:30:26+00:00",
+      "media": {
+        "url": "https://static-prod.rtl.lu/9b/4c/140123fb47f7b5bb1388a8f70efa/afp-20251223-ukrinform-presiden251222-npots-v1-midres-presidentvolodymyrzelensk.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static-prod.rtl.lu/9b/4c/140123fb47f7b5bb1388a8f70efa/afp-20251223-ukrinform-presiden251222-npots-v1-midres-presidentvolodymyrzelensk.jpg",
+      "thumb": "https://static-prod.rtl.lu/9b/4c/140123fb47f7b5bb1388a8f70efa/afp-20251223-ukrinform-presiden251222-npots-v1-midres-presidentvolodymyrzelensk.jpg",
+      "summary": "Les alliés européens de l'Ukraine se sont rencontrés samedi à Kiev pour examiner les détails de la dernière mouture du plan de sortie du conflit avec la Russie, en amont d'un sommet la semaine prochaine en France des pays de la \"coalition des volontaires\" soutenant l'Ukraine.",
+      "publishedTime": 1767515426000,
+      "archived_at": "2026-01-04T10:09:52.218887+00:00"
+    },
+    {
       "source": "Kyiv Post",
       "title": "Ukraine Punches Back Against Russia, No Letup to Oil Refinery Strikes",
       "link": "https://www.kyivpost.com/analysis/67345",
@@ -1915,6 +1953,624 @@
       "archived_at": "2026-01-04T07:52:16.500217+00:00"
     },
     {
+      "source": "Kyiv Post",
+      "title": "Russian Drone Attack on Odesa Injures 6, Including Children",
+      "link": "https://www.kyivpost.com/post/67204",
+      "published": "2025-12-31T07:29:53+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/31/65a45ac7cea26bd56c2e4235427d9539.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/31/65a45ac7cea26bd56c2e4235427d9539.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/31/65a45ac7cea26bd56c2e4235427d9539.jpg?w=640&q=90&f=jpg",
+      "author": "Olena Hrazhdan",
+      "summary": "A mass overnight Russian drone strike on Odesa damaged residential buildings and energy infrastructure, leaving parts of the city without electricity, water, and heating, local officials said.",
+      "publishedTime": 1767166193000,
+      "archived_at": "2026-01-04T10:09:52.219545+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Gerasimov: Putin Orders Expansion of Russian ‘Buffer Zone’ in Northeastern Ukraine",
+      "link": "https://www.kyivpost.com/post/67198",
+      "published": "2025-12-31T06:49:55+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/31/f8a0ccd216c0c901a408183ba7c39dda.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/31/f8a0ccd216c0c901a408183ba7c39dda.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/31/f8a0ccd216c0c901a408183ba7c39dda.jpg?w=640&q=90&f=jpg",
+      "author": "Sophie Watson",
+      "summary": "Russian General Valery Gerasimov claimed that Moscow has seized 950 square kilometers of Ukraine’s Sumy and Kharkiv regions as US-led peace talks face renewed strain.",
+      "publishedTime": 1767163795000,
+      "archived_at": "2026-01-04T10:09:52.219651+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Valdai Pretext: Putin Throws Wrench in Trump’s Peace Push",
+      "link": "https://www.kyivpost.com/post/67190",
+      "published": "2025-12-31T02:59:15+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/31/61a9941da20756989e63f90cb8cf2e63.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/31/61a9941da20756989e63f90cb8cf2e63.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/31/61a9941da20756989e63f90cb8cf2e63.jpg?w=640&q=90&f=jpg",
+      "author": "Alex Raufoglu",
+      "summary": "Mar-a-Lago momentum meets Kremlin maneuvering, as Trump allies eye a structural breakthrough while skeptics warn of a calculated delay.",
+      "publishedTime": 1767149955000,
+      "archived_at": "2026-01-04T10:09:52.219744+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Loss and Laughter: War Medics Heal in Ukraine’s Mountains",
+      "link": "https://www.kyivpost.com/post/67189",
+      "published": "2025-12-31T02:20:55+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/31/1e2c689ba7184de163bb8a5d0dfbfe6c.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/31/1e2c689ba7184de163bb8a5d0dfbfe6c.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/31/1e2c689ba7184de163bb8a5d0dfbfe6c.jpeg?w=640&q=90&f=jpg",
+      "author": "AFP",
+      "summary": "The gruesome toll of the war is a daily reality for Ukraine’s hundreds of combat medics – with the sights, sounds and smells of the front weighing heavily on their mental health.",
+      "publishedTime": 1767147655000,
+      "archived_at": "2026-01-04T10:09:52.219836+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘The Depths of Trump’s Cluelessness’ – Key US Rep Ridicules Kremlin Claims of Drone Attack",
+      "link": "https://www.kyivpost.com/post/67188",
+      "published": "2025-12-31T01:53:48+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/31/77c4c860ac8d3d609210432fdc7474cf.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/31/77c4c860ac8d3d609210432fdc7474cf.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/31/77c4c860ac8d3d609210432fdc7474cf.jpeg?w=640&q=90&f=jpg",
+      "author": "John Moretti",
+      "summary": "The ranking member on the House Armed Services Committee said there are two possibilities: Either Trump shares Putin’s world view or he is “just that stupid” to take him at his word.",
+      "publishedTime": 1767146028000,
+      "archived_at": "2026-01-04T10:09:52.219944+00:00"
+    },
+    {
+      "source": "Meduza",
+      "title": "Cui bono? With no evidence offered, Russia’s claim of a Ukrainian attack on Putin’s residence looks designed to derail peace talks",
+      "link": "https://meduza.io/en/cards/cui-bono",
+      "published": "2025-12-30T22:25:59+00:00",
+      "media": {
+        "url": "https://meduza.io/imgly/zen/1767137166/en/cards/cui-bono",
+        "width": null,
+        "height": null,
+        "type": "image/png",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://meduza.io/imgly/zen/1767137166/en/cards/cui-bono",
+      "thumb": "https://meduza.io/imgly/zen/1767137166/en/cards/cui-bono",
+      "summary": "<p>On Monday afternoon, December 29, Russian state media reported Foreign Minister Sergey Lavrov’s allegation that Ukraine’s armed forces had attacked President Putin’s official residence in the Novgorod region the night before. Ukraine supposedly launched 91 drones at “Dolgiye Borody” (also known as “Valdai” and “Uzhin”), and Russia’s air defenses purportedly downed all of them without sustaining damage.<p>",
+      "publishedTime": 1767133559000,
+      "archived_at": "2026-01-04T10:09:52.220036+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "The 95% Peace Illusion: Why Putin, Enjoying Trump’s Empathy, Won’t Stop (Part 1)",
+      "link": "https://www.kyivpost.com/opinion/67183",
+      "published": "2025-12-30T18:31:04+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/20/9076bfc613486900153bc2204ebc07c5.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/20/9076bfc613486900153bc2204ebc07c5.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/20/9076bfc613486900153bc2204ebc07c5.jpg?w=640&q=90&f=jpg",
+      "author": "Bohdan Nahaylo",
+      "summary": "At the end of 2025, are we any closer to a breakthrough in ending Russia’s war against Ukraine? Part 1.",
+      "publishedTime": 1767119464000,
+      "archived_at": "2026-01-04T10:09:52.220126+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine : faire basculer Donald Trump du « bon côté », l’enjeu des négociations de paix",
+      "link": "https://www.la-croix.com/international/guerre-en-ukraine-faire-basculer-donald-trump-du-bon-cote-l-enjeu-des-negociations-de-paix-20251230",
+      "published": "2025-12-30T16:59:27+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2025/12/30/2297193-le-president-ukrainien-volodymyr-zelensky-et-son-h.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2025/12/30/2297193-le-president-ukrainien-volodymyr-zelensky-et-son-h.jpg",
+      "thumb": "https://i.la-croix.com/x/2025/12/30/2297193-le-president-ukrainien-volodymyr-zelensky-et-son-h.jpg",
+      "author": "Pierre Sautreuil",
+      "summary": "Pour Kiev comme pour Moscou, les négociations avec les États-Unis visent d’abord à convaincre Donald Trump de faire pencher le rapport de force en leur faveur. À défaut d’y parvenir, l’Ukraine doit se satisfaire pour le moment d’un maintien du statu quo la préservant du pire.",
+      "publishedTime": 1767113967000,
+      "archived_at": "2026-01-04T10:09:52.220215+00:00"
+    },
+    {
+      "source": "Meduza",
+      "title": "A ‘palace’ fit for an occupier . New investigation reveals luxury residence built for Putin in Ukraine’s Crimea",
+      "link": "https://meduza.io/en/feature/2025/12/30/a-palace-fit-for-an-occupier",
+      "published": "2025-12-30T16:30:38+00:00",
+      "media": {
+        "url": "https://meduza.io/image/attachments/images/011/849/677/small/rCRDPPlShAzsbMJfUzxe8w",
+        "width": null,
+        "height": null,
+        "type": "image/png",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://meduza.io/image/attachments/images/011/849/677/small/rCRDPPlShAzsbMJfUzxe8w",
+      "thumb": "https://meduza.io/image/attachments/images/011/849/677/small/rCRDPPlShAzsbMJfUzxe8w",
+      "summary": "<p>According to new investigation by the Anti-Corruption Foundation (FBK), a lavish mansion was built for Russian President Vladimir Putin on the southern coast of Ukraine’s Crimean Peninsula. The FBK estimates the project’s cost at around 10 billion rubles (about $125.8 million).<p>",
+      "publishedTime": 1767112238000,
+      "archived_at": "2026-01-04T10:09:52.220304+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Zelensky Outlines How Security Guarantees Would Address Russian False-Flag Risks",
+      "link": "https://www.kyivpost.com/post/67182",
+      "published": "2025-12-30T15:00:27+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/20/8ee5cafb205d7fe7ab5c8a8635d01ce6.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/20/8ee5cafb205d7fe7ab5c8a8635d01ce6.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/20/8ee5cafb205d7fe7ab5c8a8635d01ce6.jpg?w=640&q=90&f=jpg",
+      "author": "Kateryna Zakharchenko",
+      "summary": "Zelensky said future security guarantees for Ukraine will include an international monitoring mission to detect ceasefire violations, including potential Russian false-flag operations.",
+      "publishedTime": 1767106827000,
+      "archived_at": "2026-01-04T10:09:52.220398+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Putin Authorizes Call-Up of Military Reservists to Guard Critical Infrastructure",
+      "link": "https://www.themoscowtimes.com/2025/12/30/putin-authorizes-call-up-of-military-reservists-to-guard-critical-infrastructure-a91590",
+      "published": "2025-12-30T14:07:07+00:00",
+      "media": null,
+      "summary": "The military will summon members of its mobilization reserve next year for “special” assemblies aimed at protecting critical infrastructure.",
+      "publishedTime": 1767103627000,
+      "archived_at": "2026-01-04T10:09:52.220487+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Meta-Garden in Kyiv: Sculptor Nazar Bilyk on Memorial for Heorhii Narbut",
+      "link": "https://www.kyivpost.com/post/67177",
+      "published": "2025-12-30T14:01:06+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/30/f79d2fab17e5b2bfb5d8b17ca4af9814.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/30/f79d2fab17e5b2bfb5d8b17ca4af9814.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/30/f79d2fab17e5b2bfb5d8b17ca4af9814.png?w=640&q=90&f=jpg",
+      "author": "Kateryna Zakharchenko",
+      "summary": "The meta-garden on Reitarska Street, Kyiv, is creating a new language of memory, where art and community are intertwined.",
+      "publishedTime": 1767103266000,
+      "archived_at": "2026-01-04T10:09:52.220585+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "FACT CHECK: Did Ukraine Really Try to Blow Up Putin’s Personal Residence?",
+      "link": "https://www.kyivpost.com/post/67179",
+      "published": "2025-12-30T13:28:29+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/26/bc6dc0da419ad6a30f60fbaa4c4195fc.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/26/bc6dc0da419ad6a30f60fbaa4c4195fc.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/26/bc6dc0da419ad6a30f60fbaa4c4195fc.jpg?w=640&q=90&f=jpg",
+      "author": "Stefan Korshak",
+      "summary": "A top Kremlin official said there’s no need to make public its supposed proof that Ukrainian drones tried to swarm the Russian president’s luxurious countryside palace.",
+      "publishedTime": 1767101309000,
+      "archived_at": "2026-01-04T10:09:52.220680+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Navalny Team Claims Putin Owns Luxury Estate on Crimea’s Black Sea Coast",
+      "link": "https://www.themoscowtimes.com/2025/12/30/navalny-team-claims-putin-owns-luxury-estate-on-crimeas-black-sea-coast-a91587",
+      "published": "2025-12-30T12:57:35+00:00",
+      "media": null,
+      "summary": "Once described by Ukrainian media as “Yanukovych’s dacha,” FBK says the sprawling property now belongs to the Russian president.",
+      "publishedTime": 1767099455000,
+      "archived_at": "2026-01-04T10:09:52.220770+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘Peace Is on the Horizon’: Polish PM Says Russia’s War in Ukraine Could End ‘Quite Quickly’",
+      "link": "https://www.kyivpost.com/post/67175",
+      "published": "2025-12-30T12:48:59+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/29/3d94420147bda0d773b03b2ab3316975.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/29/3d94420147bda0d773b03b2ab3316975.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/29/3d94420147bda0d773b03b2ab3316975.jpg?w=640&q=90&f=jpg",
+      "author": "TVP World",
+      "summary": "Tusk cited US security guarantees for Kyiv as the main reason for hope that the war could end soon, adding that Ukraine would still need to compromise on territorial issues.",
+      "publishedTime": 1767098939000,
+      "archived_at": "2026-01-04T10:09:52.220865+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Ukraine Deploys Multi-Layer Drone Shield Against Shahed Attacks - Syrsky",
+      "link": "https://www.kyivpost.com/post/67170",
+      "published": "2025-12-30T11:15:36+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/01/20/7fa2d4eb9533b611ee05894f69f1430f.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/01/20/7fa2d4eb9533b611ee05894f69f1430f.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/01/20/7fa2d4eb9533b611ee05894f69f1430f.jpg?w=640&q=90&f=jpg",
+      "author": "Julia Struck",
+      "summary": "Ukraine is building a multi-layered system of UAV interceptors to counter Shahed drones, expanding interceptor units, radars and training as Russia intensifies air attacks, AFU chief Syrsky says.",
+      "publishedTime": 1767093336000,
+      "archived_at": "2026-01-04T10:09:52.220960+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "European Leaders to Hold Ukraine Talks Tuesday",
+      "link": "https://www.kyivpost.com/post/67167",
+      "published": "2025-12-30T10:43:20+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/18/0eb37b6254c4575af30f1fa9b7fd1262.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/18/0eb37b6254c4575af30f1fa9b7fd1262.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/18/0eb37b6254c4575af30f1fa9b7fd1262.jpg?w=640&q=90&f=jpg",
+      "author": "AFP",
+      "summary": "This meeting is part of the ongoing high-level diplomatic negotiations that have taken place since November.",
+      "publishedTime": 1767091400000,
+      "archived_at": "2026-01-04T10:09:52.221054+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Guerre en Ukraine : nos analyses, décryptages et entretiens",
+      "link": "https://www.lexpress.fr/monde/europe/l-ukraine-hesite-entre-est-et-ouest_1302698.html",
+      "published": "2025-12-30T09:49:22+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/JQ5FPSMAF5H7DOBQQXEBRWMQDQ.jpg?auth=42fbb7dafaa35082b7ffcccbd71d552c32025d558eab79ab2ae87d4728b31fb8&smart=true&width=2048&height=1366",
+        "width": 2048,
+        "height": 1366,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "afp.com/Tetiana DZHAFAROVA"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/JQ5FPSMAF5H7DOBQQXEBRWMQDQ.jpg?auth=42fbb7dafaa35082b7ffcccbd71d552c32025d558eab79ab2ae87d4728b31fb8&smart=true&width=2048&height=1366",
+      "thumb": "https://www.lexpress.fr/resizer/v2/JQ5FPSMAF5H7DOBQQXEBRWMQDQ.jpg?auth=42fbb7dafaa35082b7ffcccbd71d552c32025d558eab79ab2ae87d4728b31fb8&smart=true&width=2048&height=1366",
+      "summary": "Le 24 février 2022, la Russie a déclenché son attaque sur l'Ukraine, tentant de s'emparer de la capitale Kiev dans une offensive éclair. Mais les forces ukrainiennes ont opposé une résistance farouche, obligeant les troupes russes à la retraite et déplaçant les combats vers le bassin du Donbass, dans l'est du pays, et dans son sud agricole. Du côté de l'Occident, le temps diplomatique a laissé place à celui des sanctions contre Moscou. Alors que la guerre se poursuit, inexorablement, peu de signes de progrès sont visibles.",
+      "publishedTime": 1767088162000,
+      "archived_at": "2026-01-04T10:09:52.221145+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Valdai Residents Report No Signs of Claimed Ukrainian Drone Attack on Putin Residence",
+      "link": "https://www.themoscowtimes.com/2025/12/30/valdai-residents-report-no-signs-of-claimed-ukrainian-drone-attack-on-putin-residence-a91581",
+      "published": "2025-12-30T09:32:00+00:00",
+      "media": null,
+      "summary": "“If something like that had happened, the whole town would have been talking about it,” one resident told the Mozhem Obyasnit outlet.",
+      "publishedTime": 1767087120000,
+      "archived_at": "2026-01-04T10:09:52.221236+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Zelensky: ‘Putin Is My Enemy, But 2026, God Bless, We Will Stop the War’",
+      "link": "https://www.kyivpost.com/post/67158",
+      "published": "2025-12-30T09:18:24+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/29/04d49ceb8be59f49ec12b53ff798026a.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/29/04d49ceb8be59f49ec12b53ff798026a.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/29/04d49ceb8be59f49ec12b53ff798026a.jpg?w=640&q=90&f=jpg",
+      "author": "Julia Struck",
+      "summary": "Zelensky told Fox News that Ukraine can only accept peace that respects its people, warns against unilateral territorial concessions, and praises US support for a 20-point plan with Trump.",
+      "publishedTime": 1767086304000,
+      "archived_at": "2026-01-04T10:09:52.221338+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Ukraine’s Victory Is the Answer to a Better Future for the World",
+      "link": "https://www.kyivpost.com/opinion/67127",
+      "published": "2025-12-30T06:19:04+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/29/f4a4c2a8acc89dcf387479a71bb89472.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/29/f4a4c2a8acc89dcf387479a71bb89472.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/29/f4a4c2a8acc89dcf387479a71bb89472.png?w=640&q=90&f=jpg",
+      "author": "Viktor Yushchenko",
+      "summary": "A diplomatic solution to the war in Ukraine would not only form a decisive factor in international security, but a manifesto of morals and values as the basis of a new 21st century global order.",
+      "publishedTime": 1767075544000,
+      "archived_at": "2026-01-04T10:09:52.221429+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Face à la menace russe, la Pologne débloque deux milliards d'euros pour son \"bouclier\" anti-drones",
+      "link": "https://www.lexpress.fr/monde/europe/face-a-la-menace-russe-la-pologne-debloque-deux-milliards-deuros-pour-son-bouclier-anti-drones-GE5MAFH7ZNBLNBO6ZFUESACF5I/",
+      "published": "2025-12-30T06:15:00+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/C6JXXQ6SDVFAVKL6WUATKARBAI.jpg?auth=7652323119471d2f75ed5efcbe6d6b43bdce503a7c9803b595061510a42e1edb&smart=true&width=2048&height=1366",
+        "width": 2048,
+        "height": 1366,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "afp.com/Wojtek RADWANSKI"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/C6JXXQ6SDVFAVKL6WUATKARBAI.jpg?auth=7652323119471d2f75ed5efcbe6d6b43bdce503a7c9803b595061510a42e1edb&smart=true&width=2048&height=1366",
+      "thumb": "https://www.lexpress.fr/resizer/v2/C6JXXQ6SDVFAVKL6WUATKARBAI.jpg?auth=7652323119471d2f75ed5efcbe6d6b43bdce503a7c9803b595061510a42e1edb&smart=true&width=2048&height=1366",
+      "author": "Asia Dayan",
+      "publishedTime": 1767075300000,
+      "archived_at": "2026-01-04T10:09:52.221520+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Top 5 High-Profile Corruption Cases in Ukraine in 2025",
+      "link": "https://www.kyivpost.com/post/66573",
+      "published": "2025-12-30T05:55:56+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/19/7ab126ba7764cf1174bb7caa7673d77c.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/19/7ab126ba7764cf1174bb7caa7673d77c.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/19/7ab126ba7764cf1174bb7caa7673d77c.png?w=640&q=90&f=jpg",
+      "author": "Sergii Kostezh",
+      "summary": "Kyiv Post has compiled a ranking of the five most high-profile anti-corruption investigations of 2025.",
+      "publishedTime": 1767074156000,
+      "archived_at": "2026-01-04T10:09:52.221615+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Russian Strike Hits Zaporizhzhia Infrastructure, Woman Injured as Odesa Repels Overnight Attack",
+      "link": "https://www.kyivpost.com/post/67139",
+      "published": "2025-12-30T05:50:39+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/30/df1209afbcb9fb83552cea6887483e6c.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/30/df1209afbcb9fb83552cea6887483e6c.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/30/df1209afbcb9fb83552cea6887483e6c.jpg?w=640&q=90&f=jpg",
+      "author": "Kyiv Post",
+      "summary": "Russian forces struck Zaporizhzhia early Tuesday, damaging infrastructure and homes and injuring a woman, while air defense forces repelled overnight attacks on Odesa amid nationwide alerts.",
+      "publishedTime": 1767073839000,
+      "archived_at": "2026-01-04T10:09:52.221710+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘Putin Told Me’ – Trump’s Trust Test as Russia Revives Familiar Playbook",
+      "link": "https://www.kyivpost.com/post/67134",
+      "published": "2025-12-30T04:00:47+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/30/118ed7772382c83b7c815db2d893d6c5.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/30/118ed7772382c83b7c815db2d893d6c5.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/30/118ed7772382c83b7c815db2d893d6c5.jpg?w=640&q=90&f=jpg",
+      "author": "Alex Raufoglu",
+      "summary": "The US president’s offhand comment at Mar-a-Lago rippled through Washington and Europe, reviving old questions about whom he believes – and what that means for the war in Ukraine.",
+      "publishedTime": 1767067247000,
+      "archived_at": "2026-01-04T10:09:52.221827+00:00"
+    },
+    {
+      "source": "Meduza",
+      "title": "‘Russia is at it again’. Moscow, Kyiv, and Washington trade outrage over alleged attack on Putin’s Valdai residence",
+      "link": "https://meduza.io/en/feature/2025/12/30/russia-is-at-it-again",
+      "published": "2025-12-29T21:13:34+00:00",
+      "media": {
+        "url": "https://meduza.io/image/attachments/images/011/847/378/small/sAwk8DFPi_kmgYeLJxCY_g",
+        "width": null,
+        "height": null,
+        "type": "image/png",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://meduza.io/image/attachments/images/011/847/378/small/sAwk8DFPi_kmgYeLJxCY_g",
+      "thumb": "https://meduza.io/image/attachments/images/011/847/378/small/sAwk8DFPi_kmgYeLJxCY_g",
+      "summary": "<p>Russia’s foreign minister, Sergey Lavrov, claims that Ukraine launched drones at President Vladimir Putin’s residence in Valdai, in Russia’s Novgorod region. Lavrov offered no evidence to support this claim, and there is currently no independent confirmation that the incident actually occurred.<p>",
+      "publishedTime": 1767042814000,
+      "archived_at": "2026-01-04T10:09:52.221930+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Ukraine Launched Drone Attack on Putin’s Valdai Residence, Lavrov Claims",
+      "link": "https://www.themoscowtimes.com/2025/12/29/ukraine-launched-drone-attack-on-putins-valdai-residence-lavrov-claims-a91576",
+      "published": "2025-12-29T16:34:00+00:00",
+      "media": null,
+      "summary": "While the claim was swiftly dismissed by Kyiv as an attempt to derail peace talks, U.S. President Donald Trump said he was \"very angry about it.\"",
+      "publishedTime": 1767026040000,
+      "archived_at": "2026-01-04T10:09:52.222031+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Menace nucléaire : des missiles balistiques russes déployés en Biélorussie ?",
+      "link": "https://www.lexpress.fr/monde/europe/menace-nucleaire-des-missiles-balistiques-russes-deployes-en-bielorussie-AK67BHDXFBBWVB3DJULIRAVPBA/",
+      "published": "2025-12-29T15:59:34+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/T6KDHAMT2BGCNONMZZMXLJ7I64.jpg?auth=11c68f5f2c2070f4198f51e52e71f31e3551764b6242e392db2c55dc4a45d6ff&smart=true&width=4435&height=3222",
+        "width": 4435,
+        "height": 3222,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "AFP"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/T6KDHAMT2BGCNONMZZMXLJ7I64.jpg?auth=11c68f5f2c2070f4198f51e52e71f31e3551764b6242e392db2c55dc4a45d6ff&smart=true&width=4435&height=3222",
+      "thumb": "https://www.lexpress.fr/resizer/v2/T6KDHAMT2BGCNONMZZMXLJ7I64.jpg?auth=11c68f5f2c2070f4198f51e52e71f31e3551764b6242e392db2c55dc4a45d6ff&smart=true&width=4435&height=3222",
+      "author": "Anna Lippert",
+      "publishedTime": 1767023974000,
+      "archived_at": "2026-01-04T10:09:52.222133+00:00"
+    },
+    {
+      "source": "Meduza",
+      "title": "Russian foreign minister says without evidence that Ukrainian drones attacked Putin’s Valdai residence",
+      "link": "https://meduza.io/en/news/2025/12/29/russian-foreign-minister-claims-ukrainian-drones-attacked-putin-s-valdai-residence",
+      "published": "2025-12-29T14:57:40+00:00",
+      "media": {
+        "url": "https://meduza.io/imgly/share/1767025139/en/news/2025/12/29/russian-foreign-minister-claims-ukrainian-drones-attacked-putin-s-valdai-residence",
+        "width": null,
+        "height": null,
+        "type": "image/png",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://meduza.io/imgly/share/1767025139/en/news/2025/12/29/russian-foreign-minister-claims-ukrainian-drones-attacked-putin-s-valdai-residence",
+      "thumb": "https://meduza.io/imgly/share/1767025139/en/news/2025/12/29/russian-foreign-minister-claims-ukrainian-drones-attacked-putin-s-valdai-residence",
+      "summary": "<p>Russian Foreign Minister Sergey Lavrov said without evidence on Monday that Ukrainian drones had carried out an attack on Vladimir Putin’s Valdai residence in Russia’s Novgorod region.<p>",
+      "publishedTime": 1767020260000,
+      "archived_at": "2026-01-04T10:09:52.222225+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Guerre en Ukraine : la Russie accuse Kiev d’avoir tenté d’attaquer une résidence de Vladimir Poutine",
+      "link": "https://www.lexpress.fr/monde/europe/guerre-en-ukraine-la-russie-accuse-kiev-davoir-tente-dattaquer-une-residence-de-vladimir-poutine-O6JXWGD2KRDK5IFWWV4CISVJFA/",
+      "published": "2025-12-29T14:52:17+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/DPAR73L26RBABHND4FEQGKHBC4.jpg?auth=c2d922ce744fa986fbfc2e160a731eb87305dcffb6ccd71c106b5d09ab2df7e9&smart=true&width=2048&height=1365",
+        "width": 2048,
+        "height": 1365,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "afp.com/Alexander KAZAKOV"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/DPAR73L26RBABHND4FEQGKHBC4.jpg?auth=c2d922ce744fa986fbfc2e160a731eb87305dcffb6ccd71c106b5d09ab2df7e9&smart=true&width=2048&height=1365",
+      "thumb": "https://www.lexpress.fr/resizer/v2/DPAR73L26RBABHND4FEQGKHBC4.jpg?auth=c2d922ce744fa986fbfc2e160a731eb87305dcffb6ccd71c106b5d09ab2df7e9&smart=true&width=2048&height=1365",
+      "publishedTime": 1767019937000,
+      "archived_at": "2026-01-04T10:09:52.222316+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "Vladimir Poutine, Pascal Praud et le Mossad... Nos dix grands récits et enquêtes qui ont marqué 2025",
+      "link": "https://www.lexpress.fr/monde/vladimir-poutine-pascal-praud-et-le-mossad-nos-dix-grands-recits-et-enquetes-qui-ont-marque-2025-6G5IZRPNCNADBLVLH4HE7SPVXI/",
+      "published": "2025-12-29T14:00:00+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/P3SCBZ2TYRDSNP56TC2VJPTIE4.jpg?auth=1308432e3703097489ca7d2bfd42d1746ba2e703bb60e3f7a9bb0b39621715d5&smart=true&width=8640&height=5760",
+        "width": 8640,
+        "height": 5760,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "AFP"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/P3SCBZ2TYRDSNP56TC2VJPTIE4.jpg?auth=1308432e3703097489ca7d2bfd42d1746ba2e703bb60e3f7a9bb0b39621715d5&smart=true&width=8640&height=5760",
+      "thumb": "https://www.lexpress.fr/resizer/v2/P3SCBZ2TYRDSNP56TC2VJPTIE4.jpg?auth=1308432e3703097489ca7d2bfd42d1746ba2e703bb60e3f7a9bb0b39621715d5&smart=true&width=8640&height=5760",
+      "publishedTime": 1767016800000,
+      "archived_at": "2026-01-04T10:09:52.222407+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Russia’s Regions Scale Back New Year’s Celebrations, Citing War in Ukraine",
+      "link": "https://www.themoscowtimes.com/2025/12/29/russias-regions-scale-back-new-year-celebrations-citing-war-in-ukraine-a91572",
+      "published": "2025-12-29T11:11:36+00:00",
+      "media": null,
+      "summary": "Regional heads argued that celebrations would be inappropriate and even unethical given the ongoing war.",
+      "publishedTime": 1767006696000,
+      "archived_at": "2026-01-04T10:09:52.222519+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Russia Has No Intention of Attacking NATO, Estonian Spy Chief Says",
+      "link": "https://www.themoscowtimes.com/2025/12/29/russia-has-no-intention-of-attacking-nato-estonian-spy-chief-says-a91571",
+      "published": "2025-12-29T10:50:00+00:00",
+      "media": null,
+      "summary": "His remarks stand in stark contrast with warnings from European officials that Putin may be planning a war with Europe.",
+      "publishedTime": 1767005400000,
+      "archived_at": "2026-01-04T10:09:52.222610+00:00"
+    },
+    {
+      "source": "Meduza",
+      "title": "‘90 percent agreed’. Trump and Zelensky tout ‘progress’ at Florida meeting but make no major breakthroughs",
+      "link": "https://meduza.io/en/feature/2025/12/29/90-percent-agreed",
+      "published": "2025-12-29T10:21:52+00:00",
+      "media": {
+        "url": "https://meduza.io/image/attachments/images/011/845/297/small/usZ_cienS9lvmTyNohMshw",
+        "width": null,
+        "height": null,
+        "type": "image/png",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://meduza.io/image/attachments/images/011/845/297/small/usZ_cienS9lvmTyNohMshw",
+      "thumb": "https://meduza.io/image/attachments/images/011/845/297/small/usZ_cienS9lvmTyNohMshw",
+      "summary": "<p>U.S. President Donald Trump hosted Ukrainian President Volodymyr Zelensky at his Mar-a-Lago resort in Palm Beach, Florida, on Sunday for the two leaders’ fourth meeting since Trump returned to office.<p>",
+      "publishedTime": 1767003712000,
+      "archived_at": "2026-01-04T10:09:52.222702+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Putin Signs Law Allowing Russia to Ignore Criminal Rulings of Foreign and International Courts",
+      "link": "https://www.themoscowtimes.com/2025/12/29/putin-signs-law-allowing-russia-to-ignore-criminal-rulings-of-foreign-and-international-courts-a91569",
+      "published": "2025-12-29T08:59:34+00:00",
+      "media": null,
+      "summary": "The legislation sends a clear signal that Moscow does not plan to comply with any future rulings from a tribunal on the Ukraine war.",
+      "publishedTime": 1766998774000,
+      "archived_at": "2026-01-04T10:09:52.222793+00:00"
+    },
+    {
       "source": "Ouest-France (à la une)",
       "title": "Guerre en Ukraine : le théâtre de Marioupol dévasté par les bombardements a rouvert ses portes",
       "link": "https://www.ouest-france.fr/europe/ukraine/guerre-en-ukraine-le-theatre-de-marioupol-devaste-par-les-bombardements-a-rouvert-ses-portes-5f131736-e48c-11f0-8a75-c20b0b6b178b?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
@@ -2028,6 +2684,25 @@
       "summary": "Le président américain, qui a rencontré le chef d’État ukrainien ce dimanche, estime que les semaines à venir diront si la guerre peut prendre fin.",
       "publishedTime": 1766991607000,
       "archived_at": "2025-12-29T08:53:50.237583+00:00"
+    },
+    {
+      "source": "Le Temps (Monde)",
+      "title": "Direct – Guerre en Ukraine: L’UE accuse la Russie de vouloir faire «dérailler» les efforts de paix",
+      "link": "https://www.24heures.ch/direct-ukraine-l-ue-accuse-moscou-de-saboter-la-paix-414919605975",
+      "published": "2025-12-29T07:00:07+00:00",
+      "media": {
+        "url": "https://cdn.unitycms.io/images/7oUkJUpWKuJ8U0mD5o0qlq.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://cdn.unitycms.io/images/7oUkJUpWKuJ8U0mD5o0qlq.jpg",
+      "thumb": "https://cdn.unitycms.io/images/7oUkJUpWKuJ8U0mD5o0qlq.jpg",
+      "summary": "La cheffe de la diplomatie européenne accuse Moscou de «faire diversion» en affirmant que Kiev est responsable de l’attaque d’une résidence de Poutine.",
+      "publishedTime": 1766991607000,
+      "archived_at": "2026-01-04T10:09:52.222885+00:00"
     },
     {
       "source": "Libération (à la une)",
@@ -17867,6 +18542,17 @@
   ],
   "videos": [
     {
+      "channel": "Euronews",
+      "title": "Ukraine : Volodymyr Zelensky nomme Kyrylo Boudanov au poste de chef de cabinet",
+      "link": "https://www.youtube.com/watch?v=XFxqY4z-xLE",
+      "published": "2026-01-04T10:13:10Z",
+      "publishedTime": 1767521590000,
+      "thumbnail": "https://i.ytimg.com/vi/XFxqY4z-xLE/hqdefault.jpg",
+      "summary": "Ukraine : Volodymyr Zelensky nomme Kyrylo Boudanov au poste de chef de cabinet\n\nLa nomination de Boudanov à la tête du cabinet présidentiel marque un changement inhabituel, puisqu'elle place un ancien chef des services de renseignement au centre de la coordination politique et diplomatique de l'Ukra",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:15:10.378262+00:00"
+    },
+    {
       "channel": "Associated Press",
       "title": "Zelenskyy on US capturing Maduro: The US 'knows what to do next'",
       "link": "https://www.youtube.com/watch?v=g2IZLxhksOk",
@@ -18338,6 +19024,655 @@
       "summary": "Six blessés lors de frappes de drones russes à Odessa\n\nSix personnes, dont trois enfants, ont été blessées lors de frappes russes sur Odesa, selon les autorités locales.\n\nLIRE L’ARTICLE : http://fr.euronews.com/2025/12/31/six-blesses-lors-de-frappes-de-drones-russes-a-odessa\n\nAbonnez-vous à notre ch",
       "type": "youtube",
       "archived_at": "2026-01-04T08:12:08.071443+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "UKRAINE STOPPED THE SHIPMENT OF NUCLEAR REACTORS FROM RUSSIA TO NORTH KOREA BY SINKING PUTIN’S SHIP",
+      "link": "https://www.youtube.com/watch?v=fRIr6KI-r9U",
+      "published": "2025-12-30T23:00:07Z",
+      "publishedTime": 1767135607000,
+      "thumbnail": "https://i.ytimg.com/vi/fRIr6KI-r9U/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.748727+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Zelenskiy discusses US troop presence in Ukraine with Trump | REUTERS",
+      "link": "https://www.youtube.com/watch?v=hzv3mkosTS8",
+      "published": "2025-12-30T22:48:15Z",
+      "publishedTime": 1767134895000,
+      "thumbnail": "https://i.ytimg.com/vi/hzv3mkosTS8/hqdefault.jpg",
+      "summary": "Ukrainian President Volodymyr Zelenskiy said Kyiv was discussing with Washington a possible presence of US troops in Ukraine as part of security guarantees. The White House had no comment on the issue of dispatching US troops to Ukraine.\n \n#News #Reuters #Newsfeed #volodymyrzelenskiy #vladimirputin ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.779103+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "RUSI: RUSSIA IS LOSING – TIME FOR PUTIN'S 2026 HYBRID ESCALATION! || 2025",
+      "link": "https://www.youtube.com/watch?v=QedNnw13JwU",
+      "published": "2025-12-30T18:00:34Z",
+      "publishedTime": 1767117634000,
+      "thumbnail": "https://i.ytimg.com/vi/QedNnw13JwU/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.750977+00:00"
+    },
+    {
+      "channel": "Euronews",
+      "title": "Guerre en Ukraine : la Russie déploie son système de missiles à capacité nucléaire au Bélarus",
+      "link": "https://www.youtube.com/watch?v=5lgbZGSLiS4",
+      "published": "2025-12-30T14:42:40Z",
+      "publishedTime": 1767105760000,
+      "thumbnail": "https://i.ytimg.com/vi/5lgbZGSLiS4/hqdefault.jpg",
+      "summary": "Guerre en Ukraine : la Russie déploie son système de missiles à capacité nucléaire au Bélarus\n\nLe ministère russe de la Défense a publié les premières images de l'Oreshnik au Bélarus, système de missiles qui peut faire autant de dégâts qu'une attaque nucléaire, a assuré Vladimir Poutine.\n\nLIRE L’ART",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:11.555120+00:00"
+    },
+    {
+      "channel": "ARTE",
+      "title": "Lieutenante dans le Donbass | Décryptage | ARTE",
+      "link": "https://www.youtube.com/watch?v=trq2vg3O9nE",
+      "published": "2025-12-30T14:01:28Z",
+      "publishedTime": 1767103288000,
+      "thumbnail": "https://i.ytimg.com/vi/trq2vg3O9nE/hqdefault.jpg",
+      "summary": "Disponible jusqu'au 19/12/2026\nDans la guerre d’agression de la Russie, les soldats et soldates de l’armée ukrainienne défendent leur pays, la vie de leurs camarades, de leurs familles et de leurs voisins. Quel est le sens de cet engagement pour eux, et notamment pour les femmes qui prennent part à ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:53.535418+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "PUTIN’S Z‑BLOGGERS IN PANIC: 500 RUSSIAN SOLDIERS TRAPPED IN KUPYANSK, FACING SLAUGHTER || 2025",
+      "link": "https://www.youtube.com/watch?v=MG8lUUfex5g",
+      "published": "2025-12-30T14:00:38Z",
+      "publishedTime": 1767103238000,
+      "thumbnail": "https://i.ytimg.com/vi/MG8lUUfex5g/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.753254+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Zelensky accuse Moscou de vouloir \"saper\" les efforts diplomatiques entre Kiev et Washington",
+      "link": "https://www.youtube.com/watch?v=uoTw3sTeCJ0",
+      "published": "2025-12-30T13:48:06Z",
+      "publishedTime": 1767102486000,
+      "thumbnail": "https://i.ytimg.com/vi/uoTw3sTeCJ0/hqdefault.jpg",
+      "summary": "Le président ukrainien Volodymyr Zelensky a accusé la Russie de vouloir \"saper\" les efforts diplomatiques entre Kiev et Washington, après que Moscou a accusé l'Ukraine d'avoir lancé des drones contre la résidence de Vladimir Poutine.\n#Ukraine #Russie #Etats-Unis\n\n🔔 Abonnez-vous à notre chaîne sur Yo",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.766732+00:00"
+    },
+    {
+      "channel": "Euronews",
+      "title": "Moscou accuse Kyiv d'avoir lancé des drones contre une résidence de Vladimir Poutine",
+      "link": "https://www.youtube.com/watch?v=O18nYZUfyUg",
+      "published": "2025-12-30T12:06:43Z",
+      "publishedTime": 1767096403000,
+      "thumbnail": "https://i.ytimg.com/vi/O18nYZUfyUg/hqdefault.jpg",
+      "summary": "Moscou accuse Kyiv d'avoir lancé des drones contre une résidence de Vladimir Poutine\n\nVolodymyr Zelensky dément, estimant qu'il s'agit d'une tentative du Kremlin de faire échouer les négociations avec Washington.\n\nLIRE L’ARTICLE : http://fr.euronews.com/2025/12/29/moscou-accuse-kyiv-davoir-lance-des",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:11.559216+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Zaporizhzhia residents defy Putin's push to seize city | REUTERS",
+      "link": "https://www.youtube.com/watch?v=TRTDX0rjOl8",
+      "published": "2025-12-30T12:06:12Z",
+      "publishedTime": 1767096372000,
+      "thumbnail": "https://i.ytimg.com/vi/TRTDX0rjOl8/hqdefault.jpg",
+      "summary": "Residents of Ukraine's Zaporizhzhia rejected Putin's campaign to seize their city, with one person calling the Russian president insane while another person expressing how scary it was, even as Moscow's forces closed in. \n#News #Reuters #Newsfeed #zaporizhzhia #ukrainerussiawar \n\nRead the story here",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.783217+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Venezuela, China’s war games and Russia-Ukraine",
+      "link": "https://www.youtube.com/watch?v=aMW_rgZzMWk",
+      "published": "2025-12-30T11:35:07Z",
+      "publishedTime": 1767094507000,
+      "thumbnail": "https://i.ytimg.com/vi/aMW_rgZzMWk/hqdefault.jpg",
+      "summary": "President Donald Trump says the U.S. has \"hit\" an area in Venezuela where boats are loaded with drugs, marking a first land operation inside the country. China fires rockets towards Taiwan in its most extensive war games. And Trump’s Ukraine peace plan faces new challenges after Russia says Kyiv tri",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.786188+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Ukraine : dans le Donbass les militaires ukrainiens ne croient pas aux négociations de paix",
+      "link": "https://www.youtube.com/watch?v=PyOVPO57Bg8",
+      "published": "2025-12-30T10:52:38Z",
+      "publishedTime": 1767091958000,
+      "thumbnail": "https://i.ytimg.com/vi/PyOVPO57Bg8/hqdefault.jpg",
+      "summary": "Pour la première fois dans la nouvelle version du plan de paix de Washington, le président Zelensky a proposé de retirer ses troupes du Donbass pour une zone démilitarisée, à condition que la Russie fasse de même et qu'un référendum soit organisé en Ukraine. Reportage de France 2 dans le Donbass.\n#U",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.772553+00:00"
+    },
+    {
+      "channel": "Al Jazeera English",
+      "title": "Russia accuses Ukraine of launching drone attack on Putin’s Novgorod residence",
+      "link": "https://www.youtube.com/watch?v=TfCelJKHiUg",
+      "published": "2025-12-30T08:30:23Z",
+      "publishedTime": 1767083423000,
+      "thumbnail": "https://i.ytimg.com/vi/TfCelJKHiUg/hqdefault.jpg",
+      "summary": "Russia has accused Ukraine of launching an attack on one of President Vladimir Putin’s residences - a day after Donald Trump held talks with Ukraine's president, and a separate call with Putin.\nRussian officials say drones targeted a residence in the Novgorod region but were destroyed by air defence",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:33.457210+00:00"
+    },
+    {
+      "channel": "BFM TV",
+      "title": "Guerre en Ukraine, Mercosur… L'interview intégrale de Bernard Guetta, député européen Renew",
+      "link": "https://www.youtube.com/watch?v=y-kHt3zRg0k",
+      "published": "2025-12-30T08:05:19Z",
+      "publishedTime": 1767081919000,
+      "thumbnail": "https://i.ytimg.com/vi/y-kHt3zRg0k/hqdefault.jpg",
+      "summary": "Bernard Guetta, député européen Renew, était l'invité du Face à Face ce mardi 30 décembre. Il s'est exprimé sur plusieurs thématiques, notamment concernant l'Union européenne.",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:01.051520+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Trump ‘encourages Putin to play him’ says former U.S. ambassador to Ukraine",
+      "link": "https://www.youtube.com/watch?v=9unBpQR_-7A",
+      "published": "2025-12-30T04:19:04Z",
+      "publishedTime": 1767068344000,
+      "thumbnail": "https://i.ytimg.com/vi/9unBpQR_-7A/hqdefault.jpg",
+      "summary": "ABC News' Andrew Dymburt spoke with former U.S. ambassador to Ukraine Steven Pifer about U.S., European and Ukrainian efforts at a peace deal that Russia seems to have little interest in agreeing to. \n\n---\n\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News Digital is yo",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.816127+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "WATCH: Zelenskyy's message for Putin",
+      "link": "https://www.youtube.com/watch?v=hKa2nYLyglU",
+      "published": "2025-12-30T02:15:08Z",
+      "publishedTime": 1767060908000,
+      "thumbnail": "https://i.ytimg.com/vi/hKa2nYLyglU/hqdefault.jpg",
+      "summary": "Ukrainian President Volodymyr Zelenskyy talks battle lines, a corruption scandal distracting the war effort and more in an exclusive interview on ‘Special Report.’ #fox #media #breakingnews #us #usa #new #news #breaking #foxnews #specialreport #world #global #politics #political #politicalnews #gove",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.745399+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "Russians in panic, Ukrainian drones are pounding occupied Donetsk || 2025",
+      "link": "https://www.youtube.com/watch?v=B2ZLi73qGRc",
+      "published": "2025-12-30T02:00:12Z",
+      "publishedTime": 1767060012000,
+      "thumbnail": "https://i.ytimg.com/vi/B2ZLi73qGRc/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.755523+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Putin accuses Ukraine of attacking one of his residences after Trump-Zelenskyy talk",
+      "link": "https://www.youtube.com/watch?v=ubfW94vMJ-8",
+      "published": "2025-12-30T01:49:04Z",
+      "publishedTime": 1767059344000,
+      "thumbnail": "https://i.ytimg.com/vi/ubfW94vMJ-8/hqdefault.jpg",
+      "summary": "Ukraine called the claim “typical Russian lies.”\n\n---\n\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News Digital is your daily source of breaking national and world news, exclusive interviews and 24/7 live streaming coverage.\n\nDownload the ABC News app for the latest he",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.818988+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "President Volodymyr Zelenskyy says country can't win without American support",
+      "link": "https://www.youtube.com/watch?v=7r91dmvIItE",
+      "published": "2025-12-30T01:30:07Z",
+      "publishedTime": 1767058207000,
+      "thumbnail": "https://i.ytimg.com/vi/7r91dmvIItE/hqdefault.jpg",
+      "summary": "Ukrainian President Volodymyr Zelenskyy opens up about the war with Russia on 'Special Report.' #foxnews #news #us #fox #fox #media #breakingnews #us #usa #new #news #breaking #foxnews #specialreport #world #politics #political #politicalnews #government #war #ukraine #russia #europe #nato #military",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.748383+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "Zelenskyy gets candid about the state of Ukraine's war with Russia after talks with Trump",
+      "link": "https://www.youtube.com/watch?v=UUOYwyXcPmQ",
+      "published": "2025-12-30T00:00:06Z",
+      "publishedTime": 1767052806000,
+      "thumbnail": "https://i.ytimg.com/vi/UUOYwyXcPmQ/hqdefault.jpg",
+      "summary": "Ukrainian President Volodymyr Zelenskyy opens up about the war with Russia and his meeting with President Trump on 'Special Report.' #fox #media #breakingnews #us #usa #new #news #breaking #foxnews #specialreport #politics #political #politicalnews #government #world #global #war #peace #russia #ukr",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.750923+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "RUSSIA SCREAMS THAT UKRAINE TRIED TO ASSASSINATE PUTIN — ZELENSKY RESPONDS: ALL LIES! || 2025",
+      "link": "https://www.youtube.com/watch?v=fWHac7RLX-U",
+      "published": "2025-12-29T23:00:53Z",
+      "publishedTime": 1767049253000,
+      "thumbnail": "https://i.ytimg.com/vi/fWHac7RLX-U/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.757960+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "Trump says Putin told him that Ukraine attempted to attack his residence",
+      "link": "https://www.youtube.com/watch?v=NvfEaE-R4JU",
+      "published": "2025-12-29T22:05:29Z",
+      "publishedTime": 1767045929000,
+      "thumbnail": "https://i.ytimg.com/vi/NvfEaE-R4JU/hqdefault.jpg",
+      "summary": "President Trump said he had a good call with Russian President Vladimir Putin about a proposed peace deal with Ukraine. Ukrainian President Volodymyr Zelenskyy said the U.S. is offering them security guarantees for 15 years as part of the plan. \n\nSubscribe: http://smarturl.it/AssociatedPress\r\nRead m",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:30.082162+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "NEW: Trump reacts to the alleged strike on Putin's residence #foxnews #news #us #fox #politics",
+      "link": "https://www.youtube.com/watch?v=Arsw2ENVKBw",
+      "published": "2025-12-29T21:30:02Z",
+      "publishedTime": 1767043802000,
+      "thumbnail": "https://i.ytimg.com/vi/Arsw2ENVKBw/hqdefault.jpg",
+      "summary": "President Trump reacts to the alleged strike on President Putin's residence. #foxnews #news #us #fox #politics #political #politicalnews #government #trump #donaldtrump #putin #vladimirputin #russia #world #global #international #security #military #conflict #war #leadership #diplomacy\n\nSubscribe to",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.753430+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Trump meets Netanyahu, comments on Putin attack and Venezuela strike",
+      "link": "https://www.youtube.com/watch?v=swowiaNeGEo",
+      "published": "2025-12-29T21:10:00Z",
+      "publishedTime": 1767042600000,
+      "thumbnail": "https://i.ytimg.com/vi/swowiaNeGEo/hqdefault.jpg",
+      "summary": "Mick Mulroy, former deputy assistant secretary of defense for the Middle East, reacts to Trump's meeting with Netanyahu, the U.S. strike in Venezuela and the alleged Putin attack.\n\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News Digital is your daily source of breakin",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.821904+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "Russia accuses Ukraine of launching 'terrorist attack' on Putin’s residence",
+      "link": "https://www.youtube.com/watch?v=I0cgSuwyx00",
+      "published": "2025-12-29T20:28:57Z",
+      "publishedTime": 1767040137000,
+      "thumbnail": "https://i.ytimg.com/vi/I0cgSuwyx00/hqdefault.jpg",
+      "summary": "Russia’s Foreign Minister Sergey Lavrov said that Ukraine launched a “terrorist attack” on President Vladimir Putin’s residence in the northwestern Novgorod region overnight Sunday to Monday with 91 long-range drones. \n\r\n#russia #ukraine \nPhoto credit: Pool Sputnik Kremlin\n\r\nSubscribe: http://smartu",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:30.085934+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Moscou accuse Kiev d'avoir attaqué la résidence de Poutine • FRANCE 24",
+      "link": "https://www.youtube.com/watch?v=MLFtyc2mOdU",
+      "published": "2025-12-29T20:22:41Z",
+      "publishedTime": 1767039761000,
+      "thumbnail": "https://i.ytimg.com/vi/MLFtyc2mOdU/hqdefault.jpg",
+      "summary": "Moscou a accusé lundi Kiev d'avoir lancé dans la nuit une attaque de drones sur la résidence du président russe Vladimir Poutine, prévenant que sa position dans les négociations en cours pour mettre fin au conflit en Ukraine serait de ce fait \"réexaminée\".\n#Russie #Ukraine #Poutine\n\n🔔 Abonnez-vous à",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.778606+00:00"
+    },
+    {
+      "channel": "Sky News",
+      "title": "Donald Trump left 'very angry' over claims of attack on Putin's residence",
+      "link": "https://www.youtube.com/watch?v=C3qYwANen2Q",
+      "published": "2025-12-29T20:05:56Z",
+      "publishedTime": 1767038756000,
+      "thumbnail": "https://i.ytimg.com/vi/C3qYwANen2Q/hqdefault.jpg",
+      "summary": "Donald Trump is left 'very angry' over the claims of an attack on the president of Russia, Vladimir Putin's residence.  \n\nThe US president says 'it's not the right time' to carry out an attack.\n\n#Russia #US #DonaldTrump #putin #zelensky #Ukraine \n\nRead more: https://trib.al/jJET8t0\n\nSUBSCRIBE to our",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:42.110103+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Ukraine tried to attack Putin residence, Russia says | REUTERS",
+      "link": "https://www.youtube.com/watch?v=Tg-91-2FmP8",
+      "published": "2025-12-29T20:01:20Z",
+      "publishedTime": 1767038480000,
+      "thumbnail": "https://i.ytimg.com/vi/Tg-91-2FmP8/hqdefault.jpg",
+      "summary": "Russia accused Ukraine of trying to attack President Vladimir Putin's residence in northern Russia, although it provided no evidence to back up an assertion that Kyiv dismissed as baseless and designed to undermine peace negotiations.\n \n#News #Reuters #Newsfeed #russiaukrainewar #russiaukraine #russ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.789542+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "'Putin told me about it,' Trump says of alleged Ukraine attack",
+      "link": "https://www.youtube.com/watch?v=EbobakdN3q0",
+      "published": "2025-12-29T19:54:07Z",
+      "publishedTime": 1767038047000,
+      "thumbnail": "https://i.ytimg.com/vi/EbobakdN3q0/hqdefault.jpg",
+      "summary": "President Trump said he \"just heard about\" Russia's accusation that Ukraine tried to attack President Vladimir Putin's residence in northern Russia, which Kyiv denied. \n \n#trump #donaldtrump #putin #russia #russiaukrainewar\n\nRead the story here: https://www.reuters.com/world/europe/trump-zelenskiy-t",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.792648+00:00"
+    },
+    {
+      "channel": "CBS News",
+      "title": "Trump has another call with Putin after meeting with Zelenskyy",
+      "link": "https://www.youtube.com/watch?v=uk5nO38ZRXY",
+      "published": "2025-12-29T19:51:20Z",
+      "publishedTime": 1767037880000,
+      "thumbnail": "https://i.ytimg.com/vi/uk5nO38ZRXY/hqdefault.jpg",
+      "summary": "The White House said Monday that President Trump had another call with Russia's Vladimir Putin following his Sunday meeting with Ukrainian President Volodymyr Zelenskyy. CBS News national security contributor Samantha Vinograd has more.\n\nCBS News 24/7 is the premier anchored streaming news service f",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:22.624517+00:00"
+    },
+    {
+      "channel": "Euronews",
+      "title": "Dans les rues de Kyiv, les Ukrainiens pas convaincus par les garanties américaines",
+      "link": "https://www.youtube.com/watch?v=nzbQJCV_4u0",
+      "published": "2025-12-29T19:41:09Z",
+      "publishedTime": 1767037269000,
+      "thumbnail": "https://i.ytimg.com/vi/nzbQJCV_4u0/hqdefault.jpg",
+      "summary": "Dans les rues de Kyiv, les Ukrainiens pas convaincus par les garanties américaines\n\nLa Russie a lancé des dizaines de drones en Ukraine dans la nuit de dimanche à lundi alors que Volodymyr Zelensky a rencontré son homologue américain Donald Trump pour convenir de garanties de sécurité étendues.\n\nLIR",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:11.563781+00:00"
+    },
+    {
+      "channel": "BFM TV",
+      "title": "Le Kremlin accuse Kiev d'avoir lancé une attaque de drones contre la résidence de Vladimir Poutine",
+      "link": "https://www.youtube.com/watch?v=zNQhvIVJQTM",
+      "published": "2025-12-29T19:19:43Z",
+      "publishedTime": 1767035983000,
+      "thumbnail": "https://i.ytimg.com/vi/zNQhvIVJQTM/hqdefault.jpg",
+      "summary": "Le ministre des Affaires étrangères Sergueï Lavrov a affirmé ce lundi 29 décembre que le Kremlin répliquerait à cette attaque et qu'il allait modifier sa position dans les négociations de paix avec Kiev. Volodymyr Zelensky a de son côté dénoncé des \"mensonges\" de la part de Moscou.",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:01.054368+00:00"
+    },
+    {
+      "channel": "Sky News",
+      "title": "Trump reacts to Russian claim of attack on Putin's home",
+      "link": "https://www.youtube.com/watch?v=bWY0Jr0vmAQ",
+      "published": "2025-12-29T18:48:21Z",
+      "publishedTime": 1767034101000,
+      "thumbnail": "https://i.ytimg.com/vi/bWY0Jr0vmAQ/hqdefault.jpg",
+      "summary": "Donald Trump said he was \"very angry\" to hear reports of an alleged Ukrainian drone strike on one of Vladimir Putin's state residences in Russia.\n\nSergei Lavrov, Moscow's long-serving foreign minister, said Kyiv launched the attack on Putin's home in the Novgorod region overnight on Sunday, but that",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:42.112432+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "'We must believe': Ukraine residents reflect on Trump-Zelenskyy meeting",
+      "link": "https://www.youtube.com/watch?v=FGjADZzXnYc",
+      "published": "2025-12-29T18:24:53Z",
+      "publishedTime": 1767032693000,
+      "thumbnail": "https://i.ytimg.com/vi/FGjADZzXnYc/hqdefault.jpg",
+      "summary": "There was cautious optimism on the streets of Kyiv on Monday following another round of peace talks between Ukraine and the US. Ukrainian President Volodymyr Zelenskyy said Monday that the US is offering Ukraine security guarantees for a period of 15 years as part of a proposed peace plan. (AP video",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:30.089395+00:00"
+    },
+    {
+      "channel": "Al Jazeera English",
+      "title": "Zelenskyy denies Russian claim of Ukrainian strike on Putin residence | AJ #shorts",
+      "link": "https://www.youtube.com/watch?v=DNlAPgDVuSM",
+      "published": "2025-12-29T18:08:58Z",
+      "publishedTime": 1767031738000,
+      "thumbnail": "https://i.ytimg.com/vi/DNlAPgDVuSM/hqdefault.jpg",
+      "summary": "Volodymyr Zelenskyy quickly denied a claim by Moscow that his country’s military launched a drone attack on Vladimir Putin’s residence in the city of Novgorod. The Ukrainian leader accused Russia of trying to derail peace talks a day after Zelenskyy met with US President Donald Trump.\n\nSubscribe to ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:33.460252+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "RUSSIAN OFFENSIVE STALLED: UKRAINE’S 7TH AIR ASSAULT HOLDS THE LINE NORTH OF POKROVSK || 2025",
+      "link": "https://www.youtube.com/watch?v=kuGCGRGq5OY",
+      "published": "2025-12-29T18:00:50Z",
+      "publishedTime": 1767031250000,
+      "thumbnail": "https://i.ytimg.com/vi/kuGCGRGq5OY/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.760222+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Zelenskyy denies Ukraine targeted Putin's residence",
+      "link": "https://www.youtube.com/watch?v=ValZxCw70wk",
+      "published": "2025-12-29T17:30:21Z",
+      "publishedTime": 1767029421000,
+      "thumbnail": "https://i.ytimg.com/vi/ValZxCw70wk/hqdefault.jpg",
+      "summary": "ABC News' Maggie Rulli and Mick Mulroy discuss the latest headlines in the Russia-Ukraine war.\n\n–––\n\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News is your daily source of breaking national and world news, exclusive interviews and 24/7 live streaming coverage.\n\nDownl",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.824472+00:00"
+    },
+    {
+      "channel": "CNN",
+      "title": "Russia says Ukrainian drone attack targeted Putin’s residence",
+      "link": "https://www.youtube.com/watch?v=D2nd8Lf0scs",
+      "published": "2025-12-29T17:22:47Z",
+      "publishedTime": 1767028967000,
+      "thumbnail": "https://i.ytimg.com/vi/D2nd8Lf0scs/hqdefault.jpg",
+      "summary": "Russia’s foreign minister alleged that a Ukrainian drone attack targeted one of President Vladimir Putin’s residences on Monday, in a claim that was immediately rejected by Kyiv. \n\n \n00:00 CNN senior international correspondent reports on Russia saying Putin’s residence was targeted by Ukraine \n03:2",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:14.455656+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Le théâtre de Marioupol, dévasté par des bombardements, rouvre ses portes en Ukraine occupée",
+      "link": "https://www.youtube.com/watch?v=RX3KmbZIzhk",
+      "published": "2025-12-29T17:14:39Z",
+      "publishedTime": 1767028479000,
+      "thumbnail": "https://i.ytimg.com/vi/RX3KmbZIzhk/hqdefault.jpg",
+      "summary": "Le théâtre central de Marioupol, dévasté par des bombardements en 2022 et laissé en ruines, a rouvert dimanche ses portes dans l'est de l'Ukraine contrôlé par la Russie, ont annoncé les autorités locales mises en place par Moscou.\n#Ukraine #Marioupol #Russie\n\n🔔 Abonnez-vous à notre chaîne sur YouTub",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.785048+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Zelenskiy smiles when Trump says Putin wants Ukraine to succeed",
+      "link": "https://www.youtube.com/watch?v=GsGBryURoWY",
+      "published": "2025-12-29T16:32:07Z",
+      "publishedTime": 1767025927000,
+      "thumbnail": "https://i.ytimg.com/vi/GsGBryURoWY/hqdefault.jpg",
+      "summary": "U.S. President Trump said he and Putin spoke on a call and the Russian president pledged to help rebuild Ukraine, including by supplying cheap energy. As Trump praised Putin during a news conference, Ukrainian President Zelenskiy tilted his head and smiled.\n\n#ukraine #us #russia #trump #zelenskiy #p",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.797164+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Moscou accuse Kiev d'avoir lancé des drones contre la résidence de Poutine • FRANCE 24",
+      "link": "https://www.youtube.com/watch?v=K_hJHhBptbk",
+      "published": "2025-12-29T16:19:53Z",
+      "publishedTime": 1767025193000,
+      "thumbnail": "https://i.ytimg.com/vi/K_hJHhBptbk/hqdefault.jpg",
+      "summary": "La Russie a accusé l'Ukraine d'avoir lancé pendant la nuit 91 drones contre la résidence de Vladimir Poutine dans la région de Novgorod, prévenant que Moscou allait \"réviser\" sa position dans les négociations sur la résolution du conflit en Ukraine. Correspondance d'Emmanuelle Chaze, en direct de Kh",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.790226+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "What are next steps in Russia-Ukraine peace talks?",
+      "link": "https://www.youtube.com/watch?v=sMC-8BOi3I0",
+      "published": "2025-12-29T16:05:33Z",
+      "publishedTime": 1767024333000,
+      "thumbnail": "https://i.ytimg.com/vi/sMC-8BOi3I0/hqdefault.jpg",
+      "summary": "ABC News' Selina Wang and contributor Mick Mulroy discuss diplomatic efforts to end Russia's full-scale invasion of Ukraine.\n\n---\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News Digital is your daily source of breaking national and world news, exclusive interviews and",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.827711+00:00"
+    },
+    {
+      "channel": "CBS News",
+      "title": "Trump says \"Russia wants to see Ukraine succeed\" after speaking to Putin and Zelenskyy",
+      "link": "https://www.youtube.com/watch?v=ME_SDgVRx1c",
+      "published": "2025-12-29T16:04:16Z",
+      "publishedTime": 1767024256000,
+      "thumbnail": "https://i.ytimg.com/vi/ME_SDgVRx1c/hqdefault.jpg",
+      "summary": "President Trump met with Ukrainian President Volodymyr Zelenskyy after speaking with Russian President Vladimir Putin. CBS News' Willie James Inman reports.\n\nCBS News 24/7 is the premier anchored streaming news service from CBS News and Stations that is available free to everyone with access to the ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:22.628020+00:00"
+    },
+    {
+      "channel": "CNN",
+      "title": "Harry Enten runs the numbers on Trump, Russia and Ukraine",
+      "link": "https://www.youtube.com/watch?v=aa6HwSxsNxE",
+      "published": "2025-12-29T15:43:06Z",
+      "publishedTime": 1767022986000,
+      "thumbnail": "https://i.ytimg.com/vi/aa6HwSxsNxE/hqdefault.jpg",
+      "summary": "CNN chief data analyst Harry Enten breaks down public opinion on President Trump and the Russia-Ukraine war, and CNN's Omar Jimenez speaks with Ukrainian Parliament member Kira Rudik. CNN's Alayna Treene also reports from Washington.\n\n0:00 Harry Enten runs the numbers on Trump, Russia and Ukraine\n3:",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:14.458507+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Former DHS official on 'possible sticking points' in Russia-Ukraine peace deal",
+      "link": "https://www.youtube.com/watch?v=wdjWGVHkih0",
+      "published": "2025-12-29T15:01:59Z",
+      "publishedTime": 1767020519000,
+      "thumbnail": "https://i.ytimg.com/vi/wdjWGVHkih0/hqdefault.jpg",
+      "summary": "Javed Ali, a former Trump administration official and cybersecurity expert, talks about diplomatic efforts to end Russia's full-scale invasion of Ukraine.\n\n–––\n\nSubscribe to ABC News on YouTube: https://abcnews.visitlink.me/59aJ1G\n\nABC News is your daily source of breaking national and world news, e",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.830981+00:00"
+    },
+    {
+      "channel": "Euronews",
+      "title": "Zelensky détaille le plan de paix discuté à Mar-a-lago",
+      "link": "https://www.youtube.com/watch?v=d5xMLtViGoQ",
+      "published": "2025-12-29T14:14:29Z",
+      "publishedTime": 1767017669000,
+      "thumbnail": "https://i.ytimg.com/vi/d5xMLtViGoQ/hqdefault.jpg",
+      "summary": "15 ans de garanties de sécurité des États-Unis : Zelensky détaille le plan de paix discuté à Mar-a-lago\n\nBien que les garanties de sécurité américaines pour l'Ukraine aient été \"acceptées à 100 %\", elles ont une date d'expiration courte, a expliqué le président ukrainien après avoir révélé plus de d",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:11.567175+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Rencontre Trump-Zelensky : un plan de paix approuvé à 90% selon Trump • FRANCE 24",
+      "link": "https://www.youtube.com/watch?v=POwOm04S2As",
+      "published": "2025-12-29T14:07:12Z",
+      "publishedTime": 1767017232000,
+      "thumbnail": "https://i.ytimg.com/vi/POwOm04S2As/hqdefault.jpg",
+      "summary": "Donald Trump a estimé être plus près que jamais d'un accord de paix en Ukraine, après une rencontre en Floride avec Volodymyr Zelensky et un entretien avec Vladimir Poutine, sans toutefois détailler aucune avancée concrète. Eléments de décryptage avec notre invité Jacques Faure, ancien ambassadeur d",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.798816+00:00"
+    },
+    {
+      "channel": "BBC News",
+      "title": "Trump says Ukraine peace deal close but ‘thorny issues’ remain | BBC News",
+      "link": "https://www.youtube.com/watch?v=_V7-xrWn-ic",
+      "published": "2025-12-29T14:00:57Z",
+      "publishedTime": 1767016857000,
+      "thumbnail": "https://i.ytimg.com/vi/_V7-xrWn-ic/hqdefault.jpg",
+      "summary": "Donald Trump and Volodymyr Zelensky said progress had been made to end the Ukraine war during talks but the US leader added \"one or two very thorny issues\" remained.\n \nWhile both the US and Ukrainian presidents described the Florida talks as \"great\", Trump reiterated that a key sticking point was th",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:07.131641+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "Zelenskyy: This will NOT be positive #shorts #ukraine #foxnews #russia #warinukraine #world #news",
+      "link": "https://www.youtube.com/watch?v=aC8Afl4LUuI",
+      "published": "2025-12-29T13:33:28Z",
+      "publishedTime": 1767015208000,
+      "thumbnail": "https://i.ytimg.com/vi/aC8Afl4LUuI/hqdefault.jpg",
+      "summary": "Ukrainian President Volodymyr Zelenskyy tells 'Special Report' anchor Bret Baier that most Ukrainians want peace, but says withdrawing from the Donbas would be unacceptable.\n\n#fox #media #breakingnews #us #usa #new #news #breaking #foxnews #specialreport #bretbaier #zelenskyy #ukraine #donbas #russi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.756244+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Ukraine : le plan de paix \"approuvé à 90 %\" alors que Trump reçoit Zelensky • FRANCE 24",
+      "link": "https://www.youtube.com/watch?v=A9s6euzCpas",
+      "published": "2025-12-29T13:32:55Z",
+      "publishedTime": 1767015175000,
+      "thumbnail": "https://i.ytimg.com/vi/A9s6euzCpas/hqdefault.jpg",
+      "summary": "Donald Trump estime être plus près que jamais d'un accord de paix en Ukraine, après une rencontre en Floride avec Volodymyr Zelensky et un entretien avec Vladimir Poutine, sans toutefois détailler aucune avancée concrète.  L'Ukraine cherche à obtenir des garanties de sécurité à long terme de la part",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.805958+00:00"
+    },
+    {
+      "channel": "Fox News",
+      "title": "DETAILS: Trump reveals more on Zelenskyy meeting",
+      "link": "https://www.youtube.com/watch?v=U20OedqU4I8",
+      "published": "2025-12-29T13:30:27Z",
+      "publishedTime": 1767015027000,
+      "thumbnail": "https://i.ytimg.com/vi/U20OedqU4I8/hqdefault.jpg",
+      "summary": "Former Deputy National Security Advisor Victoria Coates reacts to President Trump's meeting with Ukrainian President Zelenskyy and Iran's declaration of a 'full-scale war' with the U.S., Israel and Europe. #FoxNews #Trump #Ukraine #Russia #Zelenskyy\n\nDon’t just watch Fox News—be part of it. Become a",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:26.759045+00:00"
+    },
+    {
+      "channel": "CNN",
+      "title": "Ex-US ambassador on Trump’s ‘progress’ toward Ukraine peace deal",
+      "link": "https://www.youtube.com/watch?v=DAhV2WArKr8",
+      "published": "2025-12-29T13:27:47Z",
+      "publishedTime": 1767014867000,
+      "thumbnail": "https://i.ytimg.com/vi/DAhV2WArKr8/hqdefault.jpg",
+      "summary": "US President Donald Trump described his meeting with his Ukrainian counterpart, Volodymyr Zelensky, as “excellent” after almost three hours of talks. Former US ambassador to Ukraine William Taylor reacts to Trump’s optimism and outlines what he thinks the next steps should be.\n\n00:00 President Donal",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:14.461939+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "President Trump says Ukraine and Russia are 'closer than ever' to peace deal",
+      "link": "https://www.youtube.com/watch?v=JLJ9fY6BR64",
+      "published": "2025-12-29T12:30:34Z",
+      "publishedTime": 1767011434000,
+      "thumbnail": "https://i.ytimg.com/vi/JLJ9fY6BR64/hqdefault.jpg",
+      "summary": "President Trump said that teams are \"getting a lot closer\" to achieving a peace deal between Ukraine and Russia after speaking to Russian President Putin and meeting with Ukrainian President Zelenskyy in Florida on Sunday.\n\nWhat You Need to Know is streaming exclusively on Disney Plus. https://abcne",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.833419+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "Video appears to show drone hitting building in Kyiv",
+      "link": "https://www.youtube.com/watch?v=5HPF8eM6qD0",
+      "published": "2025-12-29T12:05:55Z",
+      "publishedTime": 1767009955000,
+      "thumbnail": "https://i.ytimg.com/vi/5HPF8eM6qD0/hqdefault.jpg",
+      "summary": "Video filmed on Saturday appears to show a drone hitting a building in Kyiv. In the video, an explosion engulfs the top of the building and the camera zooms in to show damage and fire. Russia attacked Ukraine's capital with missiles and drones early Saturday morning, killing one person and wounding ",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:30.092368+00:00"
+    },
+    {
+      "channel": "Reuters",
+      "title": "Ukraine talks, Netanyahu, ‘Hellcats’ and NY's social media warnings",
+      "link": "https://www.youtube.com/watch?v=a8XmYAv8VR4",
+      "published": "2025-12-29T11:47:33Z",
+      "publishedTime": 1767008853000,
+      "thumbnail": "https://i.ytimg.com/vi/a8XmYAv8VR4/hqdefault.jpg",
+      "summary": "U.S. President Donald Trump says a breakthrough to end the war in Ukraine is “getting a lot closer” but obstacles remain after talks with Ukrainian President Volodymyr Zelenskiy. Trump is expected to push for progress in Gaza when he meets Israeli Prime Minister Benjamin Netanyahu. The women veteran",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:36.800904+00:00"
+    },
+    {
+      "channel": "Warthog Defense",
+      "title": "Residential areas in Kyiv were damaged following the arrival of Russian Shahed drones || 2025",
+      "link": "https://www.youtube.com/watch?v=Z4xifrzjdJE",
+      "published": "2025-12-29T11:00:59Z",
+      "publishedTime": 1767006059000,
+      "thumbnail": "https://i.ytimg.com/vi/Z4xifrzjdJE/hqdefault.jpg",
+      "summary": "Join this channel to get access to perks:\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/join\n\nhttps://www.youtube.com/channel/UC2JaXg63L_VqvXN4SwF4zOQ/store\n\nUkraine military update.\n\nThe used audio is from the Youtube audio library \n\nFB page:\nhttps://www.facebook.com/warthogdefense/\n\nThi",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:44.762513+00:00"
+    },
+    {
+      "channel": "ABC News",
+      "title": "Russia, Ukraine 'closer than ever' to peace, Trump says",
+      "link": "https://www.youtube.com/watch?v=A0tvZ8ir5mU",
+      "published": "2025-12-29T10:57:49Z",
+      "publishedTime": 1767005869000,
+      "thumbnail": "https://i.ytimg.com/vi/A0tvZ8ir5mU/hqdefault.jpg",
+      "summary": "President Donald Trump said that teams are \"getting a lot closer, maybe very close\" to achieving a peace deal between Ukraine and Russia after speaking to Russian President Vladimir Putin and having a meeting with Ukrainian President Volodymyr Zelenskyy in Florida on Sunday.\n\n\"We had a terrific meet",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:17.835866+00:00"
+    },
+    {
+      "channel": "Al Jazeera English",
+      "title": "Trump and Zelenskyy hail ‘progress’ on Russia-Ukraine peace plan | AJ #shorts",
+      "link": "https://www.youtube.com/watch?v=BbaCIfM1SlM",
+      "published": "2025-12-29T10:56:56Z",
+      "publishedTime": 1767005816000,
+      "thumbnail": "https://i.ytimg.com/vi/BbaCIfM1SlM/hqdefault.jpg",
+      "summary": "US President Donald Trump and Ukrainian leader Volodymyr Zelenskyy are talking up prospects of ending the war with Russia, after meeting in Florida. But they admitted there are ‘thorny issues’ to resolve about the status of the Donbas region which has been annexed by Russia.  \n\nSubscribe to our chan",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:33.464554+00:00"
+    },
+    {
+      "channel": "Sky News",
+      "title": "Volodymyr Zelenskyy says Ukraine security agreement almost there after talks with Donald Trump",
+      "link": "https://www.youtube.com/watch?v=rG-mjD1UQ64",
+      "published": "2025-12-29T10:55:34Z",
+      "publishedTime": 1767005734000,
+      "thumbnail": "https://i.ytimg.com/vi/rG-mjD1UQ64/hqdefault.jpg",
+      "summary": "A 20-point peace plan for Ukraine is \"90% agreed\" according to Volodymyr Zelenskyy after he met Donald Trump for talks in Florida.\n\nZelenskyy says Ukrainian and US teams will meet next week to \"finalise all discussed issues\" and that Trump has also agreed to host Ukrainian and European leaders in Wa",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:10:42.114713+00:00"
+    },
+    {
+      "channel": "France 24",
+      "title": "Guerre en Ukraine : Trump se dit plus près que jamais d'un accord de paix, sans annonce concrète",
+      "link": "https://www.youtube.com/watch?v=EVsEnq7FTME",
+      "published": "2025-12-29T10:00:07Z",
+      "publishedTime": 1767002407000,
+      "thumbnail": "https://i.ytimg.com/vi/EVsEnq7FTME/hqdefault.jpg",
+      "summary": "S'exprimant depuis sa résidence Mar-a-Lago à Palm Beach, en Floride, où il a reçu le dirigeant ukrainien en présence de plusieurs hauts-responsables des deux pays, le président américain s'est montré résolument optimiste mais évasif, assurant que les prochaines semaines diraient si la guerre peut pr",
+      "type": "youtube",
+      "archived_at": "2026-01-04T10:09:58.810700+00:00"
     },
     {
       "channel": "Al Jazeera English",

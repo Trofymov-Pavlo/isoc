@@ -116,7 +116,6 @@ runtimeConfig: {
 - **/conditions** - Conditions générales d'utilisation
 - **/mentions** - Mentions légales
 - **/cookies** - Politique cookies
-- **/confidentialite** - Politique de confidentialité
 
 ## Sections de la page d'accueil
 

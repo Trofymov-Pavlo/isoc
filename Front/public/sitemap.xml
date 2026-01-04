@@ -75,14 +75,6 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Politique de confidentialité -->
-  <url>
-    <loc>http://localhost:3000/confidentialite</loc>
-    <lastmod>2026-01-04T12:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
   <!-- Archive JSON - Base de données complète -->
   <url>
     <loc>http://localhost:3000/archive.json</loc>

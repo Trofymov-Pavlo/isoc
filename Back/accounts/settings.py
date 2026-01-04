@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY from environment or fallback
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-key-change-in-production')
 if not os.environ.get('DJANGO_SECRET_KEY') and not os.environ.get('DEBUG'):
-    print("⚠️  WARNING: DJANGO_SECRET_KEY not set! Using unsafe default key.")
+    print("WARNING: DJANGO_SECRET_KEY not set! Using unsafe default key.")
 
 # DEBUG from environment
 DEBUG = os.environ.get('DEBUG', 'true').lower() == 'true'
