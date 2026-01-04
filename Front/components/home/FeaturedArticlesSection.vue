@@ -64,11 +64,12 @@ const getPreviewText = (content: string) => {
   const paragraphs = content.split('\n\n').filter(para => {
     const trimmed = para.trim()
     return trimmed && 
-           !trimmed.match(/^[A-Z\s]+$/) && // Skip all-caps headers
+           !trimmed.match(/^[A-Z\s:]+$/) && // Skip all-caps headers (with colons)
            !trimmed.startsWith('##') &&
            !trimmed.startsWith('#') &&
            !trimmed.startsWith('À COMPLÉTER') &&
-           trimmed.length > 100 // Only substantial paragraphs
+           !trimmed.startsWith('•') && // Skip bullet points
+           trimmed.length > 50 // Lower threshold for substantial paragraphs
   })
   
   // Take first 2 paragraphs or ~400 characters
