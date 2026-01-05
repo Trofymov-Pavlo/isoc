@@ -49,7 +49,7 @@ const articleDate = '2025-12-05'
 
 const articleContent = `Le conflit ukrainien marque un tournant dans l'histoire militaire moderne, où les nouvelles technologies jouent un rôle déterminant sur le terrain. Les drones, l'intelligence artificielle et les cyberattaques transforment profondément les stratégies de combat et redéfinissent les notions de supériorité militaire. Cette guerre démontre comment l'innovation technologique peut compenser des désavantages en termes de ressources ou de personnel.
 
-1. DRONES RUSSES ET UKRAINIENS : UNE GUERRE MENÉE À DISTANCE
+DRONES RUSSES ET UKRAINIENS : UNE GUERRE MENÉE À DISTANCE
 
 Depuis quelques années, les drones ont profondément transformé la manière de faire la guerre. Longtemps réservés à des missions de reconnaissance, ils sont aujourd'hui utilisés comme outils offensifs à part entière, capables de frapper des cibles avec précision tout en limitant les pertes humaines du côté de l'attaquant.
 
@@ -61,7 +61,7 @@ De son côté, la Russie utilise des drones plus lourds, notamment des drones d'
 
 Le conflit a également vu l'apparition de drones navals ukrainiens, utilisés pour attaquer des navires russes en mer Noire. Ces opérations, spectaculaires, ont démontré qu'un pays disposant de moyens limités pouvait menacer une flotte militaire grâce à des technologies relativement simples. La guerre en Ukraine montre ainsi que les drones ne sont plus un outil secondaire, mais bien un élément central des stratégies militaires modernes.
 
-2. L'INTELLIGENCE ARTIFICIELLE AU CŒUR DU CONFLIT RUSSO-UKRAINIEN
+L'INTELLIGENCE ARTIFICIELLE AU CŒUR DU CONFLIT RUSSO-UKRAINIEN
 
 L'intelligence artificielle s'est imposée comme un pilier essentiel des guerres contemporaines. Sa capacité à analyser rapidement d'immenses volumes de données en fait un atout majeur pour guider les choix militaires, notamment dans la sélection de cibles et l'interprétation d'images satellites ou de vidéos de drones.
 
@@ -73,7 +73,7 @@ Du côté russe, l'IA est également déployée pour le renseignement, la priori
 
 Cette intégration croissante de l'IA soulève des interrogations éthiques profondes. Même si la décision finale demeure humaine dans la plupart des cas, la délégation progressive à des algorithmes pose la question de la responsabilité en cas d'erreur, de biais ou de frappes indiscriminées. Le conflit en Ukraine agit comme un laboratoire grandeur nature, préfigurant des guerres futures où l'IA pourrait redéfinir fondamentalement les règles de l'engagement.
 
-3. CYBERATTAQUES ET GUERRE ÉLECTRONIQUE : LE FRONT INVISIBLE ENTRE MOSCOU ET KIEV
+CYBERATTAQUES ET GUERRE ÉLECTRONIQUE : LE FRONT INVISIBLE ENTRE MOSCOU ET KIEV
 
 Au-delà des combats terrestres, aériens et navals, la guerre entre la Russie et l'Ukraine se joue également dans un espace invisible : le cyberespace. Dès les premiers jours du conflit, des cyberattaques ont ciblé des institutions ukrainiennes, des réseaux de communication et des infrastructures critiques.
 
@@ -97,7 +97,9 @@ const formattedContent = computed(() => {
     .replace(/^(CONCLUSION)$/gm, '<h2>$1</h2>')
     .replace(/\n\n+/g, '</p><p style="margin: 16px 0; line-height: 1.8;">')
     .replace(/^(?!<)/gm, '<p style="margin: 16px 0; line-height: 1.8;">')
-  
+    .replace(/DRONES RUSSES ET UKRAINIENS : UNE GUERRE MENÉE À DISTANCE/g, '<h2>DRONES RUSSES ET UKRAINIENS : UNE GUERRE MENÉE À DISTANCE</h2>')
+    .replace(/L'INTELLIGENCE ARTIFICIELLE AU CŒUR DU CONFLIT RUSSO-UKRAINIEN/g, '<h2>L\'INTELLIGENCE ARTIFICIELLE AU CŒUR DU CONFLIT RUSSO-UKRAINIEN</h2>')
+    .replace(/CYBERATTAQUES ET GUERRE ÉLECTRONIQUE : LE FRONT INVISIBLE ENTRE MOSCOU ET KIEV/g, '<h2>CYBERATTAQUES ET GUERRE ÉLECTRONIQUE : LE FRONT INVISIBLE ENTRE MOSCOU ET KIEV</h2>')
   return formatted + '</p>'
 })
 

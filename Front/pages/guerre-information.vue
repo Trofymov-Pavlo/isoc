@@ -88,9 +88,9 @@ L'un des chapitres les plus inattendus de cette guerre restera l'émergence de l
 
 En répondant aux discours menaçants des diplomates russes par des mèmes absurdes et de l'argot internet, la NAFO a désamorcé la peur. « On ne peut pas terroriser quelqu'un qui se moque de vous », analyse Phillips O'Brien, professeur d'études stratégiques. Ils ont rendu la propagande russe inopérante en la rendant ridicule.
 
-LE CHAMP DE BATAILLE TECHNIQUE : ALGORITHMES ET TELEGRAM
+L'INFLUENCE DE L'ARCHITECTURE DES PLATEFORMES SUR LA GUERRE COGNITIVE
 
-En tant qu'étudiant en informatique et données (IDU), il est fascinant d'observer comment l'architecture même des plateformes façonne le conflit. Le code n'est pas neutre ; il est le terrain.
+L'analyse des flux d'information révèle que les choix de conception (design patterns) des applications grand public modifient structurellement les opérations d'influence et la collecte de renseignement en zone de conflit.
 
 Telegram : Le "Dark Web" grand public
 
@@ -132,7 +132,7 @@ VERS UNE HYGIÈNE NUMÉRIQUE DE GUERRE
 
 La guerre en Ukraine a définitivement aboli la frontière entre le civil et le militaire dans l'espace informationnel. Chaque "J'aime", chaque partage, chaque commentaire participe à la viralité d'un narratif ou d'un autre.
 
-Dans ce contexte, la formation d'ingénieur (IDU) prend une dimension civique. Comprendre comment une donnée est structurée, comment un algorithme favorise la colère, ou comment vérifier les métadonnées d'une image n'est plus seulement une compétence technique. C'est un acte de défense nationale.
+Comprendre comment une donnée est structurée, comment un algorithme favorise la colère, ou comment vérifier les métadonnées d'une image n'est plus seulement une compétence technique. C'est un acte de défense nationale.
 
 La leçon de ce conflit est claire : la liberté ne se défend pas uniquement avec des systèmes sol-air Patriot, mais aussi avec un esprit critique affûté, capable de dissiper le brouillard numérique que les autocraties tentent d'imposer au monde.`
 
@@ -144,7 +144,7 @@ const formattedContent = computed(() => {
   formatted = formatted
     .replace(/^(MOSCOU ET LA STRATÉGIE.+)$/gm, '<h2>$1</h2>')
     .replace(/^(KIEV OU LA.+)$/gm, '<h2>$1</h2>')
-    .replace(/^(LE CHAMP DE BATAILLE TECHNIQUE.+)$/gm, '<h2>$1</h2>')
+    .replace(/^(L'INFLUENCE DE L'ARCHITECTURE DES PLATEFORMES.+)$/gm, '<h2>$1</h2>')
     .replace(/^(L'ÈRE DE L'OSINT.+)$/gm, '<h2>$1</h2>')
     .replace(/^(2025-2026 : LE DÉFI.+)$/gm, '<h2>$1</h2>')
     .replace(/^(VERS UNE HYGIÈNE NUMÉRIQUE.+)$/gm, '<h2>$1</h2>')

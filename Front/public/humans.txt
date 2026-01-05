@@ -1,26 +1,29 @@
 /* TEAM */
 
-Chef de projet & Développeur principal : Antoine TENA
-Role: Architecture, développement full-stack, scraping, article désinformation
-Contact: antoine.tena [at] example.com
+Lead Developer & Axe Informationnel : Antoine TENA
+Role: Architecture Backend Django / Frontend Nuxt.js, acquisition données (flux RSS), rédaction Axe 2 (Guerre de l'Information)
+From: Polytech Annecy-Chambéry
 Location: France
 
-Analyste juridique : Nathan BARRACHIN
-Role: Recherche juridique, article enjeux juridiques, co-rédaction présentation
+Référent Juridique & Axe Éthique : Nathan BARRACHIN
+Role: Rédaction Axe 3 (Enjeux Éthiques et Juridiques), co-rédaction présentation
+From: Polytech Annecy-Chambéry
 Location: France
 
-Analyste militaire & Designer : Hiba ABDESSADAK
-Role: Analyse militaire, design UI/UX, article technologies militaires, co-rédaction présentation
+Analyste Défense & Axe Technologies Militaires : Hiba ABDESSADAK
+Role: Rédaction Axe 1 (Technologies Militaires), co-rédaction présentation
+From: Polytech Annecy-Chambéry
 Location: France
 
-Contributeur : Pavel TROFYMOV
-Role: Contribution aux travaux de recherche, co-rédaction présentation
+Membre du projet : Pavel TROFYMOV
+Role: 
+From: Polytech Annecy-Chambéry
 Location: France
 
 /* THANKS */
 
-Professeur du cours ISOC531 : Encadrement et supervision académique
-Sources médiatiques : Plus de 30 médias francophones agrégés
+Professeur du cours ISOC531 : Paul Mathieu (Encadrement et supervision académique)
+Sources médiatiques : 71 flux RSS d'articles + 25 chaînes YouTube agrégés
 Communauté open-source : Nuxt, Vue, Django, Vuetify
 
 /* SITE */
@@ -38,8 +41,8 @@ IDE: Visual Studio Code
 
 /* METHODOLOGY */
 
-Aggregation: Multi-source scraping (articles, RSS feeds)
-Sources: 30+ French-language media outlets
+Aggregation: Multi-source scraping (articles RSS, YouTube feeds)
+Sources: 71 French-language article RSS feeds + 25 YouTube channels
 Themes: Military, diplomatic, economic, humanitarian, legal, disinformation
 Update frequency: Hourly for live articles
 Authentication: JWT-based user accounts
@@ -64,15 +67,8 @@ Academic fair use for educational purposes
 User data protection (GDPR-inspired principles)
 No advertising or commercial exploitation
 
-/* CONTACT */
-
-Email: contact [at] axiome-isoc.fr
-GitHub: github.com/antoine/isoc (fictional)
-Location: France
-Social: N/A (student project)
-
 /* ABOUT THIS FILE */
 
 This humans.txt file follows the standard from http://humanstxt.org/
 It provides transparency about who built this website and how.
-Updated: January 4, 2026
+Updated: January 5, 2026

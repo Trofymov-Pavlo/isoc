@@ -1,6 +1,501 @@
 {
   "articles": [
     {
+      "source": "Kyiv Post",
+      "title": "Budanov Gets New First Deputy as Zelensky Appoints Veteran Diplomat Kyslytsia",
+      "link": "https://www.kyivpost.com/post/67430",
+      "published": "2026-01-05T08:51:09+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/05/d9e0f95f8c9b82d6953d54c155ad6b34.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/05/d9e0f95f8c9b82d6953d54c155ad6b34.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/05/d9e0f95f8c9b82d6953d54c155ad6b34.jpg?w=640&q=90&f=jpg",
+      "author": "Kyiv Post",
+      "summary": "Zelensky has appointed longtime diplomat Serhiy Kyslytsia as First Deputy Head of the Presidential Office, while naming Chrystia Freeland an economic advisor.",
+      "publishedTime": 1767603069000,
+      "archived_at": "2026-01-05T10:02:53.397402+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "2 Killed in Series of Russian Attacks on Ukraine",
+      "link": "https://www.themoscowtimes.com/2026/01/05/2-killed-in-series-of-russian-attacks-on-ukraine-a91605",
+      "published": "2026-01-05T08:41:54+00:00",
+      "media": null,
+      "summary": "The attacks came on the eve of a meeting of European leaders in Paris as they seek a breakthrough on a peace plan Kyiv says is \"90%\" ready.",
+      "publishedTime": 1767602514000,
+      "archived_at": "2026-01-05T10:02:53.397513+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "Trump ne croit finalement pas à une attaque de l’Ukraine contre la résidence de Poutine",
+      "link": "https://www.liberation.fr/international/amerique/trump-ne-croit-finalement-pas-a-une-attaque-de-lukraine-contre-la-residence-de-poutine-20260105_46Y7NPVLM5B2NONU3RB3QO7BQE/",
+      "published": "2026-01-05T08:31:24+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/IRK5EXXDUZASTJBU7X526GASQ4.jpg?auth=77407a56ed744cb0a7837f5f26fa441565017a473a4710550b3b3acbf0da2f22&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Elizabeth Frantz"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/IRK5EXXDUZASTJBU7X526GASQ4.jpg?auth=77407a56ed744cb0a7837f5f26fa441565017a473a4710550b3b3acbf0da2f22&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/IRK5EXXDUZASTJBU7X526GASQ4.jpg?auth=77407a56ed744cb0a7837f5f26fa441565017a473a4710550b3b3acbf0da2f22&smart=true&width=1024&height=682",
+      "author": "LIBERATION,  AFP",
+      "summary": "Le président américain, qui s’était emporté contre Kyiv au lendemain des accusations proférées par Moscou le 29 décembre, a rétropédalé dimanche 4 janvier.",
+      "publishedTime": 1767601884000,
+      "archived_at": "2026-01-05T10:02:53.397593+00:00"
+    },
+    {
+      "source": "Est Républicain",
+      "title": "Guerre en Ukraine. La Russie tue deux personnes dans une série d'attaques à Kiev et sa périphérie",
+      "link": "https://www.estrepublicain.fr/defense-guerre-conflit/2026/01/05/la-russie-tue-deux-personnes-dans-une-serie-d-attaques-a-kiev-et-sa-peripherie",
+      "published": "2026-01-05T08:26:00+00:00",
+      "media": null,
+      "summary": "Des alertes antiaériennes ont résonné sur tout le territoire au cours de la nuit et l'armée a averti de nombreux mouvements de missiles et drones russes.",
+      "publishedTime": 1767601560000,
+      "archived_at": "2026-01-05T10:02:53.397664+00:00"
+    },
+    {
+      "source": "L'Alsace",
+      "title": "Guerre en Ukraine. La Russie tue deux personnes dans une série d'attaques à Kiev et sa périphérie",
+      "link": "https://www.lalsace.fr/defense-guerre-conflit/2026/01/05/la-russie-tue-deux-personnes-dans-une-serie-d-attaques-a-kiev-et-sa-peripherie",
+      "published": "2026-01-05T08:26:00+00:00",
+      "media": null,
+      "summary": "Des alertes antiaériennes ont résonné sur tout le territoire au cours de la nuit et l'armée a averti de nombreux mouvements de missiles et drones russes.",
+      "publishedTime": 1767601560000,
+      "archived_at": "2026-01-05T10:02:53.397737+00:00"
+    },
+    {
+      "source": "Le Dauphiné",
+      "title": "Guerre en Ukraine. La Russie tue deux personnes dans une série d'attaques à Kiev et sa périphérie",
+      "link": "https://www.ledauphine.com/defense-guerre-conflit/2026/01/05/la-russie-tue-deux-personnes-dans-une-serie-d-attaques-a-kiev-et-sa-peripherie",
+      "published": "2026-01-05T08:26:00+00:00",
+      "media": null,
+      "summary": "Des alertes antiaériennes ont résonné sur tout le territoire au cours de la nuit et l'armée a averti de nombreux mouvements de missiles et drones russes.",
+      "publishedTime": 1767601560000,
+      "archived_at": "2026-01-05T10:02:53.397810+00:00"
+    },
+    {
+      "source": "The Moscow Times",
+      "title": "Trump Says He Doesn't Believe Ukraine Struck Putin Residence",
+      "link": "https://www.themoscowtimes.com/2026/01/05/trump-says-he-doesnt-believe-ukraine-struck-putin-residence-a91604",
+      "published": "2026-01-05T08:26:00+00:00",
+      "media": null,
+      "summary": "Trump said that \"something\" happened near Putin's residence, but U.S. officials did not believe it had been targeted by Kyiv.",
+      "publishedTime": 1767601560000,
+      "archived_at": "2026-01-05T10:02:53.397882+00:00"
+    },
+    {
+      "source": "La Croix (Monde)",
+      "title": "Guerre en Ukraine, jour 1412 : attaque russe meurtrière ; Trump réagit à des allégations de Moscou",
+      "link": "https://www.la-croix.com/international/ukraine-russie-jour-1412-point-conflit-ukrainien-poutine-aujourdhui-20260105",
+      "published": "2026-01-05T08:07:46+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2026/01/05/2300351-des-soldats-s-entrainent-au-tir-avec-le-missile-an.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2026/01/05/2300351-des-soldats-s-entrainent-au-tir-avec-le-missile-an.jpg",
+      "thumb": "https://i.la-croix.com/x/2026/01/05/2300351-des-soldats-s-entrainent-au-tir-avec-le-missile-an.jpg",
+      "author": "La Croix (avec AFP)",
+      "summary": "Des bombardements russes visant l’Ukraine ont fait au moins deux morts à Kiev et dans sa périphérie, ont rapporté les autorités locales lundi 5 janvier. Donald Trump a indiqué ne pas croire les affirmations de Moscou selon lesquelles l’Ukraine aurait attaqué avec des drones une résidence de Vladimir Poutine.",
+      "publishedTime": 1767600466000,
+      "archived_at": "2026-01-05T10:02:53.397954+00:00"
+    },
+    {
+      "source": "La Dépêche (monde)",
+      "title": "DIRECT. Guerre en Ukraine : deux morts dans des attaques russes à la veille d’une réunion à Paris de pays alliés de Kiev",
+      "link": "https://www.ladepeche.fr/2026/01/05/direct-guerre-en-ukraine-deux-morts-dans-des-attaques-russes-a-la-veille-dune-reunion-a-paris-de-pays-allies-de-kiev-13144080.php",
+      "published": "2026-01-05T07:54:49+00:00",
+      "media": {
+        "url": "https://images.ladepeche.fr/api/v1/images/view/695b5bae068b4aec6b0da700/standard/image.jpg?v=1",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://images.ladepeche.fr/api/v1/images/view/695b5bae068b4aec6b0da700/standard/image.jpg?v=1",
+      "thumb": "https://images.ladepeche.fr/api/v1/images/view/695b5bae068b4aec6b0da700/standard/image.jpg?v=1",
+      "summary": "Suivez la situation en Ukraine et en Russie en direct sur ladepechedumidi.fr",
+      "publishedTime": 1767599689000,
+      "archived_at": "2026-01-05T10:02:53.398030+00:00"
+    },
+    {
+      "source": "Le Monde (en continu)",
+      "title": "EN DIRECT, guerre en Ukraine : nouvelles attaques russes sur Kiev, et nouvelles coupures de courant dans une nuit à − 8 °C",
+      "link": "https://www.lemonde.fr/international/live/2026/01/05/en-direct-guerre-en-ukraine-nouvelles-attaques-russes-sur-kiev-et-nouvelles-coupures-de-courant-dans-une-nuit-a-8-c_6660486_3210.html",
+      "published": "2026-01-05T07:52:30+00:00",
+      "media": {
+        "url": "https://img.lemde.fr/2026/01/05/911/0/5790/2895/644/322/60/0/efa5dc9_ftp-1-sqsup4r2wuma-2026-01-05t081816z-248641900-rc2uuiaceymb-rtrmadp-3-ukraine-crisis-attack-kyiv.JPG",
+        "width": 644,
+        "height": 322,
+        "type": null,
+        "description": null,
+        "credit": "Valentyn Ogirenko/REUTERS"
+      },
+      "image": "https://img.lemde.fr/2026/01/05/911/0/5790/2895/644/322/60/0/efa5dc9_ftp-1-sqsup4r2wuma-2026-01-05t081816z-248641900-rc2uuiaceymb-rtrmadp-3-ukraine-crisis-attack-kyiv.JPG",
+      "thumb": "https://img.lemde.fr/2026/01/05/911/0/5790/2895/644/322/60/0/efa5dc9_ftp-1-sqsup4r2wuma-2026-01-05t081816z-248641900-rc2uuiaceymb-rtrmadp-3-ukraine-crisis-attack-kyiv.JPG",
+      "summary": "Dans la périphérie de la capitale ukrainienne, les frappes – qui ont fait un mort et trois blessés dans une clinique privée – ont nécessité le lancement de systèmes de secours. « Près de 8 500 familles » ont été privées d’électricité, selon des responsables locaux.",
+      "publishedTime": 1767599550000,
+      "archived_at": "2026-01-05T10:02:53.398104+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Ukraine Drones Hit Russia’s Top Battery Plant in Lipetsk, Massive Fire Erupts",
+      "link": "https://www.kyivpost.com/post/67420",
+      "published": "2026-01-05T07:08:14+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/05/dc5af92625558e30d6fb70cc5e3bd053.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/05/dc5af92625558e30d6fb70cc5e3bd053.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/05/dc5af92625558e30d6fb70cc5e3bd053.jpeg?w=640&q=90&f=jpg",
+      "author": "Kyiv Post",
+      "summary": "With its chemical power sources utilised across defense, civil aviation, maritime transport, and energy, the “Energia” plant remains a high-value, strategic target.",
+      "publishedTime": 1767596894000,
+      "archived_at": "2026-01-05T10:02:53.398180+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Trump’s Strike on Venezuela and What This Means for Ukraine",
+      "link": "https://www.kyivpost.com/opinion/67417",
+      "published": "2026-01-05T06:43:51+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/12/99b85f7df081204f34803e2dac6b128d.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/12/99b85f7df081204f34803e2dac6b128d.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/12/99b85f7df081204f34803e2dac6b128d.jpg?w=640&q=90&f=jpg",
+      "author": "Bohdan Nahaylo",
+      "summary": "While on the surface a welcome blow by the US to remove a dictatorial ally of Putin and Lukashenko, what are the deeper problematic nuances of this for Ukraine and its supporters?",
+      "publishedTime": 1767595431000,
+      "archived_at": "2026-01-05T10:02:53.398266+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "En Ukraine, de nouvelles attaques russes font deux morts à Kyiv et dans sa région",
+      "link": "https://www.liberation.fr/international/europe/en-ukraine-de-nouvelles-attaques-russes-font-deux-morts-a-kyiv-et-dans-sa-region-20260105_XRA5JI4MAVAVBB7BSGMGJXYYPM/",
+      "published": "2026-01-05T06:12:44+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/SJSPP4UYSNE7ROQPYNNYJLZJB4.jpg?auth=8acb6a3403ddbd642a9d6a9cb581d149c7dfae1aa86c6e1bfd65ff70f1ad76ad&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Valentyn Ogirenko"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/SJSPP4UYSNE7ROQPYNNYJLZJB4.jpg?auth=8acb6a3403ddbd642a9d6a9cb581d149c7dfae1aa86c6e1bfd65ff70f1ad76ad&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/SJSPP4UYSNE7ROQPYNNYJLZJB4.jpg?auth=8acb6a3403ddbd642a9d6a9cb581d149c7dfae1aa86c6e1bfd65ff70f1ad76ad&smart=true&width=1024&height=682",
+      "author": "LIBERATION,  AFP",
+      "summary": "Des bombardements nocturnes ont touché une clinique privée à Kyiv et des habitations en périphérie. Ces frappes interviennent à la veille d’une réunion à Paris de la «coalition des volontaires», les alliés de l’Ukraine.",
+      "publishedTime": 1767593564000,
+      "archived_at": "2026-01-05T10:02:53.398361+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Ukraine: The Case For Optimism (Part II)",
+      "link": "https://www.kyivpost.com/opinion/67398",
+      "published": "2026-01-05T06:11:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+      "author": "Nicolas Tenzer",
+      "summary": "Where realism and rationality meet.",
+      "publishedTime": 1767593460000,
+      "archived_at": "2026-01-05T10:02:53.398434+00:00"
+    },
+    {
+      "source": "Slate France",
+      "title": "La guerre en Ukraine a-t-elle tué l'industrie de la mode en Russie?",
+      "link": "https://www.slate.fr/economie/guerre-ukraine-tuer-industrie-textile-mode-russie-poutine-inflation-chine-consommation",
+      "published": "2026-01-05T05:55:05+00:00",
+      "media": {
+        "url": "https://cdn.slate.fr/uploads/store/story_271908/original_271908.jpg",
+        "width": null,
+        "height": null,
+        "type": "jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://cdn.slate.fr/uploads/store/story_271908/original_271908.jpg",
+      "thumb": "https://cdn.slate.fr/uploads/store/story_271908/original_271908.jpg",
+      "author": "Laura Perren",
+      "summary": "Portée un temps par le retrait de Zara, H&amp;M ou Bershka, l'industrie nationale de l'habillement fait désormais face à une inflation brutale, à sa dépendance à la Chine et au désintérêt croissant des consommateurs.",
+      "publishedTime": 1767592505000,
+      "archived_at": "2026-01-05T07:08:42.786957+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Russian Strike Hits Kyiv Clinic, Kills Patient as Moscow Launches Massive Drone, Missile Attack",
+      "link": "https://www.kyivpost.com/post/67410",
+      "published": "2026-01-05T05:42:50+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/05/e1a4bf5e321c96034534db06fccd5f6d.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/05/e1a4bf5e321c96034534db06fccd5f6d.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/05/e1a4bf5e321c96034534db06fccd5f6d.jpg?w=640&q=90&f=jpg",
+      "author": "Kyiv Post",
+      "summary": "A Russian overnight strike hit a private clinic in Kyiv’s Obolon district, killing a patient and injuring others, as Moscow launched a massive drone and missile attack across Ukraine.",
+      "publishedTime": 1767591770000,
+      "archived_at": "2026-01-05T07:08:42.787183+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "Comparution de Maduro à New York, frappes russes en Ukraine, vigilance neige et verglas… L’actu de ce lundi 5 janvier au matin",
+      "link": "https://www.liberation.fr/international/europe/comparution-de-maduro-a-new-york-frappes-russes-en-ukraine-vigilance-neige-et-verglas-lactu-de-ce-lundi-5-janvier-au-matin-20260105_SNYK4Z5NABEQ7M3R7V3Q6P2W3M/",
+      "published": "2026-01-05T05:38:19+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/M7JRYIKEGVBMJD27ZJMSN7HMDE.jpg?auth=25e9ba9a963452ccd3f5211dbb4f6622014d46d699ee8c99f58126a305684013&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Yuki Iwamura"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/M7JRYIKEGVBMJD27ZJMSN7HMDE.jpg?auth=25e9ba9a963452ccd3f5211dbb4f6622014d46d699ee8c99f58126a305684013&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/M7JRYIKEGVBMJD27ZJMSN7HMDE.jpg?auth=25e9ba9a963452ccd3f5211dbb4f6622014d46d699ee8c99f58126a305684013&smart=true&width=1024&height=682",
+      "author": "LIBERATION,  AFP",
+      "summary": "La rédaction de «Libération» compile les principales infos du jour.",
+      "publishedTime": 1767591499000,
+      "archived_at": "2026-01-05T10:02:53.398513+00:00"
+    },
+    {
+      "source": "Sud Ouest (international)",
+      "title": "Guerre en Ukraine : deux morts dans une série d’attaques russes",
+      "link": "https://www.sudouest.fr/international/europe/ukraine/guerre-en-ukraine-deux-morts-dans-une-serie-d-attaques-russes-27293385.php",
+      "published": "2026-01-05T05:04:58+00:00",
+      "media": null,
+      "summary": "Des frappes russes ont fait au moins deux morts cette nuit à Kiev et dans sa périphérie",
+      "publishedTime": 1767589498000,
+      "archived_at": "2026-01-05T10:02:53.398586+00:00"
+    },
+    {
+      "source": "L'Express (a la une)",
+      "title": "\"Il n’y a plus d’hommes là-bas\" : le témoignage inédit d'un \"malgré-nous\" du Donbass",
+      "link": "https://www.lexpress.fr/monde/europe/il-ny-a-plus-dhommes-la-bas-le-temoignage-inedit-dun-malgre-nous-du-donbass-N3STCL4ZABG3PO43AETAWIB5DY/",
+      "published": "2026-01-05T03:45:00+00:00",
+      "media": {
+        "url": "https://www.lexpress.fr/resizer/v2/AD7DVYZBCFHGVPW3IMBSWM4DOM.JPG?auth=9adedf855f14e68f35aa5ef2d8ac21f8b3a2116066ff26241a2603d9162cf6d7&smart=true&width=1920&height=1080",
+        "width": 1920,
+        "height": 1080,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "EYEPRESS via Reuters Connect"
+      },
+      "image": "https://www.lexpress.fr/resizer/v2/AD7DVYZBCFHGVPW3IMBSWM4DOM.JPG?auth=9adedf855f14e68f35aa5ef2d8ac21f8b3a2116066ff26241a2603d9162cf6d7&smart=true&width=1920&height=1080",
+      "thumb": "https://www.lexpress.fr/resizer/v2/AD7DVYZBCFHGVPW3IMBSWM4DOM.JPG?auth=9adedf855f14e68f35aa5ef2d8ac21f8b3a2116066ff26241a2603d9162cf6d7&smart=true&width=1920&height=1080",
+      "publishedTime": 1767584700000,
+      "archived_at": "2026-01-05T07:08:42.787338+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘Important That Changes Continue’ – Zelensky Announces Cabinet Reshuffle for Monday",
+      "link": "https://www.kyivpost.com/post/67404",
+      "published": "2026-01-05T01:55:03+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/05/d537e2436d90ab32e968489bce68eaea.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/05/d537e2436d90ab32e968489bce68eaea.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/05/d537e2436d90ab32e968489bce68eaea.jpeg?w=640&q=90&f=jpg",
+      "author": "John Moretti",
+      "summary": "Zelensky said that ongoing leadership changes to be announced tomorrow, and said that, at Tuesday’s meetings with Europeans, ‘Ukraine will not give up its strength to anyone.’",
+      "publishedTime": 1767578103000,
+      "archived_at": "2026-01-05T07:08:42.787512+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘Didn’t Happen’ – Trump Rejects Putin’s Drone Claim, Says Ukraine Not Responsible",
+      "link": "https://www.kyivpost.com/post/67403",
+      "published": "2026-01-05T01:40:34+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/05/61c28b9ea1601dfddda567a3c70328f5.jpeg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/05/61c28b9ea1601dfddda567a3c70328f5.jpeg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/05/61c28b9ea1601dfddda567a3c70328f5.jpeg?w=640&q=90&f=jpg",
+      "author": "Alex Raufoglu",
+      "summary": "Returning to Washington, the US president distanced himself from Kremlin claims while juggling Ukraine peace talks, pressure on buyers of Russian oil, and bold rhetoric on Greenland, Iran, Venezuela.",
+      "publishedTime": 1767577234000,
+      "archived_at": "2026-01-05T07:08:42.787662+00:00"
+    },
+    {
+      "source": "Le Monde (en continu)",
+      "title": "Colère agricole : dans l’Ariège, face à la dermatose nodulaire contagieuse, « on a l’impression de jouer à la roulette russe »",
+      "link": "https://www.lemonde.fr/economie/article/2026/01/04/colere-agricole-en-ariege-face-a-la-dermatose-nodulaire-contagieuse-on-a-l-impression-de-jouer-a-la-roulette-russe_6660548_3234.html",
+      "published": "2026-01-04T17:01:07+00:00",
+      "media": {
+        "url": "https://img.lemde.fr/2025/12/11/291/0/3485/1742/644/322/60/0/3916d50_ftp-1-x22bmrurshkw-5655311-01-06.jpg",
+        "width": 644,
+        "height": 322,
+        "type": null,
+        "description": null,
+        "credit": "MATTHIEU RONDEL / AFP"
+      },
+      "image": "https://img.lemde.fr/2025/12/11/291/0/3485/1742/644/322/60/0/3916d50_ftp-1-x22bmrurshkw-5655311-01-06.jpg",
+      "thumb": "https://img.lemde.fr/2025/12/11/291/0/3485/1742/644/322/60/0/3916d50_ftp-1-x22bmrurshkw-5655311-01-06.jpg",
+      "summary": "Avec l’apparition de deux nouveaux foyers de la DNC en l’espace d’une semaine, éleveurs, syndicalistes et élus de ce département d’Occitanie se disent à bout.",
+      "publishedTime": 1767546067000,
+      "archived_at": "2026-01-05T10:02:53.398662+00:00"
+    },
+    {
+      "source": "Libération (à la une)",
+      "title": "Attaque américaine au Venezuela : à Pékin et Moscou, l’embarras des alliés de Maduro",
+      "link": "https://www.liberation.fr/international/amerique/attaque-americaine-au-venezuela-a-pekin-et-moscou-lembarras-des-allies-de-maduro-20260104_URLIHHAFTRG45PJZPOAA5ECXYA/",
+      "published": "2026-01-04T16:13:12+00:00",
+      "media": {
+        "url": "https://www.liberation.fr/resizer/v2/5ORDAUKZPFAFBPSDF56VOEUJMM.jpg?auth=d4429cc5d4164cfebccc6152bd5a886002e9fb9349f0b087e461d0ddf7c5744e&smart=true&width=1024&height=682",
+        "width": 1024,
+        "height": 682,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": "Sefa Karacan"
+      },
+      "image": "https://www.liberation.fr/resizer/v2/5ORDAUKZPFAFBPSDF56VOEUJMM.jpg?auth=d4429cc5d4164cfebccc6152bd5a886002e9fb9349f0b087e461d0ddf7c5744e&smart=true&width=1024&height=682",
+      "thumb": "https://www.liberation.fr/resizer/v2/5ORDAUKZPFAFBPSDF56VOEUJMM.jpg?auth=d4429cc5d4164cfebccc6152bd5a886002e9fb9349f0b087e461d0ddf7c5744e&smart=true&width=1024&height=682",
+      "author": "Antoine Galindo",
+      "summary": "L’opération menée par les Etats-Unis le 3 janvier est un coup dur pour les ambitions diplomatiques de la Chine et de la Russie en Amérique latine. Mais elle pourrait aussi servir de précédent pour leurs volontés hégémoniques.",
+      "publishedTime": 1767543192000,
+      "archived_at": "2026-01-05T10:02:53.398735+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "‘He Deserves a Hero of Ukraine medal’: Polish Volunteer Dies of Injuries Sustained on Front Line",
+      "link": "https://www.kyivpost.com/post/67400",
+      "published": "2026-01-04T14:20:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/04/c6510b97280ac8272f93c69d615b47a0.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/04/c6510b97280ac8272f93c69d615b47a0.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/04/c6510b97280ac8272f93c69d615b47a0.jpg?w=640&q=90&f=jpg",
+      "author": "TVP World",
+      "summary": "Veteran Polish volunteer Kacper ‘Frantsuz’ Bass, a former French Foreign Legionnaire, died of wounds after a frontline strike in Kharkiv, ending three years of combat for Ukraine.",
+      "publishedTime": 1767536400000,
+      "archived_at": "2026-01-05T07:08:42.787880+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Ukraine: The Case For Optimism (Part I)",
+      "link": "https://www.kyivpost.com/opinion/67397",
+      "published": "2026-01-04T13:39:46+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/04/4ef5f3c7ac7333a3e6dc77e457c48670.png?w=640&q=90&f=jpg",
+      "author": "Nicolas Tenzer",
+      "summary": "Where realism and rationality meet.",
+      "publishedTime": 1767533986000,
+      "archived_at": "2026-01-05T07:08:42.788025+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Zelensky Targets Russia’s Electronic Warfare Supply Chain With New Sanctions",
+      "link": "https://www.kyivpost.com/post/67393",
+      "published": "2026-01-04T12:02:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2025/12/18/95dc631f25b54e339b5227851a5dbcb7.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2025/12/18/95dc631f25b54e339b5227851a5dbcb7.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2025/12/18/95dc631f25b54e339b5227851a5dbcb7.jpg?w=640&q=90&f=jpg",
+      "author": "Korbinian Leo Kramer",
+      "summary": "Kyiv moves beyond symbolic pressure, targeting the technology and supply networks behind Russia’s electronic warfare capabilities and urging Western partners to mirror the measures.",
+      "publishedTime": 1767528120000,
+      "archived_at": "2026-01-05T07:08:42.788173+00:00"
+    },
+    {
+      "source": "Kyiv Post",
+      "title": "Lessons of Ukraine for Taiwan, China",
+      "link": "https://www.kyivpost.com/opinion/67391",
+      "published": "2026-01-04T11:12:00+00:00",
+      "media": {
+        "url": "https://static.kyivpost.com/storage/2026/01/04/2c516dc403b689c413c4edc56937d908.jpg?w=640&q=90&f=jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://static.kyivpost.com/storage/2026/01/04/2c516dc403b689c413c4edc56937d908.jpg?w=640&q=90&f=jpg",
+      "thumb": "https://static.kyivpost.com/storage/2026/01/04/2c516dc403b689c413c4edc56937d908.jpg?w=640&q=90&f=jpg",
+      "author": "Tom Clifford",
+      "summary": "How Ukraine and Taiwan could deepen cooperation as both seek to survive the menace from larger neighbors.",
+      "publishedTime": 1767525120000,
+      "archived_at": "2026-01-05T07:08:42.788313+00:00"
+    },
+    {
+      "source": "La Croix (International)",
+      "title": "Guerre en Ukraine : attirés par de fausses promesses, des Kényans sont enrôlés au sein de l’armée russe",
+      "link": "https://www.la-croix.com/international/guerre-en-ukraine-attires-par-de-fausses-promesses-des-kenyans-sont-enroles-au-sein-de-l-armee-russe-20260104",
+      "published": "2026-01-04T10:30:09+00:00",
+      "media": {
+        "url": "https://i.la-croix.com/x/2026/01/04/2297556-david-kuloba-un-jeune-homme-kenyan-de-22-ans-est-m.jpg",
+        "width": null,
+        "height": null,
+        "type": "image/jpeg",
+        "description": null,
+        "credit": null
+      },
+      "image": "https://i.la-croix.com/x/2026/01/04/2297556-david-kuloba-un-jeune-homme-kenyan-de-22-ans-est-m.jpg",
+      "thumb": "https://i.la-croix.com/x/2026/01/04/2297556-david-kuloba-un-jeune-homme-kenyan-de-22-ans-est-m.jpg",
+      "author": "Albane Thirouard, correspondante à Nairobi (Kenya)",
+      "summary": "Dix-huit Kényans ont été rapatriés de Russie depuis le mois de septembre, selon Nairobi. Ils seraient plus de deux cents à avoir été enrôlés au sein des forces armées russes, certains attirés par de fausses offres d’emploi. Une partie d’entre eux est toujours « en détresse » dans des hôpitaux ou camps militaires russes.",
+      "publishedTime": 1767522609000,
+      "archived_at": "2026-01-05T07:08:42.788473+00:00"
+    },
+    {
       "source": "HuffPost France",
       "title": "Zelensky n’a pas pu réfréner ce sarcasme après la capture de Maduro par les États-Unis",
       "link": "https://www.huffingtonpost.fr/international/article/zelensky-n-a-pas-pu-reprimer-ce-sarcasme-apres-la-capture-de-maduro-par-les-etats-unis_258850.html",
@@ -18541,6 +19036,39 @@
     }
   ],
   "videos": [
+    {
+      "channel": "Al Jazeera English",
+      "title": "Russia carried out overnight strikes on Ukraine's Kyiv, killing at least two people",
+      "link": "https://www.youtube.com/watch?v=gqSdv6BM2ow",
+      "published": "2026-01-05T09:01:10Z",
+      "publishedTime": 1767603670000,
+      "thumbnail": "https://i.ytimg.com/vi/gqSdv6BM2ow/hqdefault.jpg",
+      "summary": "Russia has carried out overnight strikes on Ukraine’s capital region, killing at least two people. \nOne person was killed in Kyiv, as air raid sirens sounded across the country. \nA man in his seventies was killed in the neighbouring city of Fastiv.\nMoscow has ramped up pressure on Ukraine as Kyiv an",
+      "type": "youtube",
+      "archived_at": "2026-01-05T09:46:03.276543+00:00"
+    },
+    {
+      "channel": "Associated Press",
+      "title": "Trump says Ukraine didn't target Putin's residence in drone strike as Kremlin claims",
+      "link": "https://www.youtube.com/watch?v=xlo7YlmrAhU",
+      "published": "2026-01-05T05:45:06Z",
+      "publishedTime": 1767591906000,
+      "thumbnail": "https://i.ytimg.com/vi/xlo7YlmrAhU/hqdefault.jpg",
+      "summary": "President Donald Trump on Sunday told reporters that U.S. officials have determined that Ukraine did not target a residence belonging to Russian President Vladimir Putin in a drone attack last week.\n\n#russia #putin #trump \r\n\r\nSubscribe: http://smarturl.it/AssociatedPress\r\nRead more: https://apnews.c",
+      "type": "youtube",
+      "archived_at": "2026-01-05T07:09:03.654109+00:00"
+    },
+    {
+      "channel": "Al Jazeera English",
+      "title": "Ukraine shows how budget drones are rewriting the rules of warfare",
+      "link": "https://www.youtube.com/watch?v=fVmOBRFlE6E",
+      "published": "2026-01-04T13:45:00Z",
+      "publishedTime": 1767534300000,
+      "thumbnail": "https://i.ytimg.com/vi/fVmOBRFlE6E/hqdefault.jpg",
+      "summary": "Traditional weapons costing millions of dollars are still used on today’s battlefields.\nBut they are increasingly supported, and sometimes replaced, by low-cost drones worth only a few hundred dollars.\nThe shift is transforming how wars are fought, favouring speed, precision and mass deployment.\nIn ",
+      "type": "youtube",
+      "archived_at": "2026-01-05T07:09:06.249264+00:00"
+    },
     {
       "channel": "Euronews",
       "title": "Ukraine : Volodymyr Zelensky nomme Kyrylo Boudanov au poste de chef de cabinet",
