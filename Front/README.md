@@ -103,17 +103,27 @@ runtimeConfig: {
 
 ## Pages principales
 
+**Pages publiques :**
 - **/** - Accueil (hero + sections principales)
 - **/en-direct** - Actualités en temps réel
 - **/explorer** - Recherche et filtrage avancé
-- **/liked** - Mes favoris (authentification requise)
-- **/mon-compte** - Gestion du compte utilisateur
-- **/contact** - Formulaire de contact
+- **/articles** - Liste des articles
+- **/video** - Vidéos
 - **/a-propos** - Mission, méthodologie, équipe
-- **/connexion** - Authentification
+- **/contact** - Formulaire de contact
+- **/enjeux-ethiques** - Article Axe 3 (Nathan)
+- **/guerre-information** - Article Axe 2 (Antoine)
+- **/technologies-militaires** - Article Axe 1 (Hiba)
+
+**Pages authentification :**
+- **/connexion** - Connexion
 - **/signup** - Inscription
-- **/forgot-password** - Réinitialisation du mot de passe
-- **/conditions** - Conditions générales d'utilisation
+- **/forgot-password** - Réinitialisation mot de passe
+- **/mon-compte** - Gestion compte (auth requise)
+- **/liked** - Mes favoris (auth requise)
+
+**Pages légales :**
+- **/conditions** - CGU
 - **/mentions** - Mentions légales
 - **/cookies** - Politique cookies
 

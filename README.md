@@ -101,11 +101,11 @@ npm run dev
 
 ## 👥 Équipe ISOC531
 
-- **Chef de projet & Développeur** : Antoine TENA (architecture, dev full-stack, article désinformation)
-- **Analyste juridique** : Nathan BARRACHIN (article enjeux juridiques)
-- **Analyste militaire & Designer** : Hiba ABDESSADAK (article technologies militaires, UI/UX)
-- **Contributeur** : Pavel TROFYMOV (recherche)
-- **Présentation** : Co-rédigée par toute l'équipe
+- **Lead Developer & Axe Informationnel** : Antoine TENA (Backend Django / Frontend Nuxt.js, flux RSS, Axe 2 Guerre de l'Information)
+- **Référent Juridique & Axe Éthique** : Nathan BARRACHIN (Axe 3 Enjeux Éthiques et Juridiques)
+- **Analyste Défense & Axe Technologies Militaires** : Hiba ABDESSADAK (Axe 1 Technologies Militaires, UI/UX)
+- **Membre du projet** : Pavel TROFYMOV (co-rédaction présentation)
+- **Institution** : Polytech Annecy-Chambéry
 
 ## 🔗 Configuration Backend-Frontend
 
@@ -117,13 +117,16 @@ apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/accounts
 
 ## 📊 Sources d'information
 
-Le backend agrège 30+ sources francophones :
+Le backend agrège **71 flux RSS d'articles** + **25 chaînes YouTube** :
 - **Généralistes** : Le Monde, Le Figaro, Libération, L'Express
-- **Internationaux** : RFI, France 24, TV5 Monde
-- **Régionaux** : Sud Ouest, La Dépêche, Ouest-France
-- **Anglophones** : Kyiv Post, BBC, Reuters
+- **Internationaux** : RFI, France 24, TV5 Monde, BBC, Reuters
+- **Régionaux** : Sud Ouest, La Dêpêche, Ouest-France
+- **Spécialisés** : Bellingcat (OSINT), Oryx (pertes matérielles)
+- **Sources ukrainiennes** : Kyiv Post, UNIAN
+- **Sources russes indépendantes** : The Moscow Times, Meduza
+- **Vidéos** : ARTE, Le Monde, France 24, BFM TV, BBC News, DW News, Warthog Defense
 
-Voir `Back/scraping/articles/feeds.py` pour la liste complète.
+Voir `Back/scraping/articles/feeds.py` et `Back/scraping/videos/feeds.py` pour la liste complète.
 
 ## 🔧 Dépannage
 

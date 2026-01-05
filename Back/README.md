@@ -138,23 +138,24 @@ curl http://localhost:8000/api/accounts/me -H "Authorization: Bearer <token>"
 curl http://localhost:8000/api/accounts/me -H "Authorization: Bearer <token>"
 ```
 
-## Features
+## 🎯 Features
 
-### Authentification
-- ✅ JWT avec access (15min) et refresh (7 jours) tokens
-- ✅ Inscription avec validation email
-- ✅ Connexion sécurisée
-- ✅ Rate limiting (5 req/min pour auth)
-- ✅ Refresh automatique des tokens
-
-### Favoris utilisateurs
+**Backend (Django REST Framework)**
+- ✅ Authentification JWT (inscription, connexion, refresh)
+- ✅ Scraping 71 flux RSS + 25 chaînes YouTube
+- ✅ Filtrage multi-critères (mots-clés, sources, dates)
+- ✅ Gestion favoris utilisateurs (SavedMedia)
+- ✅ Archive JSON persistante (247k+ articles)
+- ✅ API REST avec CORS configuré
+- ✅ Rate limiting et throttling
 - ✅ Sauvegarde articles/vidéos
 - ✅ Catégories personnalisées
 - ✅ Gestion complète (add, remove, list)
 - ✅ Synchronisation avec frontend
 
 ### Scraping
-- ✅ 30+ flux RSS francophones
+- ✅ 71 flux RSS articles francophones
+- ✅ 25 chaînes YouTube
 - ✅ Archive JSON 247k+ articles
 - ✅ Filtrage multi-critères
 - ✅ Extraction images et métadonnées
@@ -172,18 +173,22 @@ curl http://localhost:8000/api/accounts/me -H "Authorization: Bearer <token>"
 ### Sources RSS
 
 Les flux RSS sont définis dans `scraping/articles/feeds.py` :
-- **Généralistes** : Le Monde, Le Figaro, Libération
-- **Internationaux** : RFI, France 24
-- **Anglophones** : Kyiv Post, BBC
-- Et 45+ autres sources
+- **Généralistes** : Le Monde, Le Figaro, Libération, L'Express
+- **Internationaux** : RFI, France 24, BBC
+- **Spécialisés OSINT** : Bellingcat, Oryx, Meduza
+- **Sources ukrainiennes** : Kyiv Post, UNIAN
+- Et 60+ autres sources
+
+**Total : 71 flux RSS articles**
 
 ### Chaînes YouTube
-Les chaînes YouTube pour vidéos sont dans `FR_VIDEO_FEEDS` (scraping/feeds.py):
-- **Français**: ARTE, Le Monde, France 24, BFM TV, CNews, France Inter, Mediapart, Brut, Konbini
-- **International**: BBC News, DW News, Euronews, CNN, ABC News, CBS News, Fox News, Reuters, Al Jazeera, Sky News
+Les chaînes YouTube pour vidéos sont dans `scraping/videos/feeds.py` :
+- **Français**: ARTE, Le Monde, France 24, BFM TV, Mediapart, Brut
+- **International**: BBC News, DW News, Euronews, CNN, Reuters, Al Jazeera
 - **Military**: Warthog Defense, Defense Updates
-- **Russian/Eastern**: TV Rain, Популярная политика
 - **Documentary**: National Geographic, Discovery Channel
+
+**Total : 25 chaînes YouTube**
 
 ## API Endpoints
 

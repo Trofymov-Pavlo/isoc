@@ -87,8 +87,8 @@ Cela permet au frontend Nuxt d'accéder directement au fichier statique.
 ## ⚙️ Configuration
 
 ### Flux et mots-clés
-- **Flux RSS** : configurés dans [articles/feeds.py](articles/feeds.py) (112 sources)
-- **Chaînes YouTube** : configurées dans [videos/feeds.py](videos/feeds.py) (36 chaînes)
+- **Flux RSS** : configurés dans [articles/feeds.py](articles/feeds.py) (71 sources)
+- **Chaînes YouTube** : configurées dans [videos/feeds.py](videos/feeds.py) (25 chaînes)
 - **Mots-clés** : définis dans [articles/keywords.py](articles/keywords.py) et [videos/keywords.py](videos/keywords.py)
 
 ### Clé API YouTube
