@@ -84,19 +84,19 @@
           <div class="team-member">
             <div class="member-avatar">AT</div>
             <h3>Antoine TENA</h3>
-            <p class="member-role">Chef de projet & développeur</p>
+            <p class="member-role">Lead Developer & Axe Informationnel</p>
             <p class="member-bio">
-              Coordination et gestion de l'ensemble du projet. Développement de la plateforme web
-              et rédaction de l'article de fond sur la désinformation dans le conflit.
+              Architecture Backend Django / Frontend Nuxt.js, acquisition des données (flux RSS).
+              Rédaction de l'Axe 2 : Guerre de l'Information.
               Co-création de la présentation du projet.
             </p>
           </div>
           <div class="team-member">
             <div class="member-avatar">NB</div>
             <h3>Nathan BARRACHIN</h3>
-            <p class="member-role">Analyste juridique</p>
+            <p class="member-role">Référent Juridique & Axe Éthique</p>
             <p class="member-bio">
-              Rédaction de l'article sur les enjeux éthiques et juridiques du conflit Ukraine-Russie.
+              Rédaction de l'Axe 3 : Enjeux Éthiques et Juridiques.
               Analyse des aspects légaux et des questions de droit international.
               Co-création de la présentation du projet.
             </p>
@@ -104,19 +104,16 @@
           <div class="team-member">
             <div class="member-avatar">HA</div>
             <h3>Hiba ABDESSADAK</h3>
-            <p class="member-role">Analyste militaire & design</p>
+            <p class="member-role">Analyste Défense & Axe Technologies Militaires</p>
             <p class="member-bio">
-              Rédaction de l'article sur les technologies militaires utilisées dans le conflit.
+              Rédaction de l'Axe 1 : Technologies Militaires.
               Design des supports visuels. Co-création de la présentation du projet.
             </p>
           </div>
           <div class="team-member">
             <div class="member-avatar">PT</div>
             <h3>Pavel TROFYMOV</h3>
-            <p class="member-role">Contributeur</p>
-            <p class="member-bio">
-              Membre de l'équipe projet. Co-création de la présentation du projet.
-            </p>
+            <p class="member-role">Membre du projet</p>
           </div>
         </div>
       </div>
